@@ -1,0 +1,91 @@
+---
+title: "Lecture Notes for Ch3 of MD"
+author: "Hasthika"
+date: "1/2/2019"
+output: html_document
+---
+
+
+## Data Visualization via ggplot2
+
+We begin the development of your data science toolbox with data visualization. 
+
+graphics provide a nice way for us to get a sense for how **quantitative** variables compare:
+
+  1)  in terms of their center (where the values tend to be located) 
+  2) and their spread (how they vary around the center).
+  
+Also, plots/graphics help us to identify **patterns** and **outliers** in our data.
+
+A common extension of these ideas is to compare the distribution of one quantitative variable  as we go across the levels of a different **categorical** variable.
+
+## Let's start by installing and loading the following pacakges
+
+```{r}
+library(nycflights13)
+library(ggplot2)
+library(dplyr)
+```
+
+
+We can break a graphic into the following essential(first three) components:
+
+  * `data`: the data-set comprised of variables that we map.
+
+  * `geom`: the geometric object in question. This refers to our type of objects we can observe in our plot. For example, points, lines, bars, etc.
+
+  * `aes`: aesthetic attributes of the geometric object that we can perceive on a graphic. For example, x/y position, color, shape, and size. Each assigned aesthetic attribute can be mapped to a variable in our data-set.
+  
+  * `facet` ing breaks up a plot into small multiples corresponding to the levels of another variable (Section 3.6)
+  
+  * `position` adjustments for barplots (Section 3.8)
+
+Let’s break down the grammar with an example.
+
+
+We will be considering five different types of graphs. 
+
+  1. scatterplots
+  2. linegraphs
+  3. boxplots
+  4. histograms
+  5. barplots
+  
+*Example:* We will graphically investigate the relationship between the following two numerical variables in the `flights` data frame:
+
+  1. `dep_delay`: departure delay on the horizontal “x” axis and
+  2. `arr_delay`: arrival delay on the vertical “y” axis
+
+```{r}
+#View(flights)
+```
+
+Don’t worry for now if you don’t fully understand what this code is doing, we’ll explain this in details Chapter 5, just run it all and understand that we are taking all flights and only considering those corresponding to Alaska Airlines.
+
+```{r}
+all_alaska_flights <- flights %>% 
+  filter(carrier == "AS")
+```
+
+```{r}
+#View(all_alaska_flights)
+```
+  
+#### Scatter Plots:
+
+```{r}
+ggplot(data = all_alaska_flights, mapping = aes(x = dep_delay, y = arr_delay)) + 
+  geom_point()
+```
+
+
+
+
+
+
+
+
+
+
+
+
