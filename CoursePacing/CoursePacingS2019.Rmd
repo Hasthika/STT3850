@@ -39,15 +39,15 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * Read chapters 1 and 2 of [MD](https://moderndive.com)
 
-* Sign-up for a free account on [GitHub](https://github.com).
+<!--* Sign-up for a free account on [GitHub](https://github.com).
 
-* When you register for a free individual GitHub account, request a [student discount](https://education.github.com) to obtain a few private repositories as well as unlimited public repositories.  Please use something similar to **FirstNameLastName** as your username when you register with GitHub.  For example, my username on GitHub is *alanarnholt*. If you have a popular name such as John Smith, you may need to provide some other distinguishing characteristic in your username.   
+* When you register for a free individual GitHub account, request a [student discount](https://education.github.com) to obtain a few private repositories as well as unlimited public repositories.  Please use something similar to **FirstNameLastName** as your username when you register with GitHub.  For example, my username on GitHub is *alanarnholt*. If you have a popular name such as John Smith, you may need to provide some other distinguishing characteristic in your username.   -->
 
 * _Complete Introduction to R_ [(DataCamp)](https://www.datacamp.com/) --- Due Jan 18
 
 * In class **quiz 01** --- Jan 17 (last 20 min of class)
 
- 
+<!--
 ```{block, week1optional, type='rmdoptional'}
 #### Optional {-}
 * You may want to install [Git](http://git-scm.com/downloads), [R](http://cran.r-project.org), [RStudio](http://www.rstudio.com/products/rstudio/download/), [zotero](https://www.zotero.org), and optionally [$LaTeX$](http://www.ctan.org/starter) on your personal computer. If you do, you will want to follow Jenny Bryan's excellent advice for [installing R and RStudio](http://stat545-ubc.github.io/block000_r-rstudio-install.html) and [installing Git](http://stat545-ubc.github.io/git01_git-install.html).  Jenny's advice is also in chapters 6 and 7 of [Happy Git and GitHub for the useR](http://happygitwithr.com/).  Note: [Git](http://git-scm.com/downloads), [R](http://cran.r-project.org), [RStudio](http://www.rstudio.com/products/rstudio/download/), and [$LaTeX$](http://www.ctan.org/starter) are installed on the [Appstate RStudio](https://mathr.math.appstate.edu/) server.
@@ -61,6 +61,7 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 * [Install R and RStudio on Windows (5 min)](https://www.youtube.com/watch?v=eD07NznguA4)    
 
 ```
+-->
 
 ## Week 2: (Jan 21--25) {-}
 
