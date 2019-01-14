@@ -39,6 +39,8 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * Read chapters 1 and 2 of [MD](https://moderndive.com)
 
+* [Lecture: Intro to R](../Slides/IntroToR.html)
+
 <!--* Sign-up for a free account on [GitHub](https://github.com).
 
 * When you register for a free individual GitHub account, request a [student discount](https://education.github.com) to obtain a few private repositories as well as unlimited public repositories.  Please use something similar to **FirstNameLastName** as your username when you register with GitHub.  For example, my username on GitHub is *alanarnholt*. If you have a popular name such as John Smith, you may need to provide some other distinguishing characteristic in your username.   -->
