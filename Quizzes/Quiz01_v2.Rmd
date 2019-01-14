@@ -1,0 +1,77 @@
+---
+title: "Quiz 01 - Version 02"
+author: "Dr. Hasthika Rupasinghe"
+date: "1/14/2019"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+1) Testing for equality in R: Write the R code to test whether `2 + 3` is eqauls to `4`
+
+```{r}
+# Write your code here
+#
+#
+# Write the output here
+#
+#
+```
+
+
+2) Find the area of a circle with a radius of 4 foot.
+
+Recall that the area of a cirlce is $\pi r^2$. 
+
+```{r}
+# Write your code here
+#
+#
+#
+#
+# Write the output here
+#
+#
+```
+
+3) Create a vector named `Fibonacci` with numbers: 0, 1, 1, 2, 3, 5.
+
+```{r}
+# Write your code here
+#
+#
+#
+#
+# Write the output here
+#
+#
+```
+
+
+4) Create a vector named `Friends4Ever` with the first names of three of your best friends.
+
+```{r}
+# Write your code here
+#
+#
+#
+#
+# Write the output here
+#
+#
+```
+
+5) We are using `R` via `RStudio`.  At its simplest:
+
+  - R is like a car’s __________ (engine/dashboard)
+  - RStudio is like a car’s __________ (engine/dashboard)
+  
+
+
+
+
+
+
