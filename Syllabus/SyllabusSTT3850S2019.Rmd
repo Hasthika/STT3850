@@ -41,7 +41,7 @@ This course provides an overview of modern statistical data analysis. Programmin
 
 * Chihara, L. and Hesterberg, T. (2011). _Mathematical Statistics with Resampling and R._ Hoboken, NJ: John Wiley & Sons, Inc.
 
-* [_Mathematical Statistics with Resampling and R_ web site](https://sites.google.com/site/chiharahesterberg/home) contains errata, solutions, datasets, and R scripts. Other materials are available from the [course webpage](https://alanarnholt.github.io/STT3850/).
+* [_Mathematical Statistics with Resampling and R_ web site](https://sites.google.com/site/chiharahesterberg/home) contains errata, solutions, datasets, and R scripts. Other materials are available from the [course webpage](https://hasthika.github.io/STT3850/).
 
 **Course Grading & Assessment:**
 
@@ -73,7 +73,6 @@ This course conforms with all Appalachian State University policies with respect
 This course will use the RStudio server  (https://mathr.math.appstate.edu/) that has the programs listed below and more installed.
 
 * [R](https://cran.r-project.org) 
-* [Git](https://git-scm.com/downloads) 
 * [RStudio](https://www.rstudio.com/products/rstudio/download/)
 * [LaTeX](https://www.ctan.org/starter)
 
@@ -92,12 +91,11 @@ If you have problems with your Appstate Username or Password visit [IT Support S
 
 * [RStudio Server](https://mathr.math.appstate.edu/)
 * [DataCamp](https://www.datacamp.com/)
-* [GitHub](https://github.com/)
 
 
 Note: All technology used in the class is either open source (free) or will be accessible to students enrolled in the course for no cost.
 
 **Assignments**
 
-The [CoursePacing guide](../CoursePacing/CoursePacingF2018.html) has all course assignments and due dates.
+The [CoursePacing guide](../CoursePacing/CoursePacingS2019.html) has all course assignments and due dates.
 
