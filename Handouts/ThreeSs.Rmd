@@ -1,6 +1,6 @@
 ---
 title: "Three S's"
-author: "Alan T. Arnholt"
+author: "Hasthika Rupasinghe"
 date: '`r format(Sys.time(), "%A, %B %d, %Y - %X.")`'
 output: html_document
 ---
