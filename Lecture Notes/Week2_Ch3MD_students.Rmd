@@ -1,29 +1,32 @@
 ---
 title: "Lecture Notes for Ch3 of MD"
 author: "Dr. Hasthika Rupasinghe"
-date: "1/2/2019"
-output: html_document
+date: '`r format(Sys.time(), "%b %d, %Y at %X")`'
+output:
+  bookdown::html_document2:
+    highlight: textmate
+    theme: yeti
 ---
 
 
-## Data Visualization via ggplot2
+# Data Visualization via ggplot2
 
 We begin the development of your data science toolbox with data visualization. 
 
 graphics provide a nice way for us to get a sense for how **quantitative** variables compare:
 
-  1)  in terms of their center (where the values tend to be located) 
-  2) and their spread (how they vary around the center).
+  1)  
+  2) 
 
 Examples of **quantitative** variables:
 
-Also, plots/graphics help us to identify **patterns** and **outliers** in our data.
+Also, plots/graphics help us to identify ___________ and ____________ in our data.
 
 A common extension of these ideas is to compare the distribution of one quantitative variable  as we go across the levels of a different **categorical** variable.
 
 Examples of **categorical** variables:
 
-## Let's start by installing and loading the following pacakges
+# Let's start by installing and loading the following pacakges
 
 ```{r}
 library(nycflights13)
@@ -78,7 +81,7 @@ all_alaska_flights <- flights %>%
 
 ```
   
-#### Scatter Plots:
+## Scatter Plots:
 
 ```{r}
 ggplot(data = all_alaska_flights, mapping = aes(x = dep_delay, y = arr_delay)) + 
@@ -87,7 +90,7 @@ ggplot(data = all_alaska_flights, mapping = aes(x = dep_delay, y = arr_delay)) +
 
 The large mass of points near (0, 0) in this scatterplot can cause some confusion. We handdle this using
 
-  1. By adjusting the transparency of the points via the `alpha` argument:
+  1. By adjusting the ______________ of the points via the `________` argument:
   
 ```{r}
 ggplot(data = all_alaska_flights, mapping = aes(x = dep_delay, y = arr_delay)) + 
@@ -112,7 +115,7 @@ Question:
   b. How has that region changed compared to when you observed the same plot without the `alpha = 0.2`?
 
 
-#### Linegraphs
+## Linegraphs
 
 Explore the `weather` dataset from `nycflights13` package.
 
