@@ -52,11 +52,11 @@ Let’s break down the grammar with an example.
 
 We will be considering five different types of graphs. 
 
-  1. scatterplots
-  2. linegraphs
-  3. boxplots
-  4. histograms
-  5. barplots
+  1. 
+  2. 
+  3. 
+  4. 
+  5. 
   
 *Example:* We will graphically investigate the relationship between the following two numerical variables in the `flights` data frame:
 
@@ -74,6 +74,8 @@ Don’t worry for now if you don’t fully understand what this code is doing, w
 ```{r}
 all_alaska_flights <- flights %>% 
   filter(carrier == "AS")
+
+
 ```
 
 ```{r}
