@@ -73,6 +73,8 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * Become familiar with the Appstate [RStudio server](https://mathr.math.appstate.edu/). You will use your Appstate user name and password to log in to the server.  You must be registered in the class to access the server.
 
+* [Rmarkdown Basics](../Lecture Notes/R_Markdown_Basics.html)
+
 * [Lecture: Week 2](../Lecture Notes/Week2_Ch3MD_students.html)
 
 * Complete _Introduction to Data_ [(DataCamp)](https://www.datacamp.com/courses/introduction-to-data) --- Due Jan 25
