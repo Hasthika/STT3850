@@ -95,8 +95,7 @@ The large mass of points near (0, 0) in this scatterplot can cause some confusio
   1. By adjusting the ______________ of the points via the `________` argument:
   
 ```{r}
-ggplot(data = all_alaska_flights, mapping = aes(x = dep_delay, y = arr_delay)) + 
-  geom_point(alpha = 0.2) 
+
 ```
   
   2. By jittering the points via `geom_jitter()`:
@@ -104,9 +103,7 @@ ggplot(data = all_alaska_flights, mapping = aes(x = dep_delay, y = arr_delay)) +
   Here we are to adding just a bit of random noise to the points to better see them.
   
 ```{r}
-ggplot(data = all_alaska_flights, mapping = aes(x = dep_delay, y = arr_delay)) + 
-  geom_point() +
-    geom_jitter(width = 30, height = 30)
+
 ```  
   
 Question: 
@@ -152,6 +149,64 @@ early_january_weather_1 <- weather %>%
 ggplot(data = early_january_weather_1, mapping = aes(x = time_hour, y = humid)) +
   geom_line()
 ```
+
+## Histograms via geom_histogram
+
+
+```{r}
+ggplot(data = weather, mapping = aes(x = temp)) +
+  geom_histogram()
+```
+
+
+We can adjust characteristics of the bins in one of two ways:
+
+  1. By adjusting the number of ______ via the `_______` argument
+  2. By adjusting the _________ via the `________` argument
+
+```{r}
+ggplot(data = weather, mapping = aes(x = temp)) +
+  geom_histogram(bins = 60, color = "white", fill = "steelblue")
+```
+
+
+```{r}
+ggplot(data = weather, mapping = aes(x = temp)) +
+  geom_histogram(binwidth = 10, color = "white")
+```
+
+### Facets
+
+Suppose we were interested in looking at how the temperature histograms we saw above varied by month. 
+
+This is what is meant by “the distribution of a variable over another variable”: `temp` is one variable and `month` is the other variable. In order to look at histograms of `temp` for each `month`, we add a layer `facet_wrap(~ month)`. 
+
+```{r}
+
+```
+
+
+## Boxplots via geom_boxplot
+
+```{r}
+ggplot(data = weather, mapping = aes(y = temp)) +
+  geom_boxplot()
+
+```
+
+
+```{r}
+
+
+```
+
+Questions:
+
+1. Which months have the highest variability in temperature? What reasons do you think this is?
+
+2. We looked at the distribution of a numerical variable over a categorical variable here with this boxplot. Why can’t we look at the distribution of one numerical variable over the distribution of another numerical variable? Say, temperature across pressure, for example?
+
+
 
 
 

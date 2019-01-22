@@ -211,6 +211,10 @@ Questions:
 
 2. We looked at the distribution of a numerical variable over a categorical variable here with this boxplot. Why can’t we look at the distribution of one numerical variable over the distribution of another numerical variable? Say, temperature across pressure, for example?
 
+```{r}
+airlines
+```
+
 
 
 
