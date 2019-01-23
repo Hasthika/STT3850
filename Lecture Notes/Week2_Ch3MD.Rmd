@@ -211,10 +211,13 @@ Questions:
 
 2. We looked at the distribution of a numerical variable over a categorical variable here with this boxplot. Why can’t we look at the distribution of one numerical variable over the distribution of another numerical variable? Say, temperature across pressure, for example?
 
+## Barplots
+
+Both histograms and boxplots represent ways to visualize the variability of numerical variables. Another common task is to present the distribution of a **categorical** variable. 
+
 ```{r}
-airlines
+ggplot(data = flights, mapping = aes(x = carrier)) +
+  geom_bar()
 ```
-
-
 
 
