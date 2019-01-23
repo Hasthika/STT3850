@@ -1,0 +1,10 @@
+---
+title: "Lecture Notes for Ch 2 of MSWR"
+author: "Dr. Hasthika Rupasinghe"
+date: '`r format(Sys.time(), "%b %d, %Y at %X")`'
+output:
+  bookdown::html_document2:
+    highlight: textmate
+    theme: yeti
+---
+

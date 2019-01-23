@@ -1,13 +1,14 @@
 ---
 title: "R Markdown Basics"
 author: "Dr. Hasthika Rupasinghe"
-date: "1/17/2018"
-output: html_document
+date: "1/22/2019"
+output: pdf_document
 ---
 
 #### Code Chunks
 
 There is a in-built dataset in R called `cars`. Let's use it to get used to Rmarkdown.
+
 
 ```{r chunk_name}
 
@@ -23,13 +24,20 @@ Note: Click on the `play` button to run the code chunk.
 To hide your code chunk from the output use `echo=FALSE`.
 
 
+```{r myHist, echo=FALSE}
+hist(cars$speed)
+```
+
+
+
 Note: ERROR
 Change the chunk_name
 
 ```{r no_code, echo=FALSE}
 
+
 hist(cars$speed, xlab = "speed", main = "Histogram of Speed")
-?hist
+
 
 
 ```
@@ -72,8 +80,8 @@ There are `r nrow(cars)` cars in the `cars` dataset.
 The highest speed recorded was `r max(cars)`.
 The correlation between the `speed` and the `distane` is `r cor(cars$speed, cars$dist)`
 
-Convet this html file to a pdf
-Inclde the system date 
+Convert this html file to a pdf
+Include the system date 
 date: "`r Sys.Date()`"
 
 
