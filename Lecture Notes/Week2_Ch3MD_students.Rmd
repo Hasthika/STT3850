@@ -95,7 +95,7 @@ The large mass of points near (0, 0) in this scatterplot can cause some confusio
   1. By adjusting the ______________ of the points via the `________` argument:
   
 ```{r}
-
+# your code goes here
 ```
   
   2. By jittering the points via `geom_jitter()`:
@@ -103,7 +103,7 @@ The large mass of points near (0, 0) in this scatterplot can cause some confusio
   Here we are to adding just a bit of random noise to the points to better see them.
   
 ```{r}
-
+# your code goes here
 ```  
   
 Question: 
@@ -182,7 +182,7 @@ Suppose we were interested in looking at how the temperature histograms we saw a
 This is what is meant by “the distribution of a variable over another variable”: `temp` is one variable and `month` is the other variable. In order to look at histograms of `temp` for each `month`, we add a layer `facet_wrap(~ month)`. 
 
 ```{r}
-
+# your code goes here
 ```
 
 
@@ -196,7 +196,7 @@ ggplot(data = weather, mapping = aes(y = temp)) +
 
 
 ```{r}
-
+# your code goes here
 
 ```
 
@@ -208,7 +208,13 @@ Questions:
 
 
 
+## Barplots
 
+Both histograms and boxplots represent ways to visualize the variability of numerical variables. Another common task is to present the distribution of a **categorical** variable. Here we explore the number of flights from each `carrier`.
+
+```{r}
+# your code goes here
+```
 
 
 
