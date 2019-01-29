@@ -18,7 +18,9 @@ graphics provide a nice way for us to get a sense for how **quantitative** varia
   1)  in terms of their center (where the values tend to be located) 
   2) and their spread (how they vary around the center).
 
-Examples of **quantitative** variables:
+Examples of **quantitative** variables: Income, age
+
+
 
 Also, plots/graphics help us to identify **patterns** and **outliers** in our data.
 

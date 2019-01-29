@@ -10,7 +10,7 @@ output:
   
 1) Load the following `packages` in to `RStudio`
 
-```{r message=FALSE}
+```{r}
 library(nycflights13)
 library(ggplot2)
 library(dplyr)
@@ -31,14 +31,11 @@ all_american_flights <- flights %>%
 
 Create a scatterplot of the variables, `air_time` vs. the `distance` in the `all_american_flights` dataframe.
 
-Hint: 
 
-ggplot(data = _____________ , aes(x = ___________ , y = ___________)) + 
-  geom_point() 
 
 ```{r}
-# Your gode goes here
-
+ggplot(data = all_american_flights, aes(x = distance, y = air_time)) + 
+  geom_point()
 ```
 
 
@@ -46,8 +43,8 @@ ggplot(data = _____________ , aes(x = ___________ , y = ___________)) +
 
 
 ```{r}
-# Your gode goes here
-
+ggplot(data = all_american_flights, aes(x = distance, y = air_time)) + 
+  geom_point(alpha = 0.2)
 ```
 
 

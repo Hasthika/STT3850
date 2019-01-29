@@ -26,9 +26,8 @@ $$\bar{x} = \dfrac{1}{n}\sum_{i=1}^n x_i$$
 Example: Find the mean of 2, 15, 3, 8, 12, 5.
 
 ```{r}
-data <- c(2, 15, 3, 8, 12, 5)
-
-mean(data)
+#
+#
 ```
 
 **Median**
@@ -38,9 +37,8 @@ Median is the middle value of a sorted data set. Usually works well with outlier
 Example: Find the median of 2, 15, 3, 8, 12, 5.
 
 ```{r}
-data <- c(2, 15, 3, 8, 12, 5)
-
-median(data)
+#
+#
 ```
 
 
@@ -52,9 +50,8 @@ Here for example you sort the data, omit 25% of the observations on each end, an
 Example: Find the 25% Trimmed Mean of 2, 15, 3, 8, 12, 5.
 
 ```{r}
-data <- c(2, 15, 3, 8, 12, 5)
-
-mean(data, trim = 0.25)
+#
+#
 ```
 
 
@@ -83,13 +80,9 @@ Example: Find the Range, IQR and the Standard deviation  of 2, 15, 3, 8, 12, 5.
 
 ```{r}
 
-data <- c(2, 15, 3, 8, 12, 5)
-
-range(data)
-
-IQR(data)
-
-sd(data)
+#
+#
+#
 
 ```
 
@@ -108,9 +101,8 @@ In this class we use the `five number summary` to describe the shape of a data s
 Example: Conside the 15 numbers 9,10,11,11,12,14,16,17,19,21,25,31,32,41,61. Find the five number summary.
 
 ```{r}
-fiveNum <- c(9,10,11,11,12,14,16,17,19,21,25,31,32,41,61)
-
-summary(fiveNum)
+#
+#
 ```
 
 ### Boxplots
@@ -123,14 +115,10 @@ Create a boxplot for the following 21 data values.
 5, 6, 6, 8, 9, 11, 11, 14, 17, 17, 19, 20, 21, 21, 22, 23, 24, 32, 40, 43, 49.
 
 ```{r}
-library(ggplot2)
 
-boxplotdata <- c(5, 6, 6, 8, 9, 11, 11, 14, 17, 17, 19, 20, 21, 21, 22, 23, 24, 32, 40, 43, 49)
-
-boxplotdata <- data.frame(boxplotdata)
-
-ggplot(data = boxplotdata, mapping = aes(y = boxplotdata)) +
-  geom_boxplot()
+#
+#
+#
 
 ```
 
@@ -157,20 +145,18 @@ a) *Create a table and a bar chart of the departure times (`DepartTime`)*
 
 
 ```{r}
-head(FlightDelays)
-glimpse(FlightDelays)
-
-table(FlightDelays$DepartTime)
-
-ggplot(data = FlightDelays, mapping = aes(x = DepartTime)) +
-  geom_bar()
+#
+#
+#
 
 ```
 
 b) *Create a contingency table of the variables `Day` and `Delayed30`. For each day, what is the proportion of flights delayed at least 30 min.*
 
 ```{r}
-table(FlightDelays$Day, FlightDelays$Delayed30)
+
+#
+#
 
 ```
 
@@ -189,7 +175,7 @@ The `%>%` operator allows us to go from one step in `dplyr` to the next easily s
 ```{r}
 day_delayed30 <- FlightDelays %>% 
   group_by(Day) %>% 
-  summarize(proportion= sum(Delayed30=="Yes")/sum(Delayed30=="Yes"|Delayed30=="No"))
+  summarize(proportion= sum(Delayed30 == "Yes")/sum(Delayed30 == "Yes" | Delayed30 == "No"))
 
 day_delayed30
 ```
@@ -200,10 +186,9 @@ c) *Create side by side boxplots of the lenghts of the flights, grouped by wheth
 
 ```{r}
 
-ggplot(data = FlightDelays, mapping = aes(x = factor(Delayed30), y = FlightLength)) +
-  geom_boxplot() +
-    labs(x = "Delayed at least 30 min?", y ="Flight Length")
-
+#
+#
+#
 
 ```
 
@@ -213,42 +198,44 @@ d) *Do you think that there is a relationship between the lenght of a flight and
 
 
 
-Excercise 2.5:
+Excercise 2.5: You try!
 
 
 
 ```{r}
-data("GSS2002")
-str(GSS2002)
+
+#
+#
+
+
 ```
 
 a) 
 
 ```{r}
-table(GSS2002$DeathPenalty)
 
-ggplot(data = GSS2002, mapping = aes(x = DeathPenalty)) +
-  geom_bar(fill = "orchid3")
+#
+#
+
+
 ```
 
 
 b) 
 
 ```{r}
-table(GSS2002$OwnGun)
 
-summary(GSS2002$OwnGun)
+#
+#
+
 ```
 
 c) 
 
 ```{r}
-table(GSS2002$OwnGun, GSS2002$DeathPenalty)
 
-death_gun <- GSS2002 %>% 
-  group_by(OwnGun) %>% 
-  summarize(proportion_favor_death = sum(DeathPenalty=="Favor", na.rm = TRUE)/sum(DeathPenalty=="Favor"|DeathPenalty=="Oppose", na.rm = TRUE))
+#
+#
 
-death_gun
 ```
 

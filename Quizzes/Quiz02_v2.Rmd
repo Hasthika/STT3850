@@ -1,5 +1,5 @@
 ---
-title: "Quiz 02 - Version 01"
+title: "Quiz 02 - Version 02"
 author: "Dr. Hasthika Rupasinghe"
 date: '`r format(Sys.time(), "%b %d, %Y at %X")`'
 output:
