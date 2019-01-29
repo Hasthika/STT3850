@@ -1,5 +1,5 @@
 ---
-title: "Lecture Notes for Ch 2 of MSWR: Exploratory Data Analyis"
+title: "Lecture Notes for Ch 2 of MSWR: Exploratory Data Analysis"
 author: "Dr. Hasthika Rupasinghe"
 date: '`r format(Sys.time(), "%b %d, %Y at %X")`'
 output:
