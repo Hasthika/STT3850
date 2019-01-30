@@ -141,13 +141,6 @@ library(ggplot2)
 
 data <- c(11.62, 15.92, 12.40, 14.40, 10.28, 13.15, 11.22,  7.35, 16.45,  5.37, 10.25, 12.41, 11.43,  8.00, 11.90, 17.86,  7.59, 11.88, 14.54, 14.44, 10.29,  5.47,  8.20, 10.56, 11.18)
 
-MyDataFrame <- data.frame(data)
-MyDataFrame
-
-mean(MyDataFrame$data)
-sd(MyDataFrame$data)
-
-ggplot(data = MyDataFrame, aes(x=data)) + geom_histogram(bins = 10)
 
 ```
 
@@ -163,13 +156,6 @@ library(ggplot2)
 
 data <- c(11.62, 15.92, 12.40, 14.40, 10.28, 13.15, 11.22,  7.35, 16.45,  5.37, 10.25, 12.41, 11.43,  8.00, 11.90, 17.86,  7.59, 11.88, 14.54, 14.44, 10.29,  5.47,  8.20, 10.56, 11.18)
 
-MyDataFrame <- data.frame(data)
-MyDataFrame
-
-mean(MyDataFrame$data)
-sd(MyDataFrame$data)
-
-ggplot(data = MyDataFrame, aes(sample = data)) + geom_qq() + geom_qq_line()
 
 
 ```
@@ -220,11 +206,7 @@ The `%>%` operator allows us to go from one step in `dplyr` to the next easily s
   * summarize this grouped data to calculate the mean (for example) for each level of the group.
 
 ```{r}
-day_delayed30 <- FlightDelays %>% 
-  group_by(Day) %>% 
-  summarize(proportion= sum(Delayed30 == "Yes")/sum(Delayed30 == "Yes" | Delayed30 == "No"))
 
-day_delayed30
 ```
 
 
