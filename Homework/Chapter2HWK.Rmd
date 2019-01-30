@@ -1,0 +1,78 @@
+---
+title: "Chapter Two Homework: Due Wednesday the 6th"
+author: "Your Name Here"
+date: '`r format(Sys.time(), "%b %d, %Y")`'
+output: bookdown::html_document2
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA, fig.align = "center", warning = FALSE, message = FALSE)
+library(tidyverse)
+library(resampledata)
+```
+
+1) Exercise 2.7 MODIFIED:
+
+Import data from the black spruce case study in Section 1.10 in to `R`.
+
+> SOLUTION: 
+
+```{r}
+# Your code goes here
+
+```
+
+a) Compute the numeric summaries for the height changes (`Ht.change`) of the seedlings.
+
+> SOLUTION: 
+
+```{r}
+# Your code goes here
+
+```
+
+
+b) Create a histogram and normal quantile plot for the height changes of the seedlings. Is the distribution approximately normal?
+
+> SOLUTION: 
+
+```{r}
+# Your code goes here
+
+```
+
+
+c) Create a boxplot to compare the distribution of the change in diameters of the seedlings (`Di.change`) grouped by whether or not they were in fertilized plots.
+
+> SOLUTION: 
+
+```{r}
+# Your code goes here
+
+```
+
+d) Use Ch 5 of MD: Data Wrangling via `dplyr` to find the numeric summaries of the diameter changes for the two levels fertilization.
+
+> SOLUTION: 
+
+```{r}
+# Your code goes here
+
+```
+
+e) Use `ggplot` to create a scatter  plot of the height changes against the diameter changes, describe the relationship.
+
+> SOLUTION: 
+
+```{r}
+# Your code goes here
+
+```
+
+
+
+
+
+
+
+

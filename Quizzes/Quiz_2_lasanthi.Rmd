@@ -1,0 +1,138 @@
+---
+title: "Quiz_2_v2"
+author: "Lasanthi Watagoda"
+date: "1/28/2019"
+output: pdf_document
+    
+---
+
+ Your Name ______________________
+
+1. Suppose $n = 25$ and $X \sim N(1000, 81)$.What is the Distribution of $\bar{X}$
+
+```{r}
+# Answer:
+#
+#
+#
+#
+#
+```
+
+
+2. Suppose $X\sim N(144,15)$ . Use `pnorm` to find $P(X \leq 100)$.
+Write your `R` command & the answer.
+
+```{r}
+# Answer:
+#
+#
+#
+#
+#
+```
+
+3. Open the `Auto` dataset in `ISLR` library. (Must use R commands)
+
+  i) How many variables are in the Auto dataset & what is the sample size? 
+```{r}
+# Answer:
+# 
+#
+#
+#
+#
+```
+
+  ii) What are the variables in Auto dataset? 
+  
+```{r}
+# Answer:
+# 
+#
+#
+#
+#
+```
+
+  
+iii) What is the average `mpg`?
+
+```{r}
+# Answer:
+# 
+#
+#
+#
+#
+```
+
+ iv) What is the highst `horsepower` recorded?
+```{r}
+# Answer:
+# 
+#
+#
+#
+#
+```
+
+  v) Graph a histogram for `mpg` using `ggplot` (Hint: Load the ggplot2 library)
+```{r}
+# Answer: Sketch the graph here (label the axeses)
+# 
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+```  
+  
+  vi) Graph a boxplot for `acceleration` using `ggplot`
+```{r}
+# Answer: Sketch the graph here (label the axeses)
+# 
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+```  
+  
+  vii) Explain the boxplot in terms of Q1,Q2,Q3 and outliars.
+```{r}
+# Answer: 
+# 
+#
+#
+#
+#
+#
+#
+#
+#
+```
+
+```{r include=FALSE}
+library(ISLR)
+library(ggplot2)
+names(Auto)
+str(Auto)
+summary(Auto)
+ggplot(data = Auto, aes(x= mpg)) + 
+  geom_histogram() 
+
+ggplot(data = Auto, aes(y= acceleration)) + 
+  geom_boxplot() 
+```
+
