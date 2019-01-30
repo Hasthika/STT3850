@@ -264,9 +264,7 @@ day_delayed30
 ```
 
 ```{r}
-
 library(knitr) #for printing html-friendly tables.
-
 
 
 day_delayed30 <- FlightDelays %>% 

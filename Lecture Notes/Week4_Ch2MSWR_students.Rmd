@@ -126,7 +126,54 @@ Create a boxplot for the following 21 data values.
 
   ![Boxplot](boxplotEx.png)
 
+### Normal Distribution
 
+The normal distribution is the most important and most widely used distribution in statistics. It is sometimes called the "bell curve" because the normal distribution is bell shaped and symmetric. We would "like" data to be normally distributed.
+
+Here is an example: Check whether the data below are normal distributed.
+
+  **1. Create a histogram and check if it is "Normal" enough!**
+
+```{r}
+
+library(ggplot2)
+
+
+data <- c(11.62, 15.92, 12.40, 14.40, 10.28, 13.15, 11.22,  7.35, 16.45,  5.37, 10.25, 12.41, 11.43,  8.00, 11.90, 17.86,  7.59, 11.88, 14.54, 14.44, 10.29,  5.47,  8.20, 10.56, 11.18)
+
+MyDataFrame <- data.frame(data)
+MyDataFrame
+
+mean(MyDataFrame$data)
+sd(MyDataFrame$data)
+
+ggplot(data = MyDataFrame, aes(x=data)) + geom_histogram(bins = 10)
+
+```
+
+
+  2. Check using a Normal quantile plot (QQ plot) - Preferred way!
+  
+  If the plotted points follow the identity line, then your data is Normal.
+  
+  
+```{r}
+library(ggplot2)
+
+
+data <- c(11.62, 15.92, 12.40, 14.40, 10.28, 13.15, 11.22,  7.35, 16.45,  5.37, 10.25, 12.41, 11.43,  8.00, 11.90, 17.86,  7.59, 11.88, 14.54, 14.44, 10.29,  5.47,  8.20, 10.56, 11.18)
+
+MyDataFrame <- data.frame(data)
+MyDataFrame
+
+mean(MyDataFrame$data)
+sd(MyDataFrame$data)
+
+ggplot(data = MyDataFrame, aes(sample = data)) + geom_qq() + geom_qq_line()
+
+
+```
+  
 
 
 Example: Exercise  2.4
