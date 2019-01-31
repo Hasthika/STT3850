@@ -1,40 +1,14 @@
 ---
-title: "Quiz_2_v2"
-author: "Lasanthi Watagoda"
+title: "Quiz 03"
+author: "Dr. Hasthika Rupasinghe"
 date: "1/28/2019"
 output: pdf_document
-    
 ---
 
- Your Name ______________________
+Name: __________________
 
-1. Suppose $n = 25$ and $X \sim N(1000, 81)$.What is the Distribution of $\bar{X}$
+1. Load the `Auto` dataset from the `ISLR` library. (Hint: Load the libary first, then load the data)
 
-```{r}
-# Answer:
-#
-#
-#
-#
-#
-```
-
-
-2. Suppose $X\sim N(144,15)$ . Use `pnorm` to find $P(X \leq 100)$.
-Write your `R` command & the answer.
-
-```{r}
-# Answer:
-#
-#
-#
-#
-#
-```
-
-3. Open the `Auto` dataset in `ISLR` library. (Must use R commands)
-
-  i) How many variables are in the Auto dataset & what is the sample size? 
 ```{r}
 # Answer:
 # 
@@ -44,11 +18,29 @@ Write your `R` command & the answer.
 #
 ```
 
-  ii) What are the variables in Auto dataset? 
+
+  i) How many variables (columns) are in the Auto dataset & what is the sample size (number of rows)? 
   
 ```{r}
 # Answer:
 # 
+#
+#
+#
+#
+#
+#
+#
+```
+
+  ii) What are the names of variables in the `Auto` dataset? 
+  
+```{r}
+# Answer:
+# 
+#
+#
+#
 #
 #
 #
@@ -67,7 +59,7 @@ iii) What is the average `mpg`?
 #
 ```
 
- iv) What is the highst `horsepower` recorded?
+ iv) What is the highest `horsepower` recorded?
 ```{r}
 # Answer:
 # 
@@ -77,10 +69,15 @@ iii) What is the average `mpg`?
 #
 ```
 
-  v) Graph a histogram for `mpg` using `ggplot` (Hint: Load the ggplot2 library)
+  v) Create a histogram for the variable `mpg`. **Use only 6 bins.** (Hint: Load the `ggplot2` library first)
 ```{r}
-# Answer: Sketch the graph here (label the axeses)
+# Answer: Write the code here  and sketch the graph here (label the axeses)
 # 
+#
+#
+#
+#
+#
 #
 #
 #
@@ -93,10 +90,16 @@ iii) What is the average `mpg`?
 #
 ```  
   
-  vi) Graph a boxplot for `acceleration` using `ggplot`
+  vi) Create a boxplot for to compare the `acceleration` among the levels of the `origin` variable.
+  
 ```{r}
-# Answer: Sketch the graph here (label the axeses)
+# Answer: Write the code here and sketch the graph (label the axeses)
 # 
+#
+#
+#
+#
+#
 #
 #
 #
@@ -108,20 +111,7 @@ iii) What is the average `mpg`?
 #
 #
 ```  
-  
-  vii) Explain the boxplot in terms of Q1,Q2,Q3 and outliars.
-```{r}
-# Answer: 
-# 
-#
-#
-#
-#
-#
-#
-#
-#
-```
+
 
 ```{r include=FALSE}
 library(ISLR)
@@ -130,9 +120,9 @@ names(Auto)
 str(Auto)
 summary(Auto)
 ggplot(data = Auto, aes(x= mpg)) + 
-  geom_histogram() 
+  geom_histogram(bins = 6) 
 
-ggplot(data = Auto, aes(y= acceleration)) + 
+ggplot(data = Auto, aes(y= acceleration, x = factor(origin))) + 
   geom_boxplot() 
 ```
 

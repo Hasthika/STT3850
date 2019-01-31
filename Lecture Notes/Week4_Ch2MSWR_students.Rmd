@@ -141,6 +141,11 @@ library(ggplot2)
 
 data <- c(11.62, 15.92, 12.40, 14.40, 10.28, 13.15, 11.22,  7.35, 16.45,  5.37, 10.25, 12.41, 11.43,  8.00, 11.90, 17.86,  7.59, 11.88, 14.54, 14.44, 10.29,  5.47,  8.20, 10.56, 11.18)
 
+MyDataFrame <- data.frame(data)
+MyDataFrame
+
+ggplot(data = MyDataFrame, aes(x = data)) +
+  geom_histogram(bins = 10)
 
 ```
 
@@ -155,6 +160,12 @@ library(ggplot2)
 
 
 data <- c(11.62, 15.92, 12.40, 14.40, 10.28, 13.15, 11.22,  7.35, 16.45,  5.37, 10.25, 12.41, 11.43,  8.00, 11.90, 17.86,  7.59, 11.88, 14.54, 14.44, 10.29,  5.47,  8.20, 10.56, 11.18)
+
+MyDataFrame <- data.frame(data)
+MyDataFrame
+
+ggplot(data = MyDataFrame, aes(sample = data)) +
+  geom_qq() + geom_qq_line()
 
 
 
@@ -178,9 +189,13 @@ a) *Create a table and a bar chart of the departure times (`DepartTime`)*
 
 
 ```{r}
-#
-#
-#
+head(FlightDelays)
+glimpse(FlightDelays)
+
+table(FlightDelays$DepartTime)
+
+ggplot(data = FlightDelays, aes(x = DepartTime)) +
+  geom_bar(fill = "orchid4")
 
 ```
 
@@ -188,8 +203,7 @@ b) *Create a contingency table of the variables `Day` and `Delayed30`. For each 
 
 ```{r}
 
-#
-#
+table(FlightDelays$Day, FlightDelays$Delayed30)
 
 ```
 
@@ -206,6 +220,16 @@ The `%>%` operator allows us to go from one step in `dplyr` to the next easily s
   * summarize this grouped data to calculate the mean (for example) for each level of the group.
 
 ```{r}
+library(knitr)
+
+day_delayed30 <- FlightDelays %>%
+  group_by(Day) %>%
+  summarize(pro = sum(Delayed30 == "Yes")/sum(Delayed30 == "Yes"|Delayed30 == "No"))
+
+kable(day_delayed30)
+
+
+  
 
 ```
 
@@ -214,10 +238,8 @@ The `%>%` operator allows us to go from one step in `dplyr` to the next easily s
 c) *Create side by side boxplots of the lenghts of the flights, grouped by whether or not the flight was delayed at least 30 min.*
 
 ```{r}
-
-#
-#
-#
+str(FlightDelays)
+ggplot(data = FlightDelays, aes(x = Delayed30, y = FlightLength)) + geom_boxplot()
 
 ```
 
@@ -233,38 +255,53 @@ Excercise 2.5: You try!
 
 ```{r}
 
-#
-#
-
+data("GSS2002")
+str(GSS2002)
 
 ```
 
-a) 
+a) Create a table and a bar chart of the responses to the question about the death penalty.
 
 ```{r}
 
-#
-#
+table(GSS2002$DeathPenalty)
+ggplot(data = GSS2002, aes(x = DeathPenalty)) + geom_bar()
 
 
 ```
 
 
-b) 
+b) Use the `table` command and the `summary` command in `R` on the gun ownership variable. What additional infomation does the `summary` command give that the table command does not?
+ 
+```{r}
+
+table(GSS2002$OwnGun)
+
+summary(GSS2002$OwnGun)
+
+```
+
+c) Create a contingency table displaying the realtionship between opinions about the death penalty to that about gun ownership.
 
 ```{r}
 
-#
-#
+
 
 ```
-
-c) 
+d) What proportion of gun owners favor the death penalty? Does it appear to be different from the proportion among those who do not own guns?
 
 ```{r}
+library(knitr)
 
-#
-#
-
+death_gun <- GSS2002 %>%
+  group_by(OwnGun) %>%
+  summarize(pro = sum(DeathPenalty == "Favor", na.rm = TRUE)/ sum(DeathPenalty == "Favor" | DeathPenalty == "Oppose", na.rm = TRUE))
+  
+kable(death_gun)
+  
+  
 ```
+
+
+
 
