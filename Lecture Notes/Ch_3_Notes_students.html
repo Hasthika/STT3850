@@ -194,7 +194,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Lecture Notes for Ch 3 of MSWR: Introduction to Hypothesis Testing: Permutation Tests</h1>
 <h4 class="author"><em>Dr. Hasthika Rupasinghe</em></h4>
-<h4 class="date"><em>Feb 04, 2019 at 10:46:09 PM</em></h4>
+<h4 class="date"><em>Feb 04, 2019 at 11:35:31 PM</em></h4>
 
 </div>
 
@@ -206,17 +206,6 @@ $(document).ready(function () {
 <p>The alternative hypothesis is</p>
 <p><span class="math display">\[H_A: \mu_d - \mu_c &gt; 0.\]</span></p>
 <p>That is, on average, mice who receive the drug have slower times (larger values) than the mice in the control group.</p>
-
-<div class="definition">
-<span id="def:unnamed-chunk-1" class="definition"><strong>Definition 1.1  </strong></span>A test statistics is a numerical function of the data whose values determines the results of the test. The dunction is generally denoted by <span class="math inline">\(T = T(\bf{X})\)</span> where <span class="math inline">\(\bf{X}\)</span> represents the data.
-</div>
-
-
-<div class="definition">
-<p><span id="def:unnamed-chunk-2" class="definition"><strong>Definition 1.2  </strong></span>The P-value is the probability that chance alone would produce a test statistics as extreme as the the obseved statistic if the null hupothesis were true.</p>
-For example if the large values of the test statistics support the alternative hypothesis, so the P-value is <span class="math inline">\(P(T \geq t)\)</span>.
-</div>
-
 <div id="creating-the-data" class="section level2">
 <h2><span class="header-section-number">1.1</span> Creating the data</h2>
 <pre class="r"><code>DF &lt;- data.frame(time = c(30, 25, 20, 18, 21, 22), treatment = rep(c(&quot;Drug&quot;, &quot;Control&quot;), each = 3))
@@ -231,10 +220,7 @@ DF</code></pre>
 4    18 Control  
 5    21 Control  
 6    22 Control  </code></pre>
-<pre class="r"><code># tidyverse approach
-#DF %&gt;% 
-#  group_by(treatment) %&gt;% 
-#  summarize(Average  = mean(time))
+<pre class="r"><code># Difference betwen the average times...
 
 ANS &lt;- DF %&gt;% 
   group_by(treatment) %&gt;% 
@@ -251,6 +237,23 @@ ANS2</code></pre>
 MD</code></pre>
 <pre><code>    Drug 
 4.666667 </code></pre>
+<p><strong>Problem</strong>: This difference could be due to random variability rather than a real drug effect.</p>
+<p><strong>How do we address this probelem</strong>: Estimate how easily pure random chance would produce a difference this large.</p>
+<ul>
+<li>If that probability is small, we conclude that there is something other than pure random chance at work.</li>
+</ul>
+
+<div class="definition">
+<span id="def:unnamed-chunk-2" class="definition"><strong>Definition 1.1  </strong></span>A test statistic is a numerical function of the data whose values determines the results of the test. The function is generally denoted by <span class="math inline">\(T = T(\bf{X})\)</span> where <span class="math inline">\(\bf{X}\)</span> represents the data.
+</div>
+
+<p> </p>
+
+<div class="definition">
+<p><span id="def:unnamed-chunk-3" class="definition"><strong>Definition 1.2  </strong></span>The P-value is the probability that chance alone would produce a test statistics as extreme as the the obseved statistic if the null hupothesis were true.</p>
+For example if the large values of the test statistics support the alternative hypothesis, so the P-value is <span class="math inline">\(P(T \geq t)\)</span>.
+</div>
+
 </div>
 <div id="all-possible-distributions-of-30-25-20-18-21-22-into-two-sets" class="section level2">
 <h2><span class="header-section-number">1.2</span> All possible distributions of {30, 25, 20, 18, 21, 22} into Two Sets</h2>
@@ -299,8 +302,8 @@ VALUES$CM &lt;- apply(VALUES[, 4:6], 1, mean)
 VALUES$DiffMean &lt;- VALUES$DM - VALUES$CM
 
 DT::datatable(round(VALUES, 2))</code></pre>
-<div id="htmlwidget-a75ec8be7a3ad00bab1e" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a75ec8be7a3ad00bab1e">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],[30,30,30,30,30,30,30,30,30,30,25,25,25,25,25,25,20,20,20,18],[25,25,25,25,20,20,20,18,18,21,20,20,20,18,18,21,18,18,21,21],[20,18,21,22,18,21,22,21,22,22,18,21,22,21,22,22,21,22,22,22],[18,20,20,20,25,25,25,25,25,25,30,30,30,30,30,30,30,30,30,30],[21,21,18,18,21,18,18,20,20,20,21,18,18,20,20,20,25,25,25,25],[22,22,22,21,22,22,21,22,21,18,22,22,21,22,21,18,22,21,18,20],[25,24.33,25.33,25.67,22.67,23.67,24,23,23.33,24.33,21,22,22.33,21.33,21.67,22.67,19.67,20,21,20.33],[20.33,21,20,19.67,22.67,21.67,21.33,22.33,22,21,24.33,23.33,23,24,23.67,22.67,25.67,25.33,24.33,25],[4.67,3.33,5.33,6,0,2,2.67,0.67,1.33,3.33,-3.33,-1.33,-0.67,-2.67,-2,0,-6,-5.33,-3.33,-4.67]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>D1<\/th>\n      <th>D2<\/th>\n      <th>D3<\/th>\n      <th>C1<\/th>\n      <th>C2<\/th>\n      <th>C3<\/th>\n      <th>DM<\/th>\n      <th>CM<\/th>\n      <th>DiffMean<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6,7,8,9]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-de457dd849ecf5466fcf" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-de457dd849ecf5466fcf">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],[30,30,30,30,30,30,30,30,30,30,25,25,25,25,25,25,20,20,20,18],[25,25,25,25,20,20,20,18,18,21,20,20,20,18,18,21,18,18,21,21],[20,18,21,22,18,21,22,21,22,22,18,21,22,21,22,22,21,22,22,22],[18,20,20,20,25,25,25,25,25,25,30,30,30,30,30,30,30,30,30,30],[21,21,18,18,21,18,18,20,20,20,21,18,18,20,20,20,25,25,25,25],[22,22,22,21,22,22,21,22,21,18,22,22,21,22,21,18,22,21,18,20],[25,24.33,25.33,25.67,22.67,23.67,24,23,23.33,24.33,21,22,22.33,21.33,21.67,22.67,19.67,20,21,20.33],[20.33,21,20,19.67,22.67,21.67,21.33,22.33,22,21,24.33,23.33,23,24,23.67,22.67,25.67,25.33,24.33,25],[4.67,3.33,5.33,6,0,2,2.67,0.67,1.33,3.33,-3.33,-1.33,-0.67,-2.67,-2,0,-6,-5.33,-3.33,-4.67]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>D1<\/th>\n      <th>D2<\/th>\n      <th>D3<\/th>\n      <th>C1<\/th>\n      <th>C2<\/th>\n      <th>C3<\/th>\n      <th>DM<\/th>\n      <th>CM<\/th>\n      <th>DiffMean<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6,7,8,9]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>pvalue &lt;- sum(VALUES$DiffMean &gt;= MD)/choose(6,3)
 pvalue</code></pre>
 <pre><code>[1] 0.15</code></pre>
@@ -315,7 +318,7 @@ pvalue</code></pre>
 </div>
 <div id="permutation-tests" class="section level1">
 <h1><span class="header-section-number">2</span> PERMUTATION TESTS</h1>
-<p>This problem has a total of <span class="math inline">\(\binom{6}{3} = 20\)</span> arrangements of six items into two sets each with three observations. Tuesdays problem had a total of <span class="math inline">\(\binom{10}{5} = 252\)</span> arrangements of ten items into two sets each with five observations. While it is possible to enumerate all possible outcomes and compute the theoretical answer, once the group sizes increase this becomes computationally infeasible. Consider <span class="math inline">\(\binom{30}{15} = 1.5511752\times 10^{8}\)</span>! So, what we typically do is take a “large” number of permutations (generally 10,000) and let this simulation approximate the true distribution.</p>
+<p>This problem has a total of <span class="math inline">\(\binom{6}{3} = 20\)</span> arrangements of six items into two sets each with three observations. While it is possible to enumerate all possible outcomes and compute the theoretical answer, once the group sizes increase this becomes computationally infeasible. Consider <span class="math inline">\(\binom{30}{15} = 1.5511752\times 10^{8}\)</span>! So, what we typically do is take a “large” number of permutations (generally 10,000) and let this simulation approximate the true distribution.</p>
 <pre class="r"><code>set.seed(123)
 sims &lt;- 10^4 - 1 
 ans &lt;- numeric(sims)
