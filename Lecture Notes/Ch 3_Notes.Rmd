@@ -31,7 +31,7 @@ That is, on average, mice who receive the drug have slower times (larger values)
 A test statistics is a numerical function of the data whose values determines the results of the test. The dunction is generally denoted by $T = T(\bf{X})$ where $\bf{X}$ represents the data.
 ```
 
-
+&nbsp;
 
 ```{definition}
 The P-value is the probability that chance alone would produce a test statistics as extreme as the the obseved statistic if the null hupothesis were true.
@@ -105,6 +105,8 @@ MASS::fractions(pvalue)
 The theoretical _p_-value is $`r pvalue`$.
 
 ## Statistical Conclusion
+
+_p_-value was not small enough to reject $H_0$. Therefore, we conclude that there is no significant difference between the times to complete the maze with or without the drug.
 
 # PERMUTATION TESTS
 
