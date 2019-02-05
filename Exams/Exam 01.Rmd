@@ -1,0 +1,24 @@
+---
+title: "STT3850 Exam 1"
+author: "Your Name Here"
+date: '`r format(Sys.time(), "%b %d, %Y")`'
+output: bookdown::html_document2
+---
+
+This exam consists of two parts:
+
+>  * I. Questoins 1 through 5:  To be done in class (1hr and 15min)
+
+> * II. Questoins 6 through 10:  Take home (Must be turned in Wednesday in the begining of the class)
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA, fig.align = "center", warning = FALSE, message = FALSE)
+library(tidyverse)
+library(resampledata)
+```
+
+1) Exercise 2.7 MODIFIED:
+
+Import data from the black spruce case study in Section 1.10 in to `R`.
+
+> SOLUTION: 

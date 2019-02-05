@@ -136,12 +136,15 @@ Test yourself:
 
 * Read chapter 5 of [MD](https://moderndive.com) --- Data Wrangling via `dplyr`
 
-* Read Chapter 2 of MSWR
+* Read Chapter 3 of MSWR
+
+* [Lecture: Before Chapter 3: the `for` loop in R](../Lecture Notes/Before_Ch_03_students.html)
+
+* [Lecture: Chapter 3](../Lecture Notes/Ch_03_Notes_students.html)
 
 * Complete _Exploratory Data Analysis_ [(DataCamp)](https://www.datacamp.com/) --- Due Feb 10
 
-* In class **Exam 01** --- Feb 07
-
+* In class **quiz 04** --- Feb 06 (last 20 min of class)
 
 
 ## Week 5: (Feb 11--15) {-}
@@ -152,8 +155,9 @@ Test yourself:
 
 * Some ideas for how to answer the [Is this Discrimination?](../Rmarkdown/discrimination.html)
 
+* In class **Exam 01** --- Feb 07
 
-* In class **quiz 04** --- Feb 14 (last 20 min of class)
+
 
 ```{block, week5optional, type='rmdoptional'}
 #### Optional {-}

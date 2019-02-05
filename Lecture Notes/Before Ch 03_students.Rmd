@@ -1,0 +1,75 @@
+---
+title: "Before Ch 03: The `for` loop in R"
+author: "Dr. Hasthika Rupasinghe"
+date: '`r format(Sys.time(), "%b %d, %Y at %X")`'
+output:
+  bookdown::html_document2:
+    highlight: textmate
+    theme: yeti
+---
+
+# The `for` loop in R
+
+```{example}
+Loop through the sequence 1 to 5 printing the square of each number
+```
+
+
+
+```{r}
+
+# Your code here
+
+```
+
+
+```{example}
+We can capture the results of our loop in a list
+
+First we create a vector and then we fill in its values
+```
+
+
+```{r}
+
+# Your code here
+
+```
+
+
+```{example}
+How about the sum of the first 100 squares.
+```
+
+
+```{r}
+
+# Your code here
+
+```
+
+
+```{example}
+Use a for loop to print the follwing:
+```
+
+"The year is 2010"
+
+"The year is 2011"
+
+"The year is 2012"
+
+"The year is 2013"
+
+"The year is 2014"
+
+"The year is 2015"
+
+
+```{r}
+
+# Your code here
+
+```
+
+
