@@ -16,6 +16,8 @@ library(tidyverse)
 
 # Introduction
 
+
+
 Consider the mice example in Section 3.1 let $\mu_d$ denote the true mean time that a randomly selected mouse that received the drug takes to run through the maze; let $\mu_c$ denote the true mean time for a control mouse.  Then,
 
 $$H_0:\mu_d - \mu_c = 0.$$
@@ -26,6 +28,8 @@ The alternative hypothesis is
 $$H_A: \mu_d - \mu_c > 0.$$
 
 That is, on average, mice who receive the drug have slower times (larger values) than the mice in the control group.
+
+
 
 ## Creating the data
 
@@ -72,16 +76,14 @@ For example if the large values of the test statistics support the alternative h
 
 
 
-
-
-
-
 ## All possible distributions of {30, 25, 20, 18, 21, 22} into Two Sets
 
 ```{r}
 ANS <- t(combn(6, 3))
 ANS
+
 dim(ANS)
+
 DF$time
 DR <- matrix(NA, nrow = 20, ncol = 3)
 CO <- matrix(NA, nrow = 20, ncol = 3)
@@ -123,25 +125,109 @@ _p_-value was not small enough to reject $H_0$. Therefore, we conclude that ther
 
 This problem has a total of $\binom{6}{3} = `r choose(6,3)`$ arrangements of six items into two sets each with three observations.  While it is possible to enumerate all possible outcomes and compute the theoretical answer, once the group sizes increase this becomes computationally infeasible.  Consider $\binom{30}{15} = `r choose(30,15)`$! So, what we typically do is take a "large" number of permutations (generally 10,000) and let this simulation approximate the true distribution.  
 
+We follow this algorithm:
+
+    Two Sample Pemutation Test:
+
+      Pool the m + n values.
+        **repeat**
+            Draw a resample of size m without replacement.
+            Use the remaining n obervations for the other sample.
+            Calculate the difference in means or another statistic that comapres samples.
+        **unitl** we have enough samples.
+        
+      Calculate the p-value as the fraction of timesthe random statistics exceed the original statistic.
+      (Multiply the p-value by 2 for a two sided test.)
+
+
+
 ```{r}
 set.seed(123)
-sims <- 10^4 - 1 
+sims <- 10^4 - 1 # Number of simulations (iterations)
+
 ans <- numeric(sims)
 for(i in 1:sims){
   index <- sample.int(n = 6, size = 3, replace = FALSE)
   ans[i] <- mean(DF$time[index]) - mean(DF$time[-index])
 }
-pvalue <- (sum(ans >= MD) + 1)/(sims + 1)
+pvalue <- (sum(ans >= MD) + 1)/(sims + 1) # Here MD = 4.666667, was the abserved difference between the means.
+
 pvalue
 ```
+
 
 ```{r, label = "dist", fig.cap = "Permutation Distribution of $\\bar{X}_c - \\bar{X}_d$"}
 library(ggplot2)
 ggplot(data = data.frame(md = ans), aes(x = md)) + 
   geom_density(fill = "pink") + 
   theme_bw() + 
-  labs(x = expression(bar(X)[c]-bar(X)[d]))
+  labs(x = expression(bar(X)[c]-bar(X)[d])) +
+  geom_vline(xintercept=MD, linetype="dotted")
 ```
 
 
+
+
+
+Example: Beer and hot wings case study in section 1.9
+
+Do men consume more hot wings than women?
+
+Define the null and alternative hypothesis:
+
+$H_0: ??$  vs. $H_a: ??$
+
+Step 1) Get data
+
+```{r}
+library(resampledata)
+data("Beerwings")
+head(Beerwings)
+```
+
+
+Step 2) 
+
+```{r}
+DF <- data.frame(Hotwings = Beerwings$Hotwings, Gender = Beerwings$Gender)
+DF <- tbl_df(DF)
+DF
+dim(DF)
+
+
+# the way the book does it
+ANS2 <- tapply(DF$Hotwings, DF$Gender, mean)
+ANS2
+MD <- ANS2[2] - ANS2[1]
+MD
+```
+
+Step 3) Resample and find the p-value
+
+
+```{r include=FALSE}
+set.seed(123)
+sims <- 10^5 - 1 
+ans <- numeric(sims)
+for(i in 1:sims){
+  index <- sample.int(n = 30, size = 15, replace = FALSE)
+  ans[i] <- mean(DF$Hotwings[index]) - mean(DF$Hotwings[-index])
+}
+pvalue <- (sum(ans >= MD) + 1)/(sims + 1)
+pvalue
+```
+ 
+Step 4) Create a plot
+
+```{r include=FALSE, label = "dist2", fig.cap = "Permutation Distribution of $\\bar{X}_m - \\bar{X}_f$"}
+library(ggplot2)
+ggplot(data = data.frame(md = ans), aes(x = md)) + 
+  geom_density(fill = "orchid4") + 
+  theme_bw() + 
+  labs(x = expression(bar(X)[m]-bar(X)[f])) +
+  geom_vline(xintercept=MD, linetype="dotted")
+```
+
+
+Step 5) Make the decision
 
