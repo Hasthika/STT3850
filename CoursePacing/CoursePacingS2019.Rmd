@@ -151,11 +151,15 @@ Test yourself:
 
 * Complete _Working with Data in the Tidyverse_ [(DataCamp)](https://www.datacamp.com/courses/working-with-data-in-the-tidyverse) --- Due Feb 15
 
+* [Lecture: Chapter 3](../Lecture Notes/Ch_3_Notes_students.html)
+
+<!--
 * Work on [Is this Discrimination?](../Rmarkdown/ClassAssignment.html)
 
 * Some ideas for how to answer the [Is this Discrimination?](../Rmarkdown/discrimination.html)
+-->
 
-* In class **Exam 01** --- Feb 07
+* In class **Exam 01** --- Feb 14
 
 
 
