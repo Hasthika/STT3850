@@ -12,6 +12,8 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, fig.align = "center", comment = NA)
 library(tidyverse)
+library(resampledata)
+library(knitr)
 ```
 
 # Introduction
@@ -167,8 +169,6 @@ ggplot(data = data.frame(md = ans), aes(x = md)) +
 
 
 
-
-
 Example: Beer and hot wings case study in section 1.9
 
 Do men consume more hot wings than women?
@@ -230,4 +230,175 @@ ggplot(data = data.frame(md = ans), aes(x = md)) +
 
 
 Step 5) Make the decision
+
+&nbsp;
+
+Exercise 3.4:
+
+In a hypothesis test comparing two population means, $H_0: \mu_1 = \mu_2$ versus $H_a: \mu_1 \geq \mu_2$:
+
+a) Which $P$-value, 0.03 or 0.006 provides stronger evidence for the alternative hypothesis?
+
+b) Which $P$-value, 0.095 or 0.04 provides stronger evidence that chance alone might account for the observed result?
+
+&nbsp;
+
+**Example: Verizon case study.**
+
+Let $\mu_1$ denote the mean repair time for the the ILEC customers and $\mu_2$ the mean repair time for the the CLEC customers. 
+
+1) Form the hypothesis.
+
+2) Conduct the test. 
+
+  step 1.
+  
+  step 2.
+  
+  step 3.
+  
+  step 4.
+  
+  step 5.
+  
+  
+```{r include=FALSE}
+data("Verizon")
+
+head(Verizon)
+dim(Verizon)
+
+Time_group <- Verizon %>%
+  group_by(Group) %>%
+  summarize(Mean = mean(Time), Count = n())
+Time_group
+
+
+MD <- Time_group[2,2] - Time_group[1,2] # This is the observed value (difference)
+MD
+
+observed <- MD$Mean
+observed
+
+set.seed(123)
+sims <- 10^4 - 1 
+ans <- numeric(sims)
+for(i in 1:sims){
+  index <- sample.int(n = 1687, size = 1664, replace = FALSE)
+  ans[i] <- mean(Verizon$Time[index]) - mean(Verizon$Time[-index])
+}
+pvalue <- (sum(ans <= observed) + 1)/(sims + 1)
+pvalue
+
+
+library(ggplot2)
+ggplot(data = data.frame(md = ans), aes(x = md)) + 
+  geom_density(fill = "orchid3") + 
+  theme_bw() + 
+  labs(x = expression(bar(X)[ILEC]-bar(X)[CLEC])) +
+  geom_vline(xintercept=observed, linetype="dotted")
+```
+
+&nbsp;
+
+**Example: Verizon case study ctd...Data have a long tail?**
+
+
+1) Create a good visual to compare the tipical times to complete repairs for ILEC and CLEC customers.
+
+```{r include=FALSE}
+ggplot(data = Verizon, aes(x=Group, y = Time)) + geom_boxplot()
+```
+
+2) From the graph we created in 1) it is clear that the data have a long tail. Create a better visual to show the tails of the distributions.
+
+```{r include=FALSE}
+ggplot(data = Verizon, aes(x = Time)) + geom_histogram() + facet_wrap(~Group)
+
+```
+
+
+3) Name two measures that can be used to describe the `center` in situations like this instead off the mean.
+
+4) Use one of the measures that you mentioned above to re-do the test. State your conclusions.
+
+```{r include=FALSE}
+data("Verizon")
+
+head(Verizon)
+dim(Verizon)
+
+Time_group <- Verizon %>%
+  group_by(Group) %>%
+  summarize(Tr.Mean = mean(Time, trim = 0.25), Count = n())
+Time_group
+
+
+MD <- Time_group[2,2] - Time_group[1,2] # This is the observed value (difference)
+MD
+
+observed <- MD$Tr.Mean
+observed
+
+set.seed(123)
+sims <- 10^4 - 1 
+ans <- numeric(sims)
+for(i in 1:sims){
+  index <- sample.int(n = 1687, size = 1664, replace = FALSE)
+  ans[i] <- mean(Verizon$Time[index], trim = 0.25) - mean(Verizon$Time[-index], trim = 0.25)
+}
+pvalue <- (sum(ans <= observed) + 1)/(sims + 1)
+pvalue
+
+
+library(ggplot2)
+ggplot(data = data.frame(md = ans), aes(x = md)) + 
+  geom_density(fill = "tan1") + 
+  theme_bw() + 
+  labs(x = expression(Tr.mean[ILEC]-Tr.mean[CLEC])) +
+  geom_vline(xintercept=observed, linetype="dotted")
+```
+&nbsp;
+
+
+Exercise 3.5:
+
+```{r include=FALSE}
+data("FlightDelays")
+str(FlightDelays)
+
+dim(FlightDelays)
+
+delayed20_carrier <- FlightDelays %>%
+  group_by(Carrier) %>%
+  summarize(pro = mean(Delay >20), Count = n())
+
+delayed20_carrier
+
+PD <- delayed20_carrier[1,2] - delayed20_carrier[2,2]
+PD
+
+observed <- PD$pro
+observed
+  
+set.seed(123)
+sims <- 10^5 - 1 
+ans <- numeric(sims)
+for(i in 1:sims){
+  index <- sample.int(n = 4029, size = 2906, replace = FALSE)
+  ans[i] <- mean(FlightDelays$Delay[index]>20) - mean(FlightDelays$Delay[-index]>20)
+}
+pvalue <- (sum(ans <= observed) + 1)/(sims + 1)
+pvalue
+
+library(ggplot2)
+ggplot(data = data.frame(md = ans), aes(x = md)) + 
+  geom_density(fill = "lightblue1") + 
+  theme_bw() + 
+  labs(x = expression(proportion[AA]-Proportion[UA])) +
+  geom_vline(xintercept=observed, linetype="dotted")
+
+```
+
+
 

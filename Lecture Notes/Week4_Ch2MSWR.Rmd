@@ -269,7 +269,7 @@ library(knitr) #for printing html-friendly tables.
 
 day_delayed30 <- FlightDelays %>% 
   group_by(Day) %>% 
-  summarize(proportion= sum(Delayed30=="Yes")/sum(Delayed30=="Yes"|Delayed30=="No"))
+  summarize(Average = mean(), SD = sd(), )
 
 kable(day_delayed30)
 ```

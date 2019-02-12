@@ -61,6 +61,10 @@ for (j in 1:n)
   x[j] = j^2
 }
 
+rep(0,5)
+
+seq(1,5)
+
 sum(x)
 ```
 
@@ -87,5 +91,29 @@ for (year in 2010:2015){
   print(paste("The year is", year))
 }
 ```
+
+
+```{r}
+a <- c(2, 3, 5)
+b <- c(1, 2, 3)
+
+n <- length(a)
+
+ans <- rep(0,n)
+
+for (i in 1:n) {
+  
+  ans[i] <- a[i] + b[i]
+  
+}
+
+ans
+```
+
+
+
+
+
+
 
 

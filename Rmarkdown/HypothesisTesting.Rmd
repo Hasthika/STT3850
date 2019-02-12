@@ -24,6 +24,8 @@ $$H_A: \mu_d - \mu_c > 0.$$
 That is, on average, mice who receive the drug have slower times (larger values) than the mice in the control group.
 
 
+
+
 ## Creating the data
 
 ```{r}
@@ -31,20 +33,23 @@ DF <- data.frame(time = c(30, 25, 20, 18, 21, 22), treatment = rep(c("Drug", "Co
 DF <- tbl_df(DF)
 DF
 # tidyverse approach
-DF %>% 
-  group_by(treatment) %>% 
-  summarize(Average  = mean(time))
+#DF %>% 
+#  group_by(treatment) %>% 
+#  summarize(Average  = mean(time))
+
 ANS <- DF %>% 
   group_by(treatment) %>% 
   summarize(Average  = mean(time))
 TS <- ANS[2, 2] - ANS[1, 2]
 TS$Average
+
 # the way the book does it
 ANS2 <- tapply(DF$time, DF$treatment, mean)
 ANS2
 MD <- ANS2[2] - ANS2[1]
 MD
 ```
+
 
 ## All possible distributions of {30, 25, 20, 18, 21, 22} into Two Sets
 
@@ -55,15 +60,21 @@ dim(ANS)
 DF$time
 DR <- matrix(NA, nrow = 20, ncol = 3)
 CO <- matrix(NA, nrow = 20, ncol = 3)
+
 for(i in 1:20){
   DR[i,] <- DF$time[ANS[i,]] 
   CO[i,] <- DF$time[-ANS[i, ]]
 }
+
 VALUES <- as.data.frame(cbind(DR, CO))
+
 names(VALUES) <- paste(rep(c("D", "C"), each = 3), 1:3, sep = "")
+
 VALUES$DM <- apply(VALUES[, 1:3], 1, mean)
 VALUES$CM <- apply(VALUES[, 4:6], 1, mean)
+
 VALUES$DiffMean <- VALUES$DM - VALUES$CM
+
 DT::datatable(round(VALUES, 2))
 ```
 
