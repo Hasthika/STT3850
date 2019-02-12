@@ -247,19 +247,61 @@ b) Which $P$-value, 0.095 or 0.04 provides stronger evidence that chance alone m
 
 Let $\mu_1$ denote the mean repair time for the the ILEC customers and $\mu_2$ the mean repair time for the the CLEC customers. 
 
-1) Form the hypothesis.
+1) Form the hypothesis. $H_0: \mu_1 = \mu_2$ vs. $H_0: \mu_1 < \mu_2$
 
 2) Conduct the test. 
 
-  step 1.
+
+```{r}
+#Step 1
+
+data("Verizon")
+head(Verizon)
+
+dim(Verizon)
+
+
+#Step 2
+
+Time_group <- Verizon %>%
+  group_by(Group) %>%
+  summarize(Mean = mean(Time), NumCus = n())
+Time_group
+
+MD <- Time_group[2,2] - Time_group[1,2]
+MD
+
+observed <- MD$Mean   # We had to create a new variable called observed, because MD was a matrix in this case.
+observed
   
-  step 2.
+#Step 3
+
+set.seed(200)
+sims <- 10^5 - 1 
+ans <- numeric(sims)
+for(i in 1:sims){
+  index <- sample.int(n = 1687, size = 1664, replace = FALSE)
+  ans[i] <- mean(Verizon$Time[index]) - mean(Verizon$Time[-index])
+}
+pvalue <- (sum(ans <= observed) + 1)/(sims + 1)    # Notice <, this is because alternative hypothsis has <.
+pvalue
+
+#Step 4
+library(ggplot2)
+ggplot(data = data.frame(md = ans), aes(x = md)) + 
+  geom_density(fill = "orchid4") + 
+  theme_bw() + 
+  labs(x = expression(bar(X)[ILEC]-bar(X)[CLEC])) +
+  geom_vline(xintercept=observed, linetype="dotted")
+```
+
   
-  step 3.
-  
-  step 4.
-  
-  step 5.
+Step 5: Make the decision -- 
+
+Technical conclusion: $p$-Value < 0.05, so Reject $H_0$. 
+
+English conclusion: There is enough evidence to conclude that the Verizon spend significantly more time complete repairs for CLEC customers than for the ILEC customers.
+
   
   
 ```{r include=FALSE}
