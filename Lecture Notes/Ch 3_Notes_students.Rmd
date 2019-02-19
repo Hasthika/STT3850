@@ -233,7 +233,7 @@ Step 5) Make the decision
 
 &nbsp;
 
-Exercise 3.4:
+Exercise 3.3:
 
 In a hypothesis test comparing two population means, $H_0: \mu_1 = \mu_2$ versus $H_a: \mu_1 \geq \mu_2$:
 
@@ -348,13 +348,13 @@ ggplot(data = data.frame(md = ans), aes(x = md)) +
 
 1) Create a good visual to compare the tipical times to complete repairs for ILEC and CLEC customers.
 
-```{r include=FALSE}
-ggplot(data = Verizon, aes(x=Group, y = Time)) + geom_boxplot()
+```{r}
+ggplot(data = Verizon, aes(x=factor(Group), y = Time)) + geom_boxplot()
 ```
 
 2) From the graph we created in 1) it is clear that the data have a long tail. Create a better visual to show the tails of the distributions.
 
-```{r include=FALSE}
+```{r}
 ggplot(data = Verizon, aes(x = Time)) + geom_histogram() + facet_wrap(~Group)
 
 ```
@@ -405,7 +405,65 @@ ggplot(data = data.frame(md = ans), aes(x = md)) +
 
 Exercise 3.5:
 
-```{r include=FALSE}
+a) 
+
+```{r}
+data("FlightDelays")
+
+
+Del_by_Carrier <- FlightDelays %>% 
+  group_by(Carrier) %>% 
+  summarize(Mean = mean(Delay), N = n())
+Del_by_Carrier
+
+obs_diff <- Del_by_Carrier[2,2] - Del_by_Carrier[1,2]
+#
+
+sims <- 10^4 - 1
+md <- numeric(sims)
+for(i in 1:sims){
+  index <- sample(4029, size = 1123, replace = FALSE)
+  md[i] <- mean(FlightDelays$Delay[index]) - mean(FlightDelays$Delay[-index])
+}
+
+pvalue <- 2*((sum(md >= obs_diff) + 1)/(sims + 1))
+pvalue
+
+
+``` 
+
+b)
+
+```{r}
+
+del_by_month <- FlightDelays %>% 
+  group_by(Month) %>% 
+  summarize(Mean = mean(Delay), N = n())
+
+del_by_month
+
+
+obs_diff <- del_by_month[1,2] - del_by_month[2,2]
+
+#
+md <- numeric(sims)
+for(i in 1:sims){
+  index <- sample(4029, size = 1999, replace = FALSE)
+  md[i] <- mean(FlightDelays$Delay[index]) - mean(FlightDelays$Delay[-index])
+}
+
+
+pvalue <- 2*((sum(md <= obs_diff) + 1)/(sims + 1))
+pvalue
+
+```
+
+
+Exercise 3.6:
+
+a)
+
+```{r}
 data("FlightDelays")
 str(FlightDelays)
 
@@ -442,5 +500,28 @@ ggplot(data = data.frame(md = ans), aes(x = md)) +
 
 ```
 
+b)
+
+```{r}
+
+an <- FlightDelays %>% 
+  group_by(Carrier) %>% 
+  summarize(Var = var(Delay), N = n())
+an
+
+obs_diff = an[2,2] - an[1,2]
+
+vd <- numeric(sims)
+for(i in 1:sims){
+  index <- sample(4029, size = 1123, replace = FALSE)
+  vd[i] <- var(FlightDelays$Delay[index]) - var(FlightDelays$Delay[-index])
+}
+
+
+pvalue <- ((sum(vd >= obs_diff) + 1)/(sims + 1))
+pvalue
+
+
+```
 
 
