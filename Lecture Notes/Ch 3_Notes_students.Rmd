@@ -408,7 +408,9 @@ ggplot(data = data.frame(md = ans), aes(x = md)) +
 
 Exercise 3.5:
 
-a) 
+
+
+a) Define $H_0$ and $H_a$ first.
 
 ```{r include=FALSE}
 data("FlightDelays")
@@ -442,7 +444,7 @@ Non-Technical conclusion:
 Based on a _p-value_ of $`r pvalue`$ there is strong evidence to suggest the mean delay time for American Airlines is not the same as the mean delay time for United Airlines.
 
 
-b)
+b) Define $H_0$ and $H_a$ first.
 
 ```{r include=FALSE}
 
@@ -475,7 +477,7 @@ Based on a _p-value_ of $`r pvalue`$ there is strong evidence to suggest the mea
 
 Exercise 3.6:
 
-a)
+a) Define $H_0$ and $H_a$ first.
 
 ```{r include=FALSE}
 data("FlightDelays")
@@ -521,7 +523,7 @@ Non-Technical conclusion:
 Based on a _p-value_ of $`r pvalue`$ there is strong evidence to suggest the proportion of flights delayed more than 20 minutes is not the same for United and American.
 
 
-b)
+b) Define $H_0$ and $H_a$ first.
 
 ```{r include=FALSE}
 
