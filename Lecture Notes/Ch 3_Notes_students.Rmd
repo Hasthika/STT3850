@@ -10,7 +10,7 @@ output:
 
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, fig.align = "center", comment = NA)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, fig.align = "center", comment = NA, options(scipen=999))
 library(tidyverse)
 library(resampledata)
 library(knitr)
@@ -400,6 +400,9 @@ ggplot(data = data.frame(md = ans), aes(x = md)) +
   labs(x = expression(Tr.mean[ILEC]-Tr.mean[CLEC])) +
   geom_vline(xintercept=observed, linetype="dotted")
 ```
+
+
+
 &nbsp;
 
 
@@ -407,7 +410,7 @@ Exercise 3.5:
 
 a) 
 
-```{r}
+```{r include=FALSE}
 data("FlightDelays")
 
 
@@ -416,7 +419,8 @@ Del_by_Carrier <- FlightDelays %>%
   summarize(Mean = mean(Delay), N = n())
 Del_by_Carrier
 
-obs_diff <- Del_by_Carrier[2,2] - Del_by_Carrier[1,2]
+obs <- Del_by_Carrier[2,2] - Del_by_Carrier[1,2]
+obs_diff <- obs$Mean
 #
 
 sims <- 10^4 - 1
@@ -432,9 +436,15 @@ pvalue
 
 ``` 
 
+Technical conclusion: _p-value_ < 0.05, so reject $H_0$
+
+Non-Technical conclusion:
+Based on a _p-value_ of $`r pvalue`$ there is strong evidence to suggest the mean delay time for American Airlines is not the same as the mean delay time for United Airlines.
+
+
 b)
 
-```{r}
+```{r include=FALSE}
 
 del_by_month <- FlightDelays %>% 
   group_by(Month) %>% 
@@ -443,8 +453,8 @@ del_by_month <- FlightDelays %>%
 del_by_month
 
 
-obs_diff <- del_by_month[1,2] - del_by_month[2,2]
-
+obs <- del_by_month[1,2] - del_by_month[2,2]
+obs_diff <- obs$Mean
 #
 md <- numeric(sims)
 for(i in 1:sims){
@@ -458,12 +468,16 @@ pvalue
 
 ```
 
+Technical conclusion: _p-value_ < 0.05, so reject $H_0$
+
+Non-Technical conclusion:
+Based on a _p-value_ of $`r pvalue`$ there is strong evidence to suggest the mean delay time for June is not the same as the mean delay time for May.
 
 Exercise 3.6:
 
 a)
 
-```{r}
+```{r include=FALSE}
 data("FlightDelays")
 str(FlightDelays)
 
@@ -500,16 +514,24 @@ ggplot(data = data.frame(md = ans), aes(x = md)) +
 
 ```
 
+Technical conclusion: _p-value_ < 0.05, so reject $H_0$
+
+Non-Technical conclusion:
+
+Based on a _p-value_ of $`r pvalue`$ there is strong evidence to suggest the proportion of flights delayed more than 20 minutes is not the same for United and American.
+
+
 b)
 
-```{r}
+```{r include=FALSE}
 
 an <- FlightDelays %>% 
   group_by(Carrier) %>% 
   summarize(Var = var(Delay), N = n())
 an
 
-obs_diff = an[2,2] - an[1,2]
+obs <- an[2,2] - an[1,2]
+obs_diff <- obs$Var
 
 vd <- numeric(sims)
 for(i in 1:sims){
@@ -521,7 +543,11 @@ for(i in 1:sims){
 pvalue <- ((sum(vd >= obs_diff) + 1)/(sims + 1))
 pvalue
 
-
 ```
 
+Technical conclusion: _p-value_ > 0.05, so fail to reject $H_0$
 
+Non-Technical conclusion:
+
+
+Based on a _p-value_ of $`r pvalue`$ there is not sufficient evidence to suggest the variance in flight delays for United is greater than the variance in flight delays for American.   
