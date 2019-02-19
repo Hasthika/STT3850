@@ -408,6 +408,12 @@ ggplot(data = data.frame(md = ans), aes(x = md)) +
 
 Exercise 3.5:
 
+In the Flight Delays Case Study in Section 1.1,
+
+    a. The data contain flight delays for two airlines, American Airlines and United Airlines.  Conduct a two-sided permutation test to see if the mean delay times between the two carriers are statistically significant.
+    
+    b. The flight delays occured in May and June of 2009.  Conduct a two-sided permutation test to see if the difference in mean delay times between the 2 months is statistically significant.
+
 
 
 a) Define $H_0$ and $H_a$ first.
