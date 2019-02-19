@@ -171,6 +171,10 @@ Test yourself:
 
 ## Week 6: (Feb 18--22) {-}
 
+* [Lecture: Chapter 3](../Lecture Notes/Ch_3_Notes_students.html)
+
+* [Chapter 3 of MSWR HW](../Homework/Chapter3HWK_H.Rmd) --- Due Wednesday the 27th of Feb
+
 * Read Chapters 6 [MD](https://moderndive.com) --- Basic Regression 
 
 * In class **quiz 05** --- Feb 21 (last 20 min of class)
