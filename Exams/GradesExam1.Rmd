@@ -1,0 +1,77 @@
+---
+title: "Exam 1 grades"
+author: "Dr. Hasthika Rupasinghe"
+date: '`r format(Sys.time(), "%b %d, %Y at %X")`'
+output:
+  bookdown::html_document2:
+    highlight: textmate
+    theme: yeti
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(plotly)
+library(ggplot2)
+```
+
+# Exam 1 grades for 8am Class.
+
+```{r echo=FALSE}
+
+Class1 <- c(93,100,92,90,95,99,90,98,98,95,95,96,94,100,84,82,85,89,84,82,78,75,70,70,63,54,51)
+
+
+p <- ggplot(data = data.frame(Class1), aes(x = Class1)) + 
+  geom_density(fill = "lightblue1") + 
+  theme_bw() + 
+  labs(x = "Exam 1 grades") +
+  geom_vline(xintercept=mean(Class1), linetype="dotted") +
+  annotate("text",x=mean(Class1)+1,y=0.01,label="Exam Average = 86",hjust=0)
+
+ggplotly(p)
+
+```
+
+# Exam 1 grades for 9.30 am Class.
+
+```{r echo=FALSE}
+library(plotly)
+library(ggplot2)
+Class2 <- c(91,92,100,97,100,98,94,93,97,97,91,96,98,92,100,94,81,71,56,30,68,68,73,76,74,62,65,72,78)
+
+
+p2 <- ggplot(data = data.frame(Class2), aes(x = Class2)) + 
+  geom_density(fill = "gold2") + 
+  theme_bw() + 
+  labs(x = "Exam 1 grades") +
+  geom_vline(xintercept=mean(Class2), linetype="dotted") +
+  annotate("text",x=mean(Class2)+1,y=0.01,label="Exam Average = 85",hjust=0)
+
+ggplotly(p2)
+
+
+
+```
+
+
+# Exam 1 grades for Both Classes combined.
+
+```{r echo=FALSE}
+library(plotly)
+library(ggplot2)
+Class12 <- c(91,92,100,97,100,98,94,93,97,97,91,96,98,92,100,94,81,71,56,30,68,68,73,76,74,62,65,72,78,93,100,92,90,95,99,90,98,98,95,95,96,94,100,84,82,85,89,84,82,78,75,70,70,63,54,51)
+
+
+p3 <- ggplot(data = data.frame(Class12), aes(x = Class12)) + 
+  geom_density(fill = "orchid3") + 
+  theme_bw() + 
+  labs(x = "Exam 1 grades") +
+  geom_vline(xintercept=mean(Class12), linetype="dotted") +
+  annotate("text",x=mean(Class12)+1,y=0.01,label="Exam Average = 85",hjust=0)
+
+ggplotly(p3)
+
+
+
+```
+
+
