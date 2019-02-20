@@ -175,6 +175,8 @@ Test yourself:
 
 * [Chapter 3 of MSWR HW](../Homework/Chapter3HWK_H.Rmd) --- Due Wednesday the 27th of Feb
 
+* [Exam 1 grades (Distribution)](../Exams/GradesExam1.html)
+
 * Read Chapters 6 [MD](https://moderndive.com) --- Basic Regression 
 
 * In class **quiz 05** --- Feb 21 (last 20 min of class)
