@@ -483,6 +483,13 @@ Based on a _p-value_ of $`r pvalue`$ there is strong evidence to suggest the mea
 
 Exercise 3.6:
 
+In the Flight Delays Case Study in Section 1.1, the data contain flight delays for two airlines, American Airlines and United Airlines.
+
+    a. Compute the proportion of times that each carrier's flights was delayed more than 20 minutes.  Conduct a two-sided test to see if the difference in these proportions is statistically significant.
+    
+    b. Compute the variance in the flight delay lengths for each carrier.  Conduct a test to see if the variance for United Airlines is greater than that of American Airlines.
+    
+
 a) Define $H_0$ and $H_a$ first.
 
 ```{r include=FALSE}
