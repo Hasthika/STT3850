@@ -185,7 +185,9 @@ Test yourself:
 
 ## Week 7: (Feb 25--March 1) {-}
 
-* Read Chapters 7 of [MD](https://moderndive.com) --- Multiple Regression
+* [Lecture: Chapter 6 of MD](../Lecture Notes/Ch_6_MD_Notes.html)
+
+* Read Chapters 6 [MD](https://moderndive.com) --- Basic Regression 
 
 * Work on _Modeling with Data in Tidyverse_ [(DataCamp)](https://www.datacamp.com/) --- Due March 8
 
@@ -196,11 +198,13 @@ Test yourself:
 ```{block, week7optional, type='rmdoptional'}
 #### Optional {-}
 * Read Chapter 9 of MSWR
-* Answer the questions at the end of [_Misc Regression_](../Rmarkdown/MiscRegression.html) for extra credit (Turn in before Spring Break starts)
+<!--* Answer the questions at the end of [_Misc Regression_](../Rmarkdown/MiscRegression.html) for extra credit (Turn in before Spring Break starts)-->
 ```
 
 
 ## Week 8: (March 4--8; Spring Break) {-}
+
+* Read Chapters 7 of [MD](https://moderndive.com) --- Multiple Regression
 
 * Complete _Modeling with Data in Tidyverse_ [(DataCamp)](https://www.datacamp.com/) --- Due March 8
 

@@ -14,6 +14,7 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, fig.align =
 library(tidyverse)
 library(resampledata)
 library(knitr)
+library(dplyr)
 ```
 
 # Introduction
@@ -452,7 +453,10 @@ Based on a _p-value_ of $`r pvalue`$ there is strong evidence to suggest the mea
 
 b) Define $H_0$ and $H_a$ first.
 
-```{r include=FALSE}
+$H_0: \mu_{May} = \mu_{June}$ vs. $H_0: \mu_{May} \neq \mu_{June}$
+
+```{r}
+data("FlightDelays")
 
 del_by_month <- FlightDelays %>% 
   group_by(Month) %>% 
@@ -500,8 +504,7 @@ dim(FlightDelays)
 
 delayed20_carrier <- FlightDelays %>%
   group_by(Carrier) %>%
-  summarize(pro = mean(Delay >20), Count = n())
-
+  summarize(pro = mean(Delay>20), count = n())
 delayed20_carrier
 
 PD <- delayed20_carrier[1,2] - delayed20_carrier[2,2]
@@ -537,6 +540,8 @@ Based on a _p-value_ of $`r pvalue`$ there is strong evidence to suggest the pro
 
 
 b) Define $H_0$ and $H_a$ first.
+
+$H_0: \sigma_{UA} = \sigma_{AA}$ vs. $H_a: \sigma_{UA} > \sigma_{AA}$
 
 ```{r include=FALSE}
 

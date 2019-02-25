@@ -1,0 +1,242 @@
+---
+title: "Lecture Notes for Ch 6 of MD: Basic Regression"
+author: "Dr. Hasthika Rupasinghe"
+date: '`r format(Sys.time(), "%b %d, %Y at %X")`'
+output:
+  bookdown::html_document2:
+    highlight: textmate
+    theme: yeti
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, fig.align = "center", comment = NA, options(scipen=999))
+library(tidyverse)
+library(resampledata)
+library(knitr)
+
+library(ggplot2)
+library(dplyr)
+library(moderndive)
+library(gapminder)
+library(skimr)
+```
+
+#  What we cover?
+
+* In this current chapter on basic regression, we’ll always have only one explanatory variable.
+In Section 2, this explanatory variable will be a single numerical explanatory variable $x$. This scenario is known as simple linear regression.
+
+
+* In Section 3, this explanatory variable will be a categorical explanatory variable $x$.
+
+
+# One numerical explanatory variable
+
+```{example}
+Why do some professors and instructors at universities and colleges get high teaching evaluations from students while others don’t? What factors can explain these differences? 
+  
+Researchers at the University of Texas in Austin, Texas (UT Austin) tried to answer this question: what factors can explain differences in instructor’s teaching evaluation scores? To this end, they collected information on  $n = 463$ instructors. A full description of the study can be found at [openintro.org](openintro.org).
+
+
+
+We’ll keep things simple for now and try to explain differences in instructor evaluation scores as a function of one numerical variable: their “`beauty score`.” 
+
+  * Could it be that instructors with higher beauty scores also have higher teaching evaluations? 
+  * Could it be instead that instructors with higher beauty scores tend to have lower teaching evaluations? 
+  * Or could it be there is no relationship between beauty score and teaching evaluations?
+  
+  
+We’ll address these questions by modeling the relationship between these two variables with a particular kind of linear regression called *simple linear regression*. Simple linear regression is the most basic form of linear regression. With it we have
+
+  1. A numerical outcome variable $y$. In this case, their `teaching score`.
+  2. A single numerical explanatory variable $x$. In this case, their `beauty score`.
+
+```
+
+## Exploratory data analysis
+
+A **crucial** step before doing any kind of modeling or analysis is performing an exploratory data analysis, or EDA, of all our data.
+
+  1. Just looking at the raw values, in a spreadsheet for example. 
+  2. Computing summary statistics likes means, medians, and standard deviations.
+  3. Creating data visualizations.
+  
+  
+Okay... Let's begin. The dataframe that we are working on is `evals` and it is in the `moderndive` library.
+
+### Looking at the raw values
+
+Type `library(moderndive)` in the console and hit return, then type `View(evals)` in the console and hit return. Also type `?evals` in the console to see the description of the dataframe.
+  
+### Computing summary statistics
+
+Since we are only interested in one $x$ variable, namely, `bty_avg`, let's select only the $y$ variable, `score` and `bty_avg`.
+  
+  
+```{r}
+evals_onex <- evals %>%
+  select(score, bty_avg)
+
+# View(evals_onex) # In the console
+
+glimpse(evals_onex)
+
+```
+  
+Since both the outcome variable score and the explanatory variable bty_avg are numerical, we can compute summary statistics about them such as the mean, median, and standard deviation. 
+
+Let’s  pipe this into the `skim()` function from the `skimr` package. This function quickly return the following summary information about each variable.
+
+```{r}
+evals %>% 
+  select(score, bty_avg) %>% 
+  skim()
+
+#Or, since we have already selected the variables, skim(evals_onex) would also works
+```
+
+Here, `p0` for example the 0th percentile: the value at which 0% of observations are smaller than it. This is also known as the minimum. 
+
+According to the histograms: variable `score` is skewed to the ________________, and the variable `bty_avg` is skewed to the ________________.
+
+We get an idea of how the values in both variables are distributed. For example, the mean teaching score was _______ out of 5 whereas the mean beauty score was _______ out of 10. Furthermore, the middle 50% of teaching scores were between _______ and _______ () while the middle 50% of beauty scores were between _______ and _______ out of 10.
+
+
+
+#### Correlation Coefficient
+
+Since we are considering the relationship between two numerical variables, it would be nice to have a summary statistic that simultaneously considers both variables. The correlation coefficient is a bivariate summary statistic that fits this bill.
+
+A correlation coefficient is a quantitative expression between -1 and 1 that summarizes the strength of the linear relationship between two numerical variables:
+
+  * -1 indicates a perfect negative relationship: as the value of one variable goes up, the value of the other variable tends to go down.
+  * 0 indicates no relationship: the values of both variables go up/down independently of each other.
+  * +1 indicates a perfect positive relationship: as the value of one variable goes up, the value of the other variable tends to go up as well.
+
+
+Following figure gives examples of different correlation coefficient values for hypothetical numerical variables $x$ and  $y$. 
+
+We see that while for a correlation coefficient of -0.75 there is still a negative relationship between $x$ and $y$, it is not as strong as the negative relationship between $x$ and $y$ when the correlation coefficient is -1.
+
+  ![](correlation.png)
+
+The correlation coefficient is computed using the `get_correlation()` function in the `moderndive` package. Here is the syntax:
+
+```{}
+your_dataframe %>% 
+  get_correlation(formula = response_variable ~ explanatory_variable)
+```
+
+```{r}
+
+evals_onex %>% 
+  get_correlation(formula = score ~ bty_avg)
+
+```
+
+Another way yo get the correlations is:
+
+```{r}
+cor(x = evals_onex$bty_avg, y = evals_onex$score)
+```
+
+
+In our case, the correlation coefficient of 0.187 indicates that the relationship between teaching evaluation score and beauty average is “weakly positive.” 
+
+
+### Let’s now proceed by visualizing this data. 
+
+Since both the `score` and `bty_avg` variables are numerical, a _________ is an appropriate graph to visualize this data. 
+
+```{r}
+# Write the code to produce the following graph
+
+```
+
+
+```{r echo=FALSE}
+ggplot(evals_onex, aes(x = bty_avg, y = score)) +
+  geom_point() + 
+  labs(x = "Beauty Score", y = "Teaching Score", 
+       title = "Relationship of teaching and beauty scores")
+```
+
+  > Note: Our dataset suffers from *overplotting.* Remedy that using  `geom_jitter()`
+
+```{r eval=FALSE}
+ggplot(evals_onex, aes(x = bty_avg, y = score)) +
+  geom_jitter()
+  labs(x = "Beauty Score", y = "Teaching Score", 
+       title = "Relationship of teaching and beauty scores")
+```
+
+
+Going forward for simplicity’s sake however, we’ll only use the regular scatterplot.
+
+#### Adding a “regression line” to the scatterplot.
+
+A regression line is a “best fitting” line in that of all possible lines you could draw on this plot, it is “best” in terms of some mathematical criteria. We discuss this later.
+
+
+```{r}
+ggplot(evals_onex, aes(x = bty_avg, y = score)) +
+  geom_point() +
+  labs(x = "Beauty Score", y = "Teaching Score", 
+       title = "Relationship of teaching and beauty scores") +  
+  geom_smooth(method = "lm")
+```
+
+
+What are the grey bands surrounding the blue line? These are *standard error bands*, in other words *error/uncertainty bands*. Let’s skip this idea for now and suppress these grey bars for now by adding the argument `se = FALSE` to `geom_smooth(method = "lm")`.
+
+```{r}
+ggplot(evals_onex, aes(x = bty_avg, y = score)) +
+  geom_point() +
+  labs(x = "Beauty Score", y = "Teaching Score", 
+       title = "Relationship of teaching and beauty scores") +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+
+> Question: 
+
+Conduct a new exploratory data analysis with the same outcome variable $y$ being `score` but with `age` as the new explanatory variable $x$. Remember, this involves three things:
+
+  1. Looking at the raw values.
+  2. Computing summary statistics of the variables of interest.
+  3. Creating informative visualizations.
+
+What can you say about the relationship between `age` and teaching `score`s based on this exploration?
+
+
+
+
+
+## Simple linear regression
+
+WRITE ABOUT SSR
+
+the equation of the regression line is  $\hat{y} = b_0+b_1\cdot x$ where 
+
+  * the intercept coefficient is  $b_0$ is the value of $\hat{y}$ when $x=0$, and
+  * the slope coefficient $b_1$ is the increase in $\hat{y}$ for every one unit increase in $x$.
+  
+### How to use R to get $b_0$ and $b_1$ values.
+
+The lm() function that “fits” the linear regression model is typically used as `lm(y ~ x, data = data_frame_name)` where:
+
+  * `y` is the outcome variable, followed by a tilde `(~)`. In our case, `y` is set to `score`.
+  * `x` is the explanatory variable. In our case, `x` is set to `bty_avg`. We call the combination `y ~ x` a model formula.
+  * `data_frame_name` is the name of the data frame that contains the variables `y` and `x`. In our case, `data_frame_name` is the `evals_onex` data frame.
+
+```{r}
+score_model <- lm(score ~ bty_avg, data = evals_onex)
+score_model
+```
+
+This output is telling us that the Intercept coefficient $b_0$ of the regression line is 3.8803 and the slope coefficient ($b_1$) for `bty_avg` is 0.0666. Therefore the blue regression line is (line in the previous figure)
+
+$$\hat{\text{score}} = b_0 + b_1 \cdot \text{bty_avg}$$ 
+$$\hat{\text{score}} = 3.8803 + 0.0666 \cdot \text{bty_avg}$$
+

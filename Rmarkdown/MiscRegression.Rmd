@@ -1,6 +1,6 @@
 ---
 title: "Misc Regression"
-author: "Alan Arnholt"
+author: "Hasthika Rupasinghe"
 date: 'Last updated: `r format(Sys.time(), "%b %d, %Y")`'
 output: 
     bookdown::html_document2:

@@ -1,0 +1,124 @@
+---
+title: "Quiz 05"
+author: "Dr. Hasthika Rupasinghe"
+date: "02/21/2019"
+output: pdf_document
+---
+
+Name: __________________
+
+1. Load the `Beerwings` dataset from the `resampledata` library. (Hint: Load the libary first, then load the data)
+
+```{r include=FALSE}
+library(resampledata)
+data("Beerwings")
+```
+
+
+```{r}
+# Answer: Write the code here
+# 
+#
+#
+```
+
+
+2) `Beerwings`  data set description:
+
+|Variable Name | Description| 
+|:------|:----|
+|`Gender`      | Male or Female|
+|`Beer`      | Ounces of beer consumed| 
+|`Hot Wings`      | Number of Hot Wings comsumned| 
+
+Use the `str` command to looke at the structure of the data. 
+
+```{r}
+# Answer: Write the code here, do not write the output
+# 
+```
+
+
+3) Do men consume more beer than females? Use a)-c) to in order to answer this question.
+
+  a) Define your hypothesis ($H_0$ and $H_a$)
+  
+```{r}
+# Answer: Answer
+# 
+#
+```
+
+  
+  b) Conduct the test (Set your seed to `555`, do not forget to load the library `dplyr`)
+  
+```{r}
+# Answer: Write your code here
+# 
+#
+#
+# 
+#
+#
+# 
+#
+#
+# 
+#
+#
+# 
+#
+#
+# 
+#
+# Write your p-value here (Hint: Answer should be close to 0.06)
+# 
+#
+#
+```
+
+ c) Write the technical conclusion
+ 
+```{r}
+# Answer:
+#
+#
+```
+
+c) Write the non-technical conclusion
+ 
+```{r}
+# Answer:
+#
+#
+#
+```
+ 
+
+```{r include=FALSE, comment=NA, message=FALSE}
+library(dplyr)
+library(knitr)
+
+set.seed(555)
+an <- Beerwings %>% 
+  group_by(Gender) %>% 
+  summarize(Mean = mean(Beer), N = n())
+kable(an)
+
+obs <- an[2,2] - an[1,2]
+obs_diff <- obs$Mean
+#
+sims <- 10^4 - 1
+md <- numeric(sims)
+for(i in 1:sims){
+  index <- sample(30, size = 15, replace = FALSE)
+  md[i] <- mean(Beerwings$Beer[index]) - mean(Beerwings$Beer[-index])
+}
+
+pvalue <- 2*((sum(md >= obs_diff) + 1)/(sims + 1))
+pvalue
+```
+
+
+
+

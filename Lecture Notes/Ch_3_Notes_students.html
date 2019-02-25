@@ -194,7 +194,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Lecture Notes for Ch 3 of MSWR: Introduction to Hypothesis Testing: Permutation Tests</h1>
 <h4 class="author"><em>Dr. Hasthika Rupasinghe</em></h4>
-<h4 class="date"><em>Feb 21, 2019 at 07:54:48 AM</em></h4>
+<h4 class="date"><em>Feb 21, 2019 at 08:20:55 AM</em></h4>
 
 </div>
 
@@ -302,8 +302,8 @@ VALUES$CM &lt;- apply(VALUES[, 4:6], 1, mean)
 VALUES$DiffMean &lt;- VALUES$DM - VALUES$CM
 
 DT::datatable(round(VALUES, 2))</code></pre>
-<div id="htmlwidget-9a8ee43d0e3c30765fa2" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9a8ee43d0e3c30765fa2">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],[30,30,30,30,30,30,30,30,30,30,25,25,25,25,25,25,20,20,20,18],[25,25,25,25,20,20,20,18,18,21,20,20,20,18,18,21,18,18,21,21],[20,18,21,22,18,21,22,21,22,22,18,21,22,21,22,22,21,22,22,22],[18,20,20,20,25,25,25,25,25,25,30,30,30,30,30,30,30,30,30,30],[21,21,18,18,21,18,18,20,20,20,21,18,18,20,20,20,25,25,25,25],[22,22,22,21,22,22,21,22,21,18,22,22,21,22,21,18,22,21,18,20],[25,24.33,25.33,25.67,22.67,23.67,24,23,23.33,24.33,21,22,22.33,21.33,21.67,22.67,19.67,20,21,20.33],[20.33,21,20,19.67,22.67,21.67,21.33,22.33,22,21,24.33,23.33,23,24,23.67,22.67,25.67,25.33,24.33,25],[4.67,3.33,5.33,6,0,2,2.67,0.67,1.33,3.33,-3.33,-1.33,-0.67,-2.67,-2,0,-6,-5.33,-3.33,-4.67]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>D1<\/th>\n      <th>D2<\/th>\n      <th>D3<\/th>\n      <th>C1<\/th>\n      <th>C2<\/th>\n      <th>C3<\/th>\n      <th>DM<\/th>\n      <th>CM<\/th>\n      <th>DiffMean<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6,7,8,9]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-52cd7bbf7630be413aa5" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-52cd7bbf7630be413aa5">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],[30,30,30,30,30,30,30,30,30,30,25,25,25,25,25,25,20,20,20,18],[25,25,25,25,20,20,20,18,18,21,20,20,20,18,18,21,18,18,21,21],[20,18,21,22,18,21,22,21,22,22,18,21,22,21,22,22,21,22,22,22],[18,20,20,20,25,25,25,25,25,25,30,30,30,30,30,30,30,30,30,30],[21,21,18,18,21,18,18,20,20,20,21,18,18,20,20,20,25,25,25,25],[22,22,22,21,22,22,21,22,21,18,22,22,21,22,21,18,22,21,18,20],[25,24.33,25.33,25.67,22.67,23.67,24,23,23.33,24.33,21,22,22.33,21.33,21.67,22.67,19.67,20,21,20.33],[20.33,21,20,19.67,22.67,21.67,21.33,22.33,22,21,24.33,23.33,23,24,23.67,22.67,25.67,25.33,24.33,25],[4.67,3.33,5.33,6,0,2,2.67,0.67,1.33,3.33,-3.33,-1.33,-0.67,-2.67,-2,0,-6,-5.33,-3.33,-4.67]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>D1<\/th>\n      <th>D2<\/th>\n      <th>D3<\/th>\n      <th>C1<\/th>\n      <th>C2<\/th>\n      <th>C3<\/th>\n      <th>DM<\/th>\n      <th>CM<\/th>\n      <th>DiffMean<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6,7,8,9]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>pvalue &lt;- sum(VALUES$DiffMean &gt;= MD)/choose(6,3)
 pvalue</code></pre>
 <pre><code>[1] 0.15</code></pre>
@@ -500,6 +500,32 @@ b. The flight delays occured in May and June of 2009.  Conduct a two-sided permu
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Define <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_a\)</span> first.</li>
 </ol>
+<p><span class="math inline">\(H_0: \mu_{May} = \mu_{June}\)</span> vs. <span class="math inline">\(H_0: \mu_{May} \neq \mu_{June}\)</span></p>
+<pre class="r"><code>data(&quot;FlightDelays&quot;)
+
+del_by_month &lt;- FlightDelays %&gt;% 
+  group_by(Month) %&gt;% 
+  summarize(Mean = mean(Delay), N = n())
+
+del_by_month</code></pre>
+<pre><code># A tibble: 2 x 3
+  Month  Mean     N
+  &lt;fct&gt; &lt;dbl&gt; &lt;int&gt;
+1 May    8.88  1999
+2 June  14.5   2030</code></pre>
+<pre class="r"><code>obs &lt;- del_by_month[1,2] - del_by_month[2,2]
+obs_diff &lt;- obs$Mean
+#
+md &lt;- numeric(sims)
+for(i in 1:sims){
+  index &lt;- sample(4029, size = 1999, replace = FALSE)
+  md[i] &lt;- mean(FlightDelays$Delay[index]) - mean(FlightDelays$Delay[-index])
+}
+
+
+pvalue &lt;- 2*((sum(md &lt;= obs_diff) + 1)/(sims + 1))
+pvalue</code></pre>
+<pre><code>[1] 0.0002</code></pre>
 <p>Technical conclusion: <em>p-value</em> &lt; 0.05, so reject <span class="math inline">\(H_0\)</span></p>
 <p>Non-Technical conclusion: Based on a <em>p-value</em> of <span class="math inline">\(0.0002\)</span> there is strong evidence to suggest the mean delay time for June is not the same as the mean delay time for May.</p>
 <p>Exercise 3.6:</p>
