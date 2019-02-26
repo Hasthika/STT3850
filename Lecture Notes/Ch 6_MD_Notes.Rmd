@@ -22,6 +22,14 @@ library(gapminder)
 library(skimr)
 ```
 
+# What is linear regression?
+
+In regression we try to *predict* one variable based on one or more other variables.
+
+  * The variable we want to predit is called the response variable, and denote by $y$.
+  * The variable(s) that we use to predict $y$ is(are) called the predictor(s) or explanatory variable(s), and denote by $x$.
+
+
 #  What we cover?
 
 * In this current chapter on basic regression, we’ll always have only one explanatory variable.
