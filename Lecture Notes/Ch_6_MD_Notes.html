@@ -186,7 +186,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Lecture Notes for Ch 6 of MD: Basic Regression</h1>
 <h4 class="author"><em>Dr. Hasthika Rupasinghe</em></h4>
-<h4 class="date"><em>Feb 25, 2019 at 09:45:14 PM</em></h4>
+<h4 class="date"><em>Feb 26, 2019 at 11:14:17 PM</em></h4>
 
 </div>
 
@@ -342,8 +342,7 @@ $ bty_avg &lt;dbl&gt; 5.000, 5.000, 5.000, 5.000, 3.000, 3.000, 3.000, 3.333, �
 </div>
 <div id="simple-linear-regression" class="section level2">
 <h2><span class="header-section-number">3.2</span> Simple linear regression</h2>
-<p>WRITE ABOUT SSR</p>
-<p>the equation of the regression line is <span class="math inline">\(\hat{y} = b_0+b_1\cdot x\)</span> where</p>
+<p>The equation of the regression line is <span class="math inline">\(\hat{y} = b_0+b_1\cdot x\)</span> where</p>
 <ul>
 <li>the intercept coefficient is <span class="math inline">\(b_0\)</span> is the value of <span class="math inline">\(\hat{y}\)</span> when <span class="math inline">\(x=0\)</span>, and</li>
 <li>the slope coefficient <span class="math inline">\(b_1\)</span> is the increase in <span class="math inline">\(\hat{y}\)</span> for every one unit increase in <span class="math inline">\(x\)</span>.</li>
@@ -367,7 +366,72 @@ Coefficients:
     3.88034      0.06664  </code></pre>
 <p>This output is telling us that the Intercept coefficient <span class="math inline">\(b_0\)</span> of the regression line is 3.8803 and the slope coefficient (<span class="math inline">\(b_1\)</span>) for <code>bty_avg</code> is 0.0666. Therefore the blue regression line is (line in the previous figure)</p>
 <p><span class="math display">\[\hat{\text{score}} = b_0 + b_1 \cdot \text{bty_avg}\]</span> <span class="math display">\[\hat{\text{score}} = 3.8803 + 0.0666 \cdot \text{bty_avg}\]</span></p>
+<p>Interpretations of <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span>:</p>
+<ul>
+<li><p>The intercept coefficient <span class="math inline">\(b_0 = 3.8803\)</span>:</p>
+<p>For instructors who with beauty score of 0, we would expect to have on average a teaching score of 3.8803. In this case interpretaion of <span class="math inline">\(b_0\)</span> is meaningless. (Why?)</p></li>
+<li><p>The intercept coefficient <span class="math inline">\(b_1 = + 0.0666\)</span>:</p>
+<p>This is a numerical quantity that summarizes the relationship between the outcome and explanatory variables. Note that the sign is positive, suggesting a positive relationship between beauty scores and teaching scores, meaning as beauty scores go up, so also do teaching scores go up. The slope’s precise interpretation is:</p></li>
+</ul>
+<blockquote>
+<p>For every increase of 1 unit in <code>bty_avg</code>, there is an associated increase of, on average, 0.0666 units of <code>score</code>.</p>
+</blockquote>
+<blockquote>
+<p>Question:</p>
+</blockquote>
+<ol style="list-style-type: lower-alpha">
+<li><p>Fit a new simple linear regression for <code>score</code> where <code>age</code> is the new explanatory variable <span class="math inline">\(x\)</span>.</p></li>
+<li><p>Interpret the regression coefficients.</p></li>
+</ol>
 </div>
+</div>
+<div id="observed-fitted-values-and-residuals" class="section level2">
+<h2><span class="header-section-number">3.3</span> Observed, fitted values and residuals</h2>
+<ul>
+<li><p>Observed values: Usually the <span class="math inline">\(y\)</span> values from the dataset</p></li>
+<li><p>Fitted values: <span class="math inline">\(\hat{y}\)</span> values we get from the model(<span class="math inline">\(\hat{y} = b_0+b_1\cdot x\)</span>)</p></li>
+<li><p>Residuals: Difference between Observed and Fitted values = <span class="math inline">\(y - \hat{y}\)</span></p></li>
+</ul>
+<p>Let’s only consider one observation: For example, say we are interested in the 21st instructor in this dataset:</p>
+<pre class="r"><code>kable(evals_onex[21,])</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="center">score</th>
+<th align="center">bty_avg</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">4.9</td>
+<td align="center">7.333</td>
+</tr>
+</tbody>
+</table>
+<p>Here in this example;</p>
+<ul>
+<li><p>Observed value = <span class="math inline">\(y\)</span> = _____</p></li>
+<li><p>Fitted value = <span class="math inline">\(\hat{y}\)</span> = _____</p></li>
+<li><p>Residual = <span class="math inline">\(y - \hat{y}\)</span> = _____</p></li>
+</ul>
+<p>Now, when we have to find residuals for all the values (not just one). <code>R</code> can do ir for us…</p>
+<pre class="r"><code>regression_points &lt;- get_regression_points(score_model)
+
+regression_points</code></pre>
+<pre><code># A tibble: 463 x 5
+      ID score bty_avg score_hat residual
+   &lt;int&gt; &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+ 1     1   4.7    5         4.21    0.486
+ 2     2   4.1    5         4.21   -0.114
+ 3     3   3.9    5         4.21   -0.314
+ 4     4   4.8    5         4.21    0.586
+ 5     5   4.6    3         4.08    0.52 
+ 6     6   4.3    3         4.08    0.22 
+ 7     7   2.8    3         4.08   -1.28 
+ 8     8   4.1    3.33      4.10   -0.002
+ 9     9   3.4    3.33      4.10   -0.702
+10    10   4.5    3.17      4.09    0.409
+# … with 453 more rows</code></pre>
 </div>
 </div>
 

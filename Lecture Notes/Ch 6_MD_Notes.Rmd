@@ -223,9 +223,7 @@ What can you say about the relationship between `age` and teaching `score`s base
 
 ## Simple linear regression
 
-WRITE ABOUT SSR
-
-the equation of the regression line is  $\hat{y} = b_0+b_1\cdot x$ where 
+The equation of the regression line is  $\hat{y} = b_0+b_1\cdot x$ where 
 
   * the intercept coefficient is  $b_0$ is the value of $\hat{y}$ when $x=0$, and
   * the slope coefficient $b_1$ is the increase in $\hat{y}$ for every one unit increase in $x$.
@@ -247,4 +245,62 @@ This output is telling us that the Intercept coefficient $b_0$ of the regression
 
 $$\hat{\text{score}} = b_0 + b_1 \cdot \text{bty_avg}$$ 
 $$\hat{\text{score}} = 3.8803 + 0.0666 \cdot \text{bty_avg}$$
+
+
+Interpretations of $b_0$ and $b_1$:
+  
+  * The intercept coefficient $b_0 = 3.8803$: 
+  
+    For instructors who with beauty score of 0, we would expect to have on average a teaching score of 3.8803.
+    In this case interpretaion of $b_0$ is meaningless. (Why?)
+    
+  * The intercept coefficient $b_1 = + 0.0666$: 
+  
+    This is a numerical quantity that summarizes the relationship between the outcome and explanatory variables.     Note that the sign is positive, suggesting a positive relationship between beauty scores and teaching scores,     meaning as beauty scores go up, so also do teaching scores go up. The slope’s precise interpretation is:
+
+  > For every increase of 1 unit in `bty_avg`, there is an associated increase of, on average, 0.0666 units of `score`.
+
+> Question:
+
+  a) Fit a new simple linear regression for `score` where `age` is the new explanatory variable $x$.
+  
+  b) Interpret the regression coefficients.
+  
+
+## Observed, fitted values and residuals
+
+* Observed values: Usually the $y$ values from the dataset
+
+* Fitted values: $\hat{y}$ values we get from the model($\hat{y} = b_0+b_1\cdot x$)
+
+* Residuals: Difference between Observed and Fitted values = $y - \hat{y}$
+
+Let's only consider one observation: For example, say we are interested in the 21st instructor in this dataset:
+
+```{r}
+kable(evals_onex[21,])
+```
+
+
+Here in this example;
+
+* Observed value = $y$ = _____
+
+* Fitted value = $\hat{y}$ = _____
+
+* Residual = $y - \hat{y}$ = _____
+
+Now, when we have to find residuals for all the values (not just one). `R` can do ir for us...
+
+```{r}
+regression_points <- get_regression_points(score_model)
+
+regression_points
+
+```
+
+
+  
+
+
 
