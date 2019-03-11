@@ -254,6 +254,13 @@ Interpretations of $b_0$ and $b_1$:
     For instructors who with beauty score of 0, we would expect to have on average a teaching score of 3.8803.
     In this case interpretaion of $b_0$ is meaningless. (Why?)
     
+```{r}
+Range <- range(evals_onex$bty_avg)
+Range
+```
+
+   
+    
   * The intercept coefficient $b_1 = + 0.0666$: 
   
     This is a numerical quantity that summarizes the relationship between the outcome and explanatory variables.     Note that the sign is positive, suggesting a positive relationship between beauty scores and teaching scores,     meaning as beauty scores go up, so also do teaching scores go up. The slope’s precise interpretation is:
@@ -284,11 +291,11 @@ kable(evals_onex[21,])
 
 Here in this example;
 
-* Observed value = $y$ = _____
+* Observed value = $y$ = ______
 
-* Fitted value = $\hat{y}$ = _____
+* Fitted value = $\hat{y}$ = ______
 
-* Residual = $y - \hat{y}$ = _____
+* Residual = $y - \hat{y}$ = ______
 
 Now, when we have to find residuals for all the values (not just one). `R` can do ir for us...
 
@@ -296,11 +303,240 @@ Now, when we have to find residuals for all the values (not just one). `R` can d
 regression_points <- get_regression_points(score_model)
 
 regression_points
+```
+
+
+### Diagnostics (Residual Plot)
+
+The plot of residuals against the fitted values ($\hat{y}$, $y_i-\hat{y_i}$) provides infomation on the appropriateness of a *straight-line model*. Ideally, points should be scattered randomly about the reference line $y=0$ See the following Figure. 
+
+
+![Example for an ideal residual plot](residual-plot.png)
+
+
+Residual plots are useful for the followings:
+
+  * Revealing curvature -- that is, for indicating that the relationship between the two variables is not linear.
+  
+  * Spoting outliers.
+  
+
+```{example}
+Create a residul plot for the `score_model` and interpret the residial plot.
+```
+
+
+
+```{r}
+ggplot(score_model, aes(x = .fitted, y = .resid)) + geom_point()
+```
+
+
+Plotted points are scattered randomly (no pattern) about the reference line $residual = 0$. Also, no outliers are detected. Therefore the residual plot indicate that the relationship between `bty_avg` and `score` is linear.
+
+
+```{example}
+Create a residul plot for the model where $y = score$ and $x=age$ and interpret the residial plot.
+```
+
+
+
+## One categorical explanatory variable
+
+When the explanatory variable $x$ is categorical, the concept of a “best-fitting” line is a little different than the one we saw in the previous Section where the explanatory variable $x$ was numerical.
+
+We use the following example to study this.
+
+It’s an unfortunate truth that life expectancy is not the same across various countries in the world; there are a multitude of factors that are associated with how long people live. International development agencies are very interested in studying these differences in the hope of understanding where governments should allocate resources to address this problem. In this section, we’ll explore differences in life expectancy in two ways:
+
+  1. Differences between continents: Are there significant differences in life expectancy, on average, between the five continents of the world: Africa, the Americas, Asia, Europe, and Oceania?
+  
+  2. Differences within continents: How does life expectancy vary within the world’s five continents? For example, is the spread of life expectancy among the countries of Africa larger than the spread of life expectancy among the countries of Asia?
+
+To answer such questions, we’ll study the `gapminder` dataset in the `gapminder` package. This dataset has international development statistics such as life expectancy, GDP per capita, and population by country ( n = 142) for 5-year intervals between 1952 and 2007.
+
+
+We’ll use this data for linear regression again, but note that our explanatory variable  $x$ is now **categorical**, and not numerical like when we covered simple linear regression in Section 6.1. More precisely, we have:
+
+  1. A numerical outcome variable $y$. In this case, life expectancy.
+
+  2. A single categorical explanatory variable $x$, In this case, the continent the country is part of.
+  
+As always, the first step in model building is...
+
+### Exploratory data analysis
+
+  1. Type `View(gapminder)` in the console.
+
+Let’s load the gapminder data and `filter()` for only observations in 2007. Next we `select()` only the variables we’ll need along with `gdpPercap`, which is each country’s gross domestic product per capita (GDP). GDP is a rough measure of that country’s economic performance. Lastly, we save this in a data frame with name gapminder2007:
+
+```{r}
+library(gapminder)
+gapminder2007 <- gapminder %>%
+  filter(year == 2007) %>% 
+  select(country, continent, lifeExp, gdpPercap)
+
+#Use View(gapminder2007) if you would like to see the subset
+```
+
+  2. Let's look at the summaries.
+  
+```{r}
+glimpse(gapminder2007)
+```
+  
+Notice that variable `continent` is indeed categorical.
+
+Let’s apply the `skim()` function from the `skimr` package to our two variables of interest: `continent` and `lifeExp`:
+
+```{r}
+# You try
 
 ```
 
 
+```{r include=FALSE}
+gapminder2007 %>% 
+  select(continent, lifeExp) %>% 
+  skim()
+```
+
+
+Given that the global median life expectancy is _____, half of the world’s countries (____ countries) will have a life expectancy less than ____. Further, half will have a life expectancy greater than this value. The mean life expectancy of ____ is lower however. Why are these two values different? Let’s look at a histogram of lifeExp to see why.
+
+```{r}
+# Write the code to produce the histogram 
+
+```
+
+```{r echo=FALSE}
+ggplot(data = gapminder2007, aes(x=lifeExp)) + geom_histogram(binwidth =  5, color="white")
+```
+
+
+We see that this data is skewed to the _____: there are a few countries with very low life expectancy that are bringing down the _____ (mean/ median) life expectancy. However, the  _____ (mean/ median) is less sensitive to the effects of such outliers. Hence the  _____ (mean/ median) is greater than the  _____ (mean/ median) in this case. 
+
+
+Let’s proceed by comparing median and mean life expectancy **between continents** by using `group_by(continent)`:
+
+```{r}
+# Write the code to produce the histogram 
+
+```
+
+
+```{r echo=FALSE}
+lifeExp_by_continent <- gapminder2007 %>%
+  group_by(continent) %>%
+  summarize(median = median(lifeExp), mean = mean(lifeExp))
+
+kable(lifeExp_by_continent)
+
+```
+
+
+
+We see now that there are differences in life expectancy between the continents. For example let’s focus on only medians. While the median life expectancy across all $n = 142$ countries in 2007 was 71.935, the median life expectancy across the $n$ = ___ countries in Africa was only ____.
+
+
+Let’s create a corresponding visualization. 
+
+  1. One way to compare the life expectancy of countries in different continents would be via a faceted histogram.
+```{r}
+# Write the code to produce the facet histogram 
+
+```
+
+```{r echo=FALSE}
+ggplot(gapminder2007, aes(x = lifeExp, fill=continent)) +
+  geom_histogram(binwidth = 5, color = "white") +
+  labs(x = "Life expectancy", y = "Number of countries", 
+       title = "Life expectancy by continent") +
+  facet_wrap(~ continent, nrow = 2)
+```
+
+  2. Another way would be via a geom_boxplot where we map the categorical variable continent to the $x$ -axis and the different life expectancy within each continent on the $y$-axis
+
+```{r}
+# Write the code to produce the side-by-side boxplots 
+
+```
+
+```{r}
+ggplot(gapminder2007, aes(x = continent, y = lifeExp, fill = continent)) +
+  geom_boxplot() +
+  labs(x = "Continent", y = "Life expectancy (years)", 
+       title = "Life expectancy by continent") 
+```
+
+
+
+ * For example, half of all countries in Asia have a life expectancy below ____ years whereas half of all countries in Asia have a life expectancy above ____ years. (This is because the Median life expectancy for the countries in Asia is ___). 
+ 
+ * Furthermore, note that: Africa and Asia have much more spread/variation in life expectancy as indicated by the _________ (the height of the boxes).
+ 
+ * Oceania has almost no spread/variation, but this might in large part be due to the fact there are only two countries in Oceania: Australia and New Zealand.
+
+Now, let’s start making comparisons of life expectancy between continents.
+
+First we have to pick a *baseline* to compare with. Let's use Africa.
+
+ * We can see that even the country with the highest life expectancy in Africa is still lower than all countries in ________.
+ 
+ * We can see that even the country with the highest life expectancy in Africa is still lower than the median life expectancy of the countries in ________.
+
+ * The median life expectancy of the Americas is roughly 20 years greater.
+ * The median life expectancy of Asia is roughly 20 years greater.
+ * The median life expectancy of Europe is roughly 25 years greater.
+ * The median life expectancy of Oceania is roughly 27.8 years greater.
+
+
+### Linear regression
+
+In section 6.1 we introduced *simple linear* regression, which involves modeling the relationship between a numerical outcome variable $y$ as a function of a numerical explanatory variable $x$, in our life expectancy example, we now have a *categorical explanatory variable*  $x$ continent. 
+
+While we still can fit a regression model, given our categorical explanatory variable we no longer have a concept of a “*best-fitting*” line, but rather “*differences relative to a baseline for comparison*.”
+
+Before we fit our regression model, let’s create a table similar to the previous Table, but
+
+  1. Report the mean life expectancy for each continent.
   
+  2. Report the difference in mean life expectancy relative to Africa’s mean life expectancy of 54.806 in the column “mean vs Africa”; this column is simply the “mean” column minus 54.806.
+
+
+```{r}
+#Create the following table. Using instructions above...
+
+```
+
+```{r}
+mean_lifeExp_by_continent <- gapminder2007 %>%
+  group_by(continent) %>%
+  summarize(mean = round(mean(lifeExp), 3), "mean vs Africa" = round(mean(lifeExp),3)-54.806)
+
+kable(mean_lifeExp_by_continent)
+```
+
+Now, let’s use the `lm` function we introduced in Section 6.1 to get the regression coefficients for gapminder2007 analysis:
+
+```{r}
+lifeExp_model <- lm(lifeExp ~ continent, data = gapminder2007)
+lifeExp_model
+
+# Or use summary(lifeExp_model)
+```
+
+
+What are these values? First, we must describe the equation for fitted value $\hat{y}$, which is a little more complicated when the $x$ explanatory variable is categorical:
+
+$$\hat{\text{life exp}} = b_0 + b_{Amer} \cdot 1_{Amer}(x) + b_{Asia} \cdot 1_{Asia}(x) + b_{Euro} \cdot 1_{Euro}(x) + b_{Ocean} \cdot 1_{Ocean}(x) $$
+$$\hat{\text{life exp}} = 54.81 + 18.80 \cdot 1_{Amer}(x) + 15.92 \cdot 1_{Asia}(x) +  22.84 \cdot 1_{Euro}(x) + 25.91 \cdot 1_{Ocean}(x) $$
+
+
+
+
+
+
 
 
 
