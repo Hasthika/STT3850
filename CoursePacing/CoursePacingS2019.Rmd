@@ -216,6 +216,10 @@ Test yourself:
 
 * [Lecture: Chapter 6 of MD](../Lecture Notes/Ch_6_MD_Notes.html)
 
+* [gapminder tools](https://www.gapminder.org/tools/#$chart-type=bubbles)
+
+* [An interesting video](https://www.youtube.com/watch?v=jbkSRLYSojo)
+
 <!-- * Read Chapter 8 of [MD](https://moderndive.com) --- Sampling
 
 * Read Chapter 4 of MSWR --- Sampling Distributions; [Problems 2, 5, 12-16](../Homework/Chapter4HWK.Rmd)
