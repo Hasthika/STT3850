@@ -214,7 +214,9 @@ Test yourself:
 
 ## Week 9: (March 11--15) {-}
 
-* Read Chapter 8 of [MD](https://moderndive.com) --- Sampling
+* [Lecture: Chapter 6 of MD](../Lecture Notes/Ch_6_MD_Notes.html)
+
+<!-- * Read Chapter 8 of [MD](https://moderndive.com) --- Sampling
 
 * Read Chapter 4 of MSWR --- Sampling Distributions; [Problems 2, 5, 12-16](../Homework/Chapter4HWK.Rmd)
 
@@ -224,7 +226,7 @@ Test yourself:
 
 * Complete _Foundations of Probability in R_ [(DataCamp)](https://www.datacamp.com/) --- Due March 15
 
-* [Probability](https://alanarnholt.github.io/GeneralStatistics/rmarkdown/probability.html)
+* [Probability](https://alanarnholt.github.io/GeneralStatistics/rmarkdown/probability.html) -->
 
 * Start preparing R Markdown `cheat sheet` for Test 2
 
