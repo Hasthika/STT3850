@@ -395,10 +395,11 @@ Let’s apply the `skim()` function from the `skimr` package to our two variable
 ```
 
 
-```{r include=FALSE}
+```{r}
 gapminder2007 %>% 
   select(continent, lifeExp) %>% 
   skim()
+
 ```
 
 
@@ -410,7 +411,7 @@ Given that the global median life expectancy is _____, half of the world’s cou
 ```
 
 ```{r echo=FALSE}
-ggplot(data = gapminder2007, aes(x=lifeExp)) + geom_histogram(binwidth =  5, color="white")
+ggplot(data = gapminder2007, aes(x=lifeExp)) + geom_histogram(binwidth =  5, color="white", fill = "orchid4")
 ```
 
 
@@ -462,7 +463,7 @@ ggplot(gapminder2007, aes(x = lifeExp, fill=continent)) +
 
 ```
 
-```{r}
+```{r include=FALSE}
 ggplot(gapminder2007, aes(x = continent, y = lifeExp, fill = continent)) +
   geom_boxplot() +
   labs(x = "Continent", y = "Life expectancy (years)", 
@@ -533,10 +534,61 @@ $$\hat{\text{life exp}} = b_0 + b_{Amer} \cdot 1_{Amer}(x) + b_{Asia} \cdot 1_{A
 $$\hat{\text{life exp}} = 54.81 + 18.80 \cdot 1_{Amer}(x) + 15.92 \cdot 1_{Asia}(x) +  22.84 \cdot 1_{Euro}(x) + 25.91 \cdot 1_{Ocean}(x) $$
 
 
+What does $1_{A}(x)$ menas? (from your previous math course) 
+
+In mathematics this is known as an “indicator function” that takes one of two possible values:
+
+\[ 
+1_{A}(x) = 
+\begin{cases} 
+      1 & x \in A \\
+      0 & x \notin A 
+   \end{cases}
+\]
 
 
+In a statistical modeling context this is also known as a “dummy variable”. In our case, let’s consider the first such indicator variable:
+
+\[ 
+1_{Amer}(x) = 
+\begin{cases} 
+      1 &  \text{if country x is in the Americas} \\
+      0 & \text{otherwise}
+   \end{cases}
+\]
 
 
+Now let’s interpret the regression coefficients.
+
+  1. First $b_0 = intercept = 54.8$ --- the mean life expectancy for countries in Africa, because Africa was our baseline.
+  
+  2. $b_{Amer} = continentAmericas = 18.8$ is the difference in mean life expectancy of countries in the Americas relative to Africa, or in other words, on average countries in the Americas had life expectancy 18.8 years greater. 
+  
+  The fitted value yielded by this equation is: (i.e. in this case, only the indicator function $1_{Amer}(x)$ is equal to 1, but all others are 0.)
+  
+  $$\hat{\text{life exp}} = 54.81 + 18.80 \cdot 1_{Amer}(x) + 15.92 \cdot 1_{Asia}(x) +  22.84 \cdot 1_{Euro}(x) + 25.91 \cdot 1_{Ocean}(x) $$
+  
+  $$\hat{\text{life exp}} = 54.81 + 18.80 \cdot 1 + 15.92 \cdot 0 +  22.84 \cdot 0 + 25.91 \cdot 0 $$
+  $$\hat{\text{life exp}} = 54.81 + 18.80 $$
+  $$\hat{\text{life exp}} = 72.9$$
+
+  3. Similarly, $b_{Asia} = continentAsia = 15.9$ ---Interpret this...
+  
+  Rest of the coefficients can be interpreted the same way.
+
+
+Let’s generalize this whole thing a bit. 
+
+  * If we fit a linear regression model using a categorical explanatory variable $x$ that has $k$ levels, a regression model will return an intercept and $k −1$ “slope” coefficients. 
+  
+  * When $x$ is a numerical explanatory variable the interpretation is of a “slope” coefficient, 
+  
+  * but when $x$ is categorical the meaning is a little trickier. They are "offsets" relative to the baseline.
+
+  
+```{example}
+Fit a new linear regression to predcit the GDP using continent. Write the model. Interpret the coefficients. (Use the `gapminder2007` dataftame that we created)
+```
 
 
 
