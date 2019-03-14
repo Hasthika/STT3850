@@ -429,7 +429,7 @@ Let’s proceed by comparing median and mean life expectancy **between continent
 ```{r echo=FALSE}
 lifeExp_by_continent <- gapminder2007 %>%
   group_by(continent) %>%
-  summarize(median = median(lifeExp), mean = mean(lifeExp))
+  summarize(median = median(lifeExp), mean = mean(lifeExp), N = n())
 
 kable(lifeExp_by_continent)
 
@@ -463,7 +463,7 @@ ggplot(gapminder2007, aes(x = lifeExp, fill=continent)) +
 
 ```
 
-```{r include=FALSE}
+```{r}
 ggplot(gapminder2007, aes(x = continent, y = lifeExp, fill = continent)) +
   geom_boxplot() +
   labs(x = "Continent", y = "Life expectancy (years)", 
@@ -571,6 +571,7 @@ Now let’s interpret the regression coefficients.
   $$\hat{\text{life exp}} = 54.81 + 18.80 \cdot 1 + 15.92 \cdot 0 +  22.84 \cdot 0 + 25.91 \cdot 0 $$
   $$\hat{\text{life exp}} = 54.81 + 18.80 $$
   $$\hat{\text{life exp}} = 72.9$$
+  Furthermore, this value corresponds to the group mean life expectancy for all American countries.
 
   3. Similarly, $b_{Asia} = continentAsia = 15.9$ ---Interpret this...
   
