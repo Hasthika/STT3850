@@ -186,7 +186,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Lecture Notes for Ch 6 of MD: Basic Regression</h1>
 <h4 class="author"><em>Dr. Hasthika Rupasinghe</em></h4>
-<h4 class="date"><em>Mar 14, 2019 at 08:01:21 AM</em></h4>
+<h4 class="date"><em>Mar 14, 2019 at 08:03:34 AM</em></h4>
 
 </div>
 
@@ -613,6 +613,42 @@ $ gdpPercap &lt;dbl&gt; 974.5803, 5937.0295, 6223.3675, 4797.2313, 12779.3796,�
 <li><p>Report the difference in mean life expectancy relative to Africa’s mean life expectancy of 54.806 in the column “mean vs Africa”; this column is simply the “mean” column minus 54.806.</p></li>
 </ol>
 <pre class="r"><code>#Create the following table. Using instructions above...</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="center">continent</th>
+<th align="center">mean</th>
+<th align="center">mean vs Africa</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Africa</td>
+<td align="center">54.806</td>
+<td align="center">0.000</td>
+</tr>
+<tr class="even">
+<td align="center">Americas</td>
+<td align="center">73.608</td>
+<td align="center">18.802</td>
+</tr>
+<tr class="odd">
+<td align="center">Asia</td>
+<td align="center">70.728</td>
+<td align="center">15.922</td>
+</tr>
+<tr class="even">
+<td align="center">Europe</td>
+<td align="center">77.649</td>
+<td align="center">22.843</td>
+</tr>
+<tr class="odd">
+<td align="center">Oceania</td>
+<td align="center">80.719</td>
+<td align="center">25.913</td>
+</tr>
+</tbody>
+</table>
 <p>Now, let’s use the <code>lm</code> function we introduced in Section 6.1 to get the regression coefficients for gapminder2007 analysis:</p>
 <pre class="r"><code>lifeExp_model &lt;- lm(lifeExp ~ continent, data = gapminder2007)
 lifeExp_model</code></pre>

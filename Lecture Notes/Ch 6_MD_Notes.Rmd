@@ -510,7 +510,7 @@ Before we fit our regression model, let’s create a table similar to the previo
 
 ```
 
-```{r include=FALSE}
+```{r echo=FALSE}
 mean_lifeExp_by_continent <- gapminder2007 %>%
   group_by(continent) %>%
   summarize(mean = round(mean(lifeExp), 3), "mean vs Africa" = round(mean(lifeExp),3)-54.806)
