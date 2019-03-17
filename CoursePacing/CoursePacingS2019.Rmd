@@ -258,7 +258,7 @@ Test yourself:
 
 ## Week 11: (March 25--29) {-}
 
-* [OJUICE dataframe for homework 3](data/OJUICE.Rdata)
+* [OJUICE dataframe for homework 3](../Homework/data/OJUICE.Rdata)
 
 * Read Chapter 10 of [MD](https://moderndive.com) --- Hypothesis Testing
 
