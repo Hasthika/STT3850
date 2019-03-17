@@ -254,11 +254,14 @@ Test yourself:
 
 * [Inference Examples used in class](../Handouts/InferenceExamples.pdf)
 
+* [Chapter 6 of MSWR HW](../Homework/Chapter6_Of_MD_HWK_H.html) --- Due Wednesday the 27th of Feb
+
+* [OJUICE dataframe for homework](../Homework/data/OJUICE.Rdata)
+
 * In class **Exam 02** --- Mar 21 (Allowed to use the `cheat sheet`)
 
 ## Week 11: (March 25--29) {-}
 
-* [OJUICE dataframe for homework 3](../Homework/data/OJUICE.Rdata)
 
 * Read Chapter 10 of [MD](https://moderndive.com) --- Hypothesis Testing
 

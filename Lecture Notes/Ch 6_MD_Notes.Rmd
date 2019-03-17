@@ -524,7 +524,7 @@ Now, let’s use the `lm` function we introduced in Section 6.1 to get the regre
 lifeExp_model <- lm(lifeExp ~ continent, data = gapminder2007)
 lifeExp_model
 
-# Or use summary(lifeExp_model)
+summary(lifeExp_model)
 ```
 
 

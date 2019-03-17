@@ -1,0 +1,82 @@
+---
+title: "Lecture Notes for Ch 7 of MD: Multiple Regression"
+author: "Dr. Hasthika Rupasinghe"
+date: '`r format(Sys.time(), "%b %d, %Y at %X")`'
+output:
+  bookdown::html_document2:
+    highlight: textmate
+    theme: yeti
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, fig.align = "center", comment = NA, options(scipen=999))
+library(tidyverse)
+
+library(knitr)
+
+library(dplyr)
+library(moderndive)
+
+library(ggplot2)
+library(dplyr)
+library(moderndive)
+library(ISLR)
+library(skimr)
+library(plotly)
+```
+
+
+```{r include=FALSE}
+set.seed(417)
+
+temp <- rnorm(100, mean=30, sd=5)
+pressure <- rnorm(100)
+dtime <- 1:100
+
+
+plot_ly(x=temp, y=pressure, z=dtime, type="scatter3d", mode="markers", color=temp)
+```
+
+# Introduction
+
+we’ll still use Credit to demonstrate multiple regression with:
+
+  1. A numerical outcome variable y, in this case credit card balance.
+  
+  2. Two explanatory variables:
+  
+      + A first numerical explanatory variable $x_1$. In this case, their credit limit.
+      
+      + A second numerical explanatory variable  $x_2$. In this case, their income (in thousands of dollars).
+
+
+# Exploratory data analysis
+
+Let’s load the `Credit` data and: 
+
+* Use the `View` command to look at raw data.
+* Now `select()` only `Balance`, `Limit`, `Income`, `Rating` and `Age` variables. (We will use `Rating` and `Age` in a forthcoming exercise)
+
+
+```{r echo=FALSE}
+library(ISLR)
+Credit <- Credit %>%
+  select(Balance, Limit, Income, Rating, Age)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
