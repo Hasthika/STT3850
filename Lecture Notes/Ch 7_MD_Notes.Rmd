@@ -27,20 +27,9 @@ library(plotly)
 ```
 
 
-```{r include=FALSE}
-set.seed(417)
-
-temp <- rnorm(100, mean=30, sd=5)
-pressure <- rnorm(100)
-dtime <- 1:100
-
-
-plot_ly(x=temp, y=pressure, z=dtime, type="scatter3d", mode="markers", color=temp)
-```
-
 # Introduction
 
-we’ll still use Credit to demonstrate multiple regression with:
+We’ll use the `Credit` dataframe from the `ISLR` pakage to demonstrate multiple regression with:
 
   1. A numerical outcome variable y, in this case credit card balance.
   
@@ -50,13 +39,15 @@ we’ll still use Credit to demonstrate multiple regression with:
       
       + A second numerical explanatory variable  $x_2$. In this case, their income (in thousands of dollars).
 
+  Note: This dataset is not based on actual individuals, it is a simulated dataset used for educational purposes.
 
 # Exploratory data analysis
 
 Let’s load the `Credit` data and: 
 
 * Use the `View` command to look at raw data.
-* Now `select()` only `Balance`, `Limit`, `Income`, `Rating` and `Age` variables. (We will use `Rating` and `Age` in a forthcoming exercise)
+
+* Now `select()` only `Balance`, `Limit`, `Income`, `Rating` and `Age` variables. (We will be using `Rating` and `Age` in a forthcoming exercise) 
 
 
 ```{r echo=FALSE}
@@ -65,18 +56,180 @@ Credit <- Credit %>%
   select(Balance, Limit, Income, Rating, Age)
 ```
 
+```{r}
+# Write your code here
+#
+```
+
+
+Let’s look at some summary statistics for the variables that we need for the problem at hand.
+
+```{r}
+# Write your code here
+#
+```
+
+
+```{r echo=FALSE}
+Credit %>% 
+  select(Balance, Limit, Income) %>% 
+  skim()
+```
+
+Let's also look at _______________ as visual aids.
+
+```{r include=FALSE}
+library(cowplot)
+
+p1 <- ggplot(data = Credit, aes(x = Balance)) + geom_histogram(binwidth  = 150, color = "white", fill = "orchid4")
+p2 <- ggplot(data = Credit, aes(x = Limit)) + geom_histogram(binwidth  = 800, color = "white", fill = "orange")
+p3 <- ggplot(data = Credit, aes(x = Income)) + geom_histogram(binwidth  = 10, color = "white", fill = "steelblue")
+
+plot_grid(p1, p2, p3)
+```
+
+
+We observe for example:
+
+  * The mean and median credit card balance are $520.01 and $459.50 respectively.
+  * 25% of card holders had debts of $68.75 or less.
+  * The mean and median credit card limit are $4735.6 and $4622.50 respectively.
+  * 75% of these card holders had incomes of $57,470 or less.
+  *
+  *
+
+
+Since our outcome variable Balance and the explanatory variables `Limit` and `Income` are numerical, we can and *have* to compute the `correlation coefficient` between pairs of these variables before we proceed to build a model.
+
+```{r}
+Credit %>%
+  select(Balance, Limit, Income) %>% 
+  cor()
+```
+
+
+  * Balance with Limit is 0.862. This indicates a strong positive linear relationship, which makes sense as only individuals with large credit limits can accrue large credit card balances.
+  
+  * Balance with Income is 0.464. This is suggestive of another positive linear relationship, although not as strong as the relationship between Balance and Limit.
+  
+  * As an added bonus, we can read off the correlation coefficient of the two explanatory variables, Limit and Income of 0.792. In this case, we say there is a high degree of **collinearity** between these two explanatory variables.
+
+
+  > Note: **Collinearity (or multicollinearity)** is a phenomenon in which one explanatory variable in a multiple regression model can be linearly predicted from the others with a substantial degree of accuracy. So in this case, if we knew someone’s credit card Limit and since Limit and Income are highly correlated, we could make a fairly accurate guess as to that person’s Income. Or put loosely, these two variables provided redundant information. For now let’s ignore any issues related to collinearity and press on.
+
+
+
+Let’s visualize the relationship of the outcome variable with each of the two explanatory variables in two separate plots:
+
+```{r include=FALSE}
+sc1 <- ggplot(Credit, aes(x = Limit, y = Balance)) +
+  geom_point() +
+  labs(x = "Credit limit (in $)", y = "Credit card balance (in $)", 
+       title = "balance and credit limit") +
+  geom_smooth(method = "lm", se = FALSE)
+  
+sc2 <- ggplot(Credit, aes(x = Income, y = Balance)) +
+  geom_point() +
+  labs(x = "Income (in $1000)", y = "Credit card balance (in $)", 
+       title = "balance and income") +
+  geom_smooth(method = "lm", se = FALSE)
+
+plot_grid(sc1, sc2)
+```
+
+
+To get a sense of the joint relationship of all three variables simultaneously through a visualization, let’s display the data in a 3-dimensional (3D) scatterplot, where 
+
+  1. The numerical outcome variable $y$ `Balance` is on the `z`-axis (vertical axis)
+
+  2. The two numerical explanatory variables form the “floor” axes. In this case
+
+    * The first numerical explanatory variable $x_1$, Income is on of the floor axes.
+    * The second numerical explanatory variable $x_2$, Limit is on the other floor axis.
+
+
+
+```{r}
+# draw 3D scatterplot
+p <- plot_ly(data = Credit, z = ~Balance, x = ~Income, y = ~Limit, opacity = 0.6, color = Credit$Balance) %>%
+  add_markers() 
+p
+```
 
 
 
 
+> Exercise
+
+ Conduct a new exploratory data analysis with the same outcome variable $y$ being Balance but with `Rating` and `Age` as the new explanatory variables $x_1$ and $x_2$. Remember, this involves three things:
+
+  1. Looking at the raw values
+  2. Computing summary statistics of the variables of interest.
+  3. Creating informative visualizations
+
+What can you say about the relationship between a credit card holder’s balance and their credit rating and age?
+
+
+## Multiple regression
+
+We now use a `+` to consider multiple explanatory variables. Here is the syntax: 
+
+```{}
+model_name <- lm(y ~ x1 + x2 + ... +xn, data = data_frame_name)
+```
+
+
+```{r}
+Balance_model <- lm(Balance ~ Limit + Income, data = Credit)
+Balance_model
+
+# Or use one of the followings to see more info...
+
+get_regression_table(Balance_model)
+#summary(Balance_model)
+```
+
+**How do we interpret these three values that define the regression plane?**
+
+  * `Intercept: -$385.18` (rounded to two decimal points to represent cents). The intercept in our case represents the credit card balance for an individual who has both a credit Limit of $0 and Income of $0.
+      + In our data however, the intercept has limited (or no) practical interpretation as ....
+
+  * `Limit: $0.26.` Now that we have multiple variables to consider, we have to add a caveat to our interpretation: Holding all the other variables fixed (`Income`, in this case), for every increase of one unit in credit Limit (dollars), there is an associated increase of on average $0.26 in credit card balance. 
+  
+  * `Income: -$7.66.` Similarly, Holding all the other variables fixed (`Limit`, in this case),, for every increase of one unit in Income (in other words, $1000 in income), there is an associated decrease of on average $7.66 in credit card balance.
+  
+
+  > WAIT! Did something go wrong? Interpretation of the `Income` coefficient is alarming.
+
+```{include = FALSE}
+Recall in individual scatterplots that when considered, both Limit and Income had positive relationships with the outcome variable Balance. As card holders’ credit limits increased their credit card balances tended to increase as well, and a similar relationship held for incomes and balances. In the above multiple regression, however, the slope for Income is now -7.66, suggesting a negative relationship between income and credit card balance. What explains these contradictory results?
+
+This is known as **Simpson’s Paradox**, a phenomenon in which a trend appears in several different groups of data but disappears or reverses when these groups are combined. 
+```
 
 
 
+> Exercise
+
+Fit a new linear regression using where Rating and Age are the new numerical explanatory variables $x_1$ and $x_2$. 
+
+Get information about the “best-fitting” line from the regression table by applying the `get_regression_table()` function. How do the regression results match up with the results from your exploratory data analysis in the previous exercise?
 
 
 
+## Observed/fitted values and residuals
 
+As we did previously, let's look at the fitted values and residuals.
 
+```{r}
+regression_points <- get_regression_points(Balance_model)
+regression_points
+```
 
+### Diagnostics (Residual plot)
 
+```{r include=FALSE}
+ggplot(Balance_model, aes(x = .fitted, y = .resid)) + geom_point()
+```
 
+## 7.2 One numerical & one categorical explanatory variable
