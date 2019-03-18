@@ -244,8 +244,9 @@ Test yourself:
 
 ```
 
-* Read Chapter 9 of [MD](https://moderndive.com) --- Confidence Intervals
+* Read Chapter 7 of [MD](https://moderndive.com) --- Multiple Regression
 
+<!--
 * Bootstrap [Example](https://stat-ata-asu.github.io/STT3851ClassRepo/Rmarkdown/TheBootstrap.html)
 
 * Start _Inference for Numerical Data_ [(DataCamp)](https://www.datacamp.com/) --- Due March 29
@@ -254,11 +255,14 @@ Test yourself:
 
 * [Inference Examples used in class](../Handouts/InferenceExamples.pdf)
 
-* [Chapter 6 of MSWR HW](../Homework/Chapter6_Of_MD_HWK_H.html) --- Due Wednesday the 27th of Feb
 
-* [OJUICE dataframe for homework](../Homework/data/OJUICE.Rdata)
+-->
 
-* In class **Exam 02** --- Mar 21 (Allowed to use the `cheat sheet`)
+* [Chapter 6 of MSWR HW](../Homework/Chapter6_Of_MD_HWK_H.html) --- Due Wednesday the 27th of March
+
+* [OJUICE dataframe for homework](../Homework/data/OJUICE.Rdata) 
+
+* In class **Exam 02** --- March ?? (Allowed to use the `cheat sheet`)
 
 ## Week 11: (March 25--29) {-}
 
