@@ -189,6 +189,10 @@ get_regression_table(Balance_model)
 #summary(Balance_model)
 ```
 
+**Write your model here:**
+
+        * 
+
 **How do we interpret these three values that define the regression plane?**
 
   * `Intercept: -$385.18` (rounded to two decimal points to represent cents). The intercept in our case represents the credit card balance for an individual who has both a credit Limit of $0 and Income of $0.
@@ -209,14 +213,6 @@ This is known as **Simpson’s Paradox**, a phenomenon in which a trend appears 
 
 
 
-> Exercise
-
-Fit a new linear regression using where Rating and Age are the new numerical explanatory variables $x_1$ and $x_2$. 
-
-Get information about the “best-fitting” line from the regression table by applying the `get_regression_table()` function. How do the regression results match up with the results from your exploratory data analysis in the previous exercise?
-
-
-
 ## Observed/fitted values and residuals
 
 As we did previously, let's look at the fitted values and residuals.
@@ -231,5 +227,12 @@ regression_points
 ```{r include=FALSE}
 ggplot(Balance_model, aes(x = .fitted, y = .resid)) + geom_point()
 ```
+
+> Exercise
+
+Fit a new linear regression using where Rating and Age are the new numerical explanatory variables $x_1$ and $x_2$. 
+
+Get information about the “best-fitting” line from the regression table by applying the `get_regression_table()` function. How do the regression results match up with the results from your exploratory data analysis in the previous exercise?
+
 
 ## 7.2 One numerical & one categorical explanatory variable
