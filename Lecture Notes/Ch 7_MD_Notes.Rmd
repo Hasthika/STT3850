@@ -12,15 +12,11 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, fig.align = "center", comment = NA, options(scipen=999))
 library(tidyverse)
-
 library(knitr)
-
 library(dplyr)
 library(moderndive)
-
 library(ggplot2)
-library(dplyr)
-library(moderndive)
+
 library(ISLR)
 library(skimr)
 library(plotly)
@@ -82,7 +78,9 @@ Let's also look at _______________ as visual aids.
 library(cowplot)
 
 p1 <- ggplot(data = Credit, aes(x = Balance)) + geom_histogram(binwidth  = 150, color = "white", fill = "orchid4")
+
 p2 <- ggplot(data = Credit, aes(x = Limit)) + geom_histogram(binwidth  = 800, color = "white", fill = "orange")
+
 p3 <- ggplot(data = Credit, aes(x = Income)) + geom_histogram(binwidth  = 10, color = "white", fill = "steelblue")
 
 plot_grid(p1, p2, p3)
@@ -235,4 +233,150 @@ Fit a new linear regression using where Rating and Age are the new numerical exp
 Get information about the “best-fitting” line from the regression table by applying the `get_regression_table()` function. How do the regression results match up with the results from your exploratory data analysis in the previous exercise?
 
 
-## 7.2 One numerical & one categorical explanatory variable
+## One numerical & one categorical explanatory variable
+
+Let’s revisit the instructor evaluation data introduced in Ch 6. 
+
+Consider a modeling scenario with:
+
+  1. A numerical outcome variable $y$. As before, instructor evaluation score.
+  
+  2. Two explanatory variables:
+  
+      + A numerical explanatory variable $x_1$: in this case, their `age`.
+        
+      + A categorical explanatory variable $x_2$: in this case, their binary `gender`.
+  
+        
+  
+### Exploratory data analysis
+
+Let’s reload the `evals` data and `select()` only the needed subset of variables. Note that these are different than the variables chosen in Chapter 6. Let’s given this the name `evals_ch7`.
+
+```{r}
+evals_ch7 <- evals %>%
+  select(score, age, gender)
+```
+
+  
+1. Let’s look at the raw data values both by using `View()` and the `glimpse()` functions.
+
+2. Let’s look at some summary statistics using the `skim()` function from the `skimr` package:
+  
+  
+```{r}
+evals_ch7 %>% 
+  skim()
+```
+  
+
+Describe the output: Homework
+
+  
+  3. let’s compute the correlation between two numerical variables we have `score` and `age`. Recall that correlation coefficients only exist between numerical variables. 
+  
+  
+```{r}
+evals_ch7 %>% 
+  get_correlation(formula = score ~ age)
+```
+  
+  We observe that they are _______ and __________ correlated.
+  
+
+Now, let's try to visualize the correlation.
+
+Create a scatterplot of `score` over `age`. Use the binary `gender` variable to color the point with two colors. Add a regression line (or two?) in to your scatterplot.
+
+
+```{r include=FALSE}
+ggplot(evals_ch7, aes(x = age, y = score, color = gender)) +
+  geom_jitter() +
+  labs(x = "Age", y = "Teaching Score", color = "Gender", title = "Graph using 'method = lm'") +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+
+
+Say a couple of interesting things about the graph you've created.
+
+
+### Multiple regression: Parallel slopes model
+
+Much like we started to consider multiple explanatory variables using the `+` sign in the previous section, let’s fit a regression model and get the regression table.
+
+
+```{r echo=FALSE}
+score_model_2 <- lm(score ~ age + gender, data = evals_ch7)
+get_regression_table(score_model_2)
+```
+
+The modeling equation for this scenario is: (Write the model you obtained)
+
+
+Write the model for male:
+
+
+Write the model for female:
+
+
+
+Let's create the scatterplot of `score` over `age` AGAIN. Use the binary `gender` variable to color the point with two colors. Add a regression lines in to your scatterplot BUT, this time use the model(s) we created.
+
+
+```{r include=FALSE}
+ggplot(evals_ch7, aes(x = age, y = score, color = gender)) +
+  geom_jitter() +
+  labs(x = "Age", y = "Teaching Score", color = "Gender", title = "Graph using the 'score_model_2'") +
+  geom_abline(intercept = 4.484, slope = -0.009, color = "firebrick1", lwd=1) +
+  geom_abline(intercept = 4.675, slope = -0.009, , color = "turquoise", lwd=1) 
+```
+
+Interpretaions of the coefficients:
+
+
+  * $b_{male} = 0.1906$ is the average difference in teaching score that men get relative to the baseline of women.
+
+  * Accordingly, the intercepts (which in this case make no sense since no instructor can have an age of 0) are :
+  
+      for women:  $b_0= 4.484$ 
+      
+      for men: $b_0 +b_{male} = 4.484 + 0.191 = 4.675$
+
+
+  * Both men and women have the same slope. In other words, in this model the associated effect of age is the same for men and women. So for every increase of one year in age, there is on average an associated decrease of  $b_{age} = -0.009$ in teaching score.
+
+
+> Warning! &#9888;
+
+But wait!!!, why is the lines in the original scatterplot different than the lines in this one? What is going on? 
+
+  + What we have in the original plot is known as an **interaction effect** between `age` and `gender`. 
+  + Focusing on fitting a model for each of men and women, we see that the resulting regression lines are different. 
+  + Thus, gender appears to interact in different ways for men and women with the different values of age.
+
+Once you nitice an interaction effect on the original scatterplot, you will have to create a model with interaction...(next section)
+
+### Multiple regression: Interaction model
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
