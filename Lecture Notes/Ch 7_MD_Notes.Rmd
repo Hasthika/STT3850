@@ -29,7 +29,7 @@ library(plotly)
 
 # Introduction
 
-We’ll use the `Credit` dataframe from the `ISLR` pakage to demonstrate multiple regression with:
+We’ll use the `Credit` dataframe from the `ISLR` package to demonstrate multiple regression with:
 
   1. A numerical outcome variable y, in this case credit card balance.
   
