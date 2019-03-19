@@ -259,7 +259,7 @@ Test yourself:
 
 -->
 
-* [Chapter 6 of MSWR HW](../Homework/Chapter6_Of_MD_HWK_H.html) --- Due Wednesday the 27th of March
+* [Chapter 6 of MSWR HW](../Homework/Chapter6_Of_MD_HWK_H.Rmd) --- Due Wednesday the 27th of March
 
 * [OJUICE dataframe for homework](../Homework/data/OJUICE.Rdata) 
 
