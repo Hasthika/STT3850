@@ -263,7 +263,8 @@ Test yourself:
 
 * [OJUICE dataframe for homework](../Homework/data/OJUICE.Rdata) 
 
-* In class **Exam 02** --- March ?? (Allowed to use the `cheat sheet`)
+
+* In class **quiz 08** --- March 28 (last 20 min of class)
 
 ## Week 11: (March 25--29) {-}
 
@@ -272,8 +273,7 @@ Test yourself:
 
 * Complete _Inference for Numerical Data_ [(DataCamp)](https://www.datacamp.com/) --- Due March 29
 
-* In class **quiz 08** --- March 28 (last 20 min of class)
-
+* In class **Exam 02** --- March 28th (Allowed to use the `cheat sheet`)
 
 ## Week 12: (Apr 1--5) {-}
 
