@@ -335,7 +335,7 @@ Test yourself:
 
 ### Final Exam {-}
 
-* [Exam 2 data](../Data/poverty.rtf)
+* [Exam 2 data](../Data/poverty.txt)
 
 ```{block, FINAL, type='rmdnote'}
 *  Final exam for 8am class (Sec 101) is on May 7th 8am--10:30am
