@@ -289,7 +289,7 @@ Now, let's try to visualize the correlation.
 Create a scatterplot of `score` over `age`. Use the binary `gender` variable to color the point with two colors. Add a regression line (or two?) in to your scatterplot.
 
 
-```{r include=FALSE}
+```{r}
 ggplot(evals_ch7, aes(x = age, y = score, color = gender)) +
   geom_jitter() +
   labs(x = "Age", y = "Teaching Score", color = "Gender", title = "Graph using 'method = lm'") +
@@ -312,6 +312,7 @@ get_regression_table(score_model_2)
 ```
 
 The modeling equation for this scenario is: (Write the model you obtained)
+
 
 
 Write the model for male:
@@ -359,16 +360,32 @@ Once you nitice an interaction effect on the original scatterplot, you will have
 
 ### Multiple regression: Interaction model
 
+We say a model has an interaction effect if the associated effect of one variable depends on the value of another variable. These types of models usually prove to be tricky to view on first glance because of their complexity. In this case, the effect of age will depend on the value of gender. (as was suggested by the different slopes for men and women in our visual exploratory data analysis)
 
 
+Let’s fit a regression with an interaction term. We add an interaction term using the `*` sign. Let’s fit this regression and save it in `score_model_interaction`, then we get the regression table using the `get_regression_table()` function as before.
+
+```{r}
+score_model_interaction <- lm(score ~ age + gender + age * gender, data = evals_ch7)
+get_regression_table(score_model_interaction)
+```
 
 
+The modeling equation for this scenario is (Writing the equation):
 
+$$\hat{y} = b_0 + b_1 \cdot x_1 + b_2 \cdot x_2 + b_3 \cdot x_1 \cdot x_2$$
 
+$$\hat{score} = 4.883 - 0.018 \cdot age - 0.446 \cdot 1_{Male}(x) + 0.014	\cdot age \cdot 1_{Male}(x) $$
 
+Write the model for male:
 
+$$\hat{score} = 4.883 - 0.018 \cdot age - 0.446 \cdot 1 + 0.014	\cdot age \cdot 1 $$
+$$\hat{score} = 4.437 - 0.004 \cdot age $$
 
+Write the model for female:
 
+$$\hat{score} = 4.883 - 0.018 \cdot age - 0.446 \cdot 0 + 0.014	\cdot age \cdot 0 $$
+$$\hat{score} = 4.883 - 0.018 \cdot age  $$
 
 
 
