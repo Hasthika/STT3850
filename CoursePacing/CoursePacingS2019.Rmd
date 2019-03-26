@@ -268,6 +268,7 @@ Test yourself:
 
 ## Week 11: (March 25--29) {-}
 
+* [Lecture: Chapter 7 of MD](../Lecture Notes/Ch_7_MD_Notes.html)
 
 * Read Chapter 10 of [MD](https://moderndive.com) --- Hypothesis Testing
 
