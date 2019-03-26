@@ -387,6 +387,15 @@ Write the model for female:
 $$\hat{score} = 4.883 - 0.018 \cdot age - 0.446 \cdot 0 + 0.014	\cdot age \cdot 0 $$
 $$\hat{score} = 4.883 - 0.018 \cdot age  $$
 
+We see that while male instructors have a lower intercept, as they age, they have a less steep associated average decrease in teaching scores: 0.004 teaching score units per year as opposed to -0.018 for women. This is consistent with the different slopes and intercepts of the red and blue regression lines fit in the original scatter plot.
+
+### Observed/fitted values and residuals
+
+```{r}
+regression_points <- get_regression_points(score_model_interaction)
+regression_points
+
+```
 
 
 
