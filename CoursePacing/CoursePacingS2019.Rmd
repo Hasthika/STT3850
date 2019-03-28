@@ -276,6 +276,8 @@ Test yourself:
 
 * In class **Exam 02** --- March 28th (Allowed to use the `cheat sheet`)
 
+* [Chapter 7 of MSWR HW](../Homework/Chapter7HWKnew.Rmd) --- Due Thursday the 4th of April
+
 ## Week 12: (Apr 1--5) {-}
 
 * Read Chapter 3 of MSWR
