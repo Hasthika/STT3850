@@ -262,15 +262,87 @@ Let’s put them all together:
 
 
 
-  + If we extract a sample of  $n=50$ balls at random, in other words we mix the equally-sized balls before using the shovel, then
+  + If we extract a sample of  $n=50$ balls at **random**, in other words we mix the equally-sized balls before using the shovel, then
 
-  + the contents of the shovel are an unbiased representation of the contents of the bowl’s 2400 balls, thus
+  + the contents of the shovel are an **unbiased representation** of the contents of the bowl’s 2400 balls, thus
   
-  + any result based on the sample of balls can generalize to the bowl, thus 
+  + any result based on the sample of balls can **generalize** to the bowl, thus 
   
-  + the sample proportion $\hat{p}$ of the $n=50$ balls in the shovel that are red is a “good guess” of the population proportion $p$ of the $N =2400$ balls that are red, thus
+  + the sample proportion $\hat{p}$ of the $n=50$ balls in the shovel that are red is a “**good guess**” of the population proportion $p$ of the $N =2400$ balls that are red, thus
   
-  + instead of manually going over all the balls in the bowl, we can infer about the bowl using the shovel.
+  + instead of manually going over all the balls in the bowl, we can **infer** about the bowl using the shovel.
+
+
+
+```{definition}
+
+The sampling distribution of a Statistic (e.g. Mean, Median, Proportion, etc) is its probability distribution.
+
+```
+
+```{definition}
+
+The standard deviation of a sampling distribution is called the standard error.
+
+```
+
+Example: This is the same table as above, but notice the 2nd column name.
+
+|Number of slots in shovel |	Standard Error of proportions red |
+|------------ | --------------
+| 25 |	0.0978 |
+| 50 |	0.0669 |
+| 100	| 0.0471 |
+
+
+```{exercise}
+Find and plot the sampling distribution of the proportion ($\hat{p}$) of heads when you flip a fair coin. (Use 5000 sets of 10 tosses)
+```
+
+ 1. What is the sample size?
+ 
+ 2. How many experiments?
+ 
+ 3. Find and plot the sampling distribution of $\hat{p}$.
+ 
+ 4. Find the standard error of the sampling distribution of $\hat{p}$.
+ 
+ 5. What happens to the standard error, when you increase the sample size?
+ 
+
+```{r include=FALSE}
+coin <- c("H","T") 
+
+
+tosses <- 10
+ans <- numeric(tosses)
+pros_of_heads <- numeric(5000)
+
+
+for (j in 1:5000) {
+
+  for(i in 1:tosses){
+    index <- sample.int(n = 2, size = 1, replace = TRUE)
+    ans[i] <- coin[index]
+  }
+  
+  
+  
+  pros_of_heads[j] <- sum(ans == "H")/tosses
+}
+
+#hist(pro_of_heads)
+
+ggplot(data.frame(pros_of_heads), aes(x=pros_of_heads)) + geom_histogram(binwidth = 0.1, color = "white")
+sd(pros_of_heads)
+```
+
+
+
+
+
+
+
 
 
 
