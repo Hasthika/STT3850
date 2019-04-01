@@ -325,7 +325,7 @@ Write the model for female:
 Let's create the scatterplot of `score` over `age` AGAIN. Use the binary `gender` variable to color the point with two colors. Add a regression lines in to your scatterplot BUT, this time use the model(s) we created.
 
 
-```{r include=FALSE}
+```{r}
 ggplot(evals_ch7, aes(x = age, y = score, color = gender)) +
   geom_jitter() +
   labs(x = "Age", y = "Teaching Score", color = "Gender", title = "Graph using the 'score_model_2'") +
@@ -392,8 +392,9 @@ We see that while male instructors have a lower intercept, as they age, they hav
 ### Observed/fitted values and residuals
 
 ```{r}
-regression_points <- get_regression_points(score_model_interaction)
-regression_points
+
+
+
 
 ```
 
