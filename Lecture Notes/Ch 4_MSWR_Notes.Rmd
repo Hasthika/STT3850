@@ -138,7 +138,7 @@ Redo the above activity with 1000 repeated samples and state your conclusions.
 ![](shovel.png)
 
 
-If your goal was still to estimate the proportion of the bowl’s balls that were red, which shovel would you choose? Why? Let's try to anser these questions.
+If your goal was still to estimate the proportion of the bowl’s balls that were red, which shovel would you choose? Why? Let's try to answer these questions.
 
 
 ```{r}
@@ -239,23 +239,23 @@ Let’s now introduce some terminology and notation as well as statistical defin
 
 ## Terminology & notation
 
-  1. (Study) Population: A (study) population is a collection of individuals or observations about which we are interested. We mathematically denote the population’s size using upper case N. In our simulations the (study) population was the collection of  N = 2400 identically sized red and white balls contained in the bowl.
+  1. **(Study) Population**: A (study) population is a collection of individuals or observations about which we are interested. We mathematically denote the population’s size using upper case N. In our simulations the (study) population was the collection of  N = 2400 identically sized red and white balls contained in the bowl.
   
-  2. Population parameter: A population parameter is a numerical summary quantity about the population that is unknown, but you wish you knew. For example, when this quantity is a mean, the population parameter of interest is the population mean which is mathematically denoted with the Greek letter $\mu$ (pronounced “mu”). In our simulations however since we were interested in the proportion of the bowl’s balls that were red, the population parameter is the population proportion which is mathematically denoted with the letter $p$.
+  2. **Population parameter**: A population parameter is a numerical summary quantity about the population that is unknown, but you wish you knew. For example, when this quantity is a mean, the population parameter of interest is the population mean which is mathematically denoted with the Greek letter $\mu$ (pronounced “mu”). In our simulations however since we were interested in the proportion of the bowl’s balls that were red, the population parameter is the population proportion which is mathematically denoted with the letter $p$.
   
-  3. Census: An exhaustive enumeration or counting of all $N$ individuals or observations in the population in order to compute the population parameter’s value exactly. In our simulations, this would correspond to manually going over all $N = 2400$ balls in the bowl and counting the number that are red and computing the population proportion $p$ of the balls that are red exactly. When the number $N$ of individuals or observations in our population is large, as was the case with our bowl, a census can be very expensive in terms of time, energy, and money.
+  3. **Census**: An exhaustive enumeration or counting of all $N$ individuals or observations in the population in order to compute the population parameter’s value exactly. In our simulations, this would correspond to manually going over all $N = 2400$ balls in the bowl and counting the number that are red and computing the population proportion $p$ of the balls that are red exactly. When the number $N$ of individuals or observations in our population is large, as was the case with our bowl, a census can be very expensive in terms of time, energy, and money.
   
-  4. Sampling: Sampling is the act of collecting a sample from the population when we don’t have the means to perform a census. We mathematically denote the sample’s size using lower case $n$, as opposed to upper case $N$ which denotes the population’s size. Typically the sample size $n$ is much smaller than the population size  $N$, thereby making sampling a much cheaper procedure than a census. In our simulations, we used shovels with 25, 50, and 100 slots to extract a sample of size  $n = 25$,  $n = 50$, and $n = 100$ balls.
+  4. **Sampling**: Sampling is the act of collecting a sample from the population when we don’t have the means to perform a census. We mathematically denote the sample’s size using lower case $n$, as opposed to upper case $N$ which denotes the population’s size. Typically the sample size $n$ is much smaller than the population size  $N$, thereby making sampling a much cheaper procedure than a census. In our simulations, we used shovels with 25, 50, and 100 slots to extract a sample of size  $n = 25$,  $n = 50$, and $n = 100$ balls.
   
-  5. Point estimate (AKA sample statistic): A summary statistic computed from the sample that estimates the unknown population parameter. In our simulations, recall that the unknown population parameter was the population proportion and that this is mathematically denoted with p. Our point estimate is the sample proportion: the proportion of the shovel’s balls that are red. In other words, it is our guess of the proportion of the bowl’s balls balls that are red. We mathematically denote the sample proportion using $\hat{p}$; the “hat” on top of the p indicates that it is an estimate of the unknown population proportion $p$.
+  5. **Point estimate (AKA sample statistic)**: A summary statistic computed from the sample that estimates the unknown population parameter. In our simulations, recall that the unknown population parameter was the population proportion and that this is mathematically denoted with p. Our point estimate is the sample proportion: the proportion of the shovel’s balls that are red. In other words, it is our guess of the proportion of the bowl’s balls balls that are red. We mathematically denote the sample proportion using $\hat{p}$; the “hat” on top of the p indicates that it is an estimate of the unknown population proportion $p$.
   
-  6. Representative sampling: A sample is said be a representative sample if it is representative of the population. In other words, are the sample’s characteristics a good representation of the population’s characteristics? In our simulations, are the samples of $n$ balls extracted using our shovels representative of the bowl’s $N = 2400$ balls?
+  6. **Representative sampling**: A sample is said be a representative sample if it is representative of the population. In other words, are the sample’s characteristics a good representation of the population’s characteristics? In our simulations, are the samples of $n$ balls extracted using our shovels representative of the bowl’s $N = 2400$ balls?
   
-  7. Generalizability: We say a sample is generalizable if any results based on the sample can generalize to the population. In other words, can the value of the point estimate be generalized to estimate the value of the population parameter well? In our simulations, can we generalize the values of the sample proportions red of our shovels to the population proportion red of the bowl? Using mathematical notation, is $\hat{p}$ a “good guess” of $p$?
+  7. **Generalizability**: We say a sample is generalizable if any results based on the sample can generalize to the population. In other words, can the value of the point estimate be generalized to estimate the value of the population parameter well? In our simulations, can we generalize the values of the sample proportions red of our shovels to the population proportion red of the bowl? Using mathematical notation, is $\hat{p}$ a “good guess” of $p$?
   
-  8. Bias: In a statistical sense, we say bias occurs if certain individuals or observations in a population have a higher chance of being included in a sample than others. We say a sampling procedure is unbiased if every observation in a population had an equal chance of being sampled. In our simulations, since each ball had the same size and hence an equal chance of being sample in our shovels, our samples were unbiased.
+  8. **Bias**: In a statistical sense, we say bias occurs if certain individuals or observations in a population have a higher chance of being included in a sample than others. We say a sampling procedure is unbiased if every observation in a population had an equal chance of being sampled. In our simulations, since each ball had the same size and hence an equal chance of being sample in our shovels, our samples were unbiased.
   
-  9. Random sampling: We say a sampling procedure is random if we sample randomly from the population in an unbiased fashion. In our simulations, this would correspond to sufficiently mixing the bowl before each use of the shovel.
+  9. **Random sampling**: We say a sampling procedure is random if we sample randomly from the population in an unbiased fashion. In our simulations, this would correspond to sufficiently mixing the bowl before each use of the shovel.
 
 
 Let’s put them all together:
@@ -293,6 +293,9 @@ Example: This is the same table as above, but notice the 2nd column name.
 | 25 |	0.0978 |
 | 50 |	0.0669 |
 | 100	| 0.0471 |
+
+
+
 
 
 ```{exercise}
@@ -336,6 +339,8 @@ for (j in 1:5000) {
 ggplot(data.frame(pros_of_heads), aes(x=pros_of_heads)) + geom_histogram(binwidth = 0.1, color = "white")
 sd(pros_of_heads)
 ```
+
+
 
 
 
