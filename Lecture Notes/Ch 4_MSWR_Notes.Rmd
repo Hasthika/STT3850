@@ -96,7 +96,7 @@ virtual_shovel %>%
 virtual_samples <- bowl %>% 
   rep_sample_n(size = 50, reps = 30)
 
-kable(virtual_samples)
+#kable(virtual_samples)
 ```
 
 
@@ -314,7 +314,38 @@ Find and plot the sampling distribution of the proportion ($\hat{p}$) of heads w
  
  5. What happens to the standard error, when you increase the sample size?
 
+Method 1:
 
+```{r include=FALSE}
+HT <- c("Head","Tail") 
+coin <- data.frame(HT)
+coin 
+
+coin_samples <- coin %>%
+  rep_sample_n(size = 10, reps = 1000, replace = TRUE)
+
+coin_samples
+
+# Compute resulting 1000 replicates of proportion heads
+prop_heads <- coin_samples %>% 
+  group_by(replicate) %>% 
+  summarize(Heads = sum(HT == 1)) %>% 
+  mutate(pro = Heads / 10)
+
+prop_heads
+
+# Plot distribution via a histogram
+p3 <- ggplot(prop_heads, aes(x = pro)) +
+  geom_histogram(binwidth = .1, color = "white") +
+  labs(x = "Pro of heads", title = "Coin flip 10 times") 
+
+p3
+
+
+```
+
+
+Method 2:
 
 ```{r include=FALSE}
 coin <- c("H","T") 
@@ -539,7 +570,39 @@ Sampling distribution of $\hat{p}$ is normal with mean $p$(Actual population pro
 $$\hat{p} \sim N( p,  \sqrt{p(1-p)/n} )$$
 
 
-Let's revisit the coin flip example: What we did is an simulation. Now we can check how close our simulation results are to the theoritical results.
+Let's revisit the coin flip example: What we did is a simulation. Now we can check how close our simulation results are to the theoritical results.
+
+Method 1:
+
+```{r include=FALSE}
+HT <- c("Head","Tail") 
+coin <- data.frame(HT)
+coin 
+
+coin_samples <- coin %>%
+  rep_sample_n(size = 10, reps = 1000, replace = TRUE)
+
+coin_samples
+
+# Compute resulting 1000 replicates of proportion heads
+prop_heads <- coin_samples %>% 
+  group_by(replicate) %>% 
+  summarize(Heads = sum(HT == 1)) %>% 
+  mutate(pro = Heads / 10)
+
+prop_heads
+
+# Plot distribution via a histogram
+p3 <- ggplot(prop_heads, aes(x = pro)) +
+  geom_histogram(binwidth = .1, color = "white") +
+  labs(x = "Pro of heads", title = "Coin flip 10 times") 
+
+p3
+
+
+```
+
+Method 2:
 
 ```{r include=FALSE}
 coin <- c("H","T") 
@@ -582,6 +645,79 @@ Therefore $\hat{p} \sim N( p,  \sqrt{p(1-p)/n} ) = N( 0.5,  \sqrt{0.5(1-0.5)/10}
 
 
 ## Sampling Distribution of the **Mean**
+
+
+
+  1. Let's simulate the sampling distribution of the *mean* of a normal distribution with $N(10, 3^2)$. 
+  
+  - Draw 1000 samples of size $n=100$ from this distribution and compute the mean for each sample, and store the mean in a vector called `Xbars`
+
+```{r}
+Xbars <- numeric(1000)
+
+for (i in 1:1000) {
+  
+  x <- rnorm(n= 100, mean = 10, sd = 3)
+  Xbars[i] <- mean(x)
+  
+}
+
+#Xbar # Run this if you want to see all 1000 the means.
+
+ggplot(data.frame(Xbars), aes(x=Xbars)) + geom_histogram(color = "white", fill="steelblue")
+```
+  
+  - It looks like, in this case, the histogram suggests that the sampling distribution of the sample mean has a _______________ distribution.
+
+  - Find the mean and the standard error of the sampling distribution of the sample mean ($\bar{X}$)
+  
+```{r}
+mean(Xbars)
+
+sd(Xbars)
+```
+  
+
+  2. Let's simulate the sampling distribution of the *mean* of a normal distribution with $Exp(1/15)$. 
+  
+  - Draw 1000 samples of size $n=100$ from this distribution and compute the mean for each sample, and store the mean in a vector called `Xbars2`
+
+  - It looks like, in this case, the histogram suggests that the sampling distribution of the sample mean has a _______________ distribution.
+
+  - Find the mean and the standard error of the sampling distribution of the sample mean ($\bar{X}$)
+
+
+
+### The central limit theorem (CLT)
+
+
+For a large sample size (rule of thumb: $n \geq 30$), the sample mean $\bar{X}$ is approximately normally distributed, regardless of the distribution of the population one samples from. If the population has mean $\mu$ and standard deviation $\sigma$, then $\bar{X}$ has mean and standard error $\sigma/ \sqrt{n}$
+
+
+Therefore, according to the CLT $\bar{X} \sim N(\mu, \sigma/ \sqrt{n})$
+
+
+Note that the spread of the sampling distribution of the mean decreases as the sample size increases.
+
+*Question*:
+
+  Now that we know the theoritical sampling distribution of $\bar{X}$, 
+    
+  1. Find the theoritical sampling distribution of $\bar{X}$ for question 1 above and compare those with the simulated results.
+  
+  2. Find the theoritical sampling distribution of $\bar{X}$ for question 2 above and compare those with the simulated results.
+  
+
+
+  > In this class we only have theoritical sampling distributions for $\hat{p}$ and $\bar{X}$ only. For other sample statistics like median, min, max, etc. we would only have the simulated results.
+  
+  
+  
+
+
+
+
+
 
 
 
