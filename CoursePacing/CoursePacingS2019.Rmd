@@ -299,13 +299,20 @@ Test yourself:
 
 ## Week 13: (Apr 8--12) {-}
 
+* Read Chapter 8 of MD
+
+* Read Chapter 4 of MSWR
+
+* [Lecture: Sampling Distributions](../Lecture Notes/Ch_4_MSWR_Notes.html)
+
+<!--
 * Read Chapter 5 of MSWR
 
 * [Chapter 5 notes](../Notes/Children/BootStrap2.html)
 
 * [Misc RMarkdown Examples](../Rmarkdown/MiscRmarkdown.html)
 
-
+-->
 
 * In class **quiz 10** --- Apr 11 (last 20 min of class)
 
