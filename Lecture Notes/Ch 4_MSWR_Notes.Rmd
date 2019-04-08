@@ -574,7 +574,7 @@ Let's revisit the coin flip example: What we did is a simulation. Now we can che
 
 Method 1:
 
-```{r include=FALSE}
+```{r}
 HT <- c("Head","Tail") 
 coin <- data.frame(HT)
 coin 
@@ -604,14 +604,12 @@ p3
 
 Method 2:
 
-```{r include=FALSE}
+```{r}
 coin <- c("H","T") 
-
 
 tosses <- 10
 ans <- numeric(tosses)
 pros_of_heads <- numeric(5000)
-
 
 for (j in 1:5000) {
 
@@ -619,8 +617,6 @@ for (j in 1:5000) {
     index <- sample.int(n = 2, size = 1, replace = TRUE)
     ans[i] <- coin[index]
   }
-  
-  
   
   pros_of_heads[j] <- sum(ans == "H")/tosses
 }
@@ -711,26 +707,183 @@ Note that the spread of the sampling distribution of the mean decreases as the s
 
   > In this class we only have theoritical sampling distributions for $\hat{p}$ and $\bar{X}$ only. For other sample statistics like median, min, max, etc. we would only have the simulated results.
   
+***
+
+# Problem Solving
+
+*Question*: Finding probabilities using a sampling distribution.
+
+
+The engines made by Ford for speedboats had an average power of 220 horsepower (HP) and standard deviation of 15 HP.
+
+A potential buyer intends to take a sample of four engines and will not place an order if the sample mean is less than 215 HP. What is the probability that the buyer will not place an order?  
+
+  1. Answer the question using a theoritical distribution:
+  
+  2. Answer the question using a simulation:
+  
+***
+
+*Question*:
+
+A friend claim that she has drawn a random sample of size 30, from the exponential distribution $(f(x) = \lambda e^{-\lambda x})$ with $\lambda = 1/10$.  The mean of her sample is 12.
+
+  a. What is the mean (expected value) of a sample mean?
+    
+    
+  b. Run a simulation by drawing 100,000 random samples, each of size 30, from $\text{Exp}(\lambda = 1/10)$ and then compute the mean.  What proportion of the sample means are as large as or larger than 12?
+    
+```{r include=FALSE}
+# part b.
+set.seed(123)
+sims <- 100000
+Xbars <- numeric(sims)
+for(i in 1:sims){
+  RS <- rexp(n = 30, rate = 1/10)
+  Xbars[i] <- mean(RS)
+}
+
+ggplot(data = data.frame(x = Xbars), aes(x = x, fill = x >= 12)) + 
+  geom_histogram(binwidth = 0.1) + 
+  theme_bw() + 
+  labs(x = expression(bar(x))) + 
+  geom_vline(xintercept = 12, linetype = "dashed") + 
+  scale_fill_manual(values = c("lightblue", "purple"))
+
+
+PR12 <- mean(Xbars >= 12)
+PR12
+```
+
+    
+  c. Is a mean of 12 unusual for a sample of size 30 from $\text{Exp}(\lambda = 1/10)$?
+
+
+**Note:** Since a mean of 12 or greater appears $`r round(PR12*100,2)`$% of the time, it is not considered unusual. 
+
+
+***
+
+*Question*: Exercise 4.4
+
+Consider the population {3, 5, 6, 6, 8, 11, 13, 15, 19, 20}.
+
+  a) Compute the mean and standard deviation and create a histogram of its distribution.
+  
+  b) Simulate the sampling distribution of $\bar{X}$ by taking random samples of size 4 and plot your results. Compute the mean and standard error, and compare to population mean and standard deviation. 
+  
+  c) Use the simulation to find $P(\bar{X} < 11)$
   
   
+```{r include=FALSE}
+population <- c(3, 5, 6, 6, 8, 11, 13, 15, 19, 20)
+
+
+Xbars <- numeric(10000)
+
+for (i in 1:10000)
+{
+  
+  samp <- sample(population, size = 4, replace = TRUE)
+  Xbars[i] <- mean(samp)
+}
+
+
+ggplot(data = data.frame(x = Xbars), aes(x = x, fill = x >= 12)) + 
+  geom_histogram(binwidth = 0.5) + 
+  theme_bw() + 
+  labs(x = expression(bar(x))) + 
+  geom_vline(xintercept = 12, linetype = "dashed") + 
+  scale_fill_manual(values = c("lightblue", "purple"))
+
+
+#c Use the simulation to find $P(\bar{X} < 11)$
+mean(Xbars < 11)
+```
+
+
+***
+
+
+*Question*: Exercise 4.10
+
+Suppose the heights of boys in a certain city follow a distribution with mean 48 in and variance $9^2$. 
+
+  1. Use the CLT to estimate the probability that in a random sample of 30 boys, the mean height is morethan 51 in.
+  
+  2. Use a simulation to redo part 1.
+
+***
+
+*Question*: 
+
+4. Let $X_1, X_2, \ldots , X_{10} \overset{i.i.d}\sim N(20, 8)$ and $Y_1, Y_2, \ldots, Y_{15} \overset{i.i.d}\sim N(16, 7)$.  Let $W = \bar{X} + \bar{Y}.$
+      
+  a. Simulate the sampling distribution in `R` and plot your results.  Check that the simulated mean and standard error are close to the theoretical mean and standard error.
+      
+  b. Use your simulation to find $P(W < 40).$  Calculate an exact answer and compare.
+      
+  c. Give the exact sampling distribution of $W$
+
+Solution:
+
+
+      
+      
+```{r include=FALSE}
+# part b
+set.seed(13)
+sims <- 100000
+W <- numeric(sims)
+for(i in 1:sims){
+  xbar <- mean(rnorm(10, 20, 8))
+  ybar <- mean(rnorm(15, 16, 7))
+  W[i] <- xbar + ybar
+}
+
+meanW <- mean(W)
+sdW <- sd(W)
+c(meanW, sdW)
+
+# Comparisons
+mW <- 36
+sW <- sqrt(8^2/10 + 7^2/15)
+
+## Creating a table (Optional)
+ans <- c(mW, meanW, sW, sdW)
+names(ans) <- c("Theo.meanOfW", "Simu.MeanOfW", "Theo.SigmaOfW", "Simu.SigmaOfW")
+ans
+```      
+     
+      
+      
+```{r include=FALSE}
+ggplot(data = data.frame(x = W), aes(x = x, fill = x < 40)) + 
+  geom_histogram(binwidth = 0.3, color = "black") + 
+  theme_bw() + 
+  labs(x = expression(W == bar(X) + bar(Y))) + 
+  geom_vline(xintercept = 40, linetype = "dashed") +
+  scale_fill_manual(values = c("lightblue", "purple"))
+```
+
+```{r include=FALSE}
+# part c.
+Pl40sim <- mean(W < 40)
+Pl40the <- pnorm(40, 36, sqrt(8^2/10 + 7^2/ 15))
+c(Pl40sim, Pl40the)
+```
 
 
 
+* $\widehat{P(W < 40)} = `r round(Pl40sim,4)`$
 
 
+The exact sampling distribution of $W$ is $N\left(20 + 16, \sqrt{8^2/10 + 7^2/15}\right) = N(`r 20+16`, `r round(sqrt(8^2/10 + 7^2/15),2)`)$. 
+      
 
+* $P(W < 40) = `r round(Pl40the,4)`$
 
-
-
-
-
-
-
-
-
-
-
-
+The simulated answer is `r round(Pl40sim,4)`, while the theoretical answer is `r round(Pl40the,4)`.  The percent difference between the simulated and the theoretical answer is `r round((Pl40sim -Pl40the)/Pl40the * 100, 4)`%.
 
 
 
