@@ -408,7 +408,7 @@ p1
 
 Examples:
 
-  1. Generate a random sample of 100 from  $N(15, 9)$ and create a histrogram.
+  1. Generate a random sample of 100 from  $N(15, 9)$ and create a histogram.
   
 ```{r}
 x <- rnorm(n = 100, mean = 15, sd = 3)
@@ -473,7 +473,7 @@ ggplot(dat, aes(x=x, y=px)) + geom_line()
 
 Examples:
 
-  1. Generate a random sample of 100 from  $Exp(1/15)$ and create a histrogram.
+  1. Generate a random sample of 100 from  $Exp(1/15)$ and create a histogram.
   
 ```{r}
 x <- rexp(n = 100, rate = 1/15)
@@ -570,7 +570,7 @@ Sampling distribution of $\hat{p}$ is normal with mean $p$(Actual population pro
 $$\hat{p} \sim N( p,  \sqrt{p(1-p)/n} )$$
 
 
-Let's revisit the coin flip example: What we did is a simulation. Now we can check how close our simulation results are to the theoritical results.
+Let's revisit the coin flip example: What we did is a simulation. Now we can check how close our simulation results are to the theoretical results.
 
 Method 1:
 
@@ -632,7 +632,7 @@ cat("Simulated mean and the standard deviation for the sampling distribution of 
 
 ```
 
-Now let's find the theoritical mean and the standard deviation the sampling distribution of the proportion:
+Now let's find the theoretical mean and the standard deviation the sampling distribution of the proportion:
 
 Here $p = 0.5$, $n = 10$
 
@@ -697,11 +697,11 @@ Note that the spread of the sampling distribution of the mean decreases as the s
 
 *Question*:
 
-  Now that we know the theoritical sampling distribution of $\bar{X}$, 
+  Now that we know the theoretical sampling distribution of $\bar{X}$, 
     
-  1. Find the theoritical sampling distribution of $\bar{X}$ for question 1 above and compare those with the simulated results.
+  1. Find the theoretical sampling distribution of $\bar{X}$ for question 1 above and compare those with the simulated results.
   
-  2. Find the theoritical sampling distribution of $\bar{X}$ for question 2 above and compare those with the simulated results.
+  2. Find the theoretical sampling distribution of $\bar{X}$ for question 2 above and compare those with the simulated results.
   
 
 
@@ -718,9 +718,36 @@ The engines made by Ford for speedboats had an average power of 220 horsepower (
 
 A potential buyer intends to take a sample of four engines and will not place an order if the sample mean is less than 215 HP. What is the probability that the buyer will not place an order?  
 
-  1. Answer the question using a theoritical distribution:
+  1. Answer the question using a theoretical distribution:
+  
+```{r}
+pnorm(215,mean = 220, sd = 7.5)
+```
+  
   
   2. Answer the question using a simulation:
+  
+Amuse that the parent distribution is Normal.
+
+
+```{r}
+set.seed(111)
+Xbars <- numeric(1000)
+
+for (i in 1:1000) {
+  
+  x <- rnorm(n= 4, mean = 220, sd = 15)
+  Xbars[i] <- mean(x)
+  
+}
+
+#Xbars # Run this if you want to see all 1000 the means.
+
+mean(Xbars < 215) # Pr(Xbar < 215)
+
+#ggplot(data.frame(Xbars), aes(x=Xbars)) + geom_histogram(color = "white", fill="steelblue")
+```
+
   
 ***
 
@@ -736,12 +763,16 @@ A friend claim that she has drawn a random sample of size 30, from the exponenti
 ```{r include=FALSE}
 # part b.
 set.seed(123)
+
 sims <- 100000
+
 Xbars <- numeric(sims)
 for(i in 1:sims){
   RS <- rexp(n = 30, rate = 1/10)
   Xbars[i] <- mean(RS)
 }
+
+mean(Xbars > 12)
 
 ggplot(data = data.frame(x = Xbars), aes(x = x, fill = x >= 12)) + 
   geom_histogram(binwidth = 0.1) + 
@@ -778,22 +809,22 @@ Consider the population {3, 5, 6, 6, 8, 11, 13, 15, 19, 20}.
 ```{r include=FALSE}
 population <- c(3, 5, 6, 6, 8, 11, 13, 15, 19, 20)
 
+sims <- 10000
+Xbars <- numeric(sims)
 
-Xbars <- numeric(10000)
-
-for (i in 1:10000)
+for (i in 1:sims)
 {
   
-  samp <- sample(population, size = 4, replace = TRUE)
+  samp <- sample(population, size = 4)
   Xbars[i] <- mean(samp)
 }
 
 
-ggplot(data = data.frame(x = Xbars), aes(x = x, fill = x >= 12)) + 
+ggplot(data = data.frame(x = Xbars), aes(x = x, fill = x <= 11)) + 
   geom_histogram(binwidth = 0.5) + 
   theme_bw() + 
   labs(x = expression(bar(x))) + 
-  geom_vline(xintercept = 12, linetype = "dashed") + 
+  geom_vline(xintercept = 11, linetype = "dashed") + 
   scale_fill_manual(values = c("lightblue", "purple"))
 
 
@@ -807,9 +838,9 @@ mean(Xbars < 11)
 
 *Question*: Exercise 4.10
 
-Suppose the heights of boys in a certain city follow a distribution with mean 48 in and variance $9^2$. 
+Suppose the heights of boys in a certain city follow a normal distribution with mean 48 in and variance $9^2$. 
 
-  1. Use the CLT to estimate the probability that in a random sample of 30 boys, the mean height is morethan 51 in.
+  1. Use the CLT to estimate the probability that in a random sample of 30 boys, the mean height is more than 51 in.
   
   2. Use a simulation to redo part 1.
 
@@ -818,12 +849,20 @@ Suppose the heights of boys in a certain city follow a distribution with mean 48
 *Question*: 
 
 4. Let $X_1, X_2, \ldots , X_{10} \overset{i.i.d}\sim N(20, 8)$ and $Y_1, Y_2, \ldots, Y_{15} \overset{i.i.d}\sim N(16, 7)$.  Let $W = \bar{X} + \bar{Y}.$
+
+  a. Give the exact sampling distribution of $W$
+  
+  The exact sampling distribution of $W$ is $$N\left(mean = \mu_1 + \mu_2, sd = \sqrt{\sigma_1^2/n_1 + \sigma_2^2/n_2}\right)$$
+
+
+$$N\left(20 + 16, \sqrt{8^2/10 + 7^2/15}\right) = N(`r 20+16`, `r round(sqrt(8^2/10 + 7^2/15),2)`)$$. 
       
-  a. Simulate the sampling distribution in `R` and plot your results.  Check that the simulated mean and standard error are close to the theoretical mean and standard error.
+  b. Simulate the sampling distribution in `R` and plot your results.  Check that the simulated mean and standard error are close to the theoretical mean and standard error.
       
-  b. Use your simulation to find $P(W < 40).$  Calculate an exact answer and compare.
+  c. Use your simulation to find $P(W < 40).$  Calculate an exact answer and compare.
       
-  c. Give the exact sampling distribution of $W$
+  
+
 
 Solution:
 
@@ -878,14 +917,62 @@ c(Pl40sim, Pl40the)
 * $\widehat{P(W < 40)} = `r round(Pl40sim,4)`$
 
 
-The exact sampling distribution of $W$ is $N\left(20 + 16, \sqrt{8^2/10 + 7^2/15}\right) = N(`r 20+16`, `r round(sqrt(8^2/10 + 7^2/15),2)`)$. 
-      
-
 * $P(W < 40) = `r round(Pl40the,4)`$
 
 The simulated answer is `r round(Pl40sim,4)`, while the theoretical answer is `r round(Pl40the,4)`.  The percent difference between the simulated and the theoretical answer is `r round((Pl40sim -Pl40the)/Pl40the * 100, 4)`%.
 
 
+***
+
+*Question*: Exercise 4.6
+
+The data set `Recidivism` contains the population of all Iowa offenders convicted of either a felony or misdemeanor who were released in 2010 (Case study in Section 1.4) Of these, 31.6% recidivated and were sent back to prison. Simulate the sampling distribution of $\hat{p}$, the sample proportion of offenders who recidivated, for random samples of size 25.
+
+a) Create a histogram and describe the simulated sampling distribution of $\hat{p}$. Estimate the mean and the standard error.
+
+
+```{r include=FALSE}
+library(resampledata)
+data("Recidivism")
+
+sims <- 10000
+
+phats <- numeric(sims)
+
+for (i in 1:sims)
+{
+  
+  samp <- sample(Recidivism$Recid, 25)
+  phats[i] <- mean(samp == "Yes")
+}
+
+mean(phats)
+sd(phats)
+
+ggplot(data = data.frame(x = phats), aes(x = x)) + 
+  geom_histogram(binwidth = 0.04, color = "black")
+
+```
+
+
+  b) Compare your estimate with the mean and standard error with the theorerical mean and standard error.
+  
+  c) Repeat the above (part a and b) using samples of size 250, and compare with the $n=25$ case.
+  
+  
+***
+
+*Question*:
+
+Let $X_1, X_2, \ldots, X_n$ be a random sample from some distribution and suppose $Y = T(X_1, X_2, \ldots, X_n)$ is a statistic.  Suppose the sampling distribution of $Y$ has pdf $f(y) = (3/8)y^2$ for $0 \leq y \leq 2.$  Find $P(0 \leq Y \leq 1/5)$.
+
+```{r include=FALSE}
+f <- function(x){3/8*x^2}
+integrate(f, 0, 1/5)
+ans <- integrate(f, 0, 1/5)$value
+```
+
+$P(0 \leq Y \leq 1/5) = `r ans`$
 
 
 
