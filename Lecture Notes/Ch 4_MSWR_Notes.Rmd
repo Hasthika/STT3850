@@ -975,4 +975,103 @@ ans <- integrate(f, 0, 1/5)$value
 $P(0 \leq Y \leq 1/5) = `r ans`$
 
 
+***
+
+
+*Question*: 
+
+Consider the population {3, 5, 6, 6, 8, 11, 13, 15, 19, 20}.
+
+  a) Compute the median of this population.
+  
+```{r include=FALSE}
+population <- c(3, 5, 6, 6, 8, 11, 13, 15, 19, 20)
+
+median(population)
+```
+  
+  
+  b) Simulate the sampling distribution of $median$ by taking random samples of size 4 and plot your results. 
+  
+  d) Does the sampling distribution of $median$ look Normal?
+  
+  c) Use the simulation to find $P(Median < 9.5)$
+  
+  
+```{r include=FALSE}
+population <- c(3, 5, 6, 6, 8, 11, 13, 15, 19, 20)
+
+sims <- 10000
+Medians <- numeric(sims)
+
+for (i in 1:sims)
+{
+  
+  samp <- sample(population, size = 4)
+  Medians[i] <- median(samp)
+}
+
+
+ggplot(data = data.frame(x = Medians), aes(x = x, fill = x <= 9.5)) + 
+  geom_histogram(binwidth = .9) + 
+  theme_bw() + 
+  labs(x = expression(bar(x))) + 
+  geom_vline(xintercept = 9.5, linetype = "dashed") + 
+  scale_fill_manual(values = c("lightblue", "purple"))
+
+
+#c Use the simulation to find $P(\bar{X} < 11)$
+mean(Medians < 9.5)
+```
+
+
+***
+
+
+*Question*: 
+
+Consider the population {3, 5, 6, 6, 8, 11, 13, 15, 19, 20}.
+
+  a) Compute the maximum of this population.
+  
+```{r include=FALSE}
+population <- c(3, 5, 6, 6, 8, 11, 13, 15, 19, 20)
+
+max(population)
+```
+  
+  
+  b) Simulate the sampling distribution of $maximum$ by taking random samples of size 5 and plot your results. 
+  
+  d) Does the sampling distribution of $maximum$ look Normal?
+  
+  c) Use the simulation to find $P(maximum < 15)$
+  
+  
+```{r include=FALSE}
+population <- c(3, 5, 6, 6, 8, 11, 13, 15, 19, 20)
+
+sims <- 10000
+Maxes <- numeric(sims)
+
+for (i in 1:sims)
+{
+  
+  samp <- sample(population, size = 4)
+  Maxes[i] <- max(samp)
+}
+
+
+ggplot(data = data.frame(x = Maxes), aes(x = x, fill = x <= 15)) + 
+  geom_histogram(binwidth = 2.5) + 
+  theme_bw() + 
+  labs(x = expression(bar(x))) + 
+  geom_vline(xintercept = 15, linetype = "dashed") + 
+  scale_fill_manual(values = c("lightblue", "purple"))
+
+
+#c Use the simulation to find $P(\bar{X} < 11)$
+mean(Maxes < 15)
+```
+
 
