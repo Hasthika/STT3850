@@ -760,7 +760,7 @@ A friend claim that she has drawn a random sample of size 30, from the exponenti
     
   b. Run a simulation by drawing 100,000 random samples, each of size 30, from $\text{Exp}(\lambda = 1/10)$ and then compute the mean.  What proportion of the sample means are as large as or larger than 12?
     
-```{r include=FALSE}
+```{r}
 # part b.
 set.seed(123)
 
@@ -806,7 +806,7 @@ Consider the population {3, 5, 6, 6, 8, 11, 13, 15, 19, 20}.
   c) Use the simulation to find $P(\bar{X} < 11)$
   
   
-```{r include=FALSE}
+```{r}
 population <- c(3, 5, 6, 6, 8, 11, 13, 15, 19, 20)
 
 sims <- 10000
@@ -866,18 +866,95 @@ $$N\left(20 + 16, \sqrt{8^2/10 + 7^2/15}\right) = N(`r 20+16`, `r round(sqrt(8^2
 
 Solution:
 
+```{r}
+W <- numeric(10000)
+
+for (i in 1: 10000){
+ x <- rnorm(10, mean = 20, sd = 8)
+ xbar <- mean(x)
+ 
+ y <- rnorm(15, mean = 16, sd = 7)
+ ybar <- mean(y)
+ 
+ W[i] <- xbar + ybar
+ 
+}
+
+mean(W)
+sd(W)
+
+mean(W < 40) # from the simulation
+
+pnorm(40, mean = 36, sd = 3.11) # from the exact distribution
+ 
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+W <- numeric(100000)
+
+for (i in 1:100000){
+  
+x <- rnorm(10, mean = 20, sd = 8)
+xbar <- mean(x)
+
+y <- rnorm(15, mean = 16, sd = 7)
+ybar <- mean(y)
+
+W[i] <- xbar + ybar
+
+}
+
+mean(W)
+sd(W)
+
+mean(W < 40)
+
+# From the Exact distribution
+
+pnorm(40, 36, 3.11)
+```
+
+
+
+
+
+
+
+
+
+
 
       
       
-```{r include=FALSE}
+```{r}
 # part b
 set.seed(13)
+
 sims <- 100000
 W <- numeric(sims)
+
 for(i in 1:sims){
-  xbar <- mean(rnorm(10, 20, 8))
-  ybar <- mean(rnorm(15, 16, 7))
+  
+  x <- rnorm(10, 20, 8)
+  xbar <- mean(x)
+  
+  y <- rnorm(15, 16, 7)
+  ybar <- mean(y)
+  
   W[i] <- xbar + ybar
+  
 }
 
 meanW <- mean(W)
@@ -896,7 +973,7 @@ ans
      
       
       
-```{r include=FALSE}
+```{r}
 ggplot(data = data.frame(x = W), aes(x = x, fill = x < 40)) + 
   geom_histogram(binwidth = 0.3, color = "black") + 
   theme_bw() + 
@@ -905,7 +982,7 @@ ggplot(data = data.frame(x = W), aes(x = x, fill = x < 40)) +
   scale_fill_manual(values = c("lightblue", "purple"))
 ```
 
-```{r include=FALSE}
+```{r}
 # part c.
 Pl40sim <- mean(W < 40)
 Pl40the <- pnorm(40, 36, sqrt(8^2/10 + 7^2/ 15))
@@ -931,9 +1008,23 @@ The data set `Recidivism` contains the population of all Iowa offenders convicte
 a) Create a histogram and describe the simulated sampling distribution of $\hat{p}$. Estimate the mean and the standard error.
 
 
-```{r include=FALSE}
+
+
+
+```{r}
 library(resampledata)
 data("Recidivism")
+
+head(Recidivism)
+```
+
+
+```{r}
+library(resampledata)
+data("Recidivism")
+
+
+pop <- Recidivism$Recid
 
 sims <- 10000
 
@@ -942,7 +1033,8 @@ phats <- numeric(sims)
 for (i in 1:sims)
 {
   
-  samp <- sample(Recidivism$Recid, 25)
+  samp <- sample(pop, 25)
+  
   phats[i] <- mean(samp == "Yes")
 }
 
@@ -966,10 +1058,12 @@ ggplot(data = data.frame(x = phats), aes(x = x)) +
 
 Let $X_1, X_2, \ldots, X_n$ be a random sample from some distribution and suppose $Y = T(X_1, X_2, \ldots, X_n)$ is a statistic.  Suppose the sampling distribution of $Y$ has pdf $f(y) = (3/8)y^2$ for $0 \leq y \leq 2.$  Find $P(0 \leq Y \leq 1/5)$.
 
-```{r include=FALSE}
+```{r}
 f <- function(x){3/8*x^2}
 integrate(f, 0, 1/5)
+
 ans <- integrate(f, 0, 1/5)$value
+
 ```
 
 $P(0 \leq Y \leq 1/5) = `r ans`$
@@ -998,7 +1092,7 @@ median(population)
   c) Use the simulation to find $P(Median < 9.5)$
   
   
-```{r include=FALSE}
+```{r}
 population <- c(3, 5, 6, 6, 8, 11, 13, 15, 19, 20)
 
 sims <- 10000
@@ -1011,6 +1105,8 @@ for (i in 1:sims)
   Medians[i] <- median(samp)
 }
 
+mean(Medians)
+sd(Medians)
 
 ggplot(data = data.frame(x = Medians), aes(x = x, fill = x <= 9.5)) + 
   geom_histogram(binwidth = .9) + 
@@ -1034,7 +1130,7 @@ Consider the population {3, 5, 6, 6, 8, 11, 13, 15, 19, 20}.
 
   a) Compute the maximum of this population.
   
-```{r include=FALSE}
+```{r}
 population <- c(3, 5, 6, 6, 8, 11, 13, 15, 19, 20)
 
 max(population)
@@ -1048,7 +1144,7 @@ max(population)
   c) Use the simulation to find $P(maximum < 15)$
   
   
-```{r include=FALSE}
+```{r}
 population <- c(3, 5, 6, 6, 8, 11, 13, 15, 19, 20)
 
 sims <- 10000
