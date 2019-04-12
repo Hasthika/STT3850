@@ -322,15 +322,25 @@ Test yourself:
 
 ## Week 14: (Apr 15--19) {-}
 
+* [Chapter 4 Of MSWR HW](../Homework/Sampling Distributions HW.Rmd) --- Due: Friday, April 19th at 3pm
+
+* [Lecture: Confidence Intervals: The Bootstrap](../Lecture Notes/Ch_5_MSWR_Notes.html)
+
+<!--
 ```{block, week13optional, type='rmdoptional'}
 ####  {-}
 
 * Complete the problems in the [R Markdown file](https://raw.githubusercontent.com/alanarnholt/STT3850/gh-pages/Homework/Chapter5HWK.Rmd) and publish your solution to [RPubs](http://rpubs.com/).
 ```
 
+
+
 * Bootstrap [Example](https://stat-ata-asu.github.io/STT3851ClassRepo/Rmarkdown/TheBootstrap.html)
 
 * Complete _Inference for Categorical Data_ [(DataCamp)](https://www.datacamp.com/) --- Due Nov 16
+-->
+
+
 
 * In class **quiz 11** --- Apr 18 (last 20 min of class)
 
