@@ -1,0 +1,73 @@
+---
+title: "Confidence Intervals: The Bootstrap"
+author: "Dr. Hasthika Rupasinghe"
+date: '`r format(Sys.time(), "%b %d, %Y at %X")`'
+output:
+  bookdown::html_document2:
+    highlight: textmate
+    theme: yeti
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA, fig.align = "center", warning = FALSE, message = FALSE)
+library(dplyr)
+library(ggplot2)
+library(moderndive)
+library(knitr)
+library(cowplot)
+```
+
+
+In this chapter we will create and interpret *confidence intervls made by using the Bootstrap*. Let's start with the idea of the Bootstrap.
+
+# Introduction to the Bootstrap
+
+
+Rather than repeatedly obtaining independent data sets from the population, we instead obtain distinct data sets by *repeatedly sampling observations from the original data set with replacement*. This process is known as the Bootstrap process.
+
+
+
+This approach is illustrated in the following Figure on a simple data set;
+
+![](Bootstrap_process.png)
+
+Note: Bootstrap sample size is $n$, which is the size of the original sample as well.
+
+&nbsp;
+
+> ***The Bootstrap Idea:*** The original sample approximates the population from which it was drawn. So resamples from this sample approximate what we would get if we took   many samples from the population. The bootstrap distribution of a statistic, based on many resamples, approximates the sampling distribution of the statistic, based on many samples.
+      
+
+
+
+---
+
+**BOOTSTRAP FOR A SINGLE POPULATION:**
+
+Given a sample of size $n$ from a population,
+
+  1. Draw a resample of size $n$ with replacement from the sample. 
+
+  2. Compute a statistic that describes the sample, such as the sample mean.
+
+  3. Repeat this resampling process many times, say 10,000.
+  
+  4. Construct the bootstrap distribution of the statistic. Inspect its spread, bias, and shape.
+  
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
