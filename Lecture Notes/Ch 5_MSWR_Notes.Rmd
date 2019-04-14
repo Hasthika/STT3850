@@ -21,6 +21,7 @@ library(cowplot)
 
 In this chapter we will create and interpret *confidence intervls made by using the Bootstrap*. Let's start with the idea of the Bootstrap.
 
+
 # Introduction to the Bootstrap
 
 
@@ -32,14 +33,12 @@ This approach is illustrated in the following Figure on a simple data set;
 
 ![](Bootstrap_process.png)
 
-Note: Bootstrap sample size is $n$, which is the size of the original sample as well.
+Note: Bootstrap sample size is $n$, which is the size of the original sample as well. This is usually the case.
 
 &nbsp;
 
 > ***The Bootstrap Idea:*** The original sample approximates the population from which it was drawn. So resamples from this sample approximate what we would get if we took   many samples from the population. The bootstrap distribution of a statistic, based on many resamples, approximates the sampling distribution of the statistic, based on many samples.
       
-
-
 
 ---
 
@@ -58,12 +57,202 @@ Given a sample of size $n$ from a population,
 ---
 
 
+```{example}
+We will investigate samples taken from the CDC’s database of births. For the North Carolina data: `NCBirths2004`, we are interested in $\mu$, the true birth weight mean for all North Carolina babies born in 2004.
+```
+
+
+```{r}
+library(resampledata)
+library(ggplot2)
+
+data(NCBirths2004)
+
+set.seed(13)
+head(NCBirths2004)
+
+mean(NCBirths2004$Weight) # Investigate the sample mean of the Weight
+
+# This is how the sample Weight is distributed
+
+ggplot(data = data.frame(NCBirths2004), aes(x = Weight)) + 
+  geom_histogram(fill = "gray", color = "black") + 
+  geom_vline(xintercept  = mean(NCBirths2004$Weight), color = "blue") +
+  labs(x = "X: Weight", title = "Weights for NC births") + 
+  theme_bw() 
+
+
+# Let' start bootstrapping now!
+
+BirthWeightSample <- NCBirths2004$Weight # This is my original SAMPLE 
+n <- length(BirthWeightSample) # This is the original sample size
+
+B <- 10000  # The number of bootstrap samples
+boot_Mean_Wt <- numeric(B) # A vector to store bootstrap menas from the bootstrap samples
+
+for (i in 1:B){
+  x <- sample(BirthWeightSample, size = n, replace = TRUE) # Here n is the size of your bootstrap sample
+  boot_Mean_Wt[i] <- mean(x)
+}
+
+mean(boot_Mean_Wt) # This is the mean of the bootstrap means - so the center of the bootstrap distribution
+sd(boot_Mean_Wt) # This is the standard error of the bootstrap distribution
+
+
+# Now plot the bootstrap distribution
+
+ggplot(data = data.frame(x = boot_Mean_Wt), aes(x = x)) + 
+  geom_histogram(fill = "lightblue", color = "black") + 
+  geom_vline(xintercept  = mean(boot_Mean_Wt), color = "red") +
+  labs(x = substitute(paste(bar(X),"* (g)")), 
+       title = "Bootstrap distribution of means for NC birth weights") + 
+  theme_bw() 
+
+
+```
+
+```{definition}
+
+The **bias** of the bootstrap estimate is the mean of the bootstrap distribution, minus the estimate from the original data. 
+
+$$Bias_{boot}[\hat{\theta}^*] = E[\hat{\theta}^*] - \hat{\theta},$$
+
+Here $\theta$ can be the mean for example.
+```
+
+
+```{example}
+Find the **bias** of the bootstrap mean for the previous example. 
+```
+
+```{r}
+# Your code here:
+
+```
+
+```{r include=FALSE}
+Bias <- mean(boot_Mean_Wt) - mean(BirthWeightSample)
+Bias
+```
+
+
+
+```{exercise}
+Arsenic is a naturally occurring element in the groundwater of Bangladesh. However, much of this groundwater is used for drinking water by rural populations, so arsenic poisoning is a serious health issue. 
+
+The data frame `Bangladesh` consists infomation about of 271 wells in Bangladesh. 
+
+1. Load the `Bangladesh` data from the library `resampledata`.
+
+2. Find the sample mean of the arsenic concentrations for these 271 wells.
+
+3. Plot and comment about how the arsenic concentrations for these 271 wells are distributed.
+
+4. Find the mean and the standard error of the bootstrap distribution of the mean arsenic concentrations.
+
+5. Plot and comment about bootstrap distribution of the mean arsenic concentrations.
+
+6. Find the **bias** of the bootstrap mean. 
+```
 
 
 
 
+```{r}
+set.seed(13)
+
+#1
+
+data("Bangladesh")
+head(Bangladesh)
+
+#2 
+mean(Bangladesh$Arsenic) # Investigate the sample mean of the Weight
 
 
+#3
+
+# This is how the sample Arsenic concentration is distributed
+
+ggplot(data = data.frame(Bangladesh), aes(x = Arsenic)) + 
+  geom_histogram(fill = "gray", color = "black") + 
+  geom_vline(xintercept  = mean(Bangladesh$Arsenic), color = "blue") +
+  labs(x = "X: Arsenic concentration", title = "Arsenic concentrations for 271 wells in Bangladesh") + 
+  theme_bw() 
+
+#4
+
+# Let' start bootstrapping now!
+
+ArsenicInWells <- Bangladesh$Arsenic # This is my original SAMPLE 
+n <- length(ArsenicInWells) # This is the original sample size
+
+B <- 10000  # The number of bootstrap samples
+boot_Mean_Arsenic <- numeric(B) # A vector to store bootstrap menas from the bootstrap samples
+
+for (i in 1:B){
+  x <- sample(ArsenicInWells, size = n, replace = TRUE) # Here n is the size of your bootstrap sample
+  boot_Mean_Arsenic[i] <- mean(x)
+}
+
+mean(boot_Mean_Arsenic) # This is the mean of the bootstrap means - so the center of the bootstrap distribution
+sd(boot_Mean_Arsenic) # This is the standard error of the bootstrap distribution
+
+
+#5
+
+# Now plot the bootstrap distribution
+
+ggplot(data = data.frame(x = boot_Mean_Arsenic), aes(x = x)) + 
+  geom_histogram(fill = "lightblue", color = "black") + 
+  geom_vline(xintercept  = mean(boot_Mean_Arsenic), color = "red") +
+  labs(x = substitute(paste(bar(X),"* (g)")), 
+       title = "Bootstrap distribution of means Arsenic concentration") + 
+  theme_bw() 
+
+
+#6
+
+Bias <- mean(boot_Mean_Arsenic) - mean(ArsenicInWells)
+Bias
+
+```
+
+
+
+# BOOTSTRAP PERCENTILE CONFIDANCE INTERVALS 
+
+
+The sample mean $\bar{X}$ gives an estimate of the true mean $\mu$, but it probably does not hit it exactly. It would be nice to have a range of values for the true $\mu$ that we are 95% sure includes the true $\mu$.
+
+
+In the North Carolina birth weights case study, the bootstrap distribution shows roughly how sample means vary for samples of size 1009. If most of the sample means are concentrated within a certain interval of the bootstrap distribution, it seems reasonable to assume that the true mean is most likely somewhere in that same interval.
+
+Thus, we can construct what is called a `95% confidence interval` by using the `2.5` and `97.5` percentiles of the bootstrap distribution as endpoints. We would then say that `we are 95% confident that the true mean lies within this interval`. These type of confidence intervals are called the `bootstrap percentile confidence intervals`.
+
+```{definition}
+BOOTSTRAP PERCENTILE CONFIDENCE INTERVALS:
+
+The interval between 2.5 and 97.5 percentiles of the bootstrap distribution of a statistic is a 95% bootstrap percentile confidence interval for the corresponding parameter.
+```
+
+```{example}
+Find and interpret the 95% bootstrap percentile confidence interval for the mean weight of North Carolina babies.
+```
+
+```{r}
+# We use the `quantile` command
+
+quantile(boot_Mean_Wt, probs = c(0.025, 0.975))
+```
+
+
+For the North Carolina birth weights, the interval marked by the 2.5 and 97.5 percentiles is (3417.42, 3478.91). Thus, we would state that we are 95% confident that the true mean weight of North Carolina babies born in 2004 is between 3417.42 and 3478.91 g. 
+
+
+```{exercise}
+Find and interpret the 95% bootstrap percentile confidence interval for the mtrue mean arsenic level in the Bangladesh wells.
+```
 
 
 
