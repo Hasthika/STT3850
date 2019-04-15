@@ -16,6 +16,7 @@ library(ggplot2)
 library(moderndive)
 library(knitr)
 library(cowplot)
+library(skimr)
 ```
 
 
@@ -111,14 +112,19 @@ ggplot(data = data.frame(x = boot_Mean_Wt), aes(x = x)) +
 
 ```
 
+> Note: We use * to denote the bootstrap estimates. For example, $\bar{X}^*_1$ would be the mean from the first bootstrap sample.
+
 ```{definition}
 
 The **bias** of the bootstrap estimate is the mean of the bootstrap distribution, minus the estimate from the original data. 
 
 $$Bias_{boot}[\hat{\theta}^*] = E[\hat{\theta}^*] - \hat{\theta},$$
+  
+bootstrap estimate is *unbiased* if the Bias is zero.
 
 Here $\theta$ can be the mean for example.
 ```
+
 
 
 ```{example}
@@ -158,7 +164,7 @@ The data frame `Bangladesh` consists infomation about of 271 wells in Bangladesh
 
 
 
-```{r}
+```{r include=FALSE}
 set.seed(13)
 
 #1
@@ -231,7 +237,7 @@ In the North Carolina birth weights case study, the bootstrap distribution shows
 Thus, we can construct what is called a `95% confidence interval` by using the `2.5` and `97.5` percentiles of the bootstrap distribution as endpoints. We would then say that `we are 95% confident that the true mean lies within this interval`. These type of confidence intervals are called the `bootstrap percentile confidence intervals`.
 
 ```{definition}
-BOOTSTRAP PERCENTILE CONFIDENCE INTERVALS:
+BOOTSTRAP PERCENTILE CONFIDANCE INTERVALS:
 
 The interval between 2.5 and 97.5 percentiles of the bootstrap distribution of a statistic is a 95% bootstrap percentile confidence interval for the corresponding parameter.
 ```
@@ -246,17 +252,63 @@ Find and interpret the 95% bootstrap percentile confidence interval for the mean
 quantile(boot_Mean_Wt, probs = c(0.025, 0.975))
 ```
 
+```{r}
+# Here is a picture
+
+ggplot(data = data.frame(x = boot_Mean_Wt), aes(x = x)) + 
+  geom_histogram(fill = "lightblue", color = "black") + 
+  geom_vline(xintercept  = c(3417.420, 3478.906), color = "blue") +
+  geom_text(aes(x=3417.420, label="Lower Confidance Limit\n", y=500), colour="blue", angle=90, text=element_text(size=11))+
+  geom_text(aes(x=3478.906, label="\n Upper Confidance Limit", y=500), colour="blue", angle=90, text=element_text(size=11))+
+  geom_vline(xintercept  = c(mean(boot_Mean_Wt)), color = "red") +
+  labs(x = substitute(paste(bar(X),"* (g)")), 
+       title = "Bootstrap distribution of means for NC birth weights With Confidance Limits") + 
+  theme_bw() 
+
+```
+
 
 For the North Carolina birth weights, the interval marked by the 2.5 and 97.5 percentiles is (3417.42, 3478.91). Thus, we would state that we are 95% confident that the true mean weight of North Carolina babies born in 2004 is between 3417.42 and 3478.91 g. 
 
 
 ```{exercise}
-Find and interpret the 95% bootstrap percentile confidence interval for the mtrue mean arsenic level in the Bangladesh wells.
+Find and *interpret* the 95% bootstrap percentile confidence interval for the true mean arsenic level in the Bangladesh wells.
+```
+
+```{r}
+# Your code here
 ```
 
 
+```{exercise}
+In addition to the arsenic concentration for 271 wells, the Bangladesh data set contains chlorine concentration.
+```
+  
+  a. Run the `skim()` command on the `Chlorine` column and notice the missing values (NA values)
+  
+  b. Use the following code to remove the missing values (NA values).
 
+```{r}
+# Removing missing values
 
+chlorine_concentration <- Bangladesh %>%
+  filter(!is.na(Chlorine)) 
 
+# skim(chlorine_concentration) # Run this to check if the missing values are gone from the Chlorine column
+  
+```
 
-
+  c. Bootstrap the mean (Find and plot)
+  
+  d. Find and *interpret* the 95% bootstrap percentile confidence interval for the true mean Chlorine level in the Bangladesh wells.
+  
+  
+```{exercise}
+In addition to the arsenic concentration for 271 wells, the Bangladesh data set contains chlorine concentration.
+```
+  
+  a. Bootstrap the 25% trimmed mean (Find and plot)
+  
+  b. Compare your results with the usual mean in the previous exercise.
+  
+  
