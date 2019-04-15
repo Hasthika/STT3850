@@ -226,7 +226,7 @@ Bias
 
 
 
-# BOOTSTRAP PERCENTILE CONFIDANCE INTERVALS 
+# BOOTSTRAP PERCENTILE CONFIDENCE INTERVALS 
 
 
 The sample mean $\bar{X}$ gives an estimate of the true mean $\mu$, but it probably does not hit it exactly. It would be nice to have a range of values for the true $\mu$ that we are 95% sure includes the true $\mu$.
@@ -311,4 +311,7 @@ In addition to the arsenic concentration for 271 wells, the Bangladesh data set 
   
   b. Compare your results with the usual mean in the previous exercise.
   
-  
+
+# TWO SAMPLE BOOTSTRAP
+
+---- Tomorrow!
