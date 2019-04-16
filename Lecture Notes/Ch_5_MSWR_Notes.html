@@ -191,7 +191,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Confidence Intervals: The Bootstrap</h1>
 <h4 class="author">Dr. Hasthika Rupasinghe</h4>
-<h4 class="date">Apr 16, 2019 at 12:02:51 PM</h4>
+<h4 class="date">Apr 16, 2019 at 03:53:10 PM</h4>
 
 </div>
 
@@ -380,7 +380,33 @@ chlorine_concentration &lt;- chlorine_no_na$Chlorine # This is the original samp
 </div>
 <div id="two-sample-bootstrap" class="section level1">
 <h1><span class="header-section-number">3</span> TWO SAMPLE BOOTSTRAP</h1>
-<p>—- Tomorrow!</p>
+<hr />
+<p>We now turn to the problem of comparing two samples. In general, bootstrapping should mimic how the data were obtained. So the data correspond to independent samples from two populations, we should draw to samples that way. Then we proceed to compute the same statistic comparing the samples as per the original data, for example, difference in means or ratio of proportions.</p>
+<p><strong>BOOTSTRAP FOR COMPARING TWO POPULATIONS:</strong></p>
+<p>Given independent samples of sizes m and n from two populations,</p>
+<ol style="list-style-type: decimal">
+<li><p>Draw a resample of size m with replacement from the first sample in a separate resample of size n for the second sample. Compute a statistic that compares the two groups, such as the difference between the two sample means.</p></li>
+<li><p>Repeat this resampling process many times say 10,000.</p></li>
+<li><p>Construct the bootstrap distribution of the statistic. Inspect its spread, bias, and shape.</p></li>
+</ol>
+<hr />
+
+<div class="example">
+<span id="exm:unnamed-chunk-18" class="example"><strong>Example 3.1  </strong></span>Do men take more physical risks in the presence of an attractive women?
+</div>
+
+<p>Two phychologists in Australia conducted an experiment to explore this question. Male skateboarders were randomly assigned to perfom tricks in presence of an attractive Female Experimenter or a Male Experimenter.</p>
+<p>Use the dataframe <code>Skateboard</code> from the library <code>resampledata</code> to create a 95% bootstap confidence interval for the difference in <code>Testosterone</code> levels when there is a Female Experimenter or a Male Experimenter present.</p>
+<p>Following steps might be helpful.</p>
+<ol style="list-style-type: decimal">
+<li><p>Filter out the sample with Female Experimenter and name it <code>Ori_Female_sample</code></p></li>
+<li><p>Filter out the sample with Male Experimenter and name it <code>Ori_Male_sample</code></p></li>
+<li><p>Find the sizzes of each sample. Call those <code>nf</code> and <code>nm</code></p></li>
+<li><p>Bootstrap the difference between the sample means for above two samples.</p></li>
+<li><p>Find a 95% percentile interval (bootstrap CI) for the</p></li>
+<li><p>Be sure to know how to interpret the CI.</p></li>
+<li><p>Answer the original research question.</p></li>
+</ol>
 </div>
 
 

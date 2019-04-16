@@ -316,4 +316,91 @@ In addition to the arsenic concentration for 271 wells, the Bangladesh data set 
 
 # TWO SAMPLE BOOTSTRAP
 
----- Tomorrow!
+---
+
+We now turn to the problem of comparing two samples. In general, bootstrapping should mimic how the data were obtained. So the data correspond to independent samples from two populations, we should draw to samples that way. Then we proceed to compute the same statistic comparing the samples as per the original data, for example, difference in means or ratio of proportions.
+
+**BOOTSTRAP FOR COMPARING TWO POPULATIONS:**
+ 
+ Given independent samples of sizes m and n from two populations, 
+ 
+  1. Draw a resample of size m with replacement from the first sample in a separate resample of size n for the second sample. Compute a statistic that compares the two groups, such as the difference between the two sample means. 
+  
+  2. Repeat this resampling process many times say 10,000.
+  
+  3. Construct the bootstrap distribution of the statistic. Inspect its spread, bias, and shape.
+
+---
+
+
+
+```{example}
+Do men take more physical risks in the presence of an attractive women? 
+```
+
+Two phychologists in Australia conducted an experiment to explore this question. Male skateboarders were randomly assigned to perfom tricks in presence of an attractive Female Experimenter or a Male Experimenter.
+
+Use the dataframe `Skateboard` from the library `resampledata` to create a 95% bootstap confidence interval for the difference in `Testosterone` levels when there is a Female Experimenter or a Male Experimenter present.
+
+
+Following steps might be helpful.
+
+1) Filter out the sample with Female Experimenter and name it `Ori_Female_sample`
+
+2) Filter out the sample with Male Experimenter and name it `Ori_Male_sample`
+
+3) Find the sizzes of each sample. Call those `nf` and `nm`
+
+4) Bootstrap the difference between the sample means for above two samples.
+
+5) Find a 95% percentile interval (bootstrap CI) for the 
+
+6) Be sure to know how to interpret the CI.
+
+7) Answer the original research question.
+
+
+```{r include=FALSE}
+library(resampledata)
+data("Skateboard")
+head(Skateboard)
+
+
+Female_sample <- Skateboard %>%
+  filter(Experimenter == "Female") 
+
+Ori_Female_sample <- Female_sample$Testosterone
+
+Male_sample <- Skateboard %>%
+  filter(Experimenter == "Male")
+
+Ori_Male_sample <- Male_sample$Testosterone
+
+nf <- length(Ori_Female_sample)
+nm <- length(Ori_Male_sample)
+
+B <- 10000
+boot_Mean_Diff <- numeric(B)
+
+for (i in 1:B)
+{
+  
+  sampleF <- sample(Ori_Female_sample, size = nf, replace = TRUE)
+  meanF <- mean(sampleF)
+  
+  sampleM <- sample(Ori_Male_sample, size = nm, replace = TRUE)
+  meanM <- mean(sampleM)
+  
+  boot_Mean_Diff[i] <- meanF - meanM
+  
+  
+}
+
+
+quantile(boot_Mean_Diff, probs = c(.025, 0.975))
+
+
+```
+
+
+
