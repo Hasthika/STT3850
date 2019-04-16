@@ -165,7 +165,7 @@ The data frame `Bangladesh` consists infomation about of 271 wells in Bangladesh
 
 
 ```{r include=FALSE}
-set.seed(13)
+set.seed(8)
 
 #1
 
@@ -212,7 +212,7 @@ sd(boot_Mean_Arsenic) # This is the standard error of the bootstrap distribution
 ggplot(data = data.frame(x = boot_Mean_Arsenic), aes(x = x)) + 
   geom_histogram(fill = "lightblue", color = "black") + 
   geom_vline(xintercept  = mean(boot_Mean_Arsenic), color = "red") +
-  labs(x = substitute(paste(bar(X),"* (g)")), 
+  labs(x = substitute(paste(bar(X),"* (ppb)")), 
        title = "Bootstrap distribution of means Arsenic concentration") + 
   theme_bw() 
 
@@ -291,10 +291,12 @@ In addition to the arsenic concentration for 271 wells, the Bangladesh data set 
 ```{r}
 # Removing missing values
 
-chlorine_concentration <- Bangladesh %>%
+chlorine_no_na <- Bangladesh %>%
   filter(!is.na(Chlorine)) 
 
-# skim(chlorine_concentration) # Run this to check if the missing values are gone from the Chlorine column
+# skim(chlorine_no_na) # Run this to check if the missing values are gone from the Chlorine column
+
+chlorine_concentration <- chlorine_no_na$Chlorine # This is the original sample now.
   
 ```
 

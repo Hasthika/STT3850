@@ -191,7 +191,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Confidence Intervals: The Bootstrap</h1>
 <h4 class="author">Dr. Hasthika Rupasinghe</h4>
-<h4 class="date">Apr 15, 2019 at 12:58:45 PM</h4>
+<h4 class="date">Apr 16, 2019 at 12:02:51 PM</h4>
 
 </div>
 
@@ -358,10 +358,12 @@ ggplot(data = data.frame(x = boot_Mean_Wt), aes(x = x)) +
 </ol>
 <pre class="r"><code># Removing missing values
 
-chlorine_concentration &lt;- Bangladesh %&gt;%
+chlorine_no_na &lt;- Bangladesh %&gt;%
   filter(!is.na(Chlorine)) 
 
-# skim(chlorine_concentration) # Run this to check if the missing values are gone from the Chlorine column</code></pre>
+# skim(chlorine_no_na) # Run this to check if the missing values are gone from the Chlorine column
+
+chlorine_concentration &lt;- chlorine_no_na$Chlorine # This is the original sample now.</code></pre>
 <ol start="3" style="list-style-type: lower-alpha">
 <li><p>Bootstrap the mean (Find and plot)</p></li>
 <li><p>Find and <em>interpret</em> the 95% bootstrap percentile confidence interval for the true mean Chlorine level in the Bangladesh wells.</p></li>
