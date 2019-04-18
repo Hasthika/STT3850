@@ -346,6 +346,9 @@ Test yourself:
 
 ## Week 15: (Apr 22--23 (State Holiday); Apr 24--26) {-}
 
+TBA
+
+<!--
 * Read Chapter 7 of MSWR
 
 * [Chapter 7 notes](../Notes/Children/ConfidenceIntervals2.html)
@@ -355,15 +358,22 @@ Test yourself:
 * Complete the problems in the [R Markdown file](https://raw.githubusercontent.com/alanarnholt/STT3850/gh-pages/Homework/Chapter7HWK.Rmd) and publish your solution to [RPubs](http://rpubs.com/) 
 ```
 
+-->
 
 ## Week 16: (Apr 29--May 1; May 2nd is Reading Day) {-}
 
+TBA
+<!--
 * [Bootstrap $t$](../Rmarkdown/MoreBootstrapping.html)
+-->
 
-### Final Exam {-}
+
+### Datasets
 
 * [Exam 2 data 1](../Data/poverty.txt)
 * [Exam 2 data 2](../Data/iqsize.txt)
+
+### Final Exam {-}
 
 ```{block, FINAL, type='rmdnote'}
 *  Final exam for 8am class (Sec 101) is on May 7th 8am--10:30am
