@@ -404,3 +404,4 @@ quantile(boot_Mean_Diff, probs = c(.025, 0.975))
 
 
 
+The 95% CI for the difference between means (female - male) is (______, ______). Thus we are 95% confident that testosterone levels of men who skateboard in front of a female experimenter are, **on average**, between ______ and _______ *higher* than that of men who skateboard in front of a male experimenter.
