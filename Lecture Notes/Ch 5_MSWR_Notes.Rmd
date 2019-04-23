@@ -302,6 +302,29 @@ chlorine_concentration <- chlorine_no_na$Chlorine # This is the original sample 
 
   c. Bootstrap the mean (Find and plot)
   
+```{r}
+set.seed(8)
+chlorine_concentration <- chlorine_no_na$Chlorine # This is my original SAMPLE 
+n <- length(chlorine_concentration) # This is the original sample size
+
+B <- 10000  # The number of bootstrap samples
+boot_Mean_chlorine <- numeric(B) # A vector to store bootstrap menas from the bootstrap samples
+
+for (i in 1:B){
+  x <- sample(chlorine_concentration, size = n, replace = TRUE) # Here n is the size of your bootstrap sample
+  boot_Mean_chlorine[i] <- mean(x)
+}
+
+mean(boot_Mean_chlorine) # This is the mean of the bootstrap means - so the center of the bootstrap distribution
+sd(boot_Mean_chlorine) # This is the standard error of the bootstrap distribution
+
+
+quantile(boot_Mean_chlorine, probs = c(.025, 0.975))
+
+```
+
+
+  
   d. Find and *interpret* the 95% bootstrap percentile confidence interval for the true mean Chlorine level in the Bangladesh wells.
   
   
@@ -310,6 +333,27 @@ In addition to the arsenic concentration for 271 wells, the Bangladesh data set 
 ```
   
   a. Bootstrap the 25% trimmed mean (Find and plot)
+```{r}
+set.seed(8)
+chlorine_concentration <- chlorine_no_na$Chlorine # This is my original SAMPLE 
+n <- length(chlorine_concentration) # This is the original sample size
+
+B <- 10000  # The number of bootstrap samples
+boot_TrMean_chlorine <- numeric(B) # A vector to store bootstrap menas from the bootstrap samples
+
+for (i in 1:B){
+  x <- sample(chlorine_concentration, size = n, replace = TRUE) # Here n is the size of your bootstrap sample
+  boot_TrMean_chlorine[i] <- mean(x, trim = 0.25)
+}
+
+mean(boot_TrMean_chlorine) # This is the mean of the bootstrap means - so the center of the bootstrap distribution
+sd(boot_TrMean_chlorine) # This is the standard error of the bootstrap distribution
+
+
+quantile(boot_TrMean_chlorine, probs = c(.025, 0.975))
+```
+  
+
   
   b. Compare your results with the usual mean in the previous exercise.
   
@@ -379,23 +423,18 @@ Ori_Male_sample <- Male_sample$Testosterone
 nf <- length(Ori_Female_sample)
 nm <- length(Ori_Male_sample)
 
+
 B <- 10000
 boot_Mean_Diff <- numeric(B)
 
 for (i in 1:B)
 {
-  
   sampleF <- sample(Ori_Female_sample, size = nf, replace = TRUE)
-  meanF <- mean(sampleF)
-  
   sampleM <- sample(Ori_Male_sample, size = nm, replace = TRUE)
-  meanM <- mean(sampleM)
-  
-  boot_Mean_Diff[i] <- meanF - meanM
-  
+
+  boot_Mean_Diff[i] <- mean(sampleF) - mean(sampleM) 
   
 }
-
 
 quantile(boot_Mean_Diff, probs = c(.025, 0.975))
 
@@ -404,14 +443,182 @@ quantile(boot_Mean_Diff, probs = c(.025, 0.975))
 
 
 
-The 95% CI for the difference between means (female - male) is (______, ______). Thus we are 95% confident that testosterone levels of men who skateboard in front of a female experimenter are, **on average**, between ______ and _______ *higher* than that of men who skateboard in front of a male experimenter.
+
+## Wrong interpretaions from quiz 9
+
+We are 95% confident that the mpg of the cars **in this data set** will fall between 18.08 and 22.16
+
+
+95% of all mpg values will be between 18.08 and 22.16.
+
+
+## Match pairs (Two Dependent Samples)
+
+In this case we have *Two Dependent Samples*. (In the previous example we had two independent samples)., but the process is a little different.
+
+Here is an algorithm:
+
+___
+
+ Given dependent samples of size n,
+ 
+  1. Get the difference between the two samples and create a single sample of the differences.
+ 
+  2. Draw a resample of size $n$ with replacement from the sample. Compute the statistic of interest such as the mean.
+  
+  2. Repeat this resampling process many times say 10,000.
+  
+  3. Construct the bootstrap distribution of the statistic. Inspect its spread, bias, and shape.
+  
+___
+
+Here is an example: 
+
+We would like to compare the mean semi-final and final sores of 12 female divers competing in the FINA Would Championship in 2017. 
+
+Use a bootstrap CI to determine whether the mean scores for divers differ between the final and semi-final rounds.
+
+
+Note: No matter what test we are supposed to use, it is always good practice to do a EDA, at leat about the grops that we are interesetd in. 
+
+```{r}
+data("Diving2017")
+head(Diving2017)
+
+skim(Diving2017)
+```
+
+
+```{r include=FALSE}
+set.seed(111)
+data("Diving2017")
+head(Diving2017)
+
+Ori_Final_sample <- Diving2017$Final
+Ori_Semi_Final_sample <- Diving2017$Semifinal
+
+ori_diff_sample <- Ori_Final_sample - Ori_Semi_Final_sample # Make a single sample of the difference
+
+n <- length(ori_diff_sample)
+
+B <- 10000
+boot_Mean_Diff <- numeric(B)
+
+for (i in 1:B)
+{
+  samp <- sample(ori_diff_sample, size = n, replace = TRUE)
+
+  boot_Mean_Diff[i] <- mean(samp) 
+  
+}
+
+quantile(boot_Mean_Diff, probs = c(.025, 0.975))
+
+
+# Here is a picture
+
+ggplot(data = data.frame(x = boot_Mean_Diff), aes(x = x)) + 
+  geom_histogram(fill = "lightblue", color = "black") + 
+  geom_vline(xintercept  = c(-6.61250, 30.94583), color = "blue") +
+  geom_text(aes(x=-6.61250, label="Lower Confidance Limit = -6.61250 \n", y=6000), colour="blue", angle=90, text=element_text(size=11))+
+  geom_text(aes(x=30.94583, label="\n Upper Confidance Limit = 30.94583", y=6000), colour="blue", angle=90, text=element_text(size=11))+
+  geom_vline(xintercept  = c(mean(boot_Mean_Diff)), color = "red") +
+  labs(x = substitute(paste(bar(X),"*")), 
+       title = "Bootstrap distribution of means of the differences, With Confidance Limits") + 
+  theme_bw() 
+
+
+```
+
+Interpretation of the CI (Answer to the research question): 
+
+
+```{example}
+
+Use the `FlightDelays` data frame from the `resampledata` package. Compute the variance of the flight delay
+times in May and June. 
+
+Construct and interpret a 95% bootstrap percentile confidence interval for the ratio of the variances. 
+
+```
+
+```{r include=FALSE}
+set.seed(111)
+data("FlightDelays")
+
+DelayMay <- FlightDelays %>%
+  filter(Month == "May")
+
+Ori_DelayMay <- DelayMay$Delay
+nm <- length(Ori_DelayMay)
+
+
+DelayJune <- FlightDelays %>%
+  filter(Month == "June")
+
+Ori_DelayJune <- DelayJune$Delay
+nj <- length(Ori_DelayJune)
+
+
+B <- 10^4
+rv <- numeric(B)
+
+for(i in 1:B){
+  bsM <- sample(Ori_DelayMay, nm, replace = TRUE)
+  bsJ <- sample(Ori_DelayJune, nj, replace = TRUE)
+  
+  rv[i] <- var(bsJ)/var(bsM)
+}
+(CI <- quantile(rv, probs = c(0.025, 0.975)))
+```
+
+
+We are 95% confident that the true ratio (June/May) of delay variances falls in the interval (0.97, 2.35).
 
 
 
+```{example}
+
+A company institutes an exercise break to see if it will improve job satisfaction. Job satisfaction scores for 10 randomly selected workers before and after the exercise program are shown in the table below. Use a bootstrap CI to check whether the job satisfaction has increased.
+```
 
 
+| Worker |	Before |	After
+| -------|---------|------|
+| 1 |	18 |	25
+| 2	| 18 |	11
+| 3	| 20 |	30
+| 4	| 29 |	49
+| 5	| 11 |	14
+| 6	| 37 |	54
+| 7	| 22  |	18
+| 8	| 30 |	37
+| 9	| 36 |	40
+| 10 | 49	| 76
 
 
+```{r include=FALSE}
+set.seed(111)
 
+Ori_Before_sample <- c(18, 18, 20, 29, 11, 37, 22, 30, 36, 49)
+Ori_After_sample <- c(25, 11, 30, 49, 14, 54, 18, 37, 40, 76)
+
+ori_diff_sample <- Ori_After_sample - Ori_Before_sample # Make a single sample of the difference
+
+n <- length(ori_diff_sample)
+
+B <- 10000
+boot_Mean_Diff <- numeric(B)
+
+for (i in 1:B)
+{
+  samp <- sample(ori_diff_sample, size = n, replace = TRUE)
+
+  boot_Mean_Diff[i] <- mean(samp) 
+  
+}
+
+quantile(boot_Mean_Diff, probs = c(.025, 0.975))
+```
 
 

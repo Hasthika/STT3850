@@ -191,7 +191,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Confidence Intervals: The Bootstrap</h1>
 <h4 class="author">Dr. Hasthika Rupasinghe</h4>
-<h4 class="date">Apr 17, 2019 at 09:54:01 PM</h4>
+<h4 class="date">Apr 23, 2019 at 01:04:38 PM</h4>
 
 </div>
 
@@ -365,17 +365,59 @@ chlorine_no_na &lt;- Bangladesh %&gt;%
 
 chlorine_concentration &lt;- chlorine_no_na$Chlorine # This is the original sample now.</code></pre>
 <ol start="3" style="list-style-type: lower-alpha">
-<li><p>Bootstrap the mean (Find and plot)</p></li>
-<li><p>Find and <em>interpret</em> the 95% bootstrap percentile confidence interval for the true mean Chlorine level in the Bangladesh wells.</p></li>
+<li>Bootstrap the mean (Find and plot)</li>
+</ol>
+<pre class="r"><code>set.seed(8)
+chlorine_concentration &lt;- chlorine_no_na$Chlorine # This is my original SAMPLE 
+n &lt;- length(chlorine_concentration) # This is the original sample size
+
+B &lt;- 10000  # The number of bootstrap samples
+boot_Mean_chlorine &lt;- numeric(B) # A vector to store bootstrap menas from the bootstrap samples
+
+for (i in 1:B){
+  x &lt;- sample(chlorine_concentration, size = n, replace = TRUE) # Here n is the size of your bootstrap sample
+  boot_Mean_chlorine[i] &lt;- mean(x)
+}
+
+mean(boot_Mean_chlorine) # This is the mean of the bootstrap means - so the center of the bootstrap distribution</code></pre>
+<pre><code>[1] 77.90904</code></pre>
+<pre class="r"><code>sd(boot_Mean_chlorine) # This is the standard error of the bootstrap distribution</code></pre>
+<pre><code>[1] 12.8694</code></pre>
+<pre class="r"><code>quantile(boot_Mean_chlorine, probs = c(.025, 0.975))</code></pre>
+<pre><code>     2.5%     97.5% 
+ 54.40651 104.89668 </code></pre>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Find and <em>interpret</em> the 95% bootstrap percentile confidence interval for the true mean Chlorine level in the Bangladesh wells.</li>
 </ol>
 
 <div class="exercise">
-<span id="exr:unnamed-chunk-17" class="exercise"><strong>Exercise 2.3  </strong></span>In addition to the arsenic concentration for 271 wells, the Bangladesh data set contains chlorine concentration.
+<span id="exr:unnamed-chunk-18" class="exercise"><strong>Exercise 2.3  </strong></span>In addition to the arsenic concentration for 271 wells, the Bangladesh data set contains chlorine concentration.
 </div>
 
 <ol style="list-style-type: lower-alpha">
-<li><p>Bootstrap the 25% trimmed mean (Find and plot)</p></li>
-<li><p>Compare your results with the usual mean in the previous exercise.</p></li>
+<li>Bootstrap the 25% trimmed mean (Find and plot)</li>
+</ol>
+<pre class="r"><code>set.seed(8)
+chlorine_concentration &lt;- chlorine_no_na$Chlorine # This is my original SAMPLE 
+n &lt;- length(chlorine_concentration) # This is the original sample size
+
+B &lt;- 10000  # The number of bootstrap samples
+boot_TrMean_chlorine &lt;- numeric(B) # A vector to store bootstrap menas from the bootstrap samples
+
+for (i in 1:B){
+  x &lt;- sample(chlorine_concentration, size = n, replace = TRUE) # Here n is the size of your bootstrap sample
+  boot_TrMean_chlorine[i] &lt;- mean(x, trim = 0.25)
+}
+
+mean(boot_TrMean_chlorine) # This is the mean of the bootstrap means - so the center of the bootstrap distribution</code></pre>
+<pre><code>[1] 17.86066</code></pre>
+<pre class="r"><code>sd(boot_TrMean_chlorine) # This is the standard error of the bootstrap distribution</code></pre>
+<pre><code>[1] 2.4629</code></pre>
+<pre class="r"><code>quantile(boot_TrMean_chlorine, probs = c(.025, 0.975))</code></pre>
+<pre><code>    2.5%    97.5% 
+13.64737 23.21056 </code></pre>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Compare your results with the usual mean in the previous exercise.</li>
 </ol>
 </div>
 <div id="two-sample-bootstrap" class="section level1">
@@ -392,7 +434,7 @@ chlorine_concentration &lt;- chlorine_no_na$Chlorine # This is the original samp
 <hr />
 
 <div class="example">
-<span id="exm:unnamed-chunk-18" class="example"><strong>Example 3.1  </strong></span>Do men take more physical risks in the presence of an attractive women?
+<span id="exm:unnamed-chunk-20" class="example"><strong>Example 3.1  </strong></span>Do men take more physical risks in the presence of an attractive women?
 </div>
 
 <p>Two phychologists in Australia conducted an experiment to explore this question. Male skateboarders were randomly assigned to perfom tricks in presence of an attractive Female Experimenter or a Male Experimenter.</p>
@@ -407,7 +449,132 @@ chlorine_concentration &lt;- chlorine_no_na$Chlorine # This is the original samp
 <li><p>Be sure to know how to interpret the CI.</p></li>
 <li><p>Answer the original research question.</p></li>
 </ol>
-<p>The 95% CI for the difference between means (female - male) is (______, ______). Thus we are 95% confident that testosterone levels of men who skateboard in front of a female experimenter are, <strong>on average</strong>, between ______ and _______ <em>higher</em> than that of men who skateboard in front of a male experimenter.</p>
+<div id="wrong-interpretaions-from-quiz-9" class="section level2">
+<h2><span class="header-section-number">3.1</span> Wrong interpretaions from quiz 9</h2>
+<p>We are 95% confident that the mpg of the cars <strong>in this data set</strong> will fall between 18.08 and 22.16</p>
+<p>95% of all mpg values will be between 18.08 and 22.16.</p>
+</div>
+<div id="match-pairs-two-dependent-samples" class="section level2">
+<h2><span class="header-section-number">3.2</span> Match pairs (Two Dependent Samples)</h2>
+<p>In this case we have <em>Two Dependent Samples</em>. (In the previous example we had two independent samples)., but the process is a little different.</p>
+<p>Here is an algorithm:</p>
+<hr />
+<p>Given dependent samples of size n,</p>
+<ol style="list-style-type: decimal">
+<li><p>Get the difference between the two samples and create a single sample of the differences.</p></li>
+<li><p>Draw a resample of size <span class="math inline">\(n\)</span> with replacement from the sample. Compute the statistic of interest such as the mean.</p></li>
+<li><p>Repeat this resampling process many times say 10,000.</p></li>
+<li><p>Construct the bootstrap distribution of the statistic. Inspect its spread, bias, and shape.</p></li>
+</ol>
+<hr />
+<p>Here is an example:</p>
+<p>We would like to compare the mean semi-final and final sores of 12 female divers competing in the FINA Would Championship in 2017.</p>
+<p>Use a bootstrap CI to determine whether the mean scores for divers differ between the final and semi-final rounds.</p>
+<p>Note: No matter what test we are supposed to use, it is always good practice to do a EDA, at leat about the grops that we are interesetd in.</p>
+<pre class="r"><code>data(&quot;Diving2017&quot;)
+head(Diving2017)</code></pre>
+<pre><code>              Name     Country Semifinal  Final
+1 CHEONG Jun Hoong    Malaysia    325.50 397.50
+2         SI Yajie       China    382.80 396.00
+3         REN Qian       China    367.50 391.95
+4       KIM Mi Rae North Korea    346.00 385.55
+5       WU Melissa   Australia    318.70 370.20
+6    KIM Kuk Hyang North Korea    360.85 360.00</code></pre>
+<pre class="r"><code>skim(Diving2017)</code></pre>
+<pre><code>Skim summary statistics
+ n obs: 12 
+ n variables: 4 
+
+── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────
+ variable missing complete  n n_unique                     top_counts
+  Country       0       12 12        8 Can: 2, Chi: 2, Mal: 2, Nor: 2
+     Name       0       12 12       12  SI: 1, BEN: 1, CHA: 1, CHE: 1
+ ordered
+   FALSE
+   FALSE
+
+── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────
+  variable missing complete  n   mean    sd     p0    p25    p50    p75
+     Final       0       12 12 350.48 40.02 283.35 318.59 358.93 387.15
+ Semifinal       0       12 12 338.5  22.95 313.7  322.2  325.62 356.57
+  p100     hist
+ 397.5 ▂▃▂▂▁▃▂▇
+ 382.8 ▆▇▁▂▂▂▂▂</code></pre>
+<p>Interpretation of the CI (Answer to the research question):</p>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-24" class="example"><strong>Example 3.2  </strong></span> Use the <code>FlightDelays</code> data frame from the <code>resampledata</code> package. Compute the variance of the flight delay times in May and June.</p>
+<p>Construct and interpret a 95% bootstrap percentile confidence interval for the ratio of the variances.</p>
+</div>
+
+<p>We are 95% confident that the true ratio (June/May) of delay variances falls in the interval (0.97, 2.35).</p>
+
+<div class="example">
+<span id="exm:unnamed-chunk-26" class="example"><strong>Example 3.3  </strong></span> A company institutes an exercise break to see if it will improve job satisfaction. Job satisfaction scores for 10 randomly selected workers before and after the exercise program are shown in the table below. Use a bootstrap CI to check whether the job satisfaction has increased.
+</div>
+
+<table>
+<thead>
+<tr class="header">
+<th>Worker</th>
+<th>Before</th>
+<th>After</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>18</td>
+<td>25</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>18</td>
+<td>11</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>20</td>
+<td>30</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>29</td>
+<td>49</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>11</td>
+<td>14</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>37</td>
+<td>54</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>22</td>
+<td>18</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>30</td>
+<td>37</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>36</td>
+<td>40</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>49</td>
+<td>76</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 
 
