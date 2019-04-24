@@ -350,6 +350,7 @@ Test yourself:
 
 * In class **quiz 10** --- Apr 25 (last 20 min of class)
 
+* [Chapter 5 Of MSWR HW](../Homework/Chapter5HWK_H.Rmd) --- Due: Wednesday, May 1st
 
 <!--
 * Read Chapter 7 of MSWR
