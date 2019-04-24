@@ -366,16 +366,12 @@ Test yourself:
 
 ## Week 16: (Apr 29--May 1; May 2nd is Reading Day) {-}
 
-TBA
+* Review for the Final
 <!--
 * [Bootstrap $t$](../Rmarkdown/MoreBootstrapping.html)
 -->
 
 
-### Datasets
-
-* [Exam 2 data 1](../Data/poverty.txt)
-* [Exam 2 data 2](../Data/iqsize.txt)
 
 ### Final Exam {-}
 
@@ -384,3 +380,8 @@ TBA
 
 *  Final exam for 9.30am class (Sec 102) is on May 9th 8am--10:30am
 ```
+
+### Datasets
+
+* [Exam 2 data 1](../Data/poverty.txt)
+* [Exam 2 data 2](../Data/iqsize.txt)
