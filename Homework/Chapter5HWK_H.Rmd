@@ -1,0 +1,160 @@
+---
+title: "Chapter Five Homework"
+author: "Your Name Here"
+date: '`r format(Sys.time(), "%A, %b %d, %Y - %X")`'
+output: bookdown::html_document2
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA, fig.align = "center", warning = FALSE, message = FALSE)
+library(tidyverse)
+library(resampledata)
+```
+
+
+
+ 
+------------  
+
+1. The data set `FishMercury` contains mercury levels (parts per million) for 30 fish caught in lakes in Minnesota.
+
+    (a) Create a histogram or boxplot of the data. What do you observe?
+    
+    (b) Bootstrap the mean and record the bootstrap standard error and the 95% bootstrap percentile interval.
+    
+    (c) Remove the outlier and bootstrap the mean of the remaining data. Record the bootstrap standard error and the 95% bootstrap percentile interval.
+    
+    (d) What effect did removing the outlier have on the bootstrap distribution, in particular, the standard error?
+    
+```{r}
+head(FishMercury)
+
+```    
+
+------------ 
+
+Your answers:
+
+a.
+
+```{r}
+# Your code here
+```
+
+Note that there is one value (`r max(FishMercury$Mercury)`) very far removed from the rest of the values.
+
+b.
+
+```{r}
+# Your code here
+```
+
+
+
+c.
+
+```{r}
+# Your code here
+```
+
+
+d.
+ 
+
+
+------------  
+    
+2. In section 3.3, we performed a permutation test to determine if men and women consumed, on average, different amounts of hot wings. Here we do this using bootstarps
+
+    (a) Bootstrap the difference in means and describe the bootstrap distribution.
+    
+    (b) Find a 95% bootstrap percentile confidence interval for the difference of means and give a sentence interpreting this interval.
+    
+------------ 
+
+```{r}
+head(Beerwings)
+```
+
+Your answers:
+
+a.
+
+```{r}
+# Your code here
+
+```
+
+
+
+
+b.
+
+```{r}
+# Your code here
+```
+
+
+------------      
+    
+3. Import the data from `Girls2004` (see Section 1.2).
+
+    (a) Use `skim()` to obtain summary statistics on the weight of baby girls born in Wyoming and Arkansas.
+    
+    (b) Bootstrap  the difference in the means of weight of baby girls born in Wyoming and Arkansas, plot the distribution, Obtain a 95% bootstrap percentile confidence interval and interpret this interval.
+    
+    (c) What is the bootstrap estimate of the bias? 
+
+
+```{r, label = "Girls"}
+head(Girls2004)
+```
+
+------------ 
+
+Your answers:
+
+a.
+
+```{r}
+# Your code here
+# Part a.
+
+```
+
+
+b.
+
+```{r}
+# Your code here
+```
+
+
+c.
+
+```{r}
+# Your code here
+
+```
+
+
+
+ 
+------------  
+    
+4. Do chocolate and vanilla ice creams have the same number of calories? The data set `IceCream` contains calorie information for a sample of brands of chocolate and vanilla ice cream. Use the bootstrap to determine whether or not  there is a difference in the mean number of calories.
+
+```{r, label = "IceCream"}
+head(IceCream)
+```
+
+------------ 
+
+Your answer:
+
+```{r}
+# Your code here
+
+```
+
+
