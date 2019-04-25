@@ -489,7 +489,7 @@ skim(Diving2017)
 ```
 
 
-```{r include=FALSE}
+```{r}
 set.seed(111)
 data("Diving2017")
 head(Diving2017)
@@ -542,7 +542,7 @@ Construct and interpret a 95% bootstrap percentile confidence interval for the r
 
 ```
 
-```{r include=FALSE}
+```{r}
 set.seed(111)
 data("FlightDelays")
 
@@ -597,7 +597,7 @@ A company institutes an exercise break to see if it will improve job satisfactio
 | 10 | 49	| 76
 
 
-```{r include=FALSE}
+```{r}
 set.seed(111)
 
 Ori_Before_sample <- c(18, 18, 20, 29, 11, 37, 22, 30, 36, 49)
