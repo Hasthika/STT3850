@@ -120,9 +120,9 @@ Test yourself:
 
 * Read Chapter 3 of MSWR
 
-* [Lecture: Before Chapter 3: the `for` loop in R](../Lecture Notes/Before_Ch_03_students.html)
+* [Lecture: Before Chapter 3: the `for` loop in R](../Lecture Notes/Before_Ch_03_students.html__)
 
-* [Lecture: Chapter 3](../Lecture Notes/Ch_3_Notes_students.html)
+* [Lecture: Chapter 3](../Lecture Notes/Ch_3_Notes_students.html__)
 
 * Complete _Exploratory Data Analysis_ [(DataCamp)](https://www.datacamp.com/) --- Due Feb 10
 
