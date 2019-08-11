@@ -45,7 +45,7 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * _Complete Introduction to R_ [(DataCamp)](https://www.datacamp.com/) --- Due Jan 18
 
-* In class **quiz 01** --- Jan 17 (last 20 min of class)
+* In class **quiz 01** --- Thursday (last 20 min of class)
 
 
 ## Week 2: (Aug 26--30 (No class 27th)) {-}
@@ -64,7 +64,7 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * Complete Chapters 1-3 of _Intermediate R_ [(DataCamp)](https://www.datacamp.com/courses/intermediate-r) --- Due Jan 25
 
-* In class **quiz 02** --- Jan 24 (last 20 min of class)
+* In class **quiz 02** --- Thursday (last 20 min of class)
 
 
 
@@ -88,7 +88,7 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 *  Complete _Introduction to the Tidyverse_ [(DataCamp)](https://www.datacamp.com/courses/introduction-to-the-tidyverse) --- Due Feb 1 (optional)
 
 
-* In class **quiz 03** --- Jan 31 (last 20 min of class)
+* In class **quiz 03** --- Thursday (last 20 min of class)
 
 ```{block, TEST1, type='rmdnote'}
 * Prepare R Markdown `cheat sheet` for Test 1 (Written Assignment #1---5% of course grade)
@@ -126,14 +126,14 @@ Test yourself:
 
 * Complete _Exploratory Data Analysis_ [(DataCamp)](https://www.datacamp.com/) --- Due Feb 10
 
-* In class **quiz 04** --- Feb 06 (last 20 min of class)
+* In class **quiz 04** --- Thursday (last 20 min of class)
 
 
 ## Week 5: (Sep 16--20) {-}
 
 * Complete _Working with Data in the Tidyverse_ [(DataCamp)](https://www.datacamp.com/courses/working-with-data-in-the-tidyverse) --- Due Feb 15
 
-* [Lecture: Chapter 3](../Lecture Notes/Ch_3_Notes_students.html)
+* [Lecture: Chapter 3](../Lecture Notes/Ch_3_Notes_students.html__)
 
 <!--
 * Work on [Is this Discrimination?](../Rmarkdown/ClassAssignment.html)
@@ -141,7 +141,7 @@ Test yourself:
 * Some ideas for how to answer the [Is this Discrimination?](../Rmarkdown/discrimination.html)
 -->
 
-* In class **Exam 01** --- Feb 14
+* In class **Exam 01** --- Thursday
 
 
 
@@ -153,21 +153,21 @@ Test yourself:
 
 ## Week 6: (Sep 23--27) {-}
 
-* [Lecture: Chapter 3](../Lecture Notes/Ch_3_Notes_students.html)
+* [Lecture: Chapter 3](../Lecture Notes/Ch_3_Notes_students.html__)
 
-* [Chapter 3 of MSWR HW](../Homework/Chapter3HWK_H.Rmd) --- Due Wednesday the 27th of Feb
+* [Chapter 3 of MSWR HW](../Homework/Chapter3HWK_H.Rmd__) --- 
 
-* [Exam 1 grades (Distribution)](../Exams/GradesExam1.html)
+* [Exam 1 grades (Distribution)](../Exams/GradesExam1.html__)
 
 * Read Chapters 6 [MD](https://moderndive.com) --- Basic Regression 
 
-* In class **quiz 05** --- Feb 21 (last 20 min of class)
+* In class **quiz 05** --- Thursday (last 20 min of class)
 
 
 
 ## Week 7: (Sep 30--Oct 4) {-}
 
-* [Lecture: Chapter 6 of MD](../Lecture Notes/Ch_6_MD_Notes.html)
+* [Lecture: Chapter 6 of MD](../Lecture Notes/Ch_6_MD_Notes.html__)
 
 * Read Chapters 6 [MD](https://moderndive.com) --- Basic Regression 
 
@@ -175,7 +175,7 @@ Test yourself:
 
 * Read through [_Misc Regression_](../Rmarkdown/MiscRegression.html)
 
-* In class **quiz 06** --- Feb 28 (last 20 min of class)
+* In class **quiz 06** --- Thursday (last 20 min of class)
 
 ```{block, week7optional, type='rmdoptional'}
 #### Optional {-}
@@ -196,7 +196,7 @@ Test yourself:
 
 ## Week 9: (Oct 14--18; No class 15th) {-}
 
-* [Lecture: Chapter 6 of MD](../Lecture Notes/Ch_6_MD_Notes.html)
+* [Lecture: Chapter 6 of MD](../Lecture Notes/Ch_6_MD_Notes.html__)
 
 * [gapminder tools](https://www.gapminder.org/tools/#$chart-type=bubbles)
 
@@ -216,7 +216,7 @@ Test yourself:
 
 * Start preparing R Markdown `cheat sheet` for Test 2
 
-* In class **quiz 07** --- Mar 14 (last 20 min of class)
+* In class **quiz 07** --- Thursday (last 20 min of class)
 
 ## Week 10: (Oct 21--25) {-}
 
@@ -225,7 +225,7 @@ Test yourself:
 
 ```
 
-* [Lecture: Chapter 7 of MD](../Lecture Notes/Ch_7_MD_Notes.html)
+* [Lecture: Chapter 7 of MD](../Lecture Notes/Ch_7_MD_Notes.html__)
 
 * Read Chapter 7 of [MD](https://moderndive.com) --- Multiple Regression
 
@@ -241,24 +241,26 @@ Test yourself:
 
 -->
 
-* [Chapter 6 of MD HW](../Homework/Chapter6_Of_MD_HWK_H.Rmd) --- Due Wednesday the 27th of March
+* [Chapter 6 of MD HW](../Homework/Chapter6_Of_MD_HWK_H.Rmd__) --- Due Wednesday the 27th of March
 
 * [OJUICE dataframe for homework](../Homework/data/OJUICE.Rdata) 
 
 
-* In class **quiz 08** --- March 28 (last 20 min of class)
+* In class **quiz 08** --- Thursday (last 20 min of class)
 
 ## Week 11: (Oct 28--Nov 1) {-}
 
-* [Lecture: Chapter 7 of MD](../Lecture Notes/Ch_7_MD_Notes.html)
+* [Lecture: Chapter 7 of MD](../Lecture Notes/Ch_7_MD_Notes.html__)
 
 * Read Chapter 10 of [MD](https://moderndive.com) --- Hypothesis Testing
 
 * Complete _Inference for Numerical Data_ [(DataCamp)](https://www.datacamp.com/) --- Due March 29
 
-* In class **Exam 02** --- March 28th (Allowed to use the `cheat sheet`)
+* In class **Exam 02** --- Thursday (Allowed to use the `cheat sheet`)
 
-* [Chapter 7 of MD HW](../Homework/Chapter7HWKnew.Rmd) --- Due Thursday the 4th of April
+* [Chapter 7 of MD HW](../Homework/Chapter7HWKnew.Rmd__) --- 
+
+
 
 ## Week 12: (Nov 4--8) {-}
 
@@ -266,7 +268,7 @@ Test yourself:
 
 * Read Chapter 4 of MSWR
 
-* [Lecture: Sampling Distributions](../Lecture Notes/Ch_4_MSWR_Notes.html)
+* [Lecture: Sampling Distributions](../Lecture Notes/Ch_4_MSWR_Notes.html__)
 
 <!--
 * [Goodness-Of-Fit](../Handouts/ChiGOF.html)
@@ -277,7 +279,7 @@ Test yourself:
 -->
 
 
-* In class **quiz 09** --- Apr 04 (last 20 min of class)
+* In class **quiz 09** --- Thursday (last 20 min of class)
 
 ## Week 13: (Nov 11--15) {-}
 
@@ -285,7 +287,7 @@ Test yourself:
 
 * Read Chapter 4 of MSWR
 
-* [Lecture: Sampling Distributions](../Lecture Notes/Ch_4_MSWR_Notes.html)
+* [Lecture: Sampling Distributions](../Lecture Notes/Ch_4_MSWR_Notes.html__)
 
 <!--
 * Read Chapter 5 of MSWR
@@ -296,7 +298,7 @@ Test yourself:
 
 -->
 
-* In class **quiz 10** --- Apr 11 (last 20 min of class)
+* In class **quiz 10** --- Thursday (last 20 min of class)
 
 
 
@@ -304,9 +306,9 @@ Test yourself:
 
 ## Week 14: (Nov 18--22) {-}
 
-* [Chapter 4 Of MSWR HW](../Homework/Sampling Distributions HW.Rmd) --- Due: Friday, April 19th at 3pm
+* [Chapter 4 Of MSWR HW](../Homework/Sampling Distributions HW.Rmd__) --- 
 
-* [Lecture: Confidence Intervals: The Bootstrap](../Lecture Notes/Ch_5_MSWR_Notes.html)
+* [Lecture: Confidence Intervals: The Bootstrap](../Lecture Notes/Ch_5_MSWR_Notes.html__)
 
 <!--
 ```{block, week13optional, type='rmdoptional'}
@@ -324,17 +326,17 @@ Test yourself:
 
 
 
-* In class **quiz 11** --- Apr 18 (last 20 min of class)
+* In class **quiz 11** --- Thursday (last 20 min of class)
 
 
 
 ## Week 15: (Nov 25--29; No class 27--28) {-}
 
-* [Lecture: Confidence Intervals: The Bootstrap](../Lecture Notes/Ch_5_MSWR_Notes.html)
+* [Lecture: Confidence Intervals: The Bootstrap](../Lecture Notes/Ch_5_MSWR_Notes.html__)
 
-* In class **quiz 10** --- Apr 25 (last 20 min of class)
+* In class **quiz 10** --- Thursday (last 20 min of class)
 
-* [Chapter 5 Of MSWR HW](../Homework/Chapter5HWK_H.Rmd) --- Due: Wednesday, May 1st
+* [Chapter 5 Of MSWR HW](../Homework/Chapter5HWK_H.Rmd__) --- 
 
 <!--
 * Read Chapter 7 of MSWR
