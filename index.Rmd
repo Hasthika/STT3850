@@ -9,7 +9,7 @@ title: "Welcome"
 
 * [Course Syllabus](./Syllabus/SyllabusSTT3850S2019.html)
 
-* [Assignments and Course Pacing](./CoursePacing/CoursePacingS2019.html)
+* [Assignments and Course Pacing](./CoursePacing/CoursePacingF2019.html)
 
 * Click [here](https://goo.gl/forms/M5bnJKj7PgzjHVR72) to record your attendance.
 

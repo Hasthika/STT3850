@@ -1,0 +1,371 @@
+---
+title: "Tentative STT 3850 Course Schedule"
+author: "Hasthika Rupasinghe"
+date: 'Last compiled: `r format(Sys.time(), "%A, %B %d, %Y - %X.")`'
+output:
+  html_document:
+    css: ../css/style.css
+    highlight: textmate
+    theme: yeti
+---
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+
+### General Notes: {-}
+
+```{block, note-text, type='rmdnote'}
+1.  Please bring a notebook and pencil to every class.
+2.  The texts for this course are [ModernDive: An Introduction to Statistical and Data Sciences via R](https://moderndive.com) (MD) and _Mathematical Statistics with Resampling and R_ (MSWR)
+3.  Most but not all DataCamp assignments are due by 5:00 pm on a Friday (class does not meet on Friday)
+```
+
+#### Grading Rubric for Homework Assignments {-}
+
+Field | Excellent (3) | Competent (2)  | Needs Work (1)
+------|---------------|----------------|---------------
+Reproducible | All graphs, code, and answers are created from text files.  Answers are never hardcoded but instead are inserted using inline R code.  An automatically generated references section with properly formatted citations when appropriate and `sessionInfo()` are provided at the end of the document. | All graphs, code, and answers are created from text files.  Answers are  hardcoded. No `sessionInfo()` is provided at the end of the document. References are present but not cited properly or not automatically generated. | Document uses copy and paste with graphs or code.  Answers are hardcoded; and references, when appropriate are hardcoded.
+Statistical Understanding | Answers to questions demonstrate clear statistical understanding by comparing theoretical answers to simulated answers.  When hypotheses are tested, classical methods are compared and contrasted to randomization methods.  When confidence intervals are constructed, classical approaches are compared and contrasted with bootstrap procedures.  The scope of inferential conclusions made is appropriate for the sampling method. | Theoretical and simulated answers are computed but no discussion is present comparing and contrasting the results.  When hypotheses are tested, results for classical and randomization methods are presented but are not compared and contrasted.  When confidence intervals are constructed, classical and bootstrap approaches are computed but the results are not compared and contrasted.  The scope of inferential conclusions made is appropriate for the sampling method. | Theoretical and simulated answers are not computed correctly.  No comparison between classical and randomization approaches is present when testing hypotheses.  When confidence intervals are constructed, there is no comparison between classical and bootstrap confidence intervals .
+Graphics | Graphs for categorical data (barplot, mosaic plot, etc.) have appropriately labeled axes and titles.  Graphs for quantitative data (histograms, density plots, violin plots, etc.) have appropriately labeled axes and titles.  Multivariate graphs use appropriate legends and labels.  Computer variable names are replaced with descriptive variable names. | Appropriate graphs for the type of data are used.  Not all axes have appropriate labels or computer variable names are used in the graphs. | Inappropriate graphs are used for the type of data.  Axes are not labeled and computer variable names appear in the graphs.
+Coding  | Code (primarily R) produces correct answers.  Non-standard or complex functions are commented.  Code is formatted using a consistent standard. | Code produces correct answers.  Commenting is not used with non-standard and complex functions.  No consistent code formatting is used. | Code does not produce correct answers.  Code has no comments and is not formatted.
+Clarity  | Few errors of grammar and usage; any minor errors do not interfere with meaning.  Language style and word choice are highly effective and enhance meaning.  Style and word choice are appropriate for the assignment. | Some errors of grammar and usage; errors do not interfere with meaning.  Language style and word choice are, for the most part, effective and appropriate for the assignment. | Major errors of grammar and usage make meaning unclear.  Language style and word choice are ineffective and/or inappropriate.
+
+
+## Week 1: (Aug 19--23) {-}
+
+
+* Read chapters 1 and 2 of [MD](https://moderndive.com)
+
+* Become familiar with the Appstate [RStudio server](https://mathr.math.appstate.edu/). You will use your Appstate user name and password to log in to the server.  You must be registered in the class to access the server.
+
+* [Lecture: Intro to R](../Slides/IntroToR.html)
+
+* _Complete Introduction to R_ [(DataCamp)](https://www.datacamp.com/) --- Due Jan 18
+
+* In class **quiz 01** --- Jan 17 (last 20 min of class)
+
+
+## Week 2: (Aug 26--30 (No class 27th)) {-}
+
+* Read chapter 3 of [MD](https://moderndive.com) --- Data Visualization via `ggplot2`
+
+* Read [Getting used to R, RStudio, and R Markdown](https://ismayc.github.io/rbasics-book/)
+
+* [Rmarkdown Basics](../Lecture Notes/R_Markdown_Basics.html)
+
+* [Lecture: Week 2]()
+
+<!--* [Lecture: Week 2](../Lecture Notes/Week2_Ch3MD_students.html)-->
+
+* Complete _Introduction to Data_ [(DataCamp)](https://www.datacamp.com/courses/introduction-to-data) --- Due Jan 25
+
+* Complete Chapters 1-3 of _Intermediate R_ [(DataCamp)](https://www.datacamp.com/courses/intermediate-r) --- Due Jan 25
+
+* In class **quiz 02** --- Jan 24 (last 20 min of class)
+
+
+
+
+## Week 3 (Sep 2--Sep 6) {-}
+
+* Read Chapter 4 of [MD](https://moderndive.com) --- Tidy Data via `tidyr`
+
+* Read Chapter 2 of MSWR
+
+* [Lecture: Week 3]()
+
+<!--* [Lecture: Week 3](../Lecture Notes/Week4_Ch2MSWR_students.html)-->
+
+* [Chapter 2 of MSWR HW]()
+
+<!--* [Chapter 2 of MSWR HW](../Homework/Chapter2HWK.Rmd)-->
+
+* Complete _Reporting with R Markdown_ [(DataCamp)](https://www.datacamp.com/courses/reporting-with-r-markdown) --- Due Feb 1 (optional)
+
+*  Complete _Introduction to the Tidyverse_ [(DataCamp)](https://www.datacamp.com/courses/introduction-to-the-tidyverse) --- Due Feb 1 (optional)
+
+
+* In class **quiz 03** --- Jan 31 (last 20 min of class)
+
+```{block, TEST1, type='rmdnote'}
+* Prepare R Markdown `cheat sheet` for Test 1 (Written Assignment #1---5% of course grade)
+* Test 1 --- Feb 07
+```
+
+
+```{block, test3, type='rmdexercise'}
+Test yourself:
+
+1. [R Markdown Practice](RMarkdown.pdf)
+2. [R Markdown Extra Credit](RMarkdownEC.pdf)
+3. [LaTeX/knitr Extra Credit](knitrEC.pdf)
+```
+
+```{block, week3optional, type='rmdoptional'}
+#### Optional {-}
+
+* Complete _Data Visualization with `ggplot2`_ (Part 1) [(DataCamp)](https://www.datacamp.com/)
+
+* Nice [Tidyverse Cheat Sheet](http://datacamp-community.s3.amazonaws.com/e63a8f6b-2aa3-4006-89e0-badc294b179c)
+```
+
+
+
+## Week 4: (Sep 9--13) {-}
+
+* Read chapter 5 of [MD](https://moderndive.com) --- Data Wrangling via `dplyr`
+
+* Read Chapter 3 of MSWR
+
+* [Lecture: Before Chapter 3: the `for` loop in R](../Lecture Notes/Before_Ch_03_students.html)
+
+* [Lecture: Chapter 3](../Lecture Notes/Ch_3_Notes_students.html)
+
+* Complete _Exploratory Data Analysis_ [(DataCamp)](https://www.datacamp.com/) --- Due Feb 10
+
+* In class **quiz 04** --- Feb 06 (last 20 min of class)
+
+
+## Week 5: (Sep 16--20) {-}
+
+* Complete _Working with Data in the Tidyverse_ [(DataCamp)](https://www.datacamp.com/courses/working-with-data-in-the-tidyverse) --- Due Feb 15
+
+* [Lecture: Chapter 3](../Lecture Notes/Ch_3_Notes_students.html)
+
+<!--
+* Work on [Is this Discrimination?](../Rmarkdown/ClassAssignment.html)
+
+* Some ideas for how to answer the [Is this Discrimination?](../Rmarkdown/discrimination.html)
+-->
+
+* In class **Exam 01** --- Feb 14
+
+
+
+```{block, week5optional, type='rmdoptional'}
+#### Optional {-}
+* Complete _Data Manipulation in R with `dplyr`_ [(DataCamp)](https://www.datacamp.com/)
+* Complete _Working with Data in the Tidyverse_ [(DataCamp)](https://www.datacamp.com/courses/working-with-data-in-the-tidyverse)
+```
+
+## Week 6: (Sep 23--27) {-}
+
+* [Lecture: Chapter 3](../Lecture Notes/Ch_3_Notes_students.html)
+
+* [Chapter 3 of MSWR HW](../Homework/Chapter3HWK_H.Rmd) --- Due Wednesday the 27th of Feb
+
+* [Exam 1 grades (Distribution)](../Exams/GradesExam1.html)
+
+* Read Chapters 6 [MD](https://moderndive.com) --- Basic Regression 
+
+* In class **quiz 05** --- Feb 21 (last 20 min of class)
+
+
+
+## Week 7: (Sep 30--Oct 4) {-}
+
+* [Lecture: Chapter 6 of MD](../Lecture Notes/Ch_6_MD_Notes.html)
+
+* Read Chapters 6 [MD](https://moderndive.com) --- Basic Regression 
+
+* Work on _Modeling with Data in Tidyverse_ [(DataCamp)](https://www.datacamp.com/) --- Due March 8
+
+* Read through [_Misc Regression_](../Rmarkdown/MiscRegression.html)
+
+* In class **quiz 06** --- Feb 28 (last 20 min of class)
+
+```{block, week7optional, type='rmdoptional'}
+#### Optional {-}
+* Read Chapter 9 of MSWR
+<!--* Answer the questions at the end of [_Misc Regression_](../Rmarkdown/MiscRegression.html) for extra credit (Turn in before Spring Break starts)-->
+```
+
+
+## Week 8: (Oct 7--11) {-}
+
+* Read Chapters 7 of [MD](https://moderndive.com) --- Multiple Regression
+
+* Complete _Modeling with Data in Tidyverse_ [(DataCamp)](https://www.datacamp.com/) --- Due March 8
+
+* Review Chapters 6 and 7 of [MD](https://moderndive.com) --- Basic Regression and Multiple Regression
+
+
+
+## Week 9: (Oct 14--18; No class 15th) {-}
+
+* [Lecture: Chapter 6 of MD](../Lecture Notes/Ch_6_MD_Notes.html)
+
+* [gapminder tools](https://www.gapminder.org/tools/#$chart-type=bubbles)
+
+* [An interesting video](https://www.youtube.com/watch?v=jbkSRLYSojo)
+
+<!-- * Read Chapter 8 of [MD](https://moderndive.com) --- Sampling
+
+* Read Chapter 4 of MSWR --- Sampling Distributions; [Problems 2, 5, 12-16](../Homework/Chapter4HWK.Rmd)
+
+* [Sampling Distributions](../Handouts/EVuniform.html)
+
+* [In Class Problems](../Slides/ProbabilityProblems.html)
+
+* Complete _Foundations of Probability in R_ [(DataCamp)](https://www.datacamp.com/) --- Due March 15
+
+* [Probability](https://alanarnholt.github.io/GeneralStatistics/rmarkdown/probability.html) -->
+
+* Start preparing R Markdown `cheat sheet` for Test 2
+
+* In class **quiz 07** --- Mar 14 (last 20 min of class)
+
+## Week 10: (Oct 21--25) {-}
+
+```{block, TEST2, type='rmdnote'}
+* Prepare R Markdown `info sheet` for Test 2 (Written Assignment #2---5% of course grade)---The hard copy of what you turn in after the exam is limited to no more than 4 printed pages.  Send an email to `hasthika@appstate.edu` attaching the `*.Rmd` file you used to create your info sheet.  Use a  subject heading of `STT 3850-Your section, info sheet` on the email.  Name the attached file `YourLastName_FirstName_IS2.Rmd`.  Make sure all graphs have captions and are referenced appropriately. Use inline `R` code for reporting numerical answers (especially those that change each time the document is compiled).  Use a `bookdown` output in your YAML.  For questions with respect to `bookdown` see [https://bookdown.org/yihui/bookdown/](https://bookdown.org/yihui/bookdown/). You may create an additional `info sheet` of unlimited length to use during the exam.  
+
+```
+
+* [Lecture: Chapter 7 of MD](../Lecture Notes/Ch_7_MD_Notes.html)
+
+* Read Chapter 7 of [MD](https://moderndive.com) --- Multiple Regression
+
+<!--
+* Bootstrap [Example](https://stat-ata-asu.github.io/STT3851ClassRepo/Rmarkdown/TheBootstrap.html)
+
+* Start _Inference for Numerical Data_ [(DataCamp)](https://www.datacamp.com/) --- Due March 29
+
+* [Misc `infer` Examples](../Rmarkdown/ExamplesInfer.html)
+
+* [Inference Examples used in class](../Handouts/InferenceExamples.pdf)
+
+
+-->
+
+* [Chapter 6 of MD HW](../Homework/Chapter6_Of_MD_HWK_H.Rmd) --- Due Wednesday the 27th of March
+
+* [OJUICE dataframe for homework](../Homework/data/OJUICE.Rdata) 
+
+
+* In class **quiz 08** --- March 28 (last 20 min of class)
+
+## Week 11: (Oct 28--Nov 1) {-}
+
+* [Lecture: Chapter 7 of MD](../Lecture Notes/Ch_7_MD_Notes.html)
+
+* Read Chapter 10 of [MD](https://moderndive.com) --- Hypothesis Testing
+
+* Complete _Inference for Numerical Data_ [(DataCamp)](https://www.datacamp.com/) --- Due March 29
+
+* In class **Exam 02** --- March 28th (Allowed to use the `cheat sheet`)
+
+* [Chapter 7 of MD HW](../Homework/Chapter7HWKnew.Rmd) --- Due Thursday the 4th of April
+
+## Week 12: (Nov 4--8) {-}
+
+* Read Chapter 8 of MD
+
+* Read Chapter 4 of MSWR
+
+* [Lecture: Sampling Distributions](../Lecture Notes/Ch_4_MSWR_Notes.html)
+
+<!--
+* [Goodness-Of-Fit](../Handouts/ChiGOF.html)
+
+* Start _Inference for Categorical Data_ [(DataCamp)](https://www.datacamp.com/) --- Due Apr 12
+
+* [In class Examples](../Rmarkdown/InClassNotes.html)
+-->
+
+
+* In class **quiz 09** --- Apr 04 (last 20 min of class)
+
+## Week 13: (Nov 11--15) {-}
+
+* Read Chapter 8 of MD
+
+* Read Chapter 4 of MSWR
+
+* [Lecture: Sampling Distributions](../Lecture Notes/Ch_4_MSWR_Notes.html)
+
+<!--
+* Read Chapter 5 of MSWR
+
+* [Chapter 5 notes](../Notes/Children/BootStrap2.html)
+
+* [Misc RMarkdown Examples](../Rmarkdown/MiscRmarkdown.html)
+
+-->
+
+* In class **quiz 10** --- Apr 11 (last 20 min of class)
+
+
+
+
+
+## Week 14: (Nov 18--22) {-}
+
+* [Chapter 4 Of MSWR HW](../Homework/Sampling Distributions HW.Rmd) --- Due: Friday, April 19th at 3pm
+
+* [Lecture: Confidence Intervals: The Bootstrap](../Lecture Notes/Ch_5_MSWR_Notes.html)
+
+<!--
+```{block, week13optional, type='rmdoptional'}
+####  {-}
+
+* Complete the problems in the [R Markdown file](https://raw.githubusercontent.com/alanarnholt/STT3850/gh-pages/Homework/Chapter5HWK.Rmd) and publish your solution to [RPubs](http://rpubs.com/).
+```
+
+
+
+* Bootstrap [Example](https://stat-ata-asu.github.io/STT3851ClassRepo/Rmarkdown/TheBootstrap.html)
+
+* Complete _Inference for Categorical Data_ [(DataCamp)](https://www.datacamp.com/) --- Due Nov 16
+-->
+
+
+
+* In class **quiz 11** --- Apr 18 (last 20 min of class)
+
+
+
+## Week 15: (Nov 25--29; No class 27--28) {-}
+
+* [Lecture: Confidence Intervals: The Bootstrap](../Lecture Notes/Ch_5_MSWR_Notes.html)
+
+* In class **quiz 10** --- Apr 25 (last 20 min of class)
+
+* [Chapter 5 Of MSWR HW](../Homework/Chapter5HWK_H.Rmd) --- Due: Wednesday, May 1st
+
+<!--
+* Read Chapter 7 of MSWR
+
+* [Chapter 7 notes](../Notes/Children/ConfidenceIntervals2.html)
+
+```{block, week15optional, type='rmdoptional'}
+#### Optional {-}
+* Complete the problems in the [R Markdown file](https://raw.githubusercontent.com/alanarnholt/STT3850/gh-pages/Homework/Chapter7HWK.Rmd) and publish your solution to [RPubs](http://rpubs.com/) 
+```
+
+-->
+
+## Week 16: (Dec 2--6; Dec 4th is Reading Day) {-}
+
+* Review for the Final
+<!--
+* [Bootstrap $t$](../Rmarkdown/MoreBootstrapping.html)
+-->
+
+
+
+### Final Exam {-}
+
+```{block, FINAL, type='rmdnote'}
+*  Final exam for 8am class (Sec 101) is on TBA
+
+*  Final exam for 9.30am class (Sec 102) is on TBA
+```
+
+### Datasets
+
+* [Exam 2 data 1](../Data/poverty.txt)
+* [Exam 2 data 2](../Data/iqsize.txt)
