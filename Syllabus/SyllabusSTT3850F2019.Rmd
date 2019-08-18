@@ -97,5 +97,5 @@ Note: All technology used in the class is either open source (free) or will be a
 
 **Assignments**
 
-The [CoursePacing guide](../CoursePacing/CoursePacingS2019.html) has all course assignments and due dates.
+The [CoursePacing guide](../CoursePacing/CoursePacingF2019.html) has all course assignments and due dates.
 
