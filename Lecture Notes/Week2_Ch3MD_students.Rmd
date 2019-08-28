@@ -69,7 +69,7 @@ data(flights)
 glimpse(flights)
 ```
 
-Don’t worry for now if you don’t fully understand what this code is doing, we’ll explain this in details Chapter 5, just run it all and understand that we are taking all flights and only considering those corresponding to Alaska Airlines.
+Don’t worry for now if you don’t fully understand what this code is doing, I’ll explain this in details later, just run it all and understand that we are taking all flights and only considering those corresponding to Alaska Airlines.
 
 ```{r}
 all_alaska_flights <- flights %>% 
