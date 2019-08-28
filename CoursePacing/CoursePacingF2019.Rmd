@@ -55,9 +55,7 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * [Rmarkdown Basics](../Lecture Notes/R_Markdown_Basics.html)
 
-* [Lecture: Week 2]()
-
-<!--* [Lecture: Week 2](../Lecture Notes/Week2_Ch3MD_students.html)-->
+* [Lecture: Week 2](../Lecture Notes/Week2_Ch3MD_students.html)
 
 * Complete _Introduction to Data_ [(DataCamp)](https://www.datacamp.com/courses/introduction-to-data) --- 
 
