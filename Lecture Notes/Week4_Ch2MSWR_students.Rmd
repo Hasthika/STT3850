@@ -190,7 +190,7 @@ a) *Create a table and a bar chart of the departure times (`DepartTime`)*
 
 ```{r}
 head(FlightDelays)
-glimpse(FlightDelays)
+str(FlightDelays)
 
 table(FlightDelays$DepartTime)
 
@@ -253,7 +253,7 @@ Excercise 2.5: You try!
 
 
 
-```{r}
+```{r include = FALSE}
 
 data("GSS2002")
 str(GSS2002)
@@ -262,7 +262,7 @@ str(GSS2002)
 
 a) Create a table and a bar chart of the responses to the question about the death penalty.
 
-```{r}
+```{r include = FALSE}
 
 table(GSS2002$DeathPenalty)
 ggplot(data = GSS2002, aes(x = DeathPenalty)) + geom_bar()
@@ -273,7 +273,7 @@ ggplot(data = GSS2002, aes(x = DeathPenalty)) + geom_bar()
 
 b) Use the `table` command and the `summary` command in `R` on the gun ownership variable. What additional infomation does the `summary` command give that the table command does not?
  
-```{r}
+```{r include = FALSE}
 
 table(GSS2002$OwnGun)
 
@@ -283,14 +283,14 @@ summary(GSS2002$OwnGun)
 
 c) Create a contingency table displaying the realtionship between opinions about the death penalty to that about gun ownership.
 
-```{r}
+```{r include = FALSE}
 
 
 
 ```
 d) What proportion of gun owners favor the death penalty? Does it appear to be different from the proportion among those who do not own guns?
 
-```{r}
+```{r include = FALSE}
 library(knitr)
 
 death_gun <- GSS2002 %>%
