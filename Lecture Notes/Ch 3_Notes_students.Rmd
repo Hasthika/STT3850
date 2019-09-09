@@ -30,7 +30,7 @@ The alternative hypothesis is
 
 $$H_A: \mu_d - \mu_c > 0.$$
 
-That is, on average, mice who receive the drug have slower times (larger values) than the mice in the control group.
+That is, on average, mice who receive the drug are slower (larger values) than the mice in the control group.
 
 
 
@@ -47,8 +47,13 @@ DF
 ANS <- DF %>% 
   group_by(treatment) %>% 
   summarize(Average  = mean(time))
-TS <- ANS[2, 2] - ANS[1, 2]
-TS$Average
+MD <- ANS[2, 2] - ANS[1, 2]
+
+observed <- MD$Average
+observed
+```
+
+```{r include=FALSE}
 
 # the way the book does it
 ANS2 <- tapply(DF$time, DF$treatment, mean)
@@ -72,9 +77,9 @@ A test statistic is a numerical function of the data whose values determines the
 &nbsp;
 
 ```{definition}
-The P-value is the probability that chance alone would produce a test statistics as extreme as the the obseved statistic if the null hupothesis were true.
+The P-value is the probability that chance alone would produce a test statistics as extreme as the obseved statistic if the null hupothesis were true.
 
-For example if the large values of the test statistics support the alternative hypothesis, so the P-value is $P(T \geq t)$.
+For example if the large values of the test statistics support the alternative hypothesis, the P-value is $P(T \geq t)$.
 ```
 
 
@@ -187,7 +192,7 @@ head(Beerwings)
 ```
 
 
-Step 2) 
+Step 2) Find the observed difference 
 
 ```{r}
 DF <- data.frame(Hotwings = Beerwings$Hotwings, Gender = Beerwings$Gender)
@@ -196,11 +201,19 @@ DF
 dim(DF)
 
 
-# the way the book does it
-ANS2 <- tapply(DF$Hotwings, DF$Gender, mean)
-ANS2
-MD <- ANS2[2] - ANS2[1]
+# Difference betwen the average number od Hotwings
+
+ANS <- DF %>% 
+  group_by(Gender) %>% 
+  summarize(Average  = mean(Hotwings))
+ANS
+
+MD <- ANS[2, 2] - ANS[1, 2]
 MD
+
+observed <- MD$Average
+observed
+
 ```
 
 Step 3) Resample and find the p-value
@@ -209,12 +222,14 @@ Step 3) Resample and find the p-value
 ```{r include=FALSE}
 set.seed(123)
 sims <- 10^5 - 1 
+
 ans <- numeric(sims)
 for(i in 1:sims){
   index <- sample.int(n = 30, size = 15, replace = FALSE)
   ans[i] <- mean(DF$Hotwings[index]) - mean(DF$Hotwings[-index])
 }
-pvalue <- (sum(ans >= MD) + 1)/(sims + 1)
+
+pvalue <- (sum(ans >= observed) + 1)/(sims + 1)
 pvalue
 ```
  
@@ -226,7 +241,7 @@ ggplot(data = data.frame(md = ans), aes(x = md)) +
   geom_density(fill = "orchid4") + 
   theme_bw() + 
   labs(x = expression(bar(X)[m]-bar(X)[f])) +
-  geom_vline(xintercept=MD, linetype="dotted")
+  geom_vline(xintercept=observed, linetype="dotted")
 ```
 
 
@@ -301,7 +316,7 @@ Step 5: Make the decision --
 
 Technical conclusion: $p$-Value < 0.05, so Reject $H_0$. 
 
-English conclusion: There is enough evidence to conclude that the Verizon spend significantly more time complete repairs for CLEC customers than for the ILEC customers.
+English conclusion: There is enough evidence to conclude that the Verizon spend significantly more time to  complete repairs for CLEC customers than for the ILEC customers.
 
   
   
@@ -455,7 +470,7 @@ b) Define $H_0$ and $H_a$ first.
 
 $H_0: \mu_{May} = \mu_{June}$ vs. $H_0: \mu_{May} \neq \mu_{June}$
 
-```{r}
+```{r include=FALSE}
 data("FlightDelays")
 
 del_by_month <- FlightDelays %>% 

@@ -24,7 +24,7 @@ Loop through the sequence 1 to 5 printing the square of each number
 
 
 ```{example}
-We can capture the results of our loop in a list
+We can capture the results of our loop in a vector
 
 First we create a vector and then we fill in its values
 ```

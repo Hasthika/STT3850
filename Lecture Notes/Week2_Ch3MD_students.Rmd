@@ -87,7 +87,7 @@ all_alaska_flights <- flights %>%
 
 ```{r}
 ggplot(data = all_alaska_flights, mapping = aes(x = dep_delay, y = arr_delay)) + 
-  geom_point() 
+  geom_point(alpha = 1) 
 ```
 
 The large mass of points near (0, 0) in this scatterplot can cause some confusion. We handdle this using

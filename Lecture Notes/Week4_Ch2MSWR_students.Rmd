@@ -26,8 +26,11 @@ $$\bar{x} = \dfrac{1}{n}\sum_{i=1}^n x_i$$
 Example: Find the mean of 2, 15, 3, 8, 12, 5.
 
 ```{r}
-#
-#
+data <- c(2, 15, 3, 8, 12, 5, 100)
+Mean <- mean(data)
+Mean
+
+IQR(c(25,26,45,28,78))
 ```
 
 **Median**
@@ -37,8 +40,7 @@ Median is the middle value of a sorted data set. Usually works well with outlier
 Example: Find the median of 2, 15, 3, 8, 12, 5.
 
 ```{r}
-#
-#
+median(data)
 ```
 
 
@@ -50,8 +52,9 @@ Here for example you sort the data, omit 25% of the observations on each end, an
 Example: Find the 25% Trimmed Mean of 2, 15, 3, 8, 12, 5.
 
 ```{r}
-#
-#
+d <- c(2, 15, 3, 8, 12, 5)
+
+mean(d, trim = .25)
 ```
 
 
@@ -101,9 +104,22 @@ In this class we use the `five number summary` to describe the shape of a data s
 Example: Conside the 15 numbers 9,10,11,11,12,14,16,17,19,21,25,31,32,41,61. Find the five number summary.
 
 ```{r}
-#
-#
+data <- c(9,10,11,11,12,14,16,17,19,21,25,31,32,41,61)
+summary(data)
 ```
+
+Five number summarty is:
+
+  1. Min = 9.0
+  
+  2. $Q_1$ = 11.5
+  
+  3. Median = 17.0
+  
+  4. $Q_3$ = 28.0
+  
+  5. Max = 61.0
+
 
 ### Boxplots
 
@@ -115,10 +131,13 @@ Create a boxplot for the following 21 data values.
 5, 6, 6, 8, 9, 11, 11, 14, 17, 17, 19, 20, 21, 21, 22, 23, 24, 32, 40, 43, 49.
 
 ```{r}
+library(ggplot2)
 
-#
-#
-#
+d <- c(5, 6, 6, 8, 9, 11, 11, 14, 17, 17, 19, 20, 21, 21, 22, 23, 24, 32, 40, 43, 49)
+
+d <- data.frame(d)
+
+ggplot(data = d, aes(y = d)) + geom_boxplot()
 
 ```
 

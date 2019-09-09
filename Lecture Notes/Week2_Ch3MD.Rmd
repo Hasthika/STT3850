@@ -37,6 +37,8 @@ library(dplyr)
 ```
 
 
+
+
 We can break a graphic into the following essential(first three) components:
 
   * `data`: the data-set comprised of variables that we map.
@@ -69,6 +71,7 @@ We will be considering five different types of graphs.
 #View(flights)
 data(flights)
 glimpse(flights)
+str(flights)
 ```
 
 Don’t worry for now if you don’t fully understand what this code is doing, we’ll explain this in details Chapter 5, just run it all and understand that we are taking all flights and only considering those corresponding to Alaska Airlines.
@@ -86,8 +89,14 @@ all_alaska_flights <- flights %>%
 ## Scatter Plots:
 
 ```{r}
+
+ggplot(data = all_alaska_flights, mapping = aes(x = dep_delay, y = arr_delay)) + geom_jitter(width = 30, height = 30)
+  
+  
+  
+
 ggplot(data = all_alaska_flights, mapping = aes(x = dep_delay, y = arr_delay)) + 
-  geom_point() 
+  geom_jitter(width = 30, height = 30)
 ```
 
 The large mass of points near (0, 0) in this scatterplot can cause some confusion. We handdle this using
@@ -126,6 +135,7 @@ Type `library(nycflights13)` in the Console and hit return, then type `View(weat
 Let’s focus on the hourly temperature at Newark airport (origin code “EWR”) for the first 15 days in January 2013. 
 
 ```{r}
+
 
 early_january_weather <- weather %>% 
   filter(origin == "EWR" & month == 1 & day <= 15)
