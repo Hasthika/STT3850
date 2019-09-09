@@ -1,5 +1,5 @@
 ---
-title: "Chapter Two Homework: Due Wednesday the 6th"
+title: "Homework 1 (Chapter Two): Due Wed the 18th"
 author: "Your Name Here"
 date: '`r format(Sys.time(), "%b %d, %Y")`'
 output: bookdown::html_document2
@@ -10,6 +10,12 @@ knitr::opts_chunk$set(echo = TRUE, comment = NA, fig.align = "center", warning =
 library(tidyverse)
 library(resampledata)
 ```
+
+> Note: You need to create a RMarkdown document to do your HW. Make sure to show 
+  1. Your code,
+  2. The output, 
+  3. The descriptions where necessary.
+
 
 1) Exercise 2.7 MODIFIED:
 
@@ -42,7 +48,7 @@ b) Create a histogram and normal quantile plot for the height changes of the see
 ```
 
 
-c) Create a boxplot to compare the distribution of the change in diameters of the seedlings (`Di.change`) grouped by whether or not they were in fertilized plots.
+c) Create a boxplot to compare the distribution of the change in diameters of the seedlings (`Di.change`) grouped by whether or not they were in fertilized plots. Describe the graph.
 
 > SOLUTION: 
 
@@ -51,7 +57,7 @@ c) Create a boxplot to compare the distribution of the change in diameters of th
 
 ```
 
-d) Use Ch 5 of MD: Data Wrangling via `dplyr` to find the numeric summaries of the diameter changes for the two levels fertilization.
+d) Use Data Wrangling via `dplyr` to find the numeric summaries of the diameter changes for the two levels fertilization.
 
 > SOLUTION: 
 
