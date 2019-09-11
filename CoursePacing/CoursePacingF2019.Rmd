@@ -115,7 +115,7 @@ Test yourself:
 
 * [Lecture: Before Chapter 3: the `for` loop in R](../Lecture Notes/Before_Ch_03_students.html)
 
-* [Lecture: Chapter 3](../Lecture Notes/Ch_3_Notes_students.html)
+* [Lecture: Chapter 3](../Lecture Notes/Ch-3_Notes_students.html)
 
 * Complete _Exploratory Data Analysis_ [(DataCamp)](https://www.datacamp.com/) --- 
 
