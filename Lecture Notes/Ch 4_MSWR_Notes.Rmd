@@ -760,7 +760,7 @@ A friend claim that she has drawn a random sample of size 30, from the exponenti
     
   b. Run a simulation by drawing 100,000 random samples, each of size 30, from $\text{Exp}(\lambda = 1/10)$ and then compute the mean.  What proportion of the sample means are as large as or larger than 12?
     
-```{r}
+```{r include=FALSE}
 # part b.
 set.seed(123)
 
@@ -800,8 +800,61 @@ PR12
 Consider the population {3, 5, 6, 6, 8, 11, 13, 15, 19, 20}.
 
   a) Compute the mean and standard deviation and create a histogram of its distribution.
+
+```{r}
+pop <- c(3, 5, 6, 6, 8, 11, 13, 15, 19, 20)
+pop
+
+mean(pop)
+sd(pop)
+
+hist(pop)
+```
+  
+  
+  
   
   b) Simulate the sampling distribution of $\bar{X}$ by taking random samples of size 4 and plot your results. Compute the mean and standard error, and compare to population mean and standard deviation. 
+  
+  
+```{r}
+pop <- c(3, 5, 6, 6, 8, 11, 13, 15, 19, 20)
+
+sims <- 1000
+Xbars <- numeric(sims)
+
+for (i in 1:sims) {
+  sam <- sample(pop, size =4)
+  Xbars[i] <- mean(sam)
+}
+
+mean(Xbars)
+sd(Xbars)
+
+
+mean(Xbars < 11)
+```
+
+  
+  
+  
+```{r}
+pop <- c(3, 5, 6, 6, 8, 11, 13, 15, 19, 20)
+pop
+sims <- 1000
+Xbars <- numeric(sims)
+
+for (i in 1:sims) {
+ samp <- sample(pop, size = 4)
+Xbars[i] <- mean(samp) 
+}
+
+Xbars
+
+mean(Xbars < 11) # Pr(Xbar < 11)
+
+```
+  
   
   c) Use the simulation to find $P(\bar{X} < 11)$
   
@@ -843,6 +896,43 @@ Suppose the heights of boys in a certain city follow a normal distribution with 
   1. Use the CLT to estimate the probability that in a random sample of 30 boys, the mean height is more than 51 in.
   
   2. Use a simulation to redo part 1.
+  
+```{r}
+sims <- 10000
+Xbars <- numeric(sims)
+
+for(i in 1:sims){
+sam <- rnorm(30, mean = 48, sd = 9)
+Xbars[i] <- mean(sam)
+}
+
+
+mean(Xbars > 51)
+
+```
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+```{r}
+sims <- 100000
+Xbars <- numeric(sims)
+
+for (i in 1:sims) {
+  x <- rnorm(n = 30, mean = 48, sd = 9)
+  Xbars[i] <- mean(x)
+}
+
+mean(Xbars > 51)
+```
+
 
 ***
 
@@ -866,95 +956,18 @@ $$N\left(20 + 16, \sqrt{8^2/10 + 7^2/15}\right) = N(`r 20+16`, `r round(sqrt(8^2
 
 Solution:
 
-```{r}
-W <- numeric(10000)
-
-for (i in 1: 10000){
- x <- rnorm(10, mean = 20, sd = 8)
- xbar <- mean(x)
- 
- y <- rnorm(15, mean = 16, sd = 7)
- ybar <- mean(y)
- 
- W[i] <- xbar + ybar
- 
-}
-
-mean(W)
-sd(W)
-
-mean(W < 40) # from the simulation
-
-pnorm(40, mean = 36, sd = 3.11) # from the exact distribution
- 
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-```{r}
-W <- numeric(100000)
-
-for (i in 1:100000){
-  
-x <- rnorm(10, mean = 20, sd = 8)
-xbar <- mean(x)
-
-y <- rnorm(15, mean = 16, sd = 7)
-ybar <- mean(y)
-
-W[i] <- xbar + ybar
-
-}
-
-mean(W)
-sd(W)
-
-mean(W < 40)
-
-# From the Exact distribution
-
-pnorm(40, 36, 3.11)
-```
-
-
-
-
-
-
-
-
-
-
 
       
       
-```{r}
+```{r include=FALSE}
 # part b
 set.seed(13)
-
 sims <- 100000
 W <- numeric(sims)
-
 for(i in 1:sims){
-  
-  x <- rnorm(10, 20, 8)
-  xbar <- mean(x)
-  
-  y <- rnorm(15, 16, 7)
-  ybar <- mean(y)
-  
+  xbar <- mean(rnorm(10, 20, 8))
+  ybar <- mean(rnorm(15, 16, 7))
   W[i] <- xbar + ybar
-  
 }
 
 meanW <- mean(W)
@@ -973,7 +986,7 @@ ans
      
       
       
-```{r}
+```{r include=FALSE}
 ggplot(data = data.frame(x = W), aes(x = x, fill = x < 40)) + 
   geom_histogram(binwidth = 0.3, color = "black") + 
   theme_bw() + 
@@ -982,7 +995,7 @@ ggplot(data = data.frame(x = W), aes(x = x, fill = x < 40)) +
   scale_fill_manual(values = c("lightblue", "purple"))
 ```
 
-```{r}
+```{r include=FALSE}
 # part c.
 Pl40sim <- mean(W < 40)
 Pl40the <- pnorm(40, 36, sqrt(8^2/10 + 7^2/ 15))
@@ -1008,23 +1021,9 @@ The data set `Recidivism` contains the population of all Iowa offenders convicte
 a) Create a histogram and describe the simulated sampling distribution of $\hat{p}$. Estimate the mean and the standard error.
 
 
-
-
-
-```{r}
+```{r include=FALSE}
 library(resampledata)
 data("Recidivism")
-
-head(Recidivism)
-```
-
-
-```{r}
-library(resampledata)
-data("Recidivism")
-
-
-pop <- Recidivism$Recid
 
 sims <- 10000
 
@@ -1033,8 +1032,7 @@ phats <- numeric(sims)
 for (i in 1:sims)
 {
   
-  samp <- sample(pop, 25)
-  
+  samp <- sample(Recidivism$Recid, 25)
   phats[i] <- mean(samp == "Yes")
 }
 
@@ -1058,116 +1056,13 @@ ggplot(data = data.frame(x = phats), aes(x = x)) +
 
 Let $X_1, X_2, \ldots, X_n$ be a random sample from some distribution and suppose $Y = T(X_1, X_2, \ldots, X_n)$ is a statistic.  Suppose the sampling distribution of $Y$ has pdf $f(y) = (3/8)y^2$ for $0 \leq y \leq 2.$  Find $P(0 \leq Y \leq 1/5)$.
 
-```{r}
+```{r include=FALSE}
 f <- function(x){3/8*x^2}
 integrate(f, 0, 1/5)
-
 ans <- integrate(f, 0, 1/5)$value
-
 ```
 
 $P(0 \leq Y \leq 1/5) = `r ans`$
 
-
-***
-
-
-*Question*: 
-
-Consider the population {3, 5, 6, 6, 8, 11, 13, 15, 19, 20}.
-
-  a) Compute the median of this population.
-  
-```{r include=FALSE}
-population <- c(3, 5, 6, 6, 8, 11, 13, 15, 19, 20)
-
-median(population)
-```
-  
-  
-  b) Simulate the sampling distribution of $median$ by taking random samples of size 4 and plot your results. 
-  
-  d) Does the sampling distribution of $median$ look Normal?
-  
-  c) Use the simulation to find $P(Median < 9.5)$
-  
-  
-```{r}
-population <- c(3, 5, 6, 6, 8, 11, 13, 15, 19, 20)
-
-sims <- 10000
-Medians <- numeric(sims)
-
-for (i in 1:sims)
-{
-  
-  samp <- sample(population, size = 4)
-  Medians[i] <- median(samp)
-}
-
-mean(Medians)
-sd(Medians)
-
-ggplot(data = data.frame(x = Medians), aes(x = x, fill = x <= 9.5)) + 
-  geom_histogram(binwidth = .9) + 
-  theme_bw() + 
-  labs(x = expression(bar(x))) + 
-  geom_vline(xintercept = 9.5, linetype = "dashed") + 
-  scale_fill_manual(values = c("lightblue", "purple"))
-
-
-#c Use the simulation to find $P(\bar{X} < 11)$
-mean(Medians < 9.5)
-```
-
-
-***
-
-
-*Question*: 
-
-Consider the population {3, 5, 6, 6, 8, 11, 13, 15, 19, 20}.
-
-  a) Compute the maximum of this population.
-  
-```{r}
-population <- c(3, 5, 6, 6, 8, 11, 13, 15, 19, 20)
-
-max(population)
-```
-  
-  
-  b) Simulate the sampling distribution of $maximum$ by taking random samples of size 5 and plot your results. 
-  
-  d) Does the sampling distribution of $maximum$ look Normal?
-  
-  c) Use the simulation to find $P(maximum < 15)$
-  
-  
-```{r}
-population <- c(3, 5, 6, 6, 8, 11, 13, 15, 19, 20)
-
-sims <- 10000
-Maxes <- numeric(sims)
-
-for (i in 1:sims)
-{
-  
-  samp <- sample(population, size = 4)
-  Maxes[i] <- max(samp)
-}
-
-
-ggplot(data = data.frame(x = Maxes), aes(x = x, fill = x <= 15)) + 
-  geom_histogram(binwidth = 2.5) + 
-  theme_bw() + 
-  labs(x = expression(bar(x))) + 
-  geom_vline(xintercept = 15, linetype = "dashed") + 
-  scale_fill_manual(values = c("lightblue", "purple"))
-
-
-#c Use the simulation to find $P(\bar{X} < 11)$
-mean(Maxes < 15)
-```
 
 
