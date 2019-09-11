@@ -47,7 +47,11 @@ DF
 ANS <- DF %>% 
   group_by(treatment) %>% 
   summarize(Average  = mean(time))
+ANS
+
+
 MD <- ANS[2, 2] - ANS[1, 2]
+MD
 
 observed <- MD$Average
 observed
@@ -116,7 +120,7 @@ DT::datatable(round(VALUES, 2))
 ```{r}
 
 
-pvalue <- sum(VALUES$DiffMean >= MD)/choose(6,3)
+pvalue <- sum(VALUES$DiffMean >= observed)/choose(6,3)
 pvalue
 MASS::fractions(pvalue)
 ```
