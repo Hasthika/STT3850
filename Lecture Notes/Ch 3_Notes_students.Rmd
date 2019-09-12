@@ -162,7 +162,7 @@ for(i in 1:sims){
   index <- sample.int(n = 6, size = 3, replace = FALSE)
   ans[i] <- mean(DF$time[index]) - mean(DF$time[-index])
 }
-pvalue <- (sum(ans >= MD) + 1)/(sims + 1) # Here MD = 4.666667, was the abserved difference between the means.
+pvalue <- (sum(ans >= observed) + 1)/(sims + 1) # Here observed = 4.666667, was the abserved difference between the means.
 
 pvalue
 ```
