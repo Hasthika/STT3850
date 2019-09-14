@@ -189,7 +189,7 @@ $H_0: ??$  vs. $H_a: ??$
 
 Step 1) Get data
 
-```{r}
+```{r include=FALSE}
 library(resampledata)
 data("Beerwings")
 head(Beerwings)
@@ -198,7 +198,7 @@ head(Beerwings)
 
 Step 2) Find the observed difference 
 
-```{r}
+```{r include=FALSE}
 DF <- data.frame(Hotwings = Beerwings$Hotwings, Gender = Beerwings$Gender)
 DF <- tbl_df(DF)
 DF
@@ -272,7 +272,7 @@ Let $\mu_1$ denote the mean repair time for the the ILEC customers and $\mu_2$ t
 2) Conduct the test. 
 
 
-```{r}
+```{r include=FALSE}
 #Step 1
 
 data("Verizon")
