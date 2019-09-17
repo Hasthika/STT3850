@@ -255,7 +255,7 @@ Step 5) Make the decision
 
 Exercise 3.3:
 
-In a hypothesis test comparing two population means, $H_0: \mu_1 = \mu_2$ versus $H_a: \mu_1 \geq \mu_2$:
+In a hypothesis test comparing two population means, $H_0: \mu_1 = \mu_2$ versus $H_a: \mu_1 > \mu_2$:
 
 a) Which $P$-value, 0.03 or 0.006 provides stronger evidence for the alternative hypothesis?
 
@@ -368,13 +368,13 @@ ggplot(data = data.frame(md = ans), aes(x = md)) +
 
 1) Create a good visual to compare the tipical times to complete repairs for ILEC and CLEC customers.
 
-```{r}
+```{r include=FALSE}
 ggplot(data = Verizon, aes(x=factor(Group), y = Time)) + geom_boxplot()
 ```
 
 2) From the graph we created in 1) it is clear that the data have a long tail. Create a better visual to show the tails of the distributions.
 
-```{r}
+```{r include=FALSE}
 ggplot(data = Verizon, aes(x = Time)) + geom_histogram() + facet_wrap(~Group)
 
 ```
