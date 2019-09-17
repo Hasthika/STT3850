@@ -181,7 +181,7 @@ ggplot(data = data.frame(md = ans), aes(x = md)) +
 
 Example: Beer and hot wings case study in section 1.9
 
-Do men consume more hot wings than women?
+Do men consume more hotwings than women?
 
 Define the null and alternative hypothesis:
 
@@ -205,7 +205,7 @@ DF
 dim(DF)
 
 
-# Difference betwen the average number od Hotwings
+# Difference betwen the average number of Hotwings
 
 ANS <- DF %>% 
   group_by(Gender) %>% 
