@@ -1,5 +1,5 @@
 ---
-title: "Chapter Three Homework: Due Wednesday the 27th"
+title: "Homework 2: Ch3 MSWR: Due Thursday the 3rd"
 author: "Your Name Here"
 date: '`r format(Sys.time(), "%b %d, %Y")`'
 output: bookdown::html_document2
@@ -11,40 +11,88 @@ library(tidyverse)
 library(resampledata)
 ```
 
-Exercise 3.5:
 
-In the Flight Delays Case Study in Section 1.1,
 
-    a. The data contain flight delays for two airlines, American Airlines and United Airlines.  Conduct a two-sided permutation test to see if the mean delay times between the two carriers are statistically significant.
+
+```{r include=FALSE}
+#Exercise 3.5:
+
+#In the Flight Delays Case Study in Section 1.1,
+
+#    a. The data contain flight delays for two airlines, American Airlines and United Airlines.  Conduct a #two-sided permutation test to see if the mean delay times between the two carriers are statistically significant.
     
-    b. The flight delays occured in May and June of 2009.  Conduct a two-sided permutation test to see if the difference in mean delay times between the 2 months is statistically significant.
+#   b. The flight delays occured in May and June of 2009.  Conduct a two-sided permutation test to see if the #difference in mean delay times between the 2 months is statistically significant.
     
 
-
-```{r}
 data("FlightDelays")
 glimpse(FlightDelays)
 
 # a. Your code here
 
-``` 
+library(moderndive)
+library(resampledata)
+library(nycflights13)
+set.seed(222)
 
-> SOLUTION: 
+#FD <- read.csv("http://www1.appstate.edu/~arnholta/Data/FlightDelays.csv")
+data("FlightDelays")
 
-```{r}
-# b. Your code here
+str(FlightDelays)
+# a.
+sims <- 10^4 - 1
+
+an <- FlightDelays %>%
+  group_by(Carrier) %>%
+  summarize(Mean = mean(Delay), N = n())
+an
+
+obs <- an[2,2] - an[1,2]
+obs_diff <- obs$Mean
+#
+md <- numeric(sims)
+for(i in 1:sims){
+  index <- sample(4029, size = 1123, replace = FALSE)
+  md[i] <- mean(FlightDelays$Delay[index]) - mean(FlightDelays$Delay[-index])
+}
+
+pvalue <- 2*((sum(md >= obs_diff) + 1)/(sims + 1))
+pvalue
+
+
+#FD <- read.csv("http://www1.appstate.edu/~arnholta/Data/FlightDelays.csv")
+data("FlightDelays")
+
+str(FlightDelays)
+# a.
+sims <- 10^4 - 1
+
+an <- FlightDelays %>%
+  group_by(Month) %>%
+  summarize(Mean = mean(Delay), N = n())
+an
+
+obs <- an[2,2] - an[1,2]
+obs_diff <- obs$Mean
+#
+md <- numeric(sims)
+for(i in 1:sims){
+  index <- sample(4029, size = 2030, replace = FALSE)
+  md[i] <- mean(FlightDelays$Delay[index]) - mean(FlightDelays$Delay[-index])
+}
+
+pvalue <- 2*((sum(md >= obs_diff) + 1)/(sims + 1))
+pvalue
 ```
 
-> SOLUTION: 
 
 
 Exercise 3.8: 
 
 In the Flight Delays Case Study in Section 1.1,
     
-    a. Find the 25% trimmed mean of the delay times for United Airlines and American Airlines.
+  a. Find the 25% trimmed mean of the delay times for United Airlines and American Airlines.
     
-    b. Conduct a two-sided test to see if the difference in trimmed means is statistically significant.
+  b. Conduct a two-sided test to see if the difference in trimmed means is statistically significant.
     
 ```{r}
 # a. Your code here
@@ -63,9 +111,9 @@ Exercise 3.9:
 
 In the Flight Delays Case Study in Section 1.1,
 
-    a. Compute the proportion of times the flights in May and in June were delayed more than 20 min, and conduct a two-sided test of whether the difference between months is statistically significant.
+  a. Compute the proportion of times the flights in May and in June were delayed more than 20 min, and conduct a two-sided test of whether the difference between months is statistically significant.
     
-    b. Compute the variance of the flight delay times in May and June and then conduct a two-sided test of whether the ratio of variances is statistically significantly different from 1.
+  b. Compute the variance of the flight delay times in May and June and then conduct a two-sided test of whether the ratio of variances is statistically significantly different from 1.
     
 ```{r}
 # a. Your code here
