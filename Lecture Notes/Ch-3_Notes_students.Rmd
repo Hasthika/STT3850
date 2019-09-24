@@ -1,0 +1,604 @@
+---
+title: "Lecture Notes for Ch 3 of MSWR: Introduction to Hypothesis Testing: Permutation Tests"
+author: "Dr. Hasthika Rupasinghe"
+date: '`r format(Sys.time(), "%b %d, %Y at %X")`'
+output:
+  bookdown::html_document2:
+    highlight: textmate
+    theme: yeti
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, fig.align = "center", comment = NA, options(scipen=999))
+library(tidyverse)
+library(resampledata)
+library(knitr)
+library(dplyr)
+```
+
+# Introduction
+
+
+
+Consider the mice example in Section 3.1 let $\mu_d$ denote the true mean time that a randomly selected mouse that received the drug takes to run through the maze; let $\mu_c$ denote the true mean time for a control mouse.  Then,
+
+$$H_0:\mu_d - \mu_c = 0.$$
+That is, on average, there is no difference in the mean times between mice who receive the drug and mice in the control group.
+
+The alternative hypothesis is 
+
+$$H_A: \mu_d - \mu_c > 0.$$
+
+That is, on average, mice who receive the drug are slower (larger values) than the mice in the control group.
+
+
+
+## Creating the data
+
+```{r}
+DF <- data.frame(time = c(30, 25, 20, 18, 21, 22), treatment = rep(c("Drug", "Control"), each = 3))
+DF <- tbl_df(DF)
+DF
+
+
+# Difference betwen the average times...
+
+ANS <- DF %>% 
+  group_by(treatment) %>% 
+  summarize(Average  = mean(time))
+ANS
+
+
+MD <- ANS[2, 2] - ANS[1, 2]
+MD
+
+observed <- MD$Average
+observed
+```
+
+```{r include=FALSE}
+
+# the way the book does it
+ANS2 <- tapply(DF$time, DF$treatment, mean)
+ANS2
+MD <- ANS2[2] - ANS2[1]
+MD
+```
+
+**Problem**: This difference could be due to random variability rather than a real drug effect. 
+
+**How do we address this probelem**: Estimate how easily pure random chance would produce a difference this large.
+
+  - If that probability is small, we conclude that there is something other than pure random chance at work.
+
+
+
+```{definition}
+A test statistic is a numerical function of the data whose values determines the results of the test. The function is generally denoted by $T = T(\bf{X})$ where $\bf{X}$ represents the data.
+```
+
+&nbsp;
+
+```{definition}
+The P-value is the probability that chance alone would produce a test statistics as extreme as the obseved statistic if the null hupothesis were true.
+
+For example if the large values of the test statistics support the alternative hypothesis, the P-value is $P(T \geq t)$.
+```
+
+
+
+## All possible distributions of {30, 25, 20, 18, 21, 22} into Two Sets
+
+```{r}
+ANS <- t(combn(6, 3))
+ANS
+
+dim(ANS)
+
+DF$time
+DR <- matrix(NA, nrow = 20, ncol = 3)
+CO <- matrix(NA, nrow = 20, ncol = 3)
+
+for(i in 1:20){
+  DR[i,] <- DF$time[ANS[i,]] 
+  CO[i,] <- DF$time[-ANS[i, ]]
+}
+
+VALUES <- as.data.frame(cbind(DR, CO))
+
+names(VALUES) <- paste(rep(c("D", "C"), each = 3), 1:3, sep = "")
+
+VALUES$DM <- apply(VALUES[, 1:3], 1, mean)
+VALUES$CM <- apply(VALUES[, 4:6], 1, mean)
+
+VALUES$DiffMean <- VALUES$DM - VALUES$CM
+
+DT::datatable(round(VALUES, 2))
+```
+
+```{r}
+
+
+pvalue <- sum(VALUES$DiffMean >= observed)/choose(6,3)
+pvalue
+MASS::fractions(pvalue)
+```
+
+The theoretical _p_-value is $`r pvalue`$.
+
+## Statistical Conclusion
+
+_p_-value was not small enough to reject $H_0$. Therefore, we conclude that there is no significant difference between the times to complete the maze with or without the drug.
+
+
+
+# PERMUTATION TESTS
+
+This problem has a total of $\binom{6}{3} = `r choose(6,3)`$ arrangements of six items into two sets each with three observations.  While it is possible to enumerate all possible outcomes and compute the theoretical answer, once the group sizes increase this becomes computationally infeasible.  Consider $\binom{30}{15} = `r choose(30,15)`$! So, what we typically do is take a "large" number of permutations (generally 10,000) and let this simulation approximate the true distribution.  
+
+We follow this algorithm:
+
+    Two Sample Pemutation Test:
+
+      Pool the m + n values.
+        **repeat**
+            Draw a resample of size m without replacement.
+            Use the remaining n obervations for the other sample.
+            Calculate the difference in means or another statistic that comapres samples.
+        **unitl** we have enough samples.
+        
+      Calculate the p-value as the fraction of timesthe random statistics exceed the original statistic.
+      (Multiply the p-value by 2 for a two sided test.)
+
+
+
+```{r}
+set.seed(123)
+sims <- 10^4 - 1 # Number of simulations (iterations)
+
+ans <- numeric(sims)
+for(i in 1:sims){
+  index <- sample.int(n = 6, size = 3, replace = FALSE)
+  ans[i] <- mean(DF$time[index]) - mean(DF$time[-index])
+}
+pvalue <- (sum(ans >= observed) + 1)/(sims + 1) # Here observed = 4.666667, was the abserved difference between the means.
+
+pvalue
+```
+
+
+```{r, label = "dist", fig.cap = "Permutation Distribution of $\\bar{X}_c - \\bar{X}_d$"}
+library(ggplot2)
+ggplot(data = data.frame(md = ans), aes(x = md)) + 
+  geom_density(fill = "pink") + 
+  theme_bw() + 
+  labs(x = expression(bar(X)[c]-bar(X)[d])) +
+  geom_vline(xintercept=MD, linetype="dotted")
+```
+
+
+
+Example: Beer and hot wings case study in section 1.9
+
+Do men consume more hotwings than women?
+
+Define the null and alternative hypothesis:
+
+$H_0: \mu_M - \mu_F = 0$  vs. $H_a: \mu_M - \mu_F > 0$
+
+Step 1) Get data
+
+```{r}
+library(resampledata)
+data(Beerwings)
+head(Beerwings)
+str(Beerwings)
+```
+
+
+Step 2) Find the observed difference 
+
+```{r include=FALSE}
+DF <- data.frame(Hotwings = Beerwings$Hotwings, Gender = Beerwings$Gender)
+DF <- tbl_df(DF)
+DF
+dim(DF)
+
+
+
+
+
+
+
+# Difference betwen the average number of Hotwings
+
+ANS <- DF %>% 
+  group_by(Gender) %>% 
+  summarize(Average  = mean(Hotwings), N = n())
+ANS
+
+MD <- ANS[2, 2] - ANS[1, 2]
+MD
+
+observed <- MD$Average
+observed
+
+```
+
+Step 3) Resample and find the p-value
+
+
+```{r include=FALSE}
+set.seed(123)
+sims <- 10^5 - 1 
+
+ans <- numeric(sims)
+for(i in 1:sims){
+  index <- sample.int(n = 30, size = 15, replace = FALSE)
+  ans[i] <- mean(DF$Hotwings[index]) - mean(DF$Hotwings[-index])
+}
+
+pvalue <- (sum(ans >= observed) + 1)/(sims + 1)
+pvalue
+```
+ 
+Step 4) Create a plot
+
+```{r include=FALSE, label = "dist2", fig.cap = "Permutation Distribution of $\\bar{X}_m - \\bar{X}_f$"}
+library(ggplot2)
+ggplot(data = data.frame(md = ans), aes(x = md)) + 
+  geom_density(fill = "orchid4") + 
+  theme_bw() + 
+  labs(x = expression(bar(X)[m]-bar(X)[f])) +
+  geom_vline(xintercept=observed, linetype="dotted")
+```
+
+
+Step 5) Make the decision
+
+&nbsp;
+
+Exercise 3.3:
+
+In a hypothesis test comparing two population means, $H_0: \mu_1 = \mu_2$ versus $H_a: \mu_1 > \mu_2$:
+
+a) Which $P$-value, 0.03 or 0.006 provides stronger evidence for the alternative hypothesis?
+
+b) Which $P$-value, 0.095 or 0.04 provides stronger evidence that chance alone might account for the observed result?
+
+&nbsp;
+
+**Example: Verizon case study.**
+
+Let $\mu_1$ denote the mean repair time for the the ILEC customers and $\mu_2$ the mean repair time for the the CLEC customers. 
+
+1) Form the hypothesis. $H_0: \mu_1 = \mu_2$ vs. $H_0: \mu_1 < \mu_2$
+
+2) Conduct the test. 
+
+
+```{r }
+#Step 1
+
+data("Verizon")
+head(Verizon)
+
+dim(Verizon)
+
+
+#Step 2
+
+Time_group <- Verizon %>%
+  group_by(Group) %>%
+  summarize(Mean = mean(Time), NumCus = n())
+Time_group
+
+MD <- Time_group[2,2] - Time_group[1,2]
+MD
+
+observed <- MD$Mean   # We had to create a new variable called observed, because MD was a matrix in this case.
+observed
+  
+#Step 3
+
+set.seed(200)
+sims <- 10^5 - 1 
+ans <- numeric(sims)
+for(i in 1:sims){
+  index <- sample.int(n = 1687, size = 1664, replace = FALSE)
+  ans[i] <- mean(Verizon$Time[index]) - mean(Verizon$Time[-index])
+}
+pvalue <- (sum(ans <= observed) + 1)/(sims + 1)    # Notice <, this is because alternative hypothsis has <.
+pvalue
+
+#Step 4
+library(ggplot2)
+ggplot(data = data.frame(md = ans), aes(x = md)) + 
+  geom_density(fill = "orchid4") + 
+  theme_bw() + 
+  labs(x = expression(bar(X)[ILEC]-bar(X)[CLEC])) +
+  geom_vline(xintercept=observed, linetype="dotted")
+```
+
+  
+Step 5: Make the decision -- 
+
+Technical conclusion: $p$-Value < 0.05, so Reject $H_0$. 
+
+English conclusion: There is enough evidence to conclude that the Verizon spend significantly more time to  complete repairs for CLEC customers than for the ILEC customers.
+
+  
+  
+```{r include=FALSE}
+data("Verizon")
+
+head(Verizon)
+dim(Verizon)
+
+Time_group <- Verizon %>%
+  group_by(Group) %>%
+  summarize(Mean = mean(Time), Count = n())
+Time_group
+
+
+MD <- Time_group[2,2] - Time_group[1,2] # This is the observed value (difference)
+MD
+
+observed <- MD$Mean
+observed
+
+set.seed(123)
+sims <- 10^4 - 1 
+ans <- numeric(sims)
+for(i in 1:sims){
+  index <- sample.int(n = 1687, size = 1664, replace = FALSE)
+  ans[i] <- mean(Verizon$Time[index]) - mean(Verizon$Time[-index])
+}
+pvalue <- (sum(ans <= observed) + 1)/(sims + 1)
+pvalue
+
+
+library(ggplot2)
+ggplot(data = data.frame(md = ans), aes(x = md)) + 
+  geom_density(fill = "orchid3") + 
+  theme_bw() + 
+  labs(x = expression(bar(X)[ILEC]-bar(X)[CLEC])) +
+  geom_vline(xintercept=observed, linetype="dotted")
+```
+
+&nbsp;
+
+**Example: Verizon case study ctd...Data have a long tail?**
+
+
+1) Create a good visual to compare the tipical times to complete repairs for ILEC and CLEC customers.
+
+```{r}
+ggplot(data = Verizon, aes(x=factor(Group), y = Time)) + geom_boxplot()
+```
+
+2) From the graph we created in 1) it is clear that the data have a long tail. Create a better visual to show the tails of the distributions.
+
+```{r}
+ggplot(data = Verizon, aes(x = Time)) + geom_histogram() + facet_wrap(~Group)
+
+```
+
+
+3) Name two measures that can be used to describe the `center` in situations like this instead off the mean.
+
+Trimmed mean, Median
+
+4) Use one of the measures that you mentioned above to re-do the test. State your conclusions.
+
+I am using trimmed mean here.
+
+```{r}
+data("Verizon")
+
+head(Verizon)
+dim(Verizon)
+
+Time_group <- Verizon %>%
+  group_by(Group) %>%
+  summarize(Tr.Mean = mean(Time, trim = 0.25), Count = n())
+Time_group
+
+
+MD <- Time_group[2,2] - Time_group[1,2] # This is the observed value (difference)
+MD
+
+observed <- MD$Tr.Mean
+observed
+
+set.seed(123)
+sims <- 10^4 - 1 
+ans <- numeric(sims)
+for(i in 1:sims){
+  index <- sample.int(n = 1687, size = 1664, replace = FALSE)
+  ans[i] <- mean(Verizon$Time[index], trim = 0.25) - mean(Verizon$Time[-index], trim = 0.25)
+}
+pvalue <- (sum(ans <= observed) + 1)/(sims + 1)
+pvalue
+
+
+library(ggplot2)
+ggplot(data = data.frame(md = ans), aes(x = md)) + 
+  geom_density(fill = "tan1") + 
+  theme_bw() + 
+  labs(x = expression(Tr.mean[ILEC]-Tr.mean[CLEC])) +
+  geom_vline(xintercept=observed, linetype="dotted")
+```
+
+
+
+&nbsp;
+
+
+Exercise 3.5:
+
+In the Flight Delays Case Study in Section 1.1,
+
+    a. The data contain flight delays for two airlines, American Airlines and United Airlines.  Conduct a two-sided permutation test to see if the mean delay times between the two carriers are statistically significant.
+    
+    b. The flight delays occured in May and June of 2009.  Conduct a two-sided permutation test to see if the difference in mean delay times between the 2 months is statistically significant.
+
+
+
+a) Define $H_0$ and $H_a$ first.
+
+$H_0: \mu_{UA} = \mu_{AA}$ vs. $H_0: \mu_{UA} \neq \mu_{AA}$
+
+```{r}
+data("FlightDelays")
+
+
+Del_by_Carrier <- FlightDelays %>% 
+  group_by(Carrier) %>% 
+  summarize(Mean = mean(Delay), N = n())
+Del_by_Carrier
+
+obs <- Del_by_Carrier[2,2] - Del_by_Carrier[1,2]
+obs_diff <- obs$Mean
+#
+
+sims <- 10^4 - 1
+md <- numeric(sims)
+for(i in 1:sims){
+  index <- sample(4029, size = 1123, replace = FALSE)
+  md[i] <- mean(FlightDelays$Delay[index]) - mean(FlightDelays$Delay[-index])
+}
+
+pvalue <- 2*((sum(md >= obs_diff) + 1)/(sims + 1))
+pvalue
+
+
+``` 
+
+Technical conclusion: _p-value_ < 0.05, so reject $H_0$
+
+Non-Technical conclusion:
+Based on a _p-value_ of $`r pvalue`$ there is strong evidence to suggest the mean delay time for American Airlines is not the same as the mean delay time for United Airlines.
+
+
+b) Define $H_0$ and $H_a$ first.
+
+$H_0: \mu_{May} = \mu_{June}$ vs. $H_0: \mu_{May} \neq \mu_{June}$
+
+```{r}
+data("FlightDelays")
+
+del_by_month <- FlightDelays %>% 
+  group_by(Month) %>% 
+  summarize(Mean = mean(Delay), N = n())
+
+del_by_month
+
+
+obs <- del_by_month[1,2] - del_by_month[2,2]
+obs_diff <- obs$Mean
+#
+md <- numeric(sims)
+for(i in 1:sims){
+  index <- sample(4029, size = 1999, replace = FALSE)
+  md[i] <- mean(FlightDelays$Delay[index]) - mean(FlightDelays$Delay[-index])
+}
+
+
+pvalue <- 2*((sum(md <= obs_diff) + 1)/(sims + 1))
+pvalue
+
+```
+
+Technical conclusion: _p-value_ < 0.05, so reject $H_0$
+
+Non-Technical conclusion:
+Based on a _p-value_ of $`r pvalue`$ there is strong evidence to suggest the mean delay time for June is not the same as the mean delay time for May.
+
+Exercise 3.6:
+
+In the Flight Delays Case Study in Section 1.1, the data contain flight delays for two airlines, American Airlines and United Airlines.
+
+    a. Compute the proportion of times that each carrier's flights was delayed more than 20 minutes.  Conduct a two-sided test to see if the difference in these proportions is statistically significant.
+    
+    b. Compute the variance in the flight delay lengths for each carrier.  Conduct a test to see if the variance for United Airlines is greater than that of American Airlines.
+    
+
+a) Define $H_0$ and $H_a$ first.
+
+```{r}
+data("FlightDelays")
+str(FlightDelays)
+
+dim(FlightDelays)
+
+delayed20_carrier <- FlightDelays %>%
+  group_by(Carrier) %>%
+  summarize(pro = mean(Delay>20), count = n())
+delayed20_carrier
+
+PD <- delayed20_carrier[1,2] - delayed20_carrier[2,2]
+PD
+
+observed <- PD$pro
+observed
+  
+set.seed(123)
+sims <- 10^5 - 1 
+ans <- numeric(sims)
+for(i in 1:sims){
+  index <- sample.int(n = 4029, size = 2906, replace = FALSE)
+  ans[i] <- mean(FlightDelays$Delay[index]>20) - mean(FlightDelays$Delay[-index]>20)
+}
+pvalue <- 2*(sum(ans <= observed) + 1)/(sims + 1)
+pvalue
+
+library(ggplot2)
+ggplot(data = data.frame(md = ans), aes(x = md)) + 
+  geom_density(fill = "lightblue1") + 
+  theme_bw() + 
+  labs(x = expression(proportion[AA]-Proportion[UA])) +
+  geom_vline(xintercept=observed, linetype="dotted")
+
+```
+
+Technical conclusion: _p-value_ < 0.05, so reject $H_0$
+
+Non-Technical conclusion:
+
+Based on a _p-value_ of $`r pvalue`$ there is strong evidence to suggest the proportion of flights delayed more than 20 minutes is not the same for United and American.
+
+
+b) Define $H_0$ and $H_a$ first.
+
+$H_0: \sigma_{UA} = \sigma_{AA}$ vs. $H_a: \sigma_{UA} > \sigma_{AA}$
+
+```{r}
+
+an <- FlightDelays %>% 
+  group_by(Carrier) %>% 
+  summarize(Var = var(Delay), N = n())
+an
+
+obs <- an[2,2] - an[1,2]
+obs_diff <- obs$Var
+
+vd <- numeric(sims)
+for(i in 1:sims){
+  index <- sample(4029, size = 1123, replace = FALSE)
+  vd[i] <- var(FlightDelays$Delay[index]) - var(FlightDelays$Delay[-index])
+}
+
+
+pvalue <- ((sum(vd >= obs_diff) + 1)/(sims + 1))
+pvalue
+
+```
+
+Technical conclusion: _p-value_ > 0.05, so fail to reject $H_0$
+
+Non-Technical conclusion:
+
+
+Based on a _p-value_ of $`r pvalue`$ there is not sufficient evidence to suggest the variance in flight delays for United is greater than the variance in flight delays for American.   
