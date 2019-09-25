@@ -154,7 +154,7 @@ Test yourself:
 
 * Read Chapters 6 [MD](https://moderndive.com) --- Basic Regression 
 
-* [Lecture: Chapter 6 of MD](../Lecture Notes/Ch_6_MD_Notes.html)
+* [Lecture: Chapter 6 of MD](../Lecture Notes/Ch-6_MD_Notes.html)
 
 * In class **quiz 05** --- Thursday (last 20 min of class)
 
