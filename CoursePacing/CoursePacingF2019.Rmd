@@ -150,9 +150,11 @@ Test yourself:
 
 * [Homework 2: Chapter 3 of MSWR](../Homework/Chapter3HWK_H.html) --- 
 
-* [Exam 1 grades (Distribution)](../Exams/GradesExam1.html__)
+* [Exam 1 grades (Distribution)](../Exams/GradesExam1.html)
 
 * Read Chapters 6 [MD](https://moderndive.com) --- Basic Regression 
+
+* [Lecture: Chapter 6 of MD](../Lecture Notes/Ch_6_MD_Notes.html)
 
 * In class **quiz 05** --- Thursday (last 20 min of class)
 

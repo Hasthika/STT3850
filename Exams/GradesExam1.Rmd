@@ -17,15 +17,15 @@ library(ggplot2)
 
 ```{r echo=FALSE}
 
-Class1 <- c(93,100,92,90,95,99,90,98,98,95,95,96,94,100,84,82,85,89,84,82,78,75,70,70,63,54,51)
+Class1 <- c(95,96,78,76,88,90,83,85,100,100,64,70,84,81,93,96,76,88,80,74,100,72,89,89,100,89)
 
 
 p <- ggplot(data = data.frame(Class1), aes(x = Class1)) + 
   geom_density(fill = "lightblue1") + 
   theme_bw() + 
   labs(x = "Exam 1 grades") +
-  geom_vline(xintercept=mean(Class1), linetype="dotted") +
-  annotate("text",x=mean(Class1)+1,y=0.01,label="Exam Average = 86",hjust=0)
+  geom_vline(xintercept=median(Class1), linetype="dotted") +
+  annotate("text",x=mean(Class1)+1,y=0.01,label="Exam Average = 88",hjust=0)
 
 ggplotly(p)
 
@@ -36,15 +36,15 @@ ggplotly(p)
 ```{r echo=FALSE}
 library(plotly)
 library(ggplot2)
-Class2 <- c(91,92,100,97,100,98,94,93,97,97,91,96,98,92,100,94,81,71,56,30,68,68,73,76,74,62,65,72,78)
+Class2 <- c(76,92,60,93,100,89,50,84,97,94,93,96,72,56,100,66,91,82,94,68,96,92,56,85,54,56,99,86,86,98)
 
 
 p2 <- ggplot(data = data.frame(Class2), aes(x = Class2)) + 
   geom_density(fill = "gold2") + 
   theme_bw() + 
   labs(x = "Exam 1 grades") +
-  geom_vline(xintercept=mean(Class2), linetype="dotted") +
-  annotate("text",x=mean(Class2)+1,y=0.01,label="Exam Average = 85",hjust=0)
+  geom_vline(xintercept=median(Class2), linetype="dotted") +
+  annotate("text",x=mean(Class2)+1,y=0.01,label="Exam Average = 87",hjust=0)
 
 ggplotly(p2)
 
@@ -58,20 +58,72 @@ ggplotly(p2)
 ```{r echo=FALSE}
 library(plotly)
 library(ggplot2)
-Class12 <- c(91,92,100,97,100,98,94,93,97,97,91,96,98,92,100,94,81,71,56,30,68,68,73,76,74,62,65,72,78,93,100,92,90,95,99,90,98,98,95,95,96,94,100,84,82,85,89,84,82,78,75,70,70,63,54,51)
+Class12 <- c(95,96,78,76,88,90,83,85,100,100,64,70,84,81,93,96,76,88,80,74,100,72,89,89,100,89,76,92,60,93,100,89,50,84,97,94,93,96,72,56,100,66,91,82,94,68,96,92,56,85,54,56,99,86,86,98)
 
 
 p3 <- ggplot(data = data.frame(Class12), aes(x = Class12)) + 
   geom_density(fill = "orchid3") + 
   theme_bw() + 
   labs(x = "Exam 1 grades") +
-  geom_vline(xintercept=mean(Class12), linetype="dotted") +
-  annotate("text",x=mean(Class12)+1,y=0.01,label="Exam Average = 85",hjust=0)
+  geom_vline(xintercept=median(Class12), linetype="dotted") +
+  annotate("text",x=mean(Class12)+1,y=0.01,label="Exam Average = 88",hjust=0)
 
 ggplotly(p3)
 
 
 
 ```
+
+
+
+
+# STT2810 Exam 1 grades.
+
+
+```{r echo=FALSE}
+library(plotly)
+library(ggplot2)
+
+class2810 <- c(0.860,0.460,0.840,0.790,0.640,0.810,0.500,0.930,0.760,0.920,0.970,0.710,0.880,0.870,0.890,0.670,0.850,0.800,0.910,0.920,0.820,0.780,0.650,0.960,0.840,0.950,0.860,0.770,0.950,0.820,0.87)
+Class2810 <- class2810*100
+
+p4 <- ggplot(data = data.frame(Class2810), aes(x = Class2810)) + 
+  geom_histogram(fill = "orchid3", bins = 8) + 
+  theme_bw() + 
+  labs(x = "Exam 1 grades") +
+  geom_vline(xintercept=median(Class2810), linetype="dotted") +
+  annotate("text",x=median(Class2810)+1,y=0.01,label="Exam Average = 84",hjust=0)
+
+ggplotly(p4)
+
+
+
+```
+
+
+```{r echo=FALSE}
+library(plotly)
+library(ggplot2)
+
+class2810 <- c(0.860,0.460,0.840,0.790,0.640,0.810,0.500,0.930,0.760,0.920,0.970,0.710,0.880,0.870,0.890,0.670,0.850,0.800,0.910,0.920,0.820,0.780,0.650,0.960,0.840,0.950,0.860,0.770,0.950,0.820,0.87)
+Class2810 <- class2810*100
+
+p4 <- ggplot(data = data.frame(Class2810), aes(x = Class2810)) + 
+  geom_density(fill = "orchid3") + 
+  theme_bw() + 
+  labs(x = "Exam 1 grades") +
+  geom_vline(xintercept=median(Class2810), linetype="dotted") +
+  annotate("text",x=median(Class2810)+1,y=0.01,label="Exam Average = 84",hjust=0)
+
+ggplotly(p4)
+
+
+
+```
+
+
+
+
+
 
 
