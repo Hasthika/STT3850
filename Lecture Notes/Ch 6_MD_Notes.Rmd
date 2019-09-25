@@ -26,17 +26,17 @@ library(skimr)
 
 In regression we try to *predict* one variable based on one or more other variables.
 
-  * The variable we want to predit is called the response variable, and denote by $y$.
-  * The variable(s) that we use to predict $y$ is(are) called the predictor(s) or explanatory variable(s), and denote by $x$.
+  * The variable we want to predit is called the response variable,  denoted by $y$.
+  * The variable(s) that we use to predict $y$ is(are) called the predictor(s) or explanatory variable(s),  denoted by $x$.
 
 
-#  What we cover?
+#  What do we cover?
 
 * In this current chapter on basic regression, we’ll always have only one explanatory variable.
-In Section 2, this explanatory variable will be a single numerical explanatory variable $x$. This scenario is known as simple linear regression.
+In *Section 2*, this explanatory variable will be a single numerical explanatory variable $x$. This scenario is known as simple linear regression.
 
 
-* In Section 3, this explanatory variable will be a categorical explanatory variable $x$.
+* In *Section 3*, this explanatory variable will be a categorical explanatory variable $x$.
 
 
 # One numerical explanatory variable
@@ -86,7 +86,7 @@ Since we are only interested in one $x$ variable, namely, `bty_avg`, let's selec
 evals_onex <- evals %>%
   select(score, bty_avg)
 
-# View(evals_onex) # In the console
+# View(evals_onex) # Only In the console, DO NOT run the View command here
 
 glimpse(evals_onex)
 
@@ -591,5 +591,19 @@ Let’s generalize this whole thing a bit.
 Fit a new linear regression to predcit the GDP using continent. Write the model. Interpret the coefficients. (Use the `gapminder2007` dataftame that we created)
 ```
 
+```{r}
+data("FlightDelays")
+str(FlightDelays)
+
+ggplot(FlightDelays, aes(x= Delayed30, y = FlightLength)) + geom_boxplot()
+
+data("MobileAds")
+
+variable.names(MobileAds)
+
+diff <- MobileAds$m.cpc_post-MobileAds$m.cpc_pre
+
+hist(diff)
+```
 
 
