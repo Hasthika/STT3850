@@ -162,7 +162,7 @@ Test yourself:
 
 ## Week 7: (Sep 30--Oct 4) {-}
 
-* [Lecture: Chapter 6 of MD](../Lecture Notes/Ch_6_MD_Notes.html)
+* [Lecture: Chapter 6 of MD](../Lecture Notes/Ch-6_MD_Notes.html)
 
 * Read Chapters 6 [MD](https://moderndive.com) --- Basic Regression 
 
@@ -191,7 +191,7 @@ Test yourself:
 
 ## Week 9: (Oct 14--18; No class 15th) {-}
 
-* [Lecture: Chapter 6 of MD](../Lecture Notes/Ch_6_MD_Notes.html__)
+* [Lecture: Chapter 6 of MD](../Lecture Notes/Ch-6_MD_Notes.html__)
 
 * [gapminder tools](https://www.gapminder.org/tools/#$chart-type=bubbles)
 
