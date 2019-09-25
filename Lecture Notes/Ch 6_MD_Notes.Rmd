@@ -228,6 +228,15 @@ The equation of the regression line is  $\hat{y} = b_0+b_1\cdot x$ where
   * the intercept coefficient is  $b_0$ is the value of $\hat{y}$ when $x=0$, and
   * the slope coefficient $b_1$ is the increase in $\hat{y}$ for every one unit increase in $x$.
   
+### How to obtain  $b_0$ and $b_1$ values.
+
+Consider the following regression line:
+
+![](res.png)
+
+The vertical distances from the points to the line are called the residuals. We obtain the line by minimizing the sum of the squares of the distances from the points to the line. If we denote the observed points by $y_i$ and the opints on the line by $\hat{y_i}$. Then the reiduals can be denoted by $y_i-\hat{y_i}$. So we obtain the line ($b_0$ and $b_1$), by minimizing the following quantity
+$$\texttt{Residual sum of squares} = \sum(y_i-\hat{y_i})^2$$ 
+  
 ### How to use R to get $b_0$ and $b_1$ values.
 
 The lm() function that “fits” the linear regression model is typically used as `lm(y ~ x, data = data_frame_name)` where:
