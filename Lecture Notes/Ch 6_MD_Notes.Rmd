@@ -381,6 +381,9 @@ Let’s load the gapminder data and `filter()` for only observations in 2007. Ne
 
 ```{r}
 library(gapminder)
+data(gapminder)
+
+str(gapminder)
 gapminder2007 <- gapminder %>%
   filter(year == 2007) %>% 
   select(country, continent, lifeExp, gdpPercap)
@@ -388,7 +391,7 @@ gapminder2007 <- gapminder %>%
 #Use View(gapminder2007) if you would like to see the subset
 ```
 
-  2. Let's look at the summaries.
+  2. Let's look at the structure
   
 ```{r}
 glimpse(gapminder2007)
@@ -404,7 +407,7 @@ Let’s apply the `skim()` function from the `skimr` package to our two variable
 ```
 
 
-```{r}
+```{r include=FALSE}
 gapminder2007 %>% 
   select(continent, lifeExp) %>% 
   skim()
@@ -446,7 +449,7 @@ kable(lifeExp_by_continent)
 
 
 
-We see now that there are differences in life expectancy between the continents. For example let’s focus on only medians. While the median life expectancy across all $n = 142$ countries in 2007 was 71.935, the median life expectancy across the $n$ = ___ countries in Africa was only ____.
+We see now that there are differences in life expectancy between the continents. For example let’s focus on only the medians. While the median life expectancy across all $n = 142$ countries in 2007 was 71.935, the median life expectancy across the $n$ = ___ countries in Africa was only ____.
 
 
 Let’s create a corresponding visualization. 
@@ -472,7 +475,7 @@ ggplot(gapminder2007, aes(x = lifeExp, fill=continent)) +
 
 ```
 
-```{r}
+```{r include=FALSE}
 ggplot(gapminder2007, aes(x = continent, y = lifeExp, fill = continent)) +
   geom_boxplot() +
   labs(x = "Continent", y = "Life expectancy (years)", 
@@ -599,20 +602,4 @@ Let’s generalize this whole thing a bit.
 ```{example}
 Fit a new linear regression to predcit the GDP using continent. Write the model. Interpret the coefficients. (Use the `gapminder2007` dataftame that we created)
 ```
-
-```{r}
-data("FlightDelays")
-str(FlightDelays)
-
-ggplot(FlightDelays, aes(x= Delayed30, y = FlightLength)) + geom_boxplot()
-
-data("MobileAds")
-
-variable.names(MobileAds)
-
-diff <- MobileAds$m.cpc_post-MobileAds$m.cpc_pre
-
-hist(diff)
-```
-
 
