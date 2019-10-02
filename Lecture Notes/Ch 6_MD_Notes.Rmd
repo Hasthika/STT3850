@@ -217,9 +217,50 @@ Conduct a new exploratory data analysis with the same outcome variable $y$ being
 
 What can you say about the relationship between `age` and teaching `score`s based on this exploration?
 
+1)
+```{r}
+#View(evals)
+```
 
 
 
+2) 
+
+```{r}
+evals_age <- evals %>%
+  select(score, age)
+
+glimpse(evals_age)
+
+skim(evals_age)
+```
+
+According to the histograms: variable score is skewed to the ________________, and the variable bty_avg is skewed to the ________________.
+
+The mean teaching score was _______ out of 5 whereas the mean age was _______.
+The median teaching score was _______ out of 5 whereas the median age was _______.
+Furthermore, the middle 50% of teaching scores were between _______ and _______ () while the middle 50% of beauty scores were between _______ and _______ out of 10.
+
+
+```{r}
+evals_age %>% 
+  get_correlation(formula = score ~ age)
+```
+
+
+
+
+
+
+
+3) 
+```{r}
+ggplot(evals_age, aes(x = age, y = score)) +
+  geom_point() +
+  labs(x = "Age", y = "Teaching Score", 
+       title = "Relationship of teaching and Age") +
+  geom_smooth(method = "lm", se = FALSE)
+```
 
 ## Simple linear regression
 
@@ -268,7 +309,8 @@ Range <- range(evals_onex$bty_avg)
 Range
 ```
 
-   
+
+**Extraploation** is using the regression to predict $y$ from $x$ outside the range of $x$ values. Such predictions are often very bad.
     
   * The intercept coefficient $b_1 = + 0.0666$: 
   
@@ -377,13 +419,22 @@ As always, the first step in model building is...
 
   1. Type `View(gapminder)` in the console.
 
-Let’s load the gapminder data and `filter()` for only observations in 2007. Next we `select()` only the variables we’ll need along with `gdpPercap`, which is each country’s gross domestic product per capita (GDP). GDP is a rough measure of that country’s economic performance. Lastly, we save this in a data frame with name gapminder2007:
+Let’s load the gapminder data and `filter()` for only observations in 2007. Next we `select()` only the variables `country`, `continent`, `lifeExp`, along with `gdpPercap`, which is each country’s gross domestic product per capita (GDP). GDP is a rough measure of that country’s economic performance. Lastly, we save this in a data frame with name gapminder2007:
 
 ```{r}
 library(gapminder)
 data(gapminder)
 
 str(gapminder)
+
+```
+
+```{r}
+# You try
+
+```
+
+```{r include=FALSE}
 gapminder2007 <- gapminder %>%
   filter(year == 2007) %>% 
   select(country, continent, lifeExp, gdpPercap)
