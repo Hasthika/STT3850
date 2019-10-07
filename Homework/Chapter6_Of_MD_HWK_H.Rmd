@@ -1,5 +1,5 @@
 ---
-title: "Chapter Six of MD Homework: Due Wednesday the 27th"
+title: "Chapter 6 of MD Homework: Due Thursday the 17th"
 author: "Your Name Here"
 date: '`r format(Sys.time(), "%b %d, %Y")`'
 output: bookdown::html_document2
@@ -10,6 +10,20 @@ knitr::opts_chunk$set(echo = TRUE, comment = NA, fig.align = "center", warning =
 library(tidyverse)
 library(ISLR)
 ```
+
+> Note: Be sure to turn in this hw as a well organized html/pdf (printed) document.
+
+Following is the yml I used. You can replace the default yml with this.
+
+```
+---
+title: "Chapter 6 of MD Homework: Due Thursday the 17th"
+author: "Your Name Here"
+date: '`r format(Sys.time(), "%b %d, %Y")`'
+output: bookdown::html_document2
+---
+```
+
 
 ***
 
@@ -25,7 +39,7 @@ Data collected on those two variables for 24 production runs at a juice manufact
 
   1. Download the data from my website (do not try to open) and upload the data file in to your working directory (the folder where your howemork is).
   2. Click on the uploaded data file. Read the messege and click "Yes".
-  3. Remove "#" and run the following code, if you see the "head" of the dataframe, if you do the the data is in!
+  3. Remove "#" and run the following code, if you see the "head" of the dataframe, the data is in!
   
 ```{r}
 #load("OJUICE.Rdata")

@@ -191,6 +191,11 @@ Test yourself:
 
 * [Lecture: Chapter 7 of MD](../Lecture Notes/Ch_7_MD_Notes.html)
 
+* [Homework 3: Chapter 6 of MD HW](../Homework/Chapter6_Of_MD_HWK_H.html) 
+
+* [OJUICE dataframe for homework](../Homework/data/OJUICE.Rdata) 
+
+
 ## Week 9: (Oct 14--18; No class 15th) {-}
 
 * [Lecture: Chapter 6 of MD](../Lecture Notes/Ch-6_MD_Notes.html__)
@@ -238,9 +243,6 @@ Test yourself:
 
 -->
 
-* [Chapter 6 of MD HW](../Homework/Chapter6_Of_MD_HWK_H.Rmd__) --- 
-
-* [OJUICE dataframe for homework](../Homework/data/OJUICE.Rdata) 
 
 
 * In class **quiz 08** --- Thursday (last 20 min of class)
