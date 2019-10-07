@@ -187,7 +187,9 @@ Test yourself:
 
 * Review Chapters 6 and 7 of [MD](https://moderndive.com) --- Basic Regression and Multiple Regression
 
+* [Lecture: Chapter 6 of MD](../Lecture Notes/Ch-6_MD_Notes.html)
 
+* [Lecture: Chapter 7 of MD](../Lecture Notes/Ch_7_MD_Notes.html)
 
 ## Week 9: (Oct 14--18; No class 15th) {-}
 
