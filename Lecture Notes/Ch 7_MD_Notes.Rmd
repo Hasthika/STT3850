@@ -48,8 +48,11 @@ Let’s load the `Credit` data and:
 
 ```{r echo=FALSE}
 library(ISLR)
-Credit <- Credit %>%
+
+Credit2 <- Credit %>%
   select(Balance, Limit, Income, Rating, Age)
+
+str(Credit2)
 ```
 
 ```{r}
@@ -67,14 +70,14 @@ Let’s look at some summary statistics for the variables that we need for the p
 
 
 ```{r echo=FALSE}
-Credit %>% 
+Credit2 %>% 
   select(Balance, Limit, Income) %>% 
   skim()
 ```
 
 Let's also look at _______________ as visual aids.
 
-```{r include=FALSE}
+```{r }
 library(cowplot)
 
 p1 <- ggplot(data = Credit, aes(x = Balance)) + geom_histogram(binwidth  = 150, color = "white", fill = "orchid4")
@@ -246,7 +249,6 @@ predicted_balance
 
 Fit a new linear regression using where Rating and Age are the new numerical explanatory variables $x_1$ and $x_2$. 
 
-Get information about the “best-fitting” line from the regression table by applying the `get_regression_table()` function. How do the regression results match up with the results from your exploratory data analysis in the previous exercise?
 
 
 ## One numerical & one categorical explanatory variable
@@ -269,7 +271,7 @@ Consider a modeling scenario with:
 
 Let’s reload the `evals` data and `select()` only the needed subset of variables. Note that these are different than the variables chosen in Chapter 6. Let’s given this the name `evals_ch7`.
 
-```{r}
+```{r include=FALSE}
 evals_ch7 <- evals %>%
   select(score, age, gender)
 ```
@@ -280,7 +282,7 @@ evals_ch7 <- evals %>%
 2. Let’s look at some summary statistics using the `skim()` function from the `skimr` package:
   
   
-```{r}
+```{r include=FALSE}
 evals_ch7 %>% 
   skim()
 ```
@@ -305,7 +307,7 @@ Now, let's try to visualize the correlation.
 Create a scatterplot of `score` over `age`. Use the binary `gender` variable to color the point with two colors. Add a regression line (or two?) in to your scatterplot.
 
 
-```{r}
+```{r include=FALSE}
 ggplot(evals_ch7, aes(x = age, y = score, color = gender)) +
   geom_jitter() +
   labs(x = "Age", y = "Teaching Score", color = "Gender", title = "Graph using 'method = lm'") +
@@ -341,7 +343,7 @@ Write the model for female:
 Let's create the scatterplot of `score` over `age` AGAIN. Use the binary `gender` variable to color the point with two colors. Add a regression lines in to your scatterplot BUT, this time use the model(s) we created.
 
 
-```{r}
+```{r include=FALSE}
 ggplot(evals_ch7, aes(x = age, y = score, color = gender)) +
   geom_jitter() +
   labs(x = "Age", y = "Teaching Score", color = "Gender", title = "Graph using the 'score_model_2'") +
