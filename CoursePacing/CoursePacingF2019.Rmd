@@ -189,7 +189,7 @@ Test yourself:
 
 * [Lecture: Chapter 6 of MD](../Lecture Notes/Ch-6_MD_Notes.html)
 
-* [Lecture: Chapter 7 of MD](../Lecture Notes/Ch_7_MD_Notes.html)
+* [Lecture: Chapter 7 of MD](../Lecture Notes/Ch-7_MD_Notes.html)
 
 * [Homework 3: Chapter 6 of MD HW](../Homework/Chapter6_Of_MD_HWK_H.html) 
 
@@ -198,7 +198,7 @@ Test yourself:
 
 ## Week 9: (Oct 14--18; No class 15th) {-}
 
-* [Lecture: Chapter 7 of MD](../Lecture Notes/Ch_7_MD_Notes.html)
+* [Lecture: Chapter 7 of MD](../Lecture Notes/Ch-7_MD_Notes.html)
 
 * [gapminder tools](https://www.gapminder.org/tools/#$chart-type=bubbles)
 
