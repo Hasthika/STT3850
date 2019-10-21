@@ -17,7 +17,7 @@ library(skimr)
 
 # Data description
 
-After you graduated, you started to work for one of the best firms in the country. You were hired because you have Data Analysis skills with $R$. During your first week your manager comes to your office and gives you the follwoing data set and ask you to "analyze hell out of this data" (his words. not mine). Mainly he wants you to bulid a liner model to predict executive salaries. But you know you can do much more! Analyze the given data and create a report like your job depending on this. 
+After you graduated, you started to work for one of the best firms in the country. You were hired because you have Data Analysis skills with $R$. During your first week your manager comes to your office and gives you the follwoing data set and ask you to "analyze the hell out of this data" (his words. not mine). Mainly he wants you to bulid a liner model to predict executive salaries. But you know you can do much more! Analyze the given data and create a report like your job depends on this. 
 
 
 Data stored as a `.txt` file under week 10. Data consists of 11 variables. 
