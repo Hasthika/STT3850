@@ -227,9 +227,11 @@ Test yourself:
 
 ```
 
-* [Lecture: Chapter 7 of MD](../Lecture Notes/Ch_7_MD_Notes.html__)
+* [Lecture: Chapter 7 of MD](../Lecture Notes/Ch-7_MD_Notes.html)
 
-* Read Chapter 7 of [MD](https://moderndive.com) --- Multiple Regression
+* [Multiple Linear Regression mini-project](../Lecture Notes/MLR_Project.html)
+
+* [`EXECSAL2.txt` dataframe for the mini-project](../Lecture Notes/EXECSAL2.txt) 
 
 <!--
 * Bootstrap [Example](https://stat-ata-asu.github.io/STT3851ClassRepo/Rmarkdown/TheBootstrap.html)

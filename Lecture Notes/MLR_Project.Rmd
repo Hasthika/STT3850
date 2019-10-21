@@ -1,0 +1,61 @@
+---
+title: "Multiple linear regression project"
+author: "Dr. Hasthika Rupasinghe"
+date: '`r format(Sys.time(), "%b %d, %Y at %X")`'
+output:
+  bookdown::html_document2:
+    highlight: textmate
+    theme: yeti
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(ggplot2)
+library(skimr)
+```
+
+# Data description
+
+After you graduated, you started to work for one of the best firms in the country. You were hired because you have Data Analysis skills with $R$. During your first week your manager comes to your office and gives you the follwoing data set and ask you to "analyze hell out of this data" (his words. not mine). Mainly he wants you to bulid a liner model to predict executive salaries. But you know you can do much more! Analyze the given data and create a report like your job depending on this. 
+
+
+Data stored as a `.txt` file under week 10. Data consists of 11 variables. 
+
+```{r echo=FALSE}
+description <- data.frame(Variable = c("y", "x1", "x2", "x3", "x4", "x5", "x6", "x7", "x8", "x9", "x10"), Description = c("Salary of executive", "Experience (in years)", "Education (in years)","Gender (1 if male 0 if female)" ,"Number of employees supervised", "Corporate assets (in millions of USD)", "Board member (1 if yes, 0 if no)", "Age (in years)", "Company profits (in millions of USD)", "Has international responsibility (1 if yes, 0 if no)", "Company's total sales (in millions of USD)"))
+
+knitr::kable(description)
+```
+
+# Load data into R
+
+```{r include=FALSE}
+# Load data
+ExeSal <- read.delim("EXECSAL2.txt")
+
+head(ExeSal)
+```
+
+
+#Rename columns using the following names
+
+```{r echo=FALSE}
+description <- data.frame(Variable = c("y", "x1", "x2", "x3", "x4", "x5", "x6", "x7", "x8", "x9", "x10"), Names = c( "salary", "experience", "education", "gender", "emps_sup", "assets", "board_mb", "age", "profit", "int_res", "sales"), Description = c("Salary of executive", "Experience (in years)", "Education (in years)","Gender (1 if male 0 if female)" ,"Number of employees supervised", "Corporate assets (in millions of USD)", "Board member (1 if yes, 0 if no)", "Age (in years)", "Company profits (in millions of USD)", "Has international responsibility (1 if yes, 0 if no)", "Company's total sales (in millions of USD)"))
+
+knitr::kable(description)
+```
+
+```{r include=FALSE}
+names(ExeSal) <- c("id", "salary", "experience", "education", "gender", "emps_sup", "assets", "board_mb", "age", "profit", "int_res", "sales")
+```
+
+
+#Conduct EDA and **describe**
+
+#Build several multiple linear regression models
+
+```{r include=FALSE}
+ggplot(data = ExeSal, aes(x=sales, y = salary, color = factor(gender))) + geom_point() + geom_smooth(method = "lm")
+```
+
