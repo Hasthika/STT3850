@@ -251,15 +251,17 @@ Test yourself:
 
 ## Week 11: (Oct 28--Nov 1) {-}
 
-* [Lecture: Chapter 7 of MD](../Lecture Notes/Ch_7_MD_Notes.html__)
+* [Review for test 2](../Lecture Notes/Review-for-test-2.html)
 
+<!--
 * Read Chapter 10 of [MD](https://moderndive.com) --- Hypothesis Testing
 
 * Complete _Inference for Numerical Data_ [(DataCamp)](https://www.datacamp.com/) --- 
+-->
 
 * In class **Exam 02** --- Thursday (Allowed to use the `cheat sheet`)
 
-* [Chapter 7 of MD HW](../Homework/Chapter7HWKnew.Rmd__) --- 
+
 
 
 
