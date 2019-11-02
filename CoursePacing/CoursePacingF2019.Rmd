@@ -267,6 +267,8 @@ Test yourself:
 
 ## Week 12: (Nov 4--8) {-}
 
+* [Exam 2 grades (Distribution)](../Exams/GradesExam2.html)
+
 * Read Chapter 8 of MD
 
 * Read Chapter 4 of MSWR
