@@ -273,7 +273,7 @@ Test yourself:
 
 * Read Chapter 4 of MSWR
 
-* [Lecture: Sampling Distributions](../Lecture Notes/Ch_4_MSWR_Notes.html__)
+* [Lecture: Sampling Distributions](../Lecture Notes/Ch-4_MSWR_Notes.html)
 
 <!--
 * [Goodness-Of-Fit](../Handouts/ChiGOF.html)

@@ -310,6 +310,8 @@ Find and plot the sampling distribution of the proportion ($\hat{p}$) of heads w
  
  3. Find and plot the sampling distribution of $\hat{p}$.
  
+ 4. Find the average of $\hat{p}$.
+ 
  4. Find the standard error of the sampling distribution of $\hat{p}$.
  
  5. What happens to the standard error, when you increase the sample size?
@@ -317,19 +319,19 @@ Find and plot the sampling distribution of the proportion ($\hat{p}$) of heads w
 Method 1:
 
 ```{r include=FALSE}
-HT <- c("Head","Tail") 
-coin <- data.frame(HT)
+coin <- c("Head","Tail") 
+coin <- tbl_df(coin)
 coin 
 
 coin_samples <- coin %>%
-  rep_sample_n(size = 10, reps = 1000, replace = TRUE)
+  rep_sample_n(size = 10, reps = 5000, replace = TRUE)
 
 coin_samples
 
 # Compute resulting 1000 replicates of proportion heads
 prop_heads <- coin_samples %>% 
   group_by(replicate) %>% 
-  summarize(Heads = sum(HT == 1)) %>% 
+  summarize(Heads = sum(value == "Head")) %>% 
   mutate(pro = Heads / 10)
 
 prop_heads
@@ -349,7 +351,7 @@ Method 2:
 
 ```{r include=FALSE}
 coin <- c("H","T") 
-
+coin
 
 tosses <- 10
 ans <- numeric(tosses)
@@ -357,18 +359,14 @@ pros_of_heads <- numeric(5000)
 
 
 for (j in 1:5000) {
-
+  
   for(i in 1:tosses){
     index <- sample.int(n = 2, size = 1, replace = TRUE)
     ans[i] <- coin[index]
   }
-  
-  
-  
   pros_of_heads[j] <- sum(ans == "H")/tosses
 }
 
-#hist(pro_of_heads)
 
 ggplot(data.frame(pros_of_heads), aes(x=pros_of_heads)) + geom_histogram(binwidth = 0.1, color = "white")
 
@@ -404,7 +402,7 @@ p1
 
 
 
-**R functions:** (Package: stats)
+**R functions for Normal Distribution:** (Package: stats)
 
 Examples:
 
@@ -421,6 +419,8 @@ ggplot(data.frame(x), aes(x = x)) + geom_histogram(binwidth = 1.5)
   2. If $X \sim N(15, 9)$ find the probability that X being greater than 21: $P(X > 21)$
   
 ```{r}
+ggplot(data.frame(x), aes(x = x)) + geom_histogram(binwidth = 1.5) + geom_vline(xintercept = 21)
+
 pnorm(21, mean = 15, sd = 3) # pnorm gives us the left tail area to a given number, 21 in this case
 
 ```
@@ -448,7 +448,7 @@ qnorm(.25, mean = 15, sd = 3)
 ### Exponential Distribution
 
 
-The Exponential Distribution is defined by the following probability *density function*, where $\dfrac{1}{\lambda}$ is the population mean and standard deviation.
+The Exponential Distribution is defined by the following probability *density function*, where $\dfrac{1}{\lambda}$ is the population *mean* **and** the *standard deviation*.
 
 $$f(x) = \lambda e^{-\lambda x}$$
 
@@ -469,7 +469,7 @@ ggplot(dat, aes(x=x, y=px)) + geom_line()
 
 
 
-**R functions:** (Package: stats)
+**R functions for Exponential Distribution:** (Package: stats)
 
 Examples:
 
@@ -483,7 +483,7 @@ ggplot(data.frame(x), aes(x = x)) + geom_histogram(binwidth = 5)
 ```
   
 
-  2. If $X \sim Exp(1/15)$ find the probability that X being less than 21: $P(X > 21)$
+  2. If $X \sim Exp(1/15)$ find the probability that X being less than 21: $P(X < 21)$
   
 ```{r}
 pexp(21, rate = 1/15)
@@ -506,14 +506,14 @@ The number of days ahead travelers purchase their airline tickets can be modeled
 
   1. Find the probability that a traveler will purchase a ticket fewer than ten days in advance. 
   
-  2. How many days do 80% of all travelers wait?
+  2. How many days in advance do 80% of all travelers purchase their airline tickets?
 
 
 
 
 ### Binomial Distribution
 
-The binomial distribution is a **discrete probability distribution**. It describes the outcome of n independent trials in an experiment. Each trial is assumed to have only two outcomes, either success or failure. If the probability of a successful trial is p, then the probability of having x successful outcomes in an experiment of n independent trials is as follows.
+The binomial distribution is a **discrete probability distribution**. It describes the outcome of n independent trials in an experiment. Each trial is assumed to have *only two* outcomes, either success or failure. If the probability of a successful trial is p, then the probability of having $x$ successful outcomes in an experiment of $n$ independent trials is as follows.
 
 $$f(x) = {n \choose x} p^x (1-p)^{(n-x)} \quad \text{where x = 0, 1, 2,...,n}$$
 
@@ -574,20 +574,20 @@ Let's revisit the coin flip example: What we did is a simulation. Now we can che
 
 Method 1:
 
-```{r}
-HT <- c("Head","Tail") 
-coin <- data.frame(HT)
+```{r include=FALSE}
+coin <- c("Head","Tail") 
+coin <- tbl_df(coin)
 coin 
 
 coin_samples <- coin %>%
-  rep_sample_n(size = 10, reps = 1000, replace = TRUE)
+  rep_sample_n(size = 10, reps = 5000, replace = TRUE)
 
 coin_samples
 
 # Compute resulting 1000 replicates of proportion heads
 prop_heads <- coin_samples %>% 
   group_by(replicate) %>% 
-  summarize(Heads = sum(HT == 1)) %>% 
+  summarize(Heads = sum(value == "Head")) %>% 
   mutate(pro = Heads / 10)
 
 prop_heads
@@ -600,11 +600,13 @@ p3 <- ggplot(prop_heads, aes(x = pro)) +
 p3
 
 
+
+
 ```
 
 Method 2:
 
-```{r}
+```{r include=FALSE}
 coin <- c("H","T") 
 
 tosses <- 10
@@ -648,7 +650,7 @@ Therefore $\hat{p} \sim N( p,  \sqrt{p(1-p)/n} ) = N( 0.5,  \sqrt{0.5(1-0.5)/10}
   
   - Draw 1000 samples of size $n=100$ from this distribution and compute the mean for each sample, and store the mean in a vector called `Xbars`
 
-```{r}
+```{r include=FALSE}
 Xbars <- numeric(1000)
 
 for (i in 1:1000) {
@@ -667,14 +669,14 @@ ggplot(data.frame(Xbars), aes(x=Xbars)) + geom_histogram(color = "white", fill="
 
   - Find the mean and the standard error of the sampling distribution of the sample mean ($\bar{X}$)
   
-```{r}
+```{r include=FALSE}
 mean(Xbars)
 
 sd(Xbars)
 ```
   
 
-  2. Let's simulate the sampling distribution of the *mean* of a normal distribution with $Exp(1/15)$. 
+  2. Let's simulate the sampling distribution of the *mean* of a exponential distribution with $Exp(1/15)$. 
   
   - Draw 1000 samples of size $n=100$ from this distribution and compute the mean for each sample, and store the mean in a vector called `Xbars2`
 
@@ -720,7 +722,7 @@ A potential buyer intends to take a sample of four engines and will not place an
 
   1. Answer the question using a theoretical distribution:
   
-```{r}
+```{r include=FALSE}
 pnorm(215,mean = 220, sd = 7.5)
 ```
   
@@ -730,7 +732,7 @@ pnorm(215,mean = 220, sd = 7.5)
 Amuse that the parent distribution is Normal.
 
 
-```{r}
+```{r include=FALSE}
 set.seed(111)
 Xbars <- numeric(1000)
 
@@ -801,14 +803,10 @@ Consider the population {3, 5, 6, 6, 8, 11, 13, 15, 19, 20}.
 
   a) Compute the mean and standard deviation and create a histogram of its distribution.
 
-```{r}
+```{r include=FALSE}
 pop <- c(3, 5, 6, 6, 8, 11, 13, 15, 19, 20)
 pop
 
-mean(pop)
-sd(pop)
-
-hist(pop)
 ```
   
   
@@ -817,7 +815,7 @@ hist(pop)
   b) Simulate the sampling distribution of $\bar{X}$ by taking random samples of size 4 and plot your results. Compute the mean and standard error, and compare to population mean and standard deviation. 
   
   
-```{r}
+```{r include=FALSE}
 pop <- c(3, 5, 6, 6, 8, 11, 13, 15, 19, 20)
 
 sims <- 1000
@@ -838,7 +836,7 @@ mean(Xbars < 11)
   
   
   
-```{r}
+```{r include=FALSE}
 pop <- c(3, 5, 6, 6, 8, 11, 13, 15, 19, 20)
 pop
 sims <- 1000
@@ -859,7 +857,7 @@ mean(Xbars < 11) # Pr(Xbar < 11)
   c) Use the simulation to find $P(\bar{X} < 11)$
   
   
-```{r}
+```{r include=FALSE}
 population <- c(3, 5, 6, 6, 8, 11, 13, 15, 19, 20)
 
 sims <- 10000
@@ -897,7 +895,7 @@ Suppose the heights of boys in a certain city follow a normal distribution with 
   
   2. Use a simulation to redo part 1.
   
-```{r}
+```{r include=FALSE}
 sims <- 10000
 Xbars <- numeric(sims)
 
@@ -921,7 +919,7 @@ mean(Xbars > 51)
   
   
   
-```{r}
+```{r include=FALSE}
 sims <- 100000
 Xbars <- numeric(sims)
 
