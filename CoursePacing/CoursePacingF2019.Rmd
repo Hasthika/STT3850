@@ -367,9 +367,9 @@ Test yourself:
 ### Final Exam {-}
 
 ```{block, FINAL, type='rmdnote'}
-*  Final exam for 8am class (Sec 101) is on TBA
+*  Final exam for 9:30am class is on 12/10 from 8am-10:30am in RSW294
 
-*  Final exam for 9.30am class (Sec 102) is on TBA
+*  Final exam for 11:00am class is on 12/05 from 11am-1:30pm in RSW294
 ```
 
 ### Datasets
