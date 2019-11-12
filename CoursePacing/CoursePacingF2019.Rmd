@@ -292,7 +292,9 @@ Test yourself:
 
 * Read Chapter 4 of MSWR
 
-* [Lecture: Sampling Distributions](../Lecture Notes/Ch_4_MSWR_Notes.html__)
+* [Lecture: Sampling Distributions](../Lecture Notes/Ch-4_MSWR_Notes.html)
+
+* [Homework 4: Chapter 4 of MSWR](../Homework/Sampling-Distributions-HW.html)
 
 <!--
 * Read Chapter 5 of MSWR
@@ -311,7 +313,6 @@ Test yourself:
 
 ## Week 14: (Nov 18--22) {-}
 
-* [Chapter 4 Of MSWR HW](../Homework/Sampling Distributions HW.Rmd__) --- 
 
 * [Lecture: Confidence Intervals: The Bootstrap](../Lecture Notes/Ch_5_MSWR_Notes.html__)
 
@@ -358,6 +359,7 @@ Test yourself:
 ## Week 16: (Dec 2--6; Dec 4th is Reading Day) {-}
 
 * Review for the Final
+
 <!--
 * [Bootstrap $t$](../Rmarkdown/MoreBootstrapping.html)
 -->
