@@ -1,7 +1,7 @@
 ---
-title: "Chapter 4 of MSWR HW"
+title: "Homework 4: Chapter 4 of MSWR"
 author: "Your Name Here"
-date: "Due: Friday, April 19th at 3pm"
+date: "Due: Tuesday, Nov 19"
 output: bookdown::html_document2
 ---
 
@@ -21,16 +21,14 @@ library(resampledata)
 
 ***
 
-> Note: For the question 2, you need to know about the Unifom distribution is. (We did not talked about this distribution in class)
+Note: For the question 2, you need to know about the Uniform distribution is. (We did not talked about this distribution in class) As far as $R$ codes go, knowing how to generate a random sample from a uniform distribution in $R$ is enough.
 
 2.  Let $X$ be a uniform random variable on the interval $[40, 60]$ and $Y$ a uniform random variable on $[45, 80].$  Assume that $X$ and $Y$ are independent.
 
-      a. Simulate the sampling distribution of $X + Y.$  Desribe the graph of the distribution of $X + Y$.  Compute the mean and variance of the sampling distribution and compare this to the theoretical mean and variance.
+      a. Simulate the sampling distribution of $X + Y.$  Desribe the graph of the distribution of $X + Y$.  Compute the mean and variance of the sampling distribution using the simulation.
 
 
-
-      
-      b.  Suppose the time (in minutes) Jack takes to complete his statistics homework is $\text{Unif}[40, 60]$ and the time JIll takes is $\text{Unif}[40, 60].$  Assume they work independently.  One day they announce that their total time to finish an assignment was less than 90 min.  How likely is this?
+      b.  Suppose the time (in minutes) Jack takes to complete his statistics homework is $\text{Unif}[40, 60]$ and the time JIll takes is $\text{Unif}[45, 80].$  Assume they work independently.  One day they announce that their total time to finish an assignment was less than 90 min.  How likely is this?
       
 
 
