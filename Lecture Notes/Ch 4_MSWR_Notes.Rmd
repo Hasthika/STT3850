@@ -316,9 +316,9 @@ Find and plot the sampling distribution of the proportion ($\hat{p}$) of heads w
  
  5. What happens to the standard error, when you increase the sample size?
 
-Method 1:
 
-```{r include=FALSE}
+
+```{r}
 coin <- c("Head","Tail") 
 coin <- tbl_df(coin)
 coin 
@@ -347,7 +347,7 @@ p3
 ```
 
 
-Method 2:
+
 
 ```{r include=FALSE}
 coin <- c("H","T") 
@@ -421,7 +421,7 @@ ggplot(data.frame(x), aes(x = x)) + geom_histogram(binwidth = 1.5)
 ```{r}
 ggplot(data.frame(x), aes(x = x)) + geom_histogram(binwidth = 1.5) + geom_vline(xintercept = 21)
 
-pnorm(21, mean = 15, sd = 3) # pnorm gives us the left tail area to a given number, 21 in this case
+1-pnorm(21, mean = 15, sd = 3) # pnorm gives us the left tail area to a given number, 21 in this case
 
 ```
 
@@ -574,7 +574,7 @@ Let's revisit the coin flip example: What we did is a simulation. Now we can che
 
 Method 1:
 
-```{r include=FALSE}
+```{r}
 coin <- c("Head","Tail") 
 coin <- tbl_df(coin)
 coin 
@@ -604,7 +604,7 @@ p3
 
 ```
 
-Method 2:
+
 
 ```{r include=FALSE}
 coin <- c("H","T") 
@@ -650,7 +650,7 @@ Therefore $\hat{p} \sim N( p,  \sqrt{p(1-p)/n} ) = N( 0.5,  \sqrt{0.5(1-0.5)/10}
   
   - Draw 1000 samples of size $n=100$ from this distribution and compute the mean for each sample, and store the mean in a vector called `Xbars`
 
-```{r include=FALSE}
+```{r}
 Xbars <- numeric(1000)
 
 for (i in 1:1000) {
@@ -722,7 +722,13 @@ A potential buyer intends to take a sample of four engines and will not place an
 
   1. Answer the question using a theoretical distribution:
   
-```{r include=FALSE}
+  $\bar{X} \sim N(\mu, \sigma/\sqrt{n})$ 
+  
+  $\bar{X} \sim N(220, 15/\sqrt{4})$ 
+  
+  Now that the distribution is normal, to find the $Pr(\bar{X} < 215)$ use `pnorm`
+  
+```{r}
 pnorm(215,mean = 220, sd = 7.5)
 ```
   
@@ -732,14 +738,14 @@ pnorm(215,mean = 220, sd = 7.5)
 Amuse that the parent distribution is Normal.
 
 
-```{r include=FALSE}
+```{r}
 set.seed(111)
 Xbars <- numeric(1000)
 
 for (i in 1:1000) {
   
   x <- rnorm(n= 4, mean = 220, sd = 15)
-  Xbars[i] <- mean(x)
+  Xbars[i] <- median(x)
   
 }
 
@@ -747,7 +753,7 @@ for (i in 1:1000) {
 
 mean(Xbars < 215) # Pr(Xbar < 215)
 
-#ggplot(data.frame(Xbars), aes(x=Xbars)) + geom_histogram(color = "white", fill="steelblue")
+ggplot(data.frame(Xbars), aes(x=Xbars)) + geom_histogram(color = "white", fill="steelblue")
 ```
 
   
@@ -762,7 +768,7 @@ A friend claim that she has drawn a random sample of size 30, from the exponenti
     
   b. Run a simulation by drawing 100,000 random samples, each of size 30, from $\text{Exp}(\lambda = 1/10)$ and then compute the mean.  What proportion of the sample means are as large as or larger than 12?
     
-```{r include=FALSE}
+```{r}
 # part b.
 set.seed(123)
 
@@ -803,61 +809,27 @@ Consider the population {3, 5, 6, 6, 8, 11, 13, 15, 19, 20}.
 
   a) Compute the mean and standard deviation and create a histogram of its distribution.
 
-```{r include=FALSE}
+```{r}
 pop <- c(3, 5, 6, 6, 8, 11, 13, 15, 19, 20)
 pop
 
+mean(pop)
+sd(pop)
 ```
   
   
   
   
   b) Simulate the sampling distribution of $\bar{X}$ by taking random samples of size 4 and plot your results. Compute the mean and standard error, and compare to population mean and standard deviation. 
-  
-  
-```{r include=FALSE}
-pop <- c(3, 5, 6, 6, 8, 11, 13, 15, 19, 20)
 
-sims <- 1000
-Xbars <- numeric(sims)
-
-for (i in 1:sims) {
-  sam <- sample(pop, size =4)
-  Xbars[i] <- mean(sam)
-}
-
-mean(Xbars)
-sd(Xbars)
-
-
-mean(Xbars < 11)
-```
-
-  
-  
-  
-```{r include=FALSE}
-pop <- c(3, 5, 6, 6, 8, 11, 13, 15, 19, 20)
-pop
-sims <- 1000
-Xbars <- numeric(sims)
-
-for (i in 1:sims) {
- samp <- sample(pop, size = 4)
-Xbars[i] <- mean(samp) 
-}
-
-Xbars
-
-mean(Xbars < 11) # Pr(Xbar < 11)
-
-```
-  
+  Find the code in c)
   
   c) Use the simulation to find $P(\bar{X} < 11)$
   
   
-```{r include=FALSE}
+```{r}
+
+#b
 population <- c(3, 5, 6, 6, 8, 11, 13, 15, 19, 20)
 
 sims <- 10000
@@ -870,6 +842,8 @@ for (i in 1:sims)
   Xbars[i] <- mean(samp)
 }
 
+mean(Xbars)
+sd(Xbars)
 
 ggplot(data = data.frame(x = Xbars), aes(x = x, fill = x <= 11)) + 
   geom_histogram(binwidth = 0.5) + 
@@ -893,9 +867,20 @@ Suppose the heights of boys in a certain city follow a normal distribution with 
 
   1. Use the CLT to estimate the probability that in a random sample of 30 boys, the mean height is more than 51 in.
   
+  $\bar{X} \sim N(\mu, \sigma/\sqrt{n})$ 
+  
+  $\bar{X} \sim N(48, 9/\sqrt{30})$ 
+  
+  Now that the distribution is normal, to find the $Pr(\bar{X} > 51)$ use `pnorm`
+  
+```{r}
+1 - pnorm(51, mean = 48, sd = 9/sqrt(30))
+```
+  
+    
   2. Use a simulation to redo part 1.
   
-```{r include=FALSE}
+```{r}
 sims <- 10000
 Xbars <- numeric(sims)
 
@@ -909,27 +894,6 @@ mean(Xbars > 51)
 
 ```
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-```{r include=FALSE}
-sims <- 100000
-Xbars <- numeric(sims)
-
-for (i in 1:sims) {
-  x <- rnorm(n = 30, mean = 48, sd = 9)
-  Xbars[i] <- mean(x)
-}
-
-mean(Xbars > 51)
-```
 
 
 ***
@@ -956,25 +920,27 @@ Solution:
 
 
       
-      
-```{r include=FALSE}
+```{r}
 # part b
 set.seed(13)
-sims <- 100000
+sims <- 10000
 W <- numeric(sims)
-for(i in 1:sims){
-  xbar <- mean(rnorm(10, 20, 8))
-  ybar <- mean(rnorm(15, 16, 7))
-  W[i] <- xbar + ybar
+for (i in 1:sims) {
+
+x <- rnorm(10, mean = 20, sd = 8)
+y <- rnorm(15, mean = 16, sd = 7)
+
+W[i] <- mean(x) + mean(y)
+  
 }
 
-meanW <- mean(W)
-sdW <- sd(W)
-c(meanW, sdW)
+meanW <- mean(W) # mean from the simulation
+sdW <- sd(W) # sd from the simulation
+
 
 # Comparisons
-mW <- 36
-sW <- sqrt(8^2/10 + 7^2/15)
+mW <- 36 # mean from the theoretical dist.
+sW <- sqrt(8^2/10 + 7^2/15) # sd from the theoretical dist. 
 
 ## Creating a table (Optional)
 ans <- c(mW, meanW, sW, sdW)
@@ -995,8 +961,9 @@ ggplot(data = data.frame(x = W), aes(x = x, fill = x < 40)) +
 
 ```{r include=FALSE}
 # part c.
-Pl40sim <- mean(W < 40)
-Pl40the <- pnorm(40, 36, sqrt(8^2/10 + 7^2/ 15))
+Pl40sim <- mean(W < 40) # Probability from the simulation
+
+Pl40the <- pnorm(40, 36, sqrt(8^2/10 + 7^2/ 15)) # Probability from the theoretical distribution
 c(Pl40sim, Pl40the)
 ```
 
@@ -1019,14 +986,12 @@ The data set `Recidivism` contains the population of all Iowa offenders convicte
 a) Create a histogram and describe the simulated sampling distribution of $\hat{p}$. Estimate the mean and the standard error.
 
 
-```{r include=FALSE}
+```{r}
 library(resampledata)
 data("Recidivism")
 
 sims <- 10000
-
 phats <- numeric(sims)
-
 for (i in 1:sims)
 {
   
@@ -1054,9 +1019,11 @@ ggplot(data = data.frame(x = phats), aes(x = x)) +
 
 Let $X_1, X_2, \ldots, X_n$ be a random sample from some distribution and suppose $Y = T(X_1, X_2, \ldots, X_n)$ is a statistic.  Suppose the sampling distribution of $Y$ has pdf $f(y) = (3/8)y^2$ for $0 \leq y \leq 2.$  Find $P(0 \leq Y \leq 1/5)$.
 
-```{r include=FALSE}
+```{r}
 f <- function(x){3/8*x^2}
+
 integrate(f, 0, 1/5)
+
 ans <- integrate(f, 0, 1/5)$value
 ```
 
