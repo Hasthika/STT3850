@@ -20,7 +20,7 @@ library(skimr)
 ```
 
 
-In this chapter we will create and interpret *confidence intervls made by using the Bootstrap*. Let's start with the idea of the Bootstrap.
+In this chapter we will create and interpret *confidence intervals made by using the Bootstrap*. Let's start with the idea of the Bootstrap.
 
 
 # Introduction to the Bootstrap
@@ -83,7 +83,7 @@ ggplot(data = data.frame(NCBirths2004), aes(x = Weight)) +
   theme_bw() 
 
 
-# Let' start bootstrapping now!
+# Let's start bootstrapping now!
 
 BirthWeightSample <- NCBirths2004$Weight # This is my original SAMPLE 
 n <- length(BirthWeightSample) # This is the original sample size
@@ -302,7 +302,7 @@ chlorine_concentration <- chlorine_no_na$Chlorine # This is the original sample 
 
   c. Bootstrap the mean (Find and plot)
   
-```{r}
+```{r include=FALSE}
 set.seed(8)
 chlorine_concentration <- chlorine_no_na$Chlorine # This is my original SAMPLE 
 n <- length(chlorine_concentration) # This is the original sample size
@@ -333,7 +333,7 @@ In addition to the arsenic concentration for 271 wells, the Bangladesh data set 
 ```
   
   a. Bootstrap the 25% trimmed mean (Find and plot)
-```{r}
+```{r include=FALSE}
 set.seed(8)
 chlorine_concentration <- chlorine_no_na$Chlorine # This is my original SAMPLE 
 n <- length(chlorine_concentration) # This is the original sample size
@@ -443,14 +443,14 @@ quantile(boot_Mean_Diff, probs = c(.025, 0.975))
 
 
 
-
+<!--
 ## Wrong interpretaions from quiz 9
 
 We are 95% confident that the mpg of the cars **in this data set** will fall between 18.08 and 22.16
 
 
 95% of all mpg values will be between 18.08 and 22.16.
-
+-->
 
 ## Match pairs (Two Dependent Samples)
 
@@ -481,7 +481,7 @@ Use a bootstrap CI to determine whether the mean scores for divers differ betwee
 
 Note: No matter what test we are supposed to use, it is always good practice to do a EDA, at leat about the grops that we are interesetd in. 
 
-```{r}
+```{r include=FALSE}
 data("Diving2017")
 head(Diving2017)
 
@@ -489,7 +489,7 @@ skim(Diving2017)
 ```
 
 
-```{r}
+```{r include=FALSE}
 set.seed(111)
 data("Diving2017")
 head(Diving2017)
@@ -542,7 +542,7 @@ Construct and interpret a 95% bootstrap percentile confidence interval for the r
 
 ```
 
-```{r}
+```{r include=FALSE}
 set.seed(111)
 data("FlightDelays")
 
@@ -597,7 +597,7 @@ A company institutes an exercise break to see if it will improve job satisfactio
 | 10 | 49	| 76
 
 
-```{r}
+```{r include=FALSE}
 set.seed(111)
 
 Ori_Before_sample <- c(18, 18, 20, 29, 11, 37, 22, 30, 36, 49)
