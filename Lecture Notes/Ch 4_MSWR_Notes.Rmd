@@ -1009,7 +1009,11 @@ ggplot(data = data.frame(x = phats), aes(x = x)) +
 
 
   b) Compare your estimate with the mean and standard error with the theorerical mean and standard error.
-  
+
+$\hat{p} \sim N(p, \sqrt{p(1-p)/n})$
+$\hat{p} \sim N(0.316, \sqrt{0.316(1-0.316)/25})$
+$\hat{p} \sim N(0.316, 0.09298258)$
+
   c) Repeat the above (part a and b) using samples of size 250, and compare with the $n=25$ case.
   
   
