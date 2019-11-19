@@ -136,7 +136,7 @@ Find the **bias** of the bootstrap mean for the previous example.
 
 ```
 
-```{r include=FALSE}
+```{r}
 Bias <- mean(boot_Mean_Wt) - mean(BirthWeightSample)
 Bias
 ```
@@ -164,7 +164,7 @@ The data frame `Bangladesh` consists infomation about of 271 wells in Bangladesh
 
 
 
-```{r include=FALSE}
+```{r}
 set.seed(8)
 
 #1
@@ -302,7 +302,7 @@ chlorine_concentration <- chlorine_no_na$Chlorine # This is the original sample 
 
   c. Bootstrap the mean (Find and plot)
   
-```{r include=FALSE}
+```{r}
 set.seed(8)
 chlorine_concentration <- chlorine_no_na$Chlorine # This is my original SAMPLE 
 n <- length(chlorine_concentration) # This is the original sample size
@@ -333,7 +333,7 @@ In addition to the arsenic concentration for 271 wells, the Bangladesh data set 
 ```
   
   a. Bootstrap the 25% trimmed mean (Find and plot)
-```{r include=FALSE}
+```{r}
 set.seed(8)
 chlorine_concentration <- chlorine_no_na$Chlorine # This is my original SAMPLE 
 n <- length(chlorine_concentration) # This is the original sample size
@@ -348,7 +348,6 @@ for (i in 1:B){
 
 mean(boot_TrMean_chlorine) # This is the mean of the bootstrap means - so the center of the bootstrap distribution
 sd(boot_TrMean_chlorine) # This is the standard error of the bootstrap distribution
-
 
 quantile(boot_TrMean_chlorine, probs = c(.025, 0.975))
 ```
@@ -406,7 +405,7 @@ Following steps might be helpful.
 7) Answer the original research question.
 
 
-```{r include=FALSE}
+```{r}
 library(resampledata)
 data("Skateboard")
 head(Skateboard)
@@ -437,9 +436,7 @@ for (i in 1:B)
   boot_Mean_Diff[i] <- mean(sampleF) - mean(sampleM) 
   
 }
-
 quantile(boot_Mean_Diff, probs = c(.025, 0.975))
-
 
 ```
 
@@ -481,9 +478,9 @@ We would like to compare the mean semi-final and final sores of 12 female divers
 Use a bootstrap CI to determine whether the mean scores for divers differ between the final and semi-final rounds.
 
 
-Note: No matter what test we are supposed to use, it is always good practice to do a EDA, at leat about the grops that we are interesetd in. 
+Note: No matter what test we are supposed to use, it is always good practice to do a EDA, at least about the groups that we are interesetd in. 
 
-```{r include=FALSE}
+```{r}
 data("Diving2017")
 head(Diving2017)
 
@@ -491,7 +488,7 @@ skim(Diving2017)
 ```
 
 
-```{r include=FALSE}
+```{r}
 set.seed(111)
 data("Diving2017")
 head(Diving2017)
@@ -500,20 +497,14 @@ Ori_Final_sample <- Diving2017$Final
 Ori_Semi_Final_sample <- Diving2017$Semifinal
 
 ori_diff_sample <- Ori_Final_sample - Ori_Semi_Final_sample # Make a single sample of the difference
-
 n <- length(ori_diff_sample)
-
 B <- 10000
 boot_Mean_Diff <- numeric(B)
-
 for (i in 1:B)
 {
   samp <- sample(ori_diff_sample, size = n, replace = TRUE)
-
   boot_Mean_Diff[i] <- mean(samp) 
-  
 }
-
 quantile(boot_Mean_Diff, probs = c(.025, 0.975))
 
 
@@ -522,10 +513,10 @@ quantile(boot_Mean_Diff, probs = c(.025, 0.975))
 ggplot(data = data.frame(x = boot_Mean_Diff), aes(x = x)) + 
   geom_histogram(fill = "lightblue", color = "black") + 
   geom_vline(xintercept  = c(-6.61250, 30.94583), color = "blue") +
-  geom_text(aes(x=-6.61250, label="Lower Confidance Limit = -6.61250 \n", y=6000), colour="blue", angle=90, text=element_text(size=11))+
-  geom_text(aes(x=30.94583, label="\n Upper Confidance Limit = 30.94583", y=6000), colour="blue", angle=90, text=element_text(size=11))+
+  geom_text(aes(x=-6.61250, label="Lower Confidance Limit = -6.61250 \n", y=500), colour="blue", angle=90, text=element_text(size=11))+
+  geom_text(aes(x=30.94583, label="\n Upper Confidance Limit = 30.94583", y=500), colour="blue", angle=90, text=element_text(size=11))+
   geom_vline(xintercept  = c(mean(boot_Mean_Diff)), color = "red") +
-  labs(x = substitute(paste(bar(X),"*")), 
+  labs(x = substitute(paste(bar(Diff),"*")), 
        title = "Bootstrap distribution of means of the differences, With Confidance Limits") + 
   theme_bw() 
 
