@@ -333,7 +333,7 @@ Test yourself:
 * Complete _Inference for Categorical Data_ [(DataCamp)](https://www.datacamp.com/) --- Due Nov 16
 -->
 
-
+* [Homework 5: Chapter 5 Of MSWR](../Homework/Chapter5HWK_H.html)
 
 * In class **quiz 11** --- Thursday (last 20 min of class)
 
@@ -345,7 +345,7 @@ Test yourself:
 
 * In class **quiz 10** --- Thursday (last 20 min of class)
 
-* [Chapter 5 Of MSWR HW](../Homework/Chapter5HWK_H.Rmd__) --- 
+* [Homework 5: Chapter 5 Of MSWR](../Homework/Chapter5HWK_H.html)
 
 <!--
 * Read Chapter 7 of MSWR
