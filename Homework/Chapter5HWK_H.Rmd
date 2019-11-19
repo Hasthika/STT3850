@@ -1,5 +1,5 @@
 ---
-title: "Chapter Five Homework"
+title: "Homework 5: Chapter Five MSWR"
 author: "Your Name Here"
 date: '`r format(Sys.time(), "%A, %b %d, %Y - %X")`'
 output: bookdown::html_document2
@@ -11,9 +11,6 @@ library(tidyverse)
 library(resampledata)
 ```
 
-
-
- 
 ------------  
 
 1. The data set `FishMercury` contains mercury levels (parts per million) for 30 fish caught in lakes in Minnesota.
