@@ -364,11 +364,13 @@ quantile(boot_TrMean_chlorine, probs = c(.025, 0.975))
 
 We now turn to the problem of comparing two samples. In general, bootstrapping should mimic how the data were obtained. So the data correspond to independent samples from two populations, we should draw to samples that way. Then we proceed to compute the same statistic comparing the samples as per the original data, for example, difference in means or ratio of proportions.
 
+## Two Independent Samples
+
 **BOOTSTRAP FOR COMPARING TWO POPULATIONS:**
  
- Given independent samples of sizes m and n from two populations, 
+ Given independent samples of sizes $m$ and $n$ from two populations, 
  
-  1. Draw a resample of size m with replacement from the first sample in a separate resample of size n for the second sample. Compute a statistic that compares the two groups, such as the difference between the two sample means. 
+  1. Draw a resample of size $m$ with replacement from the first sample in a separate resample of size $n$ for the second sample. Compute a statistic that compares the two groups, such as the difference between the two sample means. 
   
   2. Repeat this resampling process many times say 10,000.
   
@@ -474,7 +476,7 @@ ___
 
 Here is an example: 
 
-We would like to compare the mean semi-final and final sores of 12 female divers competing in the FINA Would Championship in 2017. 
+We would like to compare the mean semi-final and final sores of 12 female divers competing in the FINA World Championship in 2017. 
 
 Use a bootstrap CI to determine whether the mean scores for divers differ between the final and semi-final rounds.
 
@@ -576,6 +578,7 @@ for(i in 1:B){
 We are 95% confident that the true ratio (June/May) of delay variances falls in the interval (0.97, 2.35).
 
 
+## Problems
 
 ```{example}
 
@@ -595,6 +598,7 @@ A company institutes an exercise break to see if it will improve job satisfactio
 | 8	| 30 |	37
 | 9	| 36 |	40
 | 10 | 49	| 76
+
 
 
 ```{r include=FALSE}
@@ -620,5 +624,34 @@ for (i in 1:B)
 
 quantile(boot_Mean_Diff, probs = c(.025, 0.975))
 ```
+***
 
+```{example}
+Use the data in `mtcars` and find the 95% confidence interval estimate of the difference between the mean gas mileage of manual and automatic transmissions.
+```
 
+***
+
+```{example}
+Use the data in `mtcars` and find the 95% confidence interval estimate of the difference between the *(you pick the statistic)* gas mileage of manual and automatic transmissions.
+```
+
+***
+
+```{example}
+Use the data in `mtcars` and find the 95% confidence interval estimate of the difference between the mean gas mileage of *(you pick two groups)*.
+```
+
+***
+
+```{example}
+Use the data in `mtcars` and find the 95% confidence interval estimate of the difference between the mean gas mileage of *(you pick two groups)*.
+```
+
+***
+
+```{example}
+In the built-in data set named `immer`, the barley yield in years 1931 and 1932 of the same field are recorded. The yield data are presented in the data frame columns Y1 and Y2. Find a 95% confidence interval and check whether the barley yield has increased. 
+```
+
+***

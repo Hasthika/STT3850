@@ -179,7 +179,7 @@ summary {
 
 <h1 class="title toc-ignore">Confidence Intervals: The Bootstrap</h1>
 <h4 class="author">Dr. Hasthika Rupasinghe</h4>
-<h4 class="date">Nov 12, 2019 at 08:29:17 PM</h4>
+<h4 class="date">Nov 18, 2019 at 08:15:02 PM</h4>
 
 </div>
 
@@ -370,10 +370,12 @@ chlorine_concentration &lt;- chlorine_no_na$Chlorine # This is the original samp
 <h1><span class="header-section-number">3</span> TWO SAMPLE BOOTSTRAP</h1>
 <hr />
 <p>We now turn to the problem of comparing two samples. In general, bootstrapping should mimic how the data were obtained. So the data correspond to independent samples from two populations, we should draw to samples that way. Then we proceed to compute the same statistic comparing the samples as per the original data, for example, difference in means or ratio of proportions.</p>
+<div id="two-independent-samples" class="section level2">
+<h2><span class="header-section-number">3.1</span> Two Independent Samples</h2>
 <p><strong>BOOTSTRAP FOR COMPARING TWO POPULATIONS:</strong></p>
-<p>Given independent samples of sizes m and n from two populations,</p>
+<p>Given independent samples of sizes <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span> from two populations,</p>
 <ol style="list-style-type: decimal">
-<li><p>Draw a resample of size m with replacement from the first sample in a separate resample of size n for the second sample. Compute a statistic that compares the two groups, such as the difference between the two sample means.</p></li>
+<li><p>Draw a resample of size <span class="math inline">\(m\)</span> with replacement from the first sample in a separate resample of size <span class="math inline">\(n\)</span> for the second sample. Compute a statistic that compares the two groups, such as the difference between the two sample means.</p></li>
 <li><p>Repeat this resampling process many times say 10,000.</p></li>
 <li><p>Construct the bootstrap distribution of the statistic. Inspect its spread, bias, and shape.</p></li>
 </ol>
@@ -403,8 +405,9 @@ We are 95% confident that the mpg of the cars **in this data set** will fall bet
 
 95% of all mpg values will be between 18.08 and 22.16.
 -->
+</div>
 <div id="match-pairs-two-dependent-samples" class="section level2">
-<h2><span class="header-section-number">3.1</span> Match pairs (Two Dependent Samples)</h2>
+<h2><span class="header-section-number">3.2</span> Match pairs (Two Dependent Samples)</h2>
 <p>In this case we have <em>Two Dependent Samples</em>. (In the previous example we had two independent samples)., but the process is a little different.</p>
 <p>Here is an algorithm:</p>
 <hr />
@@ -417,7 +420,7 @@ We are 95% confident that the mpg of the cars **in this data set** will fall bet
 </ol>
 <hr />
 <p>Here is an example:</p>
-<p>We would like to compare the mean semi-final and final sores of 12 female divers competing in the FINA Would Championship in 2017.</p>
+<p>We would like to compare the mean semi-final and final sores of 12 female divers competing in the FINA World Championship in 2017.</p>
 <p>Use a bootstrap CI to determine whether the mean scores for divers differ between the final and semi-final rounds.</p>
 <p>Note: No matter what test we are supposed to use, it is always good practice to do a EDA, at leat about the grops that we are interesetd in.</p>
 <p>Interpretation of the CI (Answer to the research question):</p>
@@ -428,6 +431,9 @@ We are 95% confident that the mpg of the cars **in this data set** will fall bet
 </div>
 
 <p>We are 95% confident that the true ratio (June/May) of delay variances falls in the interval (0.97, 2.35).</p>
+</div>
+<div id="problems" class="section level2">
+<h2><span class="header-section-number">3.3</span> Problems</h2>
 
 <div class="example">
 <span id="exm:unnamed-chunk-26" class="example"><strong>Example 3.3  </strong></span> A company institutes an exercise break to see if it will improve job satisfaction. Job satisfaction scores for 10 randomly selected workers before and after the exercise program are shown in the table below. Use a bootstrap CI to check whether the job satisfaction has increased.
@@ -494,6 +500,37 @@ We are 95% confident that the mpg of the cars **in this data set** will fall bet
 </tr>
 </tbody>
 </table>
+<hr />
+
+<div class="example">
+<span id="exm:unnamed-chunk-28" class="example"><strong>Example 3.4  </strong></span>Use the data in <code>mtcars</code> and find the 95% confidence interval estimate of the difference between the mean gas mileage of manual and automatic transmissions.
+</div>
+
+<hr />
+
+<div class="example">
+<span id="exm:unnamed-chunk-29" class="example"><strong>Example 3.5  </strong></span>Use the data in <code>mtcars</code> and find the 95% confidence interval estimate of the difference between the <em>(you pick the statistic)</em> gas mileage of manual and automatic transmissions.
+</div>
+
+<hr />
+
+<div class="example">
+<span id="exm:unnamed-chunk-30" class="example"><strong>Example 3.6  </strong></span>Use the data in <code>mtcars</code> and find the 95% confidence interval estimate of the difference between the mean gas mileage of <em>(you pick two groups)</em>.
+</div>
+
+<hr />
+
+<div class="example">
+<span id="exm:unnamed-chunk-31" class="example"><strong>Example 3.7  </strong></span>Use the data in <code>mtcars</code> and find the 95% confidence interval estimate of the difference between the mean gas mileage of <em>(you pick two groups)</em>.
+</div>
+
+<hr />
+
+<div class="example">
+<span id="exm:unnamed-chunk-32" class="example"><strong>Example 3.8  </strong></span>In the built-in data set named <code>immer</code>, the barley yield in years 1931 and 1932 of the same field are recorded. The yield data are presented in the data frame columns Y1 and Y2. Find a 95% confidence interval and check whether the barley yield has increased.
+</div>
+
+<hr />
 </div>
 </div>
 
