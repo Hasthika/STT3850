@@ -646,3 +646,26 @@ In the built-in data set named `immer`, the barley yield in years 1931 and 1932 
 ```
 
 ***
+
+```{example}
+`mtcars` data set was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption (`mpg`) and 10 aspects of automobile design and performance for 32 automobiles. 
+
+1) Bootstrap the mean `mpg` and find the mean and the sd of the bootstrap distribution.
+
+2) Find a 95% bootstrap percentile interval for the `mpg`. Do not forget to *interpret* the interval.
+```
+
+***
+
+```{example}
+Use the `mtcars` data.
+
+1) Bootstrap the (a statistic of your choice) `varable of your choice` and find the mean and the sd of the bootstrap distribution.
+
+2) Find a 95% bootstrap percentile interval for the `varable of your choice`. Do not forget to *interpret* the interval.
+```
+
+***
+
+
+

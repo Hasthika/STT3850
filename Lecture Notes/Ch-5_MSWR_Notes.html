@@ -179,7 +179,7 @@ summary {
 
 <h1 class="title toc-ignore">Confidence Intervals: The Bootstrap</h1>
 <h4 class="author">Dr. Hasthika Rupasinghe</h4>
-<h4 class="date">Nov 19, 2019 at 01:27:21 PM</h4>
+<h4 class="date">Nov 20, 2019 at 09:12:34 PM</h4>
 
 </div>
 
@@ -581,12 +581,12 @@ head(Diving2017)</code></pre>
  n obs: 12 
  n variables: 4 
 
-── Variable type:factor ────────────────────────────────────────────────────────────────────────────
+── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────────────────
  variable missing complete  n n_unique                     top_counts ordered
   Country       0       12 12        8 Can: 2, Chi: 2, Mal: 2, Nor: 2   FALSE
      Name       0       12 12       12  SI: 1, BEN: 1, CHA: 1, CHE: 1   FALSE
 
-── Variable type:numeric ───────────────────────────────────────────────────────────────────────────
+── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────────────────────
   variable missing complete  n   mean    sd     p0    p25    p50    p75  p100
      Final       0       12 12 350.48 40.02 283.35 318.59 358.93 387.15 397.5
  Semifinal       0       12 12 338.5  22.95 313.7  322.2  325.62 356.57 382.8
@@ -737,6 +737,26 @@ ggplot(data = data.frame(x = boot_Mean_Diff), aes(x = x)) +
 <span id="exm:unnamed-chunk-32" class="example"><strong>Example 3.8  </strong></span>In the built-in data set named <code>immer</code>, the barley yield in years 1931 and 1932 of the same field are recorded. The yield data are presented in the data frame columns Y1 and Y2. Find a 95% confidence interval and check whether the barley yield has increased.
 </div>
 
+<hr />
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-33" class="example"><strong>Example 3.9  </strong></span><code>mtcars</code> data set was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption (<code>mpg</code>) and 10 aspects of automobile design and performance for 32 automobiles.</p>
+<ol style="list-style-type: decimal">
+<li><p>Bootstrap the mean <code>mpg</code> and find the mean and the sd of the bootstrap distribution.</p></li>
+<li>Find a 95% bootstrap percentile interval for the <code>mpg</code>. Do not forget to <em>interpret</em> the interval.
+</div>
+</li>
+</ol>
+<hr />
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-34" class="example"><strong>Example 3.10  </strong></span>Use the <code>mtcars</code> data.</p>
+<ol style="list-style-type: decimal">
+<li><p>Bootstrap the (a statistic of your choice) <code>varable of your choice</code> and find the mean and the sd of the bootstrap distribution.</p></li>
+<li>Find a 95% bootstrap percentile interval for the <code>varable of your choice</code>. Do not forget to <em>interpret</em> the interval.
+</div>
+</li>
+</ol>
 <hr />
 </div>
 </div>
