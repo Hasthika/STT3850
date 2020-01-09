@@ -35,6 +35,7 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 ## Week 1: (Jan 13--17) {-}
 
+* [Lecture: Week 2](../Lecture Notes/deletethis.R)
 
 * Read chapters 1 and 2 of [MD](https://moderndive.com)
 
