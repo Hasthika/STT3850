@@ -53,7 +53,7 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * Read [Getting used to R, RStudio, and R Markdown](https://ismayc.github.io/rbasics-book/)
 
-* [Rmarkdown Basics](../Lecture Notes/R_Markdown_Basics.html1)
+* [Rmarkdown Basics](../Lecture Notes/R_Markdown_Basics.html)
 
 * [Lecture: Week 2](../Lecture Notes/Week2_Ch3MD_students.html1)
 

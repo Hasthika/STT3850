@@ -1,8 +1,8 @@
 ---
 title: "R Markdown Basics"
 author: "Dr. Hasthika Rupasinghe"
-date: "1/22/2019"
-output: pdf_document
+date: "1/16/2020"
+output: html_document
 ---
 
 #### Code Chunks
