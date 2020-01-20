@@ -1,5 +1,5 @@
 ---
-title: "Lecture Notes for Ch3 of MD"
+title: "Lecture Notes for Ch2 of MD"
 author: "Dr. Hasthika Rupasinghe"
 date: '`r format(Sys.time(), "%b %d, %Y at %X")`'
 output:
@@ -52,11 +52,15 @@ Let’s break down the grammar with an example.
 
 We will be considering five different types of graphs. 
 
-  1. 
-  2. 
-  3. 
-  4. 
-  5. 
+  * For **quantitative** variables
+  
+    1. 
+    2. 
+    3. 
+    4. 
+   
+  * For **qualitative** variables
+    5. 
   
 *Example:* We will graphically investigate the relationship between the following two numerical variables in the `flights` data frame:
 

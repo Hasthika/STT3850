@@ -49,17 +49,17 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 ## Week 2: (Jan 20--24) {-}
 
-* Read chapter 3 of [MD](https://moderndive.com) --- Data Visualization via `ggplot2`
+* Read chapter 2 of [MD](https://moderndive.com) --- Data Visualization via `ggplot2`
 
 * Read [Getting used to R, RStudio, and R Markdown](https://ismayc.github.io/rbasics-book/)
 
 * [Rmarkdown Basics](../Lecture Notes/R_Markdown_Basics.html)
 
-* [Lecture: Week 2](../Lecture Notes/Week2_Ch3MD_students.html1)
+* [Lecture: Week 2](../Lecture Notes/Week2_Ch3MD_students.html)
 
-* Complete _Introduction to Data_ [(DataCamp)](https://www.datacamp.com/courses/introduction-to-data) --- 
+* Complete _Data Visualization with `ggplot2`_ (Part 1) [(DataCamp)](https://www.datacamp.com/)
 
-* Complete Chapters 1-3 of _Intermediate R_ [(DataCamp)](https://www.datacamp.com/courses/intermediate-r) --- 
+* Complete _Introduction to Data_ [(DataCamp)](https://www.datacamp.com/courses/introduction-to-data) - optional --- 
 
 * In class **quiz 02** --- Thursday (last 20 min of class)
 
@@ -92,7 +92,6 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 ```{block, week3optional, type='rmdoptional'}
 #### Optional {-}
 
-* Complete _Data Visualization with `ggplot2`_ (Part 1) [(DataCamp)](https://www.datacamp.com/)
 
 * Nice [Tidyverse Cheat Sheet](http://datacamp-community.s3.amazonaws.com/e63a8f6b-2aa3-4006-89e0-badc294b179c)
 ```
@@ -108,6 +107,8 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 * [Lecture: Before Chapter 3: the `for` loop in R](../Lecture Notes/Before_Ch_03_students.html1)
 
 * [Lecture: Chapter 3](../Lecture Notes/Ch-3_Notes_students.html1)
+
+* Complete Chapters 1-3 of _Intermediate R_ [(DataCamp)](https://www.datacamp.com/courses/intermediate-r) --- 
 
 * Complete _Exploratory Data Analysis_ [(DataCamp)](https://www.datacamp.com/) --- 
 
