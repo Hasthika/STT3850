@@ -68,13 +68,11 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 ## Week 3 (Jan 27--Jan 31) {-}
 
-* Read Chapter 4 of [MD](https://moderndive.com) --- Tidy Data via `tidyr`
-
 * Read Chapter 2 of MSWR
 
-* [Lecture - Chapter 2 of MSWR: Week 3](../Lecture Notes/Week4_Ch2MSWR_students.html1)
+* [Lecture - Chapter 2 of MSWR: Week 3](../Lecture Notes/Week4_Ch2MSWR_students.html)
 
-* [Homework 1: Chapter 2 of MSWR](../Homework/Chapter2HWK.html1)
+* [Homework 1: Chapter 2 of MSWR](../Homework/Chapter2HWK.html)
 
 * Complete _Reporting with R Markdown_ [(DataCamp)](https://www.datacamp.com/courses/reporting-with-r-markdown) ---  (optional)
 

@@ -219,6 +219,7 @@ library(resampledata) # dataset for MSWR book is in this library
 library(ggplot2)
 library(dplyr)
 data(FlightDelays)
+?FlightDelays
 ```
 
 
@@ -261,6 +262,19 @@ day_delayed30 <- FlightDelays %>%
   summarize(proportion= sum(Delayed30=="Yes")/sum(Delayed30=="Yes"|Delayed30=="No"))
 
 day_delayed30
+
+
+day_delayed30 <- FlightDelays %>%
+  group_by(Day) %>%
+  summarize(ProportionDelayed = mean(Delayed30 == "Yes"))
+
+day_delayed30
+  
+
+
+str(FlightDelays)
+
+
 ```
 
 ```{r}

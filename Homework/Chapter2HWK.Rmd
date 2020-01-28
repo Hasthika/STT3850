@@ -1,5 +1,5 @@
 ---
-title: "Homework 1 (Chapter Two): Due Wed the 18th"
+title: "Homework 1 (Chapter Two): Due Thursday the 6th"
 author: "Your Name Here"
 date: '`r format(Sys.time(), "%b %d, %Y")`'
 output: bookdown::html_document2
@@ -57,7 +57,7 @@ c) Create a boxplot to compare the distribution of the change in diameters of th
 
 ```
 
-d) Use Data Wrangling via `dplyr` to find the numeric summaries of the diameter changes for the two levels fertilization.
+d) Use `%>%` operator via `dplyr` to find the numeric summaries of the diameter changes for the two levels fertilization.
 
 > SOLUTION: 
 

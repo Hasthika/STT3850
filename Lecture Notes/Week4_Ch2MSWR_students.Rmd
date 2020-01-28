@@ -26,6 +26,12 @@ $$\bar{x} = \dfrac{1}{n}\sum_{i=1}^n x_i$$
 Example: Find the mean of 2, 15, 3, 8, 12, 5.
 
 ```{r}
+# Your code here
+#
+# 
+```
+
+```{r include=FALSE}
 data <- c(2, 15, 3, 8, 12, 5, 100)
 Mean <- mean(data)
 Mean
@@ -40,6 +46,12 @@ Median is the middle value of a sorted data set. Usually works well with outlier
 Example: Find the median of 2, 15, 3, 8, 12, 5.
 
 ```{r}
+# Your code here
+#
+#
+```
+
+```{r include=FALSE}
 median(data)
 ```
 
@@ -52,6 +64,12 @@ Here for example you sort the data, omit 25% of the observations on each end, an
 Example: Find the 25% Trimmed Mean of 2, 15, 3, 8, 12, 5.
 
 ```{r}
+# Your code here
+#
+#
+```
+
+```{r include=FALSE}
 d <- c(2, 15, 3, 8, 12, 5)
 
 mean(d, trim = .25)
@@ -82,11 +100,9 @@ $$s = \sqrt{\dfrac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2}$$
 Example: Find the Range, IQR and the Standard deviation  of 2, 15, 3, 8, 12, 5.
 
 ```{r}
-
+# Your code here
 #
 #
-#
-
 ```
 
 
@@ -95,30 +111,33 @@ Example: Find the Range, IQR and the Standard deviation  of 2, 15, 3, 8, 12, 5.
 
 ### Five number summary
 
-In this class we use the `five number summary` to describe the shape of a data set.
-
-
 `five number summary`: The minimum, first quartile, median, third quartile, and the maximum.
 
 
 Example: Conside the 15 numbers 9,10,11,11,12,14,16,17,19,21,25,31,32,41,61. Find the five number summary.
 
 ```{r}
+# Your code here
+#
+#
+```
+
+```{r include=FALSE}
 data <- c(9,10,11,11,12,14,16,17,19,21,25,31,32,41,61)
 summary(data)
 ```
 
 Five number summarty is:
 
-  1. Min = 9.0
+  1. Min = 
   
-  2. $Q_1$ = 11.5
+  2. $Q_1$ = 
   
-  3. Median = 17.0
+  3. Median = 
   
-  4. $Q_3$ = 28.0
+  4. $Q_3$ = 
   
-  5. Max = 61.0
+  5. Max = 
 
 
 ### Boxplots
@@ -131,6 +150,12 @@ Create a boxplot for the following 21 data values.
 5, 6, 6, 8, 9, 11, 11, 14, 17, 17, 19, 20, 21, 21, 22, 23, 24, 32, 40, 43, 49.
 
 ```{r}
+# Your code here
+#
+#
+```
+
+```{r include=FALSE}
 library(ggplot2)
 
 d <- c(5, 6, 6, 8, 9, 11, 11, 14, 17, 17, 19, 20, 21, 21, 22, 23, 24, 32, 40, 43, 49)
@@ -147,11 +172,19 @@ ggplot(data = d, aes(y = d)) + geom_boxplot()
 
 ### Normal Distribution
 
-The normal distribution is the most important and most widely used distribution in statistics. It is sometimes called the "bell curve" because the normal distribution is bell shaped and symmetric. We would "like" data to be normally distributed.
+The normal distribution is the most important and most widely used distribution in statistics. It is sometimes called the "bell curve" because the normal distribution is bell shaped and symmetric. We would "like" our data to be normally distributed.
 
 Here is an example: Check whether the data below are normal distributed.
 
+11.62, 15.92, 12.40, 14.40, 10.28, 13.15, 11.22,  7.35, 16.45,  5.37, 10.25, 12.41, 11.43,  8.00, 11.90, 17.86,  7.59, 11.88, 14.54, 14.44, 10.29,  5.47,  8.20, 10.56, 11.18
+
   **1. Create a histogram and check if it is "Normal" enough!**
+
+```{r}
+# Your code here
+#
+#
+```
 
 ```{r}
 
@@ -196,7 +229,7 @@ Example: Exercise  2.4
  
 Import the `flight delays` case study in Section 1.1.
 
-```{r}
+```{r include=FALSE}
 library(resampledata) # dataset for MSWR book is in this library
 library(ggplot2)
 library(dplyr)
@@ -207,7 +240,7 @@ data(FlightDelays)
 a) *Create a table and a bar chart of the departure times (`DepartTime`)*
 
 
-```{r}
+```{r include=FALSE}
 head(FlightDelays)
 str(FlightDelays)
 
@@ -220,14 +253,11 @@ ggplot(data = FlightDelays, aes(x = DepartTime)) +
 
 b) *Create a contingency table of the variables `Day` and `Delayed30`. For each day, what is the proportion of flights delayed at least 30 min.*
 
-```{r}
+```{r include=FALSE}
 
 table(FlightDelays$Day, FlightDelays$Delayed30)
 
 ```
-
-
-Here we use Ch 5: Data Wrangling via dplyr, of MD.
 
 
 Note: 
@@ -238,7 +268,7 @@ The `%>%` operator allows us to go from one step in `dplyr` to the next easily s
   * group_by another variable to create groups then
   * summarize this grouped data to calculate the mean (for example) for each level of the group.
 
-```{r}
+```{r include=FALSE}
 library(knitr)
 
 day_delayed30 <- FlightDelays %>%
@@ -247,16 +277,13 @@ day_delayed30 <- FlightDelays %>%
 
 kable(day_delayed30)
 
-
-  
-
 ```
 
 
 
 c) *Create side by side boxplots of the lenghts of the flights, grouped by whether or not the flight was delayed at least 30 min.*
 
-```{r}
+```{r include=FALSE}
 str(FlightDelays)
 ggplot(data = FlightDelays, aes(x = Delayed30, y = FlightLength)) + geom_boxplot()
 
@@ -272,19 +299,34 @@ Excercise 2.5: You try!
 
 
 
-```{r include = FALSE}
+```{r include=FALSE}
 
-data("GSS2002")
+library(resampledata)
+
+data(GSS2002)
+
 str(GSS2002)
 
 ```
+
+
+
+
+
+
+
+
+
+
+
+
 
 a) Create a table and a bar chart of the responses to the question about the death penalty.
 
 ```{r include = FALSE}
 
-table(GSS2002$DeathPenalty)
-ggplot(data = GSS2002, aes(x = DeathPenalty)) + geom_bar()
+table(GSS2002$DeathPenalty) # table
+ggplot(data = GSS2002, aes(x = DeathPenalty)) + geom_bar() # barchart
 
 
 ```
@@ -292,7 +334,7 @@ ggplot(data = GSS2002, aes(x = DeathPenalty)) + geom_bar()
 
 b) Use the `table` command and the `summary` command in `R` on the gun ownership variable. What additional infomation does the `summary` command give that the table command does not?
  
-```{r include = FALSE}
+```{r include=FALSE}
 
 table(GSS2002$OwnGun)
 
@@ -302,19 +344,48 @@ summary(GSS2002$OwnGun)
 
 c) Create a contingency table displaying the realtionship between opinions about the death penalty to that about gun ownership.
 
-```{r include = FALSE}
+```{r include=FALSE}
 
-
+table(GSS2002$DeathPenalty, GSS2002$OwnGun)
 
 ```
 d) What proportion of gun owners favor the death penalty? Does it appear to be different from the proportion among those who do not own guns?
 
-```{r include = FALSE}
+```{r include=FALSE}
 library(knitr)
 
 death_gun <- GSS2002 %>%
   group_by(OwnGun) %>%
   summarize(pro = sum(DeathPenalty == "Favor", na.rm = TRUE)/ sum(DeathPenalty == "Favor" | DeathPenalty == "Oppose", na.rm = TRUE))
+  
+kable(death_gun)
+
+
+death_gun <- GSS2002 %>%
+  group_by(OwnGun) %>%
+  summarize(ProInFavor = mean(DeathPenalty == "Favor", na.rm = TRUE))
+
+death_gun
+
+
+
+
+
+death_gun <- GSS2002 %>%
+  group_by(OwnGun) %>%
+  summarize(pro = mean(DeathPenalty == "Favor", na.rm = TRUE))
+
+death_gun
+
+
+
+
+
+
+
+death_gun <- GSS2002 %>%
+  group_by(OwnGun) %>%
+  summarize(pro = mean(DeathPenalty == "Favor", na.rm = TRUE))
   
 kable(death_gun)
   
