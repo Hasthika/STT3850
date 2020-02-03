@@ -185,14 +185,15 @@ Do men consume more hotwings than women?
 
 Define the null and alternative hypothesis:
 
-$H_0: ??$  vs. $H_a: ??$
+$H_0: \mu_M - \mu_F = 0$  vs. $H_a: \mu_M - \mu_F > 0$
 
 Step 1) Get data
 
-```{r include=FALSE}
+```{r}
 library(resampledata)
-data("Beerwings")
+data(Beerwings)
 head(Beerwings)
+str(Beerwings)
 ```
 
 
@@ -205,11 +206,16 @@ DF
 dim(DF)
 
 
+
+
+
+
+
 # Difference betwen the average number of Hotwings
 
 ANS <- DF %>% 
   group_by(Gender) %>% 
-  summarize(Average  = mean(Hotwings))
+  summarize(Average  = mean(Hotwings), N = n())
 ANS
 
 MD <- ANS[2, 2] - ANS[1, 2]
@@ -382,9 +388,13 @@ ggplot(data = Verizon, aes(x = Time)) + geom_histogram() + facet_wrap(~Group)
 
 3) Name two measures that can be used to describe the `center` in situations like this instead off the mean.
 
+Trimmed mean, Median
+
 4) Use one of the measures that you mentioned above to re-do the test. State your conclusions.
 
-```{r include=FALSE}
+Here I am using the trimmed mean.
+
+```{r}
 data("Verizon")
 
 head(Verizon)
@@ -438,7 +448,9 @@ In the Flight Delays Case Study in Section 1.1,
 
 a) Define $H_0$ and $H_a$ first.
 
-```{r include=FALSE}
+$H_0: \mu_{UA} = \mu_{AA}$ vs. $H_0: \mu_{UA} \neq \mu_{AA}$
+
+```{r}
 data("FlightDelays")
 
 
@@ -474,7 +486,7 @@ b) Define $H_0$ and $H_a$ first.
 
 $H_0: \mu_{May} = \mu_{June}$ vs. $H_0: \mu_{May} \neq \mu_{June}$
 
-```{r include=FALSE}
+```{r}
 data("FlightDelays")
 
 del_by_month <- FlightDelays %>% 
@@ -515,7 +527,7 @@ In the Flight Delays Case Study in Section 1.1, the data contain flight delays f
 
 a) Define $H_0$ and $H_a$ first.
 
-```{r include=FALSE}
+```{r}
 data("FlightDelays")
 str(FlightDelays)
 
@@ -562,7 +574,7 @@ b) Define $H_0$ and $H_a$ first.
 
 $H_0: \sigma_{UA} = \sigma_{AA}$ vs. $H_a: \sigma_{UA} > \sigma_{AA}$
 
-```{r include=FALSE}
+```{r}
 
 an <- FlightDelays %>% 
   group_by(Carrier) %>% 
