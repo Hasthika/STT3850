@@ -117,7 +117,7 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * Complete _Working with Data in the Tidyverse_ [(DataCamp)](https://www.datacamp.com/courses/working-with-data-in-the-tidyverse) --- 
 
-* [Lecture: Chapter 3](../Lecture Notes/Ch-3_Notes_students.html1)
+* [Lecture: Chapter 3](../Lecture Notes/Ch-3_Notes_students.html)
 
 <!--
 * Work on [Is this Discrimination?](../Rmarkdown/ClassAssignment.html)
