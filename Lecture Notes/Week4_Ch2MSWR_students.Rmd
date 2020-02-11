@@ -31,7 +31,7 @@ Example: Find the mean of 2, 15, 3, 8, 12, 5.
 # 
 ```
 
-```{r include=FALSE}
+```{r  }
 data <- c(2, 15, 3, 8, 12, 5, 100)
 Mean <- mean(data)
 Mean
@@ -51,7 +51,7 @@ Example: Find the median of 2, 15, 3, 8, 12, 5.
 #
 ```
 
-```{r include=FALSE}
+```{r  }
 median(data)
 ```
 
@@ -69,7 +69,7 @@ Example: Find the 25% Trimmed Mean of 2, 15, 3, 8, 12, 5.
 #
 ```
 
-```{r include=FALSE}
+```{r  }
 d <- c(2, 15, 3, 8, 12, 5)
 
 mean(d, trim = .25)
@@ -122,7 +122,7 @@ Example: Conside the 15 numbers 9,10,11,11,12,14,16,17,19,21,25,31,32,41,61. Fin
 #
 ```
 
-```{r include=FALSE}
+```{r  }
 data <- c(9,10,11,11,12,14,16,17,19,21,25,31,32,41,61)
 summary(data)
 ```
@@ -150,12 +150,17 @@ Create a boxplot for the following 21 data values.
 5, 6, 6, 8, 9, 11, 11, 14, 17, 17, 19, 20, 21, 21, 22, 23, 24, 32, 40, 43, 49.
 
 ```{r}
-# Your code here
-#
-#
+library(ggplot2)
+mydata <- c(5, 6, 6, 8, 9, 11, 11, 14, 17, 17, 19, 20, 21, 21, 22, 23, 24, 32, 40, 43, 49)
+
+mydata <- data.frame(mydata)
+mydata
+
+ggplot(mydata, aes(y = mydata)) + geom_boxplot()
+
 ```
 
-```{r include=FALSE}
+```{r  }
 library(ggplot2)
 
 d <- c(5, 6, 6, 8, 9, 11, 11, 14, 17, 17, 19, 20, 21, 21, 22, 23, 24, 32, 40, 43, 49)
@@ -229,7 +234,7 @@ Example: Exercise  2.4
  
 Import the `flight delays` case study in Section 1.1.
 
-```{r include=FALSE}
+```{r  }
 library(resampledata) # dataset for MSWR book is in this library
 library(ggplot2)
 library(dplyr)
@@ -240,7 +245,7 @@ data(FlightDelays)
 a) *Create a table and a bar chart of the departure times (`DepartTime`)*
 
 
-```{r include=FALSE}
+```{r  }
 head(FlightDelays)
 str(FlightDelays)
 
@@ -253,7 +258,7 @@ ggplot(data = FlightDelays, aes(x = DepartTime)) +
 
 b) *Create a contingency table of the variables `Day` and `Delayed30`. For each day, what is the proportion of flights delayed at least 30 min.*
 
-```{r include=FALSE}
+```{r  }
 
 table(FlightDelays$Day, FlightDelays$Delayed30)
 
@@ -268,12 +273,23 @@ The `%>%` operator allows us to go from one step in `dplyr` to the next easily s
   * group_by another variable to create groups then
   * summarize this grouped data to calculate the mean (for example) for each level of the group.
 
-```{r include=FALSE}
+```{r}
 library(knitr)
+
+# Harder way!
 
 day_delayed30 <- FlightDelays %>%
   group_by(Day) %>%
   summarize(pro = sum(Delayed30 == "Yes")/sum(Delayed30 == "Yes"|Delayed30 == "No"))
+
+kable(day_delayed30)
+
+
+# Easy and Prefered way!
+
+day_delayed30 <- FlightDelays %>%
+  group_by(Day) %>%
+  summarize(pro = mean(Delayed30 == "Yes"))
 
 kable(day_delayed30)
 
@@ -283,8 +299,9 @@ kable(day_delayed30)
 
 c) *Create side by side boxplots of the lenghts of the flights, grouped by whether or not the flight was delayed at least 30 min.*
 
-```{r include=FALSE}
+```{r  }
 str(FlightDelays)
+
 ggplot(data = FlightDelays, aes(x = Delayed30, y = FlightLength)) + geom_boxplot()
 
 ```
@@ -299,7 +316,7 @@ Excercise 2.5: You try!
 
 
 
-```{r include=FALSE}
+```{r  }
 
 library(resampledata)
 
@@ -334,7 +351,7 @@ ggplot(data = GSS2002, aes(x = DeathPenalty)) + geom_bar() # barchart
 
 b) Use the `table` command and the `summary` command in `R` on the gun ownership variable. What additional infomation does the `summary` command give that the table command does not?
  
-```{r include=FALSE}
+```{r  }
 
 table(GSS2002$OwnGun)
 
@@ -344,51 +361,22 @@ summary(GSS2002$OwnGun)
 
 c) Create a contingency table displaying the realtionship between opinions about the death penalty to that about gun ownership.
 
-```{r include=FALSE}
+```{r  }
 
 table(GSS2002$DeathPenalty, GSS2002$OwnGun)
 
 ```
 d) What proportion of gun owners favor the death penalty? Does it appear to be different from the proportion among those who do not own guns?
 
-```{r include=FALSE}
+```{r  }
 library(knitr)
-
-death_gun <- GSS2002 %>%
-  group_by(OwnGun) %>%
-  summarize(pro = sum(DeathPenalty == "Favor", na.rm = TRUE)/ sum(DeathPenalty == "Favor" | DeathPenalty == "Oppose", na.rm = TRUE))
-  
-kable(death_gun)
-
 
 death_gun <- GSS2002 %>%
   group_by(OwnGun) %>%
   summarize(ProInFavor = mean(DeathPenalty == "Favor", na.rm = TRUE))
 
-death_gun
-
-
-
-
-
-death_gun <- GSS2002 %>%
-  group_by(OwnGun) %>%
-  summarize(pro = mean(DeathPenalty == "Favor", na.rm = TRUE))
-
-death_gun
-
-
-
-
-
-
-
-death_gun <- GSS2002 %>%
-  group_by(OwnGun) %>%
-  summarize(pro = mean(DeathPenalty == "Favor", na.rm = TRUE))
-  
 kable(death_gun)
-  
+
   
 ```
 
