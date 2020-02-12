@@ -199,21 +199,11 @@ str(Beerwings)
 
 Step 2) Find the observed difference 
 
-```{r include=FALSE}
-DF <- data.frame(Hotwings = Beerwings$Hotwings, Gender = Beerwings$Gender)
-DF <- tbl_df(DF)
-DF
-dim(DF)
-
-
-
-
-
-
+```{r }
 
 # Difference betwen the average number of Hotwings
 
-ANS <- DF %>% 
+ANS <- Beerwings %>% 
   group_by(Gender) %>% 
   summarize(Average  = mean(Hotwings), N = n())
 ANS
@@ -229,14 +219,14 @@ observed
 Step 3) Resample and find the p-value
 
 
-```{r include=FALSE}
+```{r}
 set.seed(123)
 sims <- 10^5 - 1 
 
 ans <- numeric(sims)
 for(i in 1:sims){
   index <- sample.int(n = 30, size = 15, replace = FALSE)
-  ans[i] <- mean(DF$Hotwings[index]) - mean(DF$Hotwings[-index])
+  ans[i] <- mean(Beerwings$Hotwings[index]) - mean(Beerwings$Hotwings[-index])
 }
 
 pvalue <- (sum(ans >= observed) + 1)/(sims + 1)
@@ -245,7 +235,7 @@ pvalue
  
 Step 4) Create a plot
 
-```{r include=FALSE, label = "dist2", fig.cap = "Permutation Distribution of $\\bar{X}_m - \\bar{X}_f$"}
+```{r , label = "dist2", fig.cap = "Permutation Distribution of $\\bar{X}_m - \\bar{X}_f$"}
 library(ggplot2)
 ggplot(data = data.frame(md = ans), aes(x = md)) + 
   geom_density(fill = "orchid4") + 
@@ -278,11 +268,12 @@ Let $\mu_1$ denote the mean repair time for the the ILEC customers and $\mu_2$ t
 2) Conduct the test. 
 
 
-```{r include=FALSE}
+```{r }
 #Step 1
 
 data("Verizon")
 head(Verizon)
+str(Verizon)
 
 dim(Verizon)
 
@@ -291,19 +282,19 @@ dim(Verizon)
 
 Time_group <- Verizon %>%
   group_by(Group) %>%
-  summarize(Mean = mean(Time), NumCus = n())
+  summarize(Average = mean(Time), NumCus = n())
 Time_group
 
 MD <- Time_group[2,2] - Time_group[1,2]
 MD
 
-observed <- MD$Mean   # We had to create a new variable called observed, because MD was a matrix in this case.
+observed <- MD$Average   # We had to create a new variable called observed, because MD was a matrix in this case.
 observed
   
 #Step 3
 
-set.seed(200)
-sims <- 10^5 - 1 
+set.seed(123)
+sims <- 10^4 - 1 
 ans <- numeric(sims)
 for(i in 1:sims){
   index <- sample.int(n = 1687, size = 1664, replace = FALSE)
@@ -324,11 +315,11 @@ ggplot(data = data.frame(md = ans), aes(x = md)) +
   
 Step 5: Make the decision -- 
 
-<!--
+
 Technical conclusion: $p$-Value < 0.05, so Reject $H_0$. 
 
 English conclusion: There is enough evidence to conclude that the Verizon spend significantly more time to  complete repairs for CLEC customers than for the ILEC customers.
--->
+
   
   
 ```{r include=FALSE}
@@ -375,13 +366,13 @@ ggplot(data = data.frame(md = ans), aes(x = md)) +
 
 1) Create a good visual to compare the tipical times to complete repairs for ILEC and CLEC customers.
 
-```{r include=FALSE}
+```{r}
 ggplot(data = Verizon, aes(x=factor(Group), y = Time)) + geom_boxplot()
 ```
 
 2) From the graph we created in 1) it is clear that the data have a long tail. Create a better visual to show the tails of the distributions.
 
-```{r include=FALSE}
+```{r}
 ggplot(data = Verizon, aes(x = Time)) + geom_histogram() + facet_wrap(~Group)
 
 ```
