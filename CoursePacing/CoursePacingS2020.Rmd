@@ -119,6 +119,8 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * [Lecture: Chapter 3](../Lecture Notes/Ch-3_Notes_students.html)
 
+* [Homework 2: Chapter 3 of MSWR](../Homework/Chapter3HWK_H.html) --- 
+
 <!--
 * Work on [Is this Discrimination?](../Rmarkdown/ClassAssignment.html)
 
@@ -139,7 +141,7 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * [Lecture: Chapter 3](../Lecture Notes/Ch-3_Notes_students.html1)
 
-* [Homework 2: Chapter 3 of MSWR](../Homework/Chapter3HWK_H.html1) --- 
+* [Homework 2: Chapter 3 of MSWR](../Homework/Chapter3HWK_H.html) --- 
 
 * [Exam 1 grades (Distribution)](../Exams/GradesExam1.html1)
 

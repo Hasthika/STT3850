@@ -1,7 +1,6 @@
 ---
-title: "Homework 2: Ch3 MSWR: Due Thursday the 3rd"
+title: "Homework 2: Ch3 MSWR: Due Tuesday the 25th"
 author: "Your Name Here"
-date: '`r format(Sys.time(), "%b %d, %Y")`'
 output: bookdown::html_document2
 ---
 
