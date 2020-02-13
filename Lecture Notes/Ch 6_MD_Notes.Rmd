@@ -1,5 +1,5 @@
 ---
-title: "Lecture Notes for Ch 6 of MD: Basic Regression"
+title: "Lecture Notes for Ch 5 of MD: Basic Regression"
 author: "Dr. Hasthika Rupasinghe"
 date: '`r format(Sys.time(), "%b %d, %Y at %X")`'
 output:
@@ -21,6 +21,8 @@ library(moderndive)
 library(gapminder)
 library(skimr)
 ```
+
+\setcounter{chapter}{0}
 
 # What is linear regression?
 
@@ -226,7 +228,7 @@ What can you say about the relationship between `age` and teaching `score`s base
 
 2) 
 
-```{r}
+```{r include=FALSE}
 evals_age <- evals %>%
   select(score, age)
 
@@ -242,7 +244,7 @@ The median teaching score was _______ out of 5 whereas the median age was ______
 Furthermore, the middle 50% of teaching scores were between _______ and _______ () while the middle 50% of beauty scores were between _______ and _______ out of 10.
 
 
-```{r}
+```{rinclude=FALSE}
 evals_age %>% 
   get_correlation(formula = score ~ age)
 ```
@@ -254,7 +256,8 @@ evals_age %>%
 
 
 3) 
-```{r}
+
+```{r include=FALSE}
 ggplot(evals_age, aes(x = age, y = score)) +
   geom_point() +
   labs(x = "Age", y = "Teaching Score", 
@@ -526,7 +529,7 @@ ggplot(gapminder2007, aes(x = lifeExp, fill=continent)) +
 
 ```
 
-```{r include=FALSE}
+```{r}
 ggplot(gapminder2007, aes(x = continent, y = lifeExp, fill = continent)) +
   geom_boxplot() +
   labs(x = "Continent", y = "Life expectancy (years)", 
@@ -581,7 +584,7 @@ mean_lifeExp_by_continent <- gapminder2007 %>%
 kable(mean_lifeExp_by_continent)
 ```
 
-Now, let’s use the `lm` function we introduced in Section 6.1 to get the regression coefficients for gapminder2007 analysis:
+Now, let’s use the `lm` function we introduced in Section 5.1 to get the regression coefficients for gapminder2007 analysis:
 
 ```{r}
 lifeExp_model <- lm(lifeExp ~ continent, data = gapminder2007)
@@ -652,5 +655,11 @@ Let’s generalize this whole thing a bit.
   
 ```{example}
 Fit a new linear regression to predcit the GDP using continent. Write the model. Interpret the coefficients. (Use the `gapminder2007` dataftame that we created)
+```
+
+
+```{r}
+GDP_model <- lm(gdpPercap ~ continent, data = gapminder2007)
+summary(GDP_model)
 ```
 
