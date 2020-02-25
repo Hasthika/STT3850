@@ -152,7 +152,7 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 ## Week 7: (Feb 24--28) {-}
 
-* [Exam 1 grades (Distribution)](../Exams/GradesExam1.html1)
+* [Exam 1 grades (Distribution)](../Exams/GradesExam1.html)
 
 * [Lecture: Chapter 5 of MD](../Lecture Notes/Ch-6_MD_Notes.html)
 
