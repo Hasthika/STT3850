@@ -172,6 +172,7 @@ ggplot(evals_onex, aes(x = bty_avg, y = score)) +
        title = "Relationship of teaching and beauty scores")
 ```
 
+<!--
   > Note: Our dataset suffers from *overplotting.* Remedy that using  `geom_jitter()`
 
 ```{r eval=FALSE}
@@ -183,6 +184,7 @@ ggplot(evals_onex, aes(x = bty_avg, y = score)) +
 
 
 Going forward for simplicity’s sake however, we’ll only use the regular scatterplot.
+-->
 
 #### Adding a “regression line” to the scatterplot.
 
@@ -244,7 +246,7 @@ The median teaching score was _______ out of 5 whereas the median age was ______
 Furthermore, the middle 50% of teaching scores were between _______ and _______ () while the middle 50% of beauty scores were between _______ and _______ out of 10.
 
 
-```{rinclude=FALSE}
+```{r include=FALSE}
 evals_age %>% 
   get_correlation(formula = score ~ age)
 ```
@@ -270,7 +272,7 @@ ggplot(evals_age, aes(x = age, y = score)) +
 The equation of the regression line is  $\hat{y} = b_0+b_1\cdot x$ where 
 
   * the intercept coefficient is  $b_0$ is the value of $\hat{y}$ when $x=0$, and
-  * the slope coefficient $b_1$ is the increase in $\hat{y}$ for every one unit increase in $x$.
+  * the slope coefficient $b_1$ is the _____________ increase in $\hat{y}$ for every _____________ increase in $x$.
   
 ### How to obtain  $b_0$ and $b_1$ values.
 
