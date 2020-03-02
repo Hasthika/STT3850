@@ -386,7 +386,7 @@ Trimmed mean, Median
 
 I am using trimmed mean here.
 
-```{r include=FALSE}
+```{r}
 data("Verizon")
 
 head(Verizon)
@@ -442,7 +442,7 @@ a) Define $H_0$ and $H_a$ first.
 
 $H_0: \mu_{UA} = \mu_{AA}$ vs. $H_0: \mu_{UA} \neq \mu_{AA}$
 
-```{r  include=FALSE}
+```{r}
 data("FlightDelays")
 
 
@@ -503,12 +503,12 @@ pvalue
 
 ```
 
-<!--
+
 Technical conclusion: _p-value_ < 0.05, so reject $H_0$
 
 Non-Technical conclusion:
 Based on a _p-value_ of $`r pvalue`$ there is strong evidence to suggest the mean delay time for June is not the same as the mean delay time for May.
--->
+
 
 Exercise 3.6:
 
@@ -521,7 +521,7 @@ In the Flight Delays Case Study in Section 1.1, the data contain flight delays f
 
 a) Define $H_0$ and $H_a$ first.
 
-```{r include=FALSE}
+```{r}
 data("FlightDelays")
 str(FlightDelays)
 
@@ -557,19 +557,19 @@ ggplot(data = data.frame(md = ans), aes(x = md)) +
 
 ```
 
-<!--
+
 Technical conclusion: _p-value_ < 0.05, so reject $H_0$
 
 Non-Technical conclusion:
 
 Based on a _p-value_ of $`r pvalue`$ there is strong evidence to suggest the proportion of flights delayed more than 20 minutes is not the same for United and American.
--->
+
 
 b) Define $H_0$ and $H_a$ first.
 
 $H_0: \sigma_{UA} = \sigma_{AA}$ vs. $H_a: \sigma_{UA} > \sigma_{AA}$
 
-```{r include=FALSE}
+```{r}
 
 an <- FlightDelays %>% 
   group_by(Carrier) %>% 
@@ -590,11 +590,10 @@ pvalue <- ((sum(vd >= obs_diff) + 1)/(sims + 1))
 pvalue
 
 ```
-<!--
+
 Technical conclusion: _p-value_ > 0.05, so fail to reject $H_0$
 
 Non-Technical conclusion:
 
 
 Based on a _p-value_ of $`r pvalue`$ there is not sufficient evidence to suggest the variance in flight delays for United is greater than the variance in flight delays for American.   
--->
