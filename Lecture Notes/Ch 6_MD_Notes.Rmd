@@ -531,7 +531,7 @@ ggplot(gapminder2007, aes(x = lifeExp, fill=continent)) +
 
 ```
 
-```{r}
+```{r echo=FALSE}
 ggplot(gapminder2007, aes(x = continent, y = lifeExp, fill = continent)) +
   geom_boxplot() +
   labs(x = "Continent", y = "Life expectancy (years)", 
