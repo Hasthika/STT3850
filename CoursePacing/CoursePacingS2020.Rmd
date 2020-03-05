@@ -179,17 +179,17 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * Review Chapters 6 and 7 of [MD](https://moderndive.com) --- Basic Regression and Multiple Regression
 
-* [Lecture: Chapter 6 of MD](../Lecture Notes/Ch-6_MD_Notes.html1)
+* [Lecture: Chapter 5 of MD](../Lecture Notes/Ch-6_MD_Notes.html)
 
-* [Lecture: Chapter 7 of MD](../Lecture Notes/Ch-7_MD_Notes.html1)
-
-* [Homework 3: Chapter 6 of MD HW](../Homework/Chapter6_Of_MD_HWK_H.html1) 
+* [Homework 3: Chapter 6 of MD HW](../Homework/Chapter6_Of_MD_HWK_H.html) 
 
 * [OJUICE dataframe for homework](../Homework/data/OJUICE.Rdata) 
 
 ## Week 9: (Mar 9--13; Spring Break) {-}
 
 ## Week 10: (Mar 16--20; No class 15th) {-}
+
+* [Lecture: Chapter 5 of MD](../Lecture Notes/Ch-6_MD_Notes.html)
 
 * [Lecture: Chapter 7 of MD](../Lecture Notes/Ch-7_MD_Notes.html1)
 
