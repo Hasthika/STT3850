@@ -588,7 +588,7 @@ kable(mean_lifeExp_by_continent)
 
 Now, let’s use the `lm` function we introduced in Section 5.1 to get the regression coefficients for gapminder2007 analysis:
 
-```{r}
+```{r echo=FALSE}
 lifeExp_model <- lm(lifeExp ~ continent, data = gapminder2007)
 lifeExp_model
 
@@ -660,7 +660,7 @@ Fit a new linear regression to predcit the GDP using continent. Write the model.
 ```
 
 
-```{r}
+```{r include=FALSE}
 GDP_model <- lm(gdpPercap ~ continent, data = gapminder2007)
 summary(GDP_model)
 ```
