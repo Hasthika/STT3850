@@ -191,8 +191,6 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * [Lecture: Chapter 5 of MD](../Lecture Notes/Ch-6_MD_Notes.html)
 
-* [Lecture: Chapter 7 of MD](../Lecture Notes/Ch-7_MD_Notes.html1)
-
 * [gapminder tools](https://www.gapminder.org/tools/#$chart-type=bubbles)
 
 * [An interesting video](https://www.youtube.com/watch?v=jbkSRLYSojo)
@@ -216,15 +214,17 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 ## Week 11: (Mar 23--27) {-}
 
 ```{block, TEST2, type='rmdnote'}
-* Prepare R Markdown `info sheet` for Test 2 (Written Assignment #2---5% of course grade)---The hard copy of what you turn in after the exam is limited to no more than 4 printed pages.  Send an email to `hasthika@appstate.edu` attaching the `*.Rmd` file you used to create your info sheet.  Use a  subject heading of `STT 3850-Your section, info sheet` on the email.  Name the attached file `YourLastName_FirstName_IS2.Rmd`.  Make sure all graphs have captions and are referenced appropriately. Use inline `R` code for reporting numerical answers (especially those that change each time the document is compiled).  Use a `bookdown` output in your YAML.  For questions with respect to `bookdown` see [https://bookdown.org/yihui/bookdown/](https://bookdown.org/yihui/bookdown/). You may create an additional `info sheet` of unlimited length to use during the exam.  
+* Prepare R Markdown `info sheet` for Test 2...
 
 ```
 
-* [Lecture: Chapter 7 of MD](../Lecture Notes/Ch-7_MD_Notes.html1)
+* [Lecture Recording (Ch 5 0f MD) -- 03/24](https://appstate.zoom.us/rec/share/1f5XLpz2-X5IQp3L2G2HB4V7PtTYeaa81SgY-KdZyU_4frqdfv5I4Sfgv45TVadc)
 
-* [Multiple Linear Regression mini-project](../Lecture Notes/MLR_Project.html1)
+* [Lecture: Chapter 5 of MD](../Lecture Notes/Ch-6_MD_Notes.html)
 
-* [`EXECSAL2.txt` dataframe for the mini-project](../Lecture Notes/EXECSAL2.txt) 
+* [Lecture: Chapter 6 of MD](../Lecture Notes/Ch-7_MD_Notes.html1)
+
+
 
 <!--
 * Bootstrap [Example](https://stat-ata-asu.github.io/STT3851ClassRepo/Rmarkdown/TheBootstrap.html)
@@ -243,6 +243,10 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 * In class **quiz 08** --- Thursday (last 20 min of class)
 
 ## Week 12: (Mar 30--Apr 3) {-}
+
+* [Multiple Linear Regression mini-project](../Lecture Notes/MLR_Project.html1)
+
+* [`EXECSAL2.txt` dataframe for the mini-project](../Lecture Notes/EXECSAL2.txt) 
 
 * [Review for test 2](../Lecture Notes/Review-for-test-2.html1)
 
