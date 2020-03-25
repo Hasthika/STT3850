@@ -218,13 +218,13 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 ```
 
-* [Lecture Recording (Ch 5 0f MD) -- 03/24](https://appstate.zoom.us/rec/share/1f5XLpz2-X5IQp3L2G2HB4V7PtTYeaa81SgY-KdZyU_4frqdfv5I4Sfgv45TVadc)
-
 * [Lecture: Chapter 5 of MD](../Lecture Notes/Ch-6_MD_Notes.html)
+
+* [**Lecture Recording (Ch 5 0f MD)** -- 03/24](https://appstate.zoom.us/rec/share/1f5XLpz2-X5IQp3L2G2HB4V7PtTYeaa81SgY-KdZyU_4frqdfv5I4Sfgv45TVadc)
 
 * [Lecture: Chapter 6 of MD](../Lecture Notes/Ch-7_MD_Notes.html)
 
-
+* [**Lecture Recording (Ch 6 0f MD --- Part 1)** -- 03/25](https://appstate.zoom.us/rec/share/w_Z8JZD5rURLSNbvskLgYekEJJ7Ueaa81XMaq6UPmEieQcDI0d_kpt8UIMWQgeLi)
 
 <!--
 * Bootstrap [Example](https://stat-ata-asu.github.io/STT3851ClassRepo/Rmarkdown/TheBootstrap.html)
