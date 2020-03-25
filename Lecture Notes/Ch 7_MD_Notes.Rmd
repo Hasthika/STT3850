@@ -1,5 +1,5 @@
 ---
-title: "Lecture Notes for Ch 7 of MD: Multiple Regression"
+title: "Lecture Notes for Ch 6 of MD: Multiple Regression"
 author: "Dr. Hasthika Rupasinghe"
 date: '`r format(Sys.time(), "%b %d, %Y at %X")`'
 output:
@@ -45,6 +45,10 @@ Let’s load the `Credit` data and:
 
 * Now `select()` only `Balance`, `Limit`, `Income`, `Rating` and `Age` variables. (We will be using `Rating` and `Age` in a forthcoming exercise) 
 
+```{r}
+# Write your code here
+#
+```
 
 ```{r echo=FALSE}
 library(ISLR)
@@ -55,10 +59,7 @@ Credit2 <- Credit %>%
 str(Credit2)
 ```
 
-```{r}
-# Write your code here
-#
-```
+
 
 
 Let’s look at some summary statistics for the variables that we need for the problem at hand.
@@ -77,7 +78,7 @@ Credit2 %>%
 
 Let's also look at _______________ as visual aids.
 
-```{r }
+```{r echo=FALSE}
 library(cowplot)
 
 p1 <- ggplot(data = Credit, aes(x = Balance)) + geom_histogram(binwidth  = 150, color = "white", fill = "orchid4")
@@ -92,17 +93,27 @@ plot_grid(p1, p2, p3)
 
 We observe for example:
 
-  * The mean and median credit card balance are $520.01 and $459.50 respectively.
-  * 25% of card holders had debts of $68.75 or less.
-  * The mean and median credit card limit are $4735.6 and $4622.50 respectively.
-  * 75% of these card holders had incomes of $57,470 or less.
+  * The average credit card balance is $520.01.
+  * 50% of the card holders had debts of _____ or less.
+  * __% of card holders had debts of $68.75 or less.
+  * The average and median credit card limit is ______.
+  * 50% of the card holders had limit of _____ or higher.
+  * __% of these card holders had incomes of $57,470 or less.
   *
   *
 
 
 Since our outcome variable Balance and the explanatory variables `Limit` and `Income` are numerical, we can and *have* to compute the `correlation coefficient` between pairs of these variables before we proceed to build a model.
 
+
+
 ```{r}
+#Write the code to find the correlations:
+
+```
+
+
+```{r echo=FALSE}
 Credit %>%
   select(Balance, Limit, Income) %>% 
   cor()
@@ -180,7 +191,7 @@ model_name <- lm(y ~ x1 + x2 + ... +xn, data = data_frame_name)
 ```
 
 
-```{r}
+```{r include=FALSE}
 Balance_model <- lm(Balance ~ Limit + Income, data = Credit)
 Balance_model
 
@@ -199,7 +210,7 @@ get_regression_table(Balance_model)
   * `Intercept: -$385.18` (rounded to two decimal points to represent cents). The intercept in our case represents the credit card balance for an individual who has both a credit Limit of $0 and Income of $0.
       + In our data however, the intercept has limited (or no) practical interpretation as ....
 
-  * `Limit: $0.26.` Now that we have multiple variables to consider, we have to add a caveat to our interpretation: Holding all the other variables fixed (`Income`, in this case), for every increase of one unit in credit Limit (dollars), there is an associated increase of on average $0.26 in credit card balance. 
+  * `Limit: $0.26.` (Now that we have multiple variables to consider, we have to add a caveat to our interpretation:) Holding all the other variables fixed (`Income`, in this case), for every increase of one unit in credit Limit (dollars), there is an associated increase of on average $0.26 in credit card balance. 
   
   * `Income: -$7.66.` Similarly, Holding all the other variables fixed (`Limit`, in this case),, for every increase of one unit in Income (in other words, $10,000 in income), there is an associated decrease of on average $7.66 in credit card balance.
   
@@ -216,7 +227,7 @@ This is known as **Simpson’s Paradox**, a phenomenon in which a trend appears 
 
 ## Observed/fitted values and residuals
 
-As we did previously, let's look at the fitted values and residuals.
+As we did previously in ch 5, let's look at the fitted values and residuals.
 
 ```{r}
 # get the following table
@@ -311,7 +322,7 @@ Create a scatterplot of `score` over `age`. Use the binary `gender` variable to 
 ggplot(evals_ch7, aes(x = age, y = score, color = gender)) +
   geom_jitter() +
   labs(x = "Age", y = "Teaching Score", color = "Gender", title = "Graph using 'method = lm'") +
-  geom_smooth(method = "lm", se = FALSE)
+  geom_smooth(method = "lm", se = FALSE) + theme_bw()
 ```
 
 
@@ -326,6 +337,8 @@ Much like we started to consider multiple explanatory variables using the `+` si
 
 ```{r echo=FALSE}
 score_model_2 <- lm(score ~ age + gender, data = evals_ch7)
+
+
 get_regression_table(score_model_2)
 ```
 
