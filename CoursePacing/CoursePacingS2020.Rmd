@@ -226,6 +226,8 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * [**Lecture Recording (Ch 6 0f MD --- Part 1)** -- 03/25](https://appstate.zoom.us/rec/share/w_Z8JZD5rURLSNbvskLgYekEJJ7Ueaa81XMaq6UPmEieQcDI0d_kpt8UIMWQgeLi)
 
+* [**Lecture Recording (Ch 6 0f MD --- Part 2)** -- 03/26](https://appstate.zoom.us/rec/share/39V3MrrJ7XhJb9bJzRnES_UDAtm5aaa8hnIZ-PoNyBzUYBalXRjEq_Lh51VxHxgL)
+
 <!--
 * Bootstrap [Example](https://stat-ata-asu.github.io/STT3851ClassRepo/Rmarkdown/TheBootstrap.html)
 
