@@ -248,6 +248,8 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * [Lecture: Chapter 6 of MD](../Lecture Notes/Ch-7_MD_Notes.html)
 
+* [**Lecture Recording (Ch 6 0f MD --- Part 3)** -- 03/31](https://appstate.zoom.us/rec/share/78ttIvbT0F9LT6_W0kXkZpV-QJ36X6a80SAd8vpemEpo4iO2k9x1YXzIfabp3cu5)
+
 * [Homework 4: Chapter 6 of MD HW](../Homework/Chapter7HWKnew.html) 
 
 * [Multiple Linear Regression mini-project --- OPTIONAL](../Lecture Notes/MLR_Project.html)
