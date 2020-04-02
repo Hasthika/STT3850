@@ -252,7 +252,11 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * [**Lecture Recording (Ch 6 0f MD --- Part 4)** -- 04/01](https://appstate.zoom.us/rec/share/1cdVEZ_R2kBJTZWVxW_vBZx7T5jUX6a81SEa8vBZys0qYJtrx-lpCKzNRoP91mI)
 
+* [**Lecture Recording (Ch 6 0f MD --- Part 5)** -- 04/02](https://appstate.zoom.us/rec/share/tMBRMendzFpLfq_ysG6DHYcvPa7BX6a81iRN8_pfnk3iig0lDAkZCy6EqF43frHG)
+
 * [Homework 4: Chapter 6 of MD HW](../Homework/Chapter7HWKnew.html) 
+* [Homework 4: Chapter 6 of MD HW txt file](../Homework/HW4_ONLINE.txt) 
+
 
 * [Multiple Linear Regression mini-project --- OPTIONAL](../Lecture Notes/MLR_Project.html)
 
