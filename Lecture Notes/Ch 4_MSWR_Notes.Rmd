@@ -24,6 +24,8 @@ library(cowplot)
 > 1. First we will look at a simple activity like example.
     
 > 2. We will have sections named "DETOUR #", we will learn some brand name distributions in these sections.
+
+> 3. We get back to sampling distributions.
     
 Let's begin...
 
@@ -318,7 +320,7 @@ Find and plot the sampling distribution of the proportion ($\hat{p}$) of heads w
 
 
 
-```{r}
+```{r include=FALSE}
 coin <- c("Head","Tail") 
 coin <- tbl_df(coin)
 coin 
@@ -343,7 +345,8 @@ p3 <- ggplot(prop_heads, aes(x = pro)) +
 
 p3
 
-
+mean(prop_heads$pro)
+sd(prop_heads$pro)
 ```
 
 
