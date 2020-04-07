@@ -282,7 +282,7 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * [Lecture: Sampling Distributions](../Lecture Notes/Ch-4_MSWR_Notes.html)
 
-* [**Lecture Recording (Ch 4 0f MSWR --- Part 1)** -- 04/07](https://appstate.zoom.us/rec/share/3vxzA7fI-m5LX6PUtVrcc_Z6G5v6T6a823MfqfBcnh0oO4WRwYf2rLjVqfjAqo96
+* [**Lecture Recording (Ch 4 0f MSWR --- Part 1)** -- 04/07](https://appstate.zoom.us/rec/share/3vxzA7fI-m5LX6PUtVrcc_Z6G5v6T6a823MfqfBcnh0oO4WRwYf2rLjVqfjAqo96)
 
 
 * [Exam 2 review](../Lecture Notes/Review-for-test-2.html)
