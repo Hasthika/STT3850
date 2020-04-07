@@ -50,7 +50,7 @@ Let’s load the `Credit` data and:
 #
 ```
 
-```{r echo=FALSE}
+```{r}
 library(ISLR)
 
 Credit2 <- Credit %>%
@@ -70,7 +70,7 @@ Let’s look at some summary statistics for the variables that we need for the p
 ```
 
 
-```{r echo=FALSE}
+```{r}
 Credit2 %>% 
   select(Balance, Limit, Income) %>% 
   skim()
@@ -78,7 +78,7 @@ Credit2 %>%
 
 Let's also look at _______________ as visual aids.
 
-```{r echo=FALSE}
+```{r}
 library(cowplot)
 
 p1 <- ggplot(data = Credit, aes(x = Balance)) + geom_histogram(binwidth  = 150, color = "white", fill = "orchid4")
@@ -113,7 +113,7 @@ Since our outcome variable Balance and the explanatory variables `Limit` and `In
 ```
 
 
-```{r echo=FALSE}
+```{r}
 Credit %>%
   select(Balance, Limit, Income) %>% 
   cor()
@@ -133,7 +133,7 @@ Credit %>%
 
 Let’s visualize the relationship of the outcome variable with each of the two explanatory variables in two separate plots:
 
-```{r include=FALSE}
+```{r}
 sc1 <- ggplot(Credit, aes(x = Limit, y = Balance)) +
   geom_point() +
   labs(x = "Credit limit (in $)", y = "Credit card balance (in $)", 
@@ -191,7 +191,7 @@ model_name <- lm(y ~ x1 + x2 + ... +xn, data = data_frame_name)
 ```
 
 
-```{r include=FALSE}
+```{r}
 Balance_model <- lm(Balance ~ Limit + Income, data = Credit)
 Balance_model
 
@@ -233,14 +233,14 @@ As we did previously in ch 5, let's look at the fitted values and residuals.
 # get the following table
 ```
 
-```{r echo=FALSE}
+```{r}
 regression_points <- get_regression_points(Balance_model)
 regression_points
 ```
 
 ### Diagnostics (Residual plot)
 
-```{r include=FALSE}
+```{r}
 ggplot(Balance_model, aes(x = .fitted, y = .resid)) + geom_point()
 ```
 
@@ -282,7 +282,7 @@ Consider a modeling scenario with:
 
 Let’s reload the `evals` data and `select()` only the needed subset of variables. Note that these are different than the variables chosen in Chapter 6. Let’s given this the name `evals_ch7`.
 
-```{r include=FALSE}
+```{r}
 evals_ch7 <- evals %>%
   select(score, age, gender)
 ```
@@ -290,10 +290,15 @@ evals_ch7 <- evals %>%
   
 1. Let’s look at the raw data values both by using `View()` and the `glimpse()` functions.
 
+```{r}
+str(evals_ch7)
+```
+
+
 2. Let’s look at some summary statistics using the `skim()` function from the `skimr` package:
   
   
-```{r include=FALSE}
+```{r}
 evals_ch7 %>% 
   skim()
 ```
@@ -318,9 +323,9 @@ Now, let's try to visualize the correlation.
 Create a scatterplot of `score` over `age`. Use the binary `gender` variable to color the point with two colors. Add a regression line (or two?) in to your scatterplot.
 
 
-```{r include=FALSE}
+```{r}
 ggplot(evals_ch7, aes(x = age, y = score, color = gender)) +
-  geom_jitter() +
+  geom_point() +
   labs(x = "Age", y = "Teaching Score", color = "Gender", title = "Graph using 'method = lm'") +
   geom_smooth(method = "lm", se = FALSE) + theme_bw()
 ```
@@ -335,9 +340,9 @@ Say a couple of interesting things about the graph you've created.
 Much like we started to consider multiple explanatory variables using the `+` sign in the previous section, let’s fit a regression model and get the regression table.
 
 
-```{r echo=FALSE}
+```{r}
 score_model_2 <- lm(score ~ age + gender, data = evals_ch7)
-
+summary(score_model_2)
 
 get_regression_table(score_model_2)
 ```
@@ -356,7 +361,7 @@ Write the model for female:
 Let's create the scatterplot of `score` over `age` AGAIN. Use the binary `gender` variable to color the point with two colors. Add a regression lines in to your scatterplot BUT, this time use the model(s) we created.
 
 
-```{r include=FALSE}
+```{r}
 ggplot(evals_ch7, aes(x = age, y = score, color = gender)) +
   geom_jitter() +
   labs(x = "Age", y = "Teaching Score", color = "Gender", title = "Graph using the 'score_model_2'") +
