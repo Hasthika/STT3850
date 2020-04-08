@@ -192,6 +192,7 @@ summary {
 <ol style="list-style-type: lower-roman">
 <li>Assume that <span class="math inline">\(\mu_{M}\)</span> and <span class="math inline">\(\mu_{W}\)</span> be the mean <code>Days</code> to reoffend for men and women respectively. Write <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_a\)</span> for this problem.</li>
 </ol>
+<p><span class="math inline">\(H_0: \mu_{M} = \mu_{W}\)</span> vs. <span class="math inline">\(H_a: \mu_{M} &gt; \mu_{W}\)</span></p>
 <p>Important: Use <code>set.seed(10001)</code></p>
 <ol start="2" style="list-style-type: lower-roman">
 <li>Conduct the test. Write your <strong>complete</strong> code here:</li>
@@ -207,14 +208,53 @@ head(Recidivism)</code></pre>
 ## 5      M        25-34  Over 25 Black-NonHispanic  Felony   Yes Tech   26
 ## 6      M     Under 25 Under 25 White-NonHispanic  Felony   Yes Tech   27</code></pre>
 <p>Now start the test</p>
+<pre class="r"><code>ANS &lt;- Recidivism %&gt;%
+  group_by(Gender) %&gt;%
+  summarize(Average = mean(Days, na.rm = TRUE), count = n())</code></pre>
+<pre><code>## Warning: Factor `Gender` contains implicit NA, consider using
+## `forcats::fct_explicit_na`</code></pre>
+<pre class="r"><code>ANS</code></pre>
+<pre><code>## # A tibble: 3 x 3
+##   Gender Average count
+##   &lt;fct&gt;    &lt;dbl&gt; &lt;int&gt;
+## 1 F         466.  2101
+## 2 M         474. 14918
+## 3 &lt;NA&gt;      NaN      3</code></pre>
+<pre class="r"><code>obs &lt;- ANS[2, 2] - ANS[1, 2]
+obs</code></pre>
+<pre><code>##   Average
+## 1 7.95852</code></pre>
+<pre class="r"><code>observed &lt;- obs$Average
+observed</code></pre>
+<pre><code>## [1] 7.95852</code></pre>
+<pre class="r"><code>set.seed(10001)
+sims &lt;- 10^4 - 1 
+
+ans &lt;- numeric(sims)
+for(i in 1:sims){
+  index &lt;- sample.int(n = 2101+14918, size = 14918, replace = FALSE)
+  ans[i] &lt;- mean(Recidivism$Days[index], na.rm = TRUE) - mean(Recidivism$Days[-index], na.rm = TRUE)
+}
+
+pvalue &lt;- (sum(ans &gt;= observed) + 1)/(sims + 1)
+pvalue</code></pre>
+<pre><code>## [1] 0.2479</code></pre>
 <ol start="3" style="list-style-type: lower-roman">
-<li><p>What is the <span class="math inline">\(p\)</span>-value for this test?</p></li>
-<li><p>Make the conclusion assuming <span class="math inline">\(\alpha = 0.05\)</span>.</p></li>
+<li>What is the <span class="math inline">\(p\)</span>-value for this test?</li>
+</ol>
+<p>0.2479</p>
+<ol start="4" style="list-style-type: lower-roman">
+<li>Make the conclusion assuming <span class="math inline">\(\alpha = 0.05\)</span>.</li>
 </ol>
 <ol style="list-style-type: lower-alpha">
-<li><p>Technical conclusion:</p></li>
-<li><p>Non-technical(English) conclusion:</p></li>
+<li>Technical conclusion:</li>
 </ol>
+<p>p-value = 0.2479 &gt; 0.05, Fail to reject <span class="math inline">\(H_0\)</span></p>
+<p>(Note: pvalue &lt; alpha, Reject H0, pvalue &gt; alpha, Fail to Reject H0)</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Non-technical(English) conclusion:</li>
+</ol>
+<p>There is NOT enough evidenace to conclude that the mean days to <code>Days</code> to reoffend for men is higher than for women</p>
 
 
 
