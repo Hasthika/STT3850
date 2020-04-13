@@ -306,13 +306,13 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 ## Week 14: (Apr 13--17) {-}
 
-* [Exam 2 grades (Distribution)](../Exams/GradesExam2.html1)
+* [Exam 2 grades (Distribution)](../Exams/GradesExam2.html)
 
 * Read Chapter 8 of MD
 
 * Read Chapter 4 of MSWR
 
-* [Lecture: Sampling Distributions](../Lecture Notes/Ch-4_MSWR_Notes.html1)
+* [Lecture: Sampling Distributions](../Lecture Notes/Ch-4_MSWR_Notes.html)
 
 * [Homework 4: Chapter 4 of MSWR](../Homework/Sampling-Distributions-HW.html1)
 
