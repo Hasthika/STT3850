@@ -314,6 +314,13 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * [Lecture: Sampling Distributions](../Lecture Notes/Ch-4_MSWR_Notes.html)
 
+* [**Lecture Recording (Ch 4 0f MSWR --- Part 2)** -- 04/14](https://appstate.zoom.us/rec/share/zu8oIIjAz0pJG5Xk71OEapE7Gr_aX6a80SdM_vZbzUt8qe1gKXdSx-sRpler-1vE)
+
+* [**Lecture Recording (Ch 4 0f MSWR --- Part 3)** -- 04/16](https://appstate.zoom.us/rec/share/-edXKrzg0VtIRJHdzEqDWZYlLNXjeaa81HAc-fIEnUrtKltOQXxuoE2ypyJWtEXo)
+
+
+
+
 * [Homework 4: Chapter 4 of MSWR](../Homework/Sampling-Distributions-HW.html1)
 
 
