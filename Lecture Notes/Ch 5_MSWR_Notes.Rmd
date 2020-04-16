@@ -621,6 +621,30 @@ quantile(boot_Mean_Diff, probs = c(.025, 0.975))
 Use the data in `mtcars` and find the 95% confidence interval estimate of the difference between the mean gas mileage of manual and automatic transmissions.
 ```
 
+
+```{r}
+auto <- mtcars %>%
+  filter(am == "0")
+
+ori_auto <- auto$mpg
+na <- length(ori_auto)
+
+manual <- mtcars %>%
+  filter(am == "1")
+
+ori_manual <- manual$mpg
+nm <- length(ori_manual)
+
+B <- 1000
+boot_mean_diff <- numeric(B)
+for (i in 1:B) {
+  Asam <- sample(ori_auto, size = na, replace = TRUE)
+  Msam <- sample(ori_manual, size = nm, replace = TRUE)
+  boot_mean_diff[i] <- mean(Msam) - mean(Asam) 
+}
+quantile(boot_mean_diff, probs = c(.025, 0.975))
+```
+
 ***
 
 ```{example}
@@ -654,6 +678,9 @@ In the built-in data set named `immer`, the barley yield in years 1931 and 1932 
 
 2) Find a 95% bootstrap percentile interval for the `mpg`. Do not forget to *interpret* the interval.
 ```
+
+
+
 
 ***
 
