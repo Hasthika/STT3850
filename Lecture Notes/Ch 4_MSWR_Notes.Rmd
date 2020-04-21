@@ -442,10 +442,18 @@ qnorm(.25, mean = 15, sd = 3)
 *Question:*
 
   1. A radar unit is used to measure speeds of cars on a motorway. The speeds are N(90 km/hr, 10 km/hr). What is the probability that a car picked at random is travelling at more than 100 km/hr? 
+  
+```{r}
+1-pnorm(100, mean=90, sd = sqrt(10))
+```
+
 
   2. GMAT are roughly normally distributed with a mean of 527 and a standard deviation of 112. How high must an individual score on the GMAT in order to score in the highest 5%?
 
 
+```{r}
+qnorm(0.95, mean = 527, sd = 112)
+```
 
 
 ### Exponential Distribution
@@ -509,7 +517,16 @@ The number of days ahead travelers purchase their airline tickets can be modeled
 
   1. Find the probability that a traveler will purchase a ticket fewer than ten days in advance. 
   
+```{r}
+pexp(10, rate = 1/15)
+```
+  
+  
   2. How many days in advance do 80% of all travelers purchase their airline tickets?
+
+```{r}
+qexp(0.8, rate = 1/15)
+```
 
 
 
@@ -666,6 +683,9 @@ for (i in 1:1000) {
 #Xbar # Run this if you want to see all 1000 the means.
 
 ggplot(data.frame(Xbars), aes(x=Xbars)) + geom_histogram(color = "white", fill="steelblue")
+
+mean(Xbars)
+sd(Xbars)
 ```
   
   - It looks like, in this case, the histogram suggests that the sampling distribution of the sample mean has a _______________ distribution.
@@ -682,6 +702,24 @@ sd(Xbars)
   2. Let's simulate the sampling distribution of the *mean* of a exponential distribution with $Exp(1/15)$. 
   
   - Draw 1000 samples of size $n=100$ from this distribution and compute the mean for each sample, and store the mean in a vector called `Xbars2`
+  
+```{r}
+Xbars2 <- numeric(1000)
+
+for (i in 1:1000) {
+  
+  x <- rexp(n = 100, rate = 1/15)
+  Xbars2[i] <- mean(x)
+  
+}
+
+#Xbar # Run this if you want to see all 1000 the means.
+
+ggplot(data.frame(Xbars2), aes(x=Xbars2)) + geom_histogram(color = "white", fill="steelblue")
+
+mean(Xbars2)
+sd(Xbars2)
+```
 
   - It looks like, in this case, the histogram suggests that the sampling distribution of the sample mean has a _______________ distribution.
 
@@ -725,13 +763,13 @@ A potential buyer intends to take a sample of four engines and will not place an
 
   1. Answer the question using a theoretical distribution:
   
-  $\bar{X} \sim N(\mu, \sigma/\sqrt{n})$ 
+  $\bar{X} \sim N(\mu, \sigma^2/{n})$ 
   
-  $\bar{X} \sim N(220, 15/\sqrt{4})$ 
+  $\bar{X} \sim N(220, 15^2/{4})$ 
   
   Now that the distribution is normal, to find the $Pr(\bar{X} < 215)$ use `pnorm`
   
-```{r include=FALSE}
+```{r}
 pnorm(215,mean = 220, sd = 7.5)
 ```
   
@@ -741,7 +779,7 @@ pnorm(215,mean = 220, sd = 7.5)
 Assume that the parent distribution is Normal.
 
 
-```{r include=FALSE}
+```{r}
 set.seed(111)
 Xbars <- numeric(1000)
 
@@ -771,7 +809,7 @@ A friend claim that she has drawn a random sample of size 30, from the exponenti
     
   b. Run a simulation by drawing 100,000 random samples, each of size 30, from $\text{Exp}(\lambda = 1/10)$ and then compute the mean.  What proportion of the sample means are as large as or larger than 12?
     
-```{r include=FALSE}
+```{r}
 # part b.
 set.seed(123)
 
@@ -783,7 +821,7 @@ for(i in 1:sims){
   Xbars[i] <- mean(RS)
 }
 
-mean(Xbars > 12)
+mean(Xbars > 12) # Probability
 
 ggplot(data = data.frame(x = Xbars), aes(x = x, fill = x >= 12)) + 
   geom_histogram(binwidth = 0.1) + 
@@ -792,9 +830,7 @@ ggplot(data = data.frame(x = Xbars), aes(x = x, fill = x >= 12)) +
   geom_vline(xintercept = 12, linetype = "dashed") + 
   scale_fill_manual(values = c("lightblue", "purple"))
 
-
-PR12 <- mean(Xbars >= 12)
-PR12
+PR12 <- mean(Xbars > 12)
 ```
 
     
@@ -812,7 +848,7 @@ Consider the population {3, 5, 6, 6, 8, 11, 13, 15, 19, 20}.
 
   a) Compute the mean and standard deviation and create a histogram of its distribution.
 
-```{r include=FALSE}
+```{r }
 pop <- c(3, 5, 6, 6, 8, 11, 13, 15, 19, 20)
 pop
 
@@ -830,7 +866,7 @@ sd(pop)
   c) Use the simulation to find $P(\bar{X} < 11)$
   
   
-```{r include=FALSE}
+```{r }
 
 #b
 population <- c(3, 5, 6, 6, 8, 11, 13, 15, 19, 20)
