@@ -321,7 +321,7 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 
 
-* [Homework 4: Chapter 4 of MSWR](../Homework/Sampling-Distributions-HW.html)
+* [Homework 5: Chapter 4 of MSWR](../Homework/Sampling-Distributions-HW.html)
 
 
 
@@ -346,10 +346,10 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * [**Lecture Recording (Ch 4 0f MSWR --- Part 3)** -- 04/16](https://appstate.zoom.us/rec/share/--N-AJjTp0hJTpHptk_8f5Q-HaXpT6a823MY_fJczkpytgMVokGIAqECV2Mt2bRf)
 
-* [Homework 4: Chapter 4 of MSWR](../Homework/Sampling-Distributions-HW.html)
+* [Homework 5: Chapter 4 of MSWR](../Homework/Sampling-Distributions-HW.html)
 
 
-* [Lecture: Confidence Intervals: The Bootstrap](../Lecture Notes/Ch-5_MSWR_Notes.html1)
+* [Lecture: Confidence Intervals: The Bootstrap](../Lecture Notes/Ch-5_MSWR_Notes.html)
 
 <!--
 ```{block, week13optional, type='rmdoptional'}
@@ -365,7 +365,7 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 * Complete _Inference for Categorical Data_ [(DataCamp)](https://www.datacamp.com/) --- Due Nov 16
 -->
 
-* [Homework 5: Chapter 5 Of MSWR](../Homework/Chapter5HWK_H.html1)
+* [Homework 6: Chapter 5 Of MSWR](../Homework/Chapter5HWK_H.html1)
 
 * In class **quiz 11** --- Thursday (last 20 min of class)
 
@@ -373,11 +373,11 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 ## Week 16: (Apr 27--May 1; No class 30th) {-}
 
-* [Lecture: Confidence Intervals: The Bootstrap](../Lecture Notes/Ch-5_MSWR_Notes.html1)
+* [Lecture: Confidence Intervals: The Bootstrap](../Lecture Notes/Ch-5_MSWR_Notes.html)
 
 * In class **quiz 10** --- Thursday (last 20 min of class)
 
-* [Homework 5: Chapter 5 Of MSWR](../Homework/Chapter5HWK_H.html1)
+* [Homework 6: Chapter 5 Of MSWR](../Homework/Chapter5HWK_H.html1)
 
 * Review for the Final
 

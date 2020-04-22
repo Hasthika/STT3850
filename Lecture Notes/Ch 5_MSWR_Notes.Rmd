@@ -136,7 +136,7 @@ Find the **bias** of the bootstrap mean for the previous example.
 
 ```
 
-```{r}
+```{r include=FALSE}
 Bias <- mean(boot_Mean_Wt) - mean(BirthWeightSample)
 Bias
 ```
@@ -164,7 +164,7 @@ The data frame `Bangladesh` consists infomation about of 271 wells in Bangladesh
 
 
 
-```{r}
+```{r include=FALSE}
 set.seed(8)
 
 #1
@@ -291,20 +291,20 @@ In addition to the arsenic concentration for 271 wells, the Bangladesh data set 
 ```{r}
 # Removing missing values
 
-chlorine_no_na <- Bangladesh %>%
+Bangladesh_chlorine_no_na <- Bangladesh %>%
   filter(!is.na(Chlorine)) 
 
 # skim(chlorine_no_na) # Run this to check if the missing values are gone from the Chlorine column
 
-chlorine_concentration <- chlorine_no_na$Chlorine # This is the original sample now.
+chlorine_concentration <- Bangladesh_chlorine_no_na$Chlorine # This is the original sample now.
   
 ```
 
   c. Bootstrap the mean (Find and plot)
   
-```{r}
+```{r include=FALSE}
 set.seed(8)
-chlorine_concentration <- chlorine_no_na$Chlorine # This is my original SAMPLE 
+chlorine_concentration <- Bangladesh_chlorine_no_na$Chlorine # This is my original SAMPLE 
 n <- length(chlorine_concentration) # This is the original sample size
 
 B <- 10000  # The number of bootstrap samples
@@ -333,9 +333,10 @@ In addition to the arsenic concentration for 271 wells, the Bangladesh data set 
 ```
   
   a. Bootstrap the 25% trimmed mean (Find and plot)
-```{r}
+  
+```{r include = FALSE}
 set.seed(8)
-chlorine_concentration <- chlorine_no_na$Chlorine # This is my original SAMPLE 
+chlorine_concentration <- Bangladesh_chlorine_no_na$Chlorine # This is my original SAMPLE 
 n <- length(chlorine_concentration) # This is the original sample size
 
 B <- 10000  # The number of bootstrap samples
@@ -390,9 +391,9 @@ Use the dataframe `Skateboard` from the library `resampledata` to create a 95% b
 
 Following steps might be helpful.
 
-1) Filter out the sample with Female Experimenter and name it `Ori_Female_sample`
+1) Filter out the sample with Female Experimenter and name it `Ori_Female_sample` (may need two steps)
 
-2) Filter out the sample with Male Experimenter and name it `Ori_Male_sample`
+2) Filter out the sample with Male Experimenter and name it `Ori_Male_sample` (may need two steps)
 
 3) Find the sizzes of each sample. Call those `nf` and `nm`
 
@@ -405,7 +406,7 @@ Following steps might be helpful.
 7) Answer the original research question.
 
 
-```{r}
+```{r include=FALSE}
 library(resampledata)
 data("Skateboard")
 head(Skateboard)
@@ -488,7 +489,7 @@ skim(Diving2017)
 ```
 
 
-```{r}
+```{r include=FALSE}
 set.seed(111)
 data("Diving2017")
 head(Diving2017)
@@ -622,7 +623,7 @@ Use the data in `mtcars` and find the 95% confidence interval estimate of the di
 ```
 
 
-```{r}
+```{r include=FALSE}
 auto <- mtcars %>%
   filter(am == "0")
 
