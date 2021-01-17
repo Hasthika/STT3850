@@ -42,8 +42,6 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * [Lecture: Intro to R](../Slides/IntroToR.html)
 
-* _Complete Introduction to R_ [(DataCamp)](https://www.datacamp.com/) --- 
-
 * In class **quiz 01** --- Thursday (last 20 min of class)
 
 
@@ -57,12 +55,7 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * [Lecture: Week 2](../Lecture Notes/Week2_Ch3MD_students.html)
 
-* Complete _Data Visualization with `ggplot2`_ (Part 1) [(DataCamp)](https://www.datacamp.com/)
-
-* Complete _Introduction to Data_ [(DataCamp)](https://www.datacamp.com/courses/introduction-to-data) - optional --- 
-
 * In class **quiz 02** --- Thursday (last 20 min of class)
-
 
 
 
@@ -74,27 +67,14 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * [Homework 1: Chapter 2 of MSWR](../Homework/Chapter2HWK.html)
 
-* Complete _Reporting with R Markdown_ [(DataCamp)](https://www.datacamp.com/courses/reporting-with-r-markdown) ---  (optional)
-
-* Complete _Introduction to the Tidyverse_ [(DataCamp)](https://www.datacamp.com/courses/introduction-to-the-tidyverse) ---  (optional)
-
-
 * In class **quiz 03** --- Thursday (last 20 min of class)
 
 ```{block, TEST1, type='rmdnote'}
 * Prepare R Markdown `cheat sheet` for Test 1 (Written Assignment #1---5% of course grade)
-* Test 1 --- Sep 19
+* Test 1 --- Feb 25
 ```
 
-
-```{block, week3optional, type='rmdoptional'}
-#### Optional {-}
-
-
-* Nice [Tidyverse Cheat Sheet](http://datacamp-community.s3.amazonaws.com/e63a8f6b-2aa3-4006-89e0-badc294b179c)
-```
-
-
+<!--
 
 ## Week 4: (February 08 – 12) {-}
 
@@ -120,13 +100,6 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 * [Lecture: Chapter 3](../Lecture Notes/Ch-3_Notes_students.html)
 
 * [Homework 2: Chapter 3 of MSWR](../Homework/Chapter3HWK_H.html) --- 
-
-<!--
-* Work on [Is this Discrimination?](../Rmarkdown/ClassAssignment.html)
-
-* Some ideas for how to answer the [Is this Discrimination?](../Rmarkdown/discrimination.html)
--->
-
 
 
 
@@ -167,7 +140,6 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 ```{block, week7optional, type='rmdoptional'}
 #### Optional {-}
 * Read Chapter 9 of MSWR
-<!--* Answer the questions at the end of [_Misc Regression_](../Rmarkdown/MiscRegression.html) for extra credit (Turn in before Spring Break starts)-->
 ```
 
 
@@ -194,17 +166,6 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * [An interesting video](https://www.youtube.com/watch?v=jbkSRLYSojo)
 
-<!-- * Read Chapter 8 of [MD](https://moderndive.com) --- Sampling
-
-* Read Chapter 4 of MSWR --- Sampling Distributions; [Problems 2, 5, 12-16](../Homework/Chapter4HWK.Rmd)
-
-* [Sampling Distributions](../Handouts/EVuniform.html)
-
-* [In Class Problems](../Slides/ProbabilityProblems.html)
-
-* Complete _Foundations of Probability in R_ [(DataCamp)](https://www.datacamp.com/) --- Due March 15
-
-* [Probability](https://alanarnholt.github.io/GeneralStatistics/rmarkdown/probability.html) -->
 
 * Start preparing R Markdown `cheat sheet` for Test 2
 
@@ -227,17 +188,6 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * [**Lecture Recording (Ch 6 0f MD --- Part 2)** -- 03/26](https://appstate.zoom.us/rec/share/39V3MrrJ7XhJb9bJzRnES_UDAtm5aaa8hnIZ-PoNyBzUYBalXRjEq_Lh51VxHxgL)
 
-<!--
-* Bootstrap [Example](https://stat-ata-asu.github.io/STT3851ClassRepo/Rmarkdown/TheBootstrap.html)
-
-* Start _Inference for Numerical Data_ [(DataCamp)](https://www.datacamp.com/) --- Due March 29
-
-* [Misc `infer` Examples](../Rmarkdown/ExamplesInfer.html)
-
-* [Inference Examples used in class](../Handouts/InferenceExamples.pdf)
-
-
--->
 
 
 
@@ -262,13 +212,6 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 * [`EXECSAL2.txt` dataframe for the mini-project](../Lecture Notes/EXECSAL2.txt) 
 
 
-<!--
-* Read Chapter 10 of [MD](https://moderndive.com) --- Hypothesis Testing
-
-* Complete _Inference for Numerical Data_ [(DataCamp)](https://www.datacamp.com/) --- 
--->
-
-
 
 
 ## Week 12: (April 05 – 09) {-}
@@ -289,16 +232,6 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * In class **Exam 02** --- Thursday (Allowed to use the `cheat sheet`)
 
-
-
-
-<!--
-* [Goodness-Of-Fit](../Handouts/ChiGOF.html)
-
-* Start _Inference for Categorical Data_ [(DataCamp)](https://www.datacamp.com/) --- Due Apr 12
-
-* [In class Examples](../Rmarkdown/InClassNotes.html)
--->
 
 
 * In class **quiz 09** --- Thursday (last 20 min of class)
@@ -323,16 +256,6 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 * [Homework 5: Chapter 4 of MSWR](../Homework/Sampling-Distributions-HW.html)
 
 
-
-<!--
-* Read Chapter 5 of MSWR
-
-* [Chapter 5 notes](../Notes/Children/BootStrap2.html)
-
-* [Misc RMarkdown Examples](../Rmarkdown/MiscRmarkdown.html)
-
--->
-
 * In class **quiz 10** --- Thursday (last 20 min of class)
 
 
@@ -354,19 +277,7 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * [**Lecture Recording (Ch 5 0f MSWR --- Part 1)** -- 04/23](https://appstate.zoom.us/rec/share/ysJuFpuu5klJfNLz0XjYY4knL6-5T6a81XdIrqEOyk8zAN0Sn05WKSX_shp9Ee95)
 
-<!--
-```{block, week13optional, type='rmdoptional'}
-####  {-}
 
-* Complete the problems in the [R Markdown file](https://raw.githubusercontent.com/alanarnholt/STT3850/gh-pages/Homework/Chapter5HWK.Rmd) and publish your solution to [RPubs](http://rpubs.com/).
-```
-
-
-
-* Bootstrap [Example](https://stat-ata-asu.github.io/STT3851ClassRepo/Rmarkdown/TheBootstrap.html)
-
-* Complete _Inference for Categorical Data_ [(DataCamp)](https://www.datacamp.com/) --- Due Nov 16
--->
 
 * [Homework 6: Chapter 5 Of MSWR](../Homework/Chapter5HWK_H.html1)
 
@@ -386,28 +297,6 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * Review for the Final
 
-<!--
-* Read Chapter 7 of MSWR
-
-* [Chapter 7 notes](../Notes/Children/ConfidenceIntervals2.html)
-
-```{block, week15optional, type='rmdoptional'}
-#### Optional {-}
-* Complete the problems in the [R Markdown file](https://raw.githubusercontent.com/alanarnholt/STT3850/gh-pages/Homework/Chapter7HWK.Rmd) and publish your solution to [RPubs](http://rpubs.com/) 
-```
-
--->
-
-<!--
-
-## Week 16: (Dec 2--6; Dec 4th is Reading Day) {-}
-
-* Review for the Final
-
-
-* [Bootstrap $t$](../Rmarkdown/MoreBootstrapping.html)
--->
-
 
 
 ### Final Exam {-}
@@ -421,3 +310,6 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * [Exam 2 data 1](../Data/poverty.txt)
 * [Exam 2 data 2](../Data/iqsize.txt)
+
+-->
+
