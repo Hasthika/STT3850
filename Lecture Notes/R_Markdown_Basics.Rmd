@@ -1,7 +1,7 @@
 ---
 title: "R Markdown Basics"
 author: "Dr. Hasthika Rupasinghe"
-date: "1/16/2020"
+date: "1/26/2020"
 output: html_document
 ---
 
