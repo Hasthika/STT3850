@@ -94,7 +94,7 @@ ggplot(data = all_alaska_flights, mapping = aes(x = dep_delay, y = arr_delay)) +
   geom_point(alpha = 1) 
 ```
 
-The large mass of points near (0, 0) in this scatterplot can cause some confusion. We handdle this using
+The large mass of points near (0, 0) in this scatterplot can cause some confusion. We handle this using
 
   1. By adjusting the ______________ of the points via the `________` argument:
   
