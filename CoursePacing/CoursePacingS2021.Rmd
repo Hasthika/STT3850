@@ -63,9 +63,9 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * Read Chapter 2 of MSWR
 
-* [Lecture - Chapter 2 of MSWR: Week 3](../Lecture Notes/Week4_Ch2MSWR_students.html)
+* [Lecture - Chapter 2 of MSWR: Week 3](../Lecture Notes/Week4_Ch2MSWR_students.html_)
 
-* [Homework 1: Chapter 2 of MSWR](../Homework/Chapter2HWK.html)
+* [Homework 1: Chapter 2 of MSWR](../Homework/Chapter2HWK.html_)
 
 * In class **quiz 03** --- Thursday (last 20 min of class)
 

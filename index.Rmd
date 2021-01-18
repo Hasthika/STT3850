@@ -6,18 +6,18 @@ title: "Welcome"
 
 ## **Class Meetings**
 
-* [Click here to go to class](https://appstate.zoom.us/j/385719941)
-* [Click here to go to office hours (12 - 2pm, T and R)](https://appstate.zoom.us/j/506579707)
+* [`Click here to go to class`](https://appstate.zoom.us/j/98108927661?pwd=WGJyMllCeDNWMzNnRXhodnpaRnhHQT09) - Passcode if required 550536
+* [`Click here to go to office hours` (2 - 3pm on T and R, 1 - 2pm on W)]( https://appstate.zoom.us/j/96528317992?pwd=YTZyc0lndWs5L2x4UzR5dDVSMk5JQT09) - Passcode if required 421945
 
 ***
 
 
-* [Class RStudio Server](https://mathr.math.appstate.edu) (you must be registered in the course to access the server)
+* [`Class RStudio Server`](https://mathr.math.appstate.edu) (you must be registered in the course to access the server)
 
-* [Course Syllabus](./Syllabus/SyllabusSTT3850S2021.html)
+* [`Course Syllabus`](./Syllabus/SyllabusSTT3850S2021.html)
 
-* [Assignments and Course Pacing](./CoursePacing/CoursePacingS2021.html)
+* [`Assignments and Course Pacing`](./CoursePacing/CoursePacingS2021.html)
 
-* Click [here](https://goo.gl/forms/M5bnJKj7PgzjHVR72) to record your attendance.
+* Click [`here`](https://goo.gl/forms/M5bnJKj7PgzjHVR72) to record your attendance.
 
 * * *
