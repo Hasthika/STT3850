@@ -47,6 +47,7 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 *  **Lecture Recordings:**
 
     * [Tuesday's class](https://appstate.zoom.us/rec/share/MTc9IM7HYCU4yJjIyilPfu0bq0dWlEhJc4VuuFD5gR1IQiygStRKkQMBa-ww8ZYw.Txk5KCC_28130EQ8)
+    * [Thursday's class](https://appstate.zoom.us/rec/share/dTjzsmQ5A2gCSa8Ne6xHAfaRFYb195XsT-37txaUhqJ5dk2wyCqAn1SzyfGmOQzV.Yp6gK8uaCZrlh4ie)
 
 
 ## Week 2: (January 25 – 29) {-}
