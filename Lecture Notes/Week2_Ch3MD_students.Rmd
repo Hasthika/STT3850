@@ -1,5 +1,5 @@
 ---
-title: "Lecture Notes for Ch 2 of MD"
+title: "Lecture Notes for Ch 2 of MD: Data Visualization"
 author: "Dr. Hasthika Rupasinghe"
 date: '`r format(Sys.time(), "%b %d, %Y at %X")`'
 output:
@@ -9,22 +9,24 @@ output:
 ---
 
 
-# Data Visualization via ggplot2
+# Data Visualization
 
 We begin the development of your data science toolbox with data visualization. 
 
-graphics provide a nice way for us to get a sense for how **quantitative** variables compare:
+First we need to get a sense of the variable types (data types). Mainly, there are ____ types of variables. 
 
   1)  
   2) 
 
-Examples of **quantitative** variables:
+Examples of ___________ variables:
 
-Also, plots/graphics help us to identify ___________ and ____________ in our data.
+Examples of ____________ variables:
+
+plots/graphics help us to identify ___________ and ____________ in our quantitative data.
 
 A common extension of these ideas is to compare the distribution of one quantitative variable  as we go across the levels of a different **categorical** variable.
 
-Examples of **categorical** variables:
+
 
 # Let's start by installing and loading the following pacakges
 
@@ -126,18 +128,6 @@ Type `library(nycflights13)` in the Console and hit return, then type `View(weat
 
 Let’s focus on the hourly temperature at Newark airport (origin code “EWR”) for the first 15 days in January 2013. 
 
-```{r}
-
-early_january_weather <- weather %>% 
-  filter(origin == "EWR" & month == 1 & day <= 15)
-
-```
-
-
-```{r}
-ggplot(data = early_january_weather, mapping = aes(x = time_hour, y = temp)) +
-  geom_line()
-```
 
 Question: Plot a time series of a variable other than temp for Newark Airport in the first 15 days of January 2013.
 
