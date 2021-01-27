@@ -60,11 +60,12 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * [Lecture: Week 2](../Lecture Notes/Week2_Ch3MD_students.html)
 
-* In class **quiz 02** --- Thursday (last 20 min of class)
+* In class **quiz 01** --- Thursday (last 20 min of class)
 
 *  **Lecture Recordings:**
 
     * [Tuesday's class](https://appstate.zoom.us/rec/share/ouAMp3JtiZrEIF4otb-gG5spFJF-k23YX40BZCRfAeDMdkrfrqjK9fruLpfIQF0G.i10dd_R-HY6UagvX)
+    * [Wednesday's class](https://appstate.zoom.us/rec/share/MHiANtQDVAuyQqLVClUD4JVDsnskFXvjN2DKeu1-y5AWpSFO7dHJ313qx907Uvf3.W54A0yT7EvafZLcH)
 
 
 ## Week 3 (February 01 – 05) {-}
@@ -75,7 +76,7 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * [Homework 1: Chapter 2 of MSWR](../Homework/Chapter2HWK.html_)
 
-* In class **quiz 03** --- Thursday (last 20 min of class)
+* In class **quiz 02** --- Thursday (last 20 min of class)
 
 ```{block, TEST1, type='rmdnote'}
 * Prepare R Markdown `cheat sheet` for Test 1 (Written Assignment #1---5% of course grade)
