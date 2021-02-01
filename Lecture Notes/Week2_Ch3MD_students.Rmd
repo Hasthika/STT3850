@@ -182,17 +182,21 @@ This is what is meant by “the distribution of a variable over another variable
 
 ## Boxplots via geom_boxplot
 
-```{r}
-ggplot(data = weather, mapping = aes(y = temp)) +
-  geom_boxplot()
-
-```
+Create a `boxplot` of of the temperature variable in the `weather` dataframe. Describe the graph briefly. 
 
 
 ```{r}
 # your code goes here
 
 ```
+
+
+```{r echo=FALSE}
+ggplot(data = weather, mapping = aes(y = temp)) +
+  geom_boxplot()
+
+```
+
 
 Questions:
 
