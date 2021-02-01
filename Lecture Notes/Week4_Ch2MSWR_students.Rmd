@@ -31,7 +31,7 @@ Example: Find the mean of 2, 15, 3, 8, 12, 5.
 # 
 ```
 
-```{r  }
+```{r  include=FALSE}
 data <- c(2, 15, 3, 8, 12, 5, 100)
 Mean <- mean(data)
 Mean
@@ -51,7 +51,7 @@ Example: Find the median of 2, 15, 3, 8, 12, 5.
 #
 ```
 
-```{r  }
+```{r  include=FALSE}
 median(data)
 ```
 
@@ -69,7 +69,7 @@ Example: Find the 25% Trimmed Mean of 2, 15, 3, 8, 12, 5.
 #
 ```
 
-```{r  }
+```{r  include=FALSE}
 d <- c(2, 15, 3, 8, 12, 5)
 
 mean(d, trim = .25)
@@ -122,7 +122,7 @@ Example: Conside the 15 numbers 9,10,11,11,12,14,16,17,19,21,25,31,32,41,61. Fin
 #
 ```
 
-```{r  }
+```{r  include=FALSE}
 data <- c(9,10,11,11,12,14,16,17,19,21,25,31,32,41,61)
 summary(data)
 ```
@@ -149,7 +149,7 @@ Create a boxplot for the following 21 data values.
 
 5, 6, 6, 8, 9, 11, 11, 14, 17, 17, 19, 20, 21, 21, 22, 23, 24, 32, 40, 43, 49.
 
-```{r}
+```{r  include=FALSE}
 library(ggplot2)
 mydata <- c(5, 6, 6, 8, 9, 11, 11, 14, 17, 17, 19, 20, 21, 21, 22, 23, 24, 32, 40, 43, 49)
 
@@ -160,7 +160,7 @@ ggplot(mydata, aes(y = mydata)) + geom_boxplot()
 
 ```
 
-```{r  }
+```{r include=FALSE}
 library(ggplot2)
 
 d <- c(5, 6, 6, 8, 9, 11, 11, 14, 17, 17, 19, 20, 21, 21, 22, 23, 24, 32, 40, 43, 49)
@@ -191,7 +191,7 @@ Here is an example: Check whether the data below are normal distributed.
 #
 ```
 
-```{r}
+```{r  include=FALSE}
 
 library(ggplot2)
 
@@ -212,7 +212,7 @@ ggplot(data = MyDataFrame, aes(x = data)) +
   If the plotted points follow the identity line, then your data is Normal.
   
   
-```{r}
+```{r  include=FALSE}
 library(ggplot2)
 
 
@@ -230,11 +230,11 @@ ggplot(data = MyDataFrame, aes(sample = data)) +
   
 
 
-Example: Exercise  2.4
+Example: Exercise  2.4 (modified)
  
-Import the `flight delays` case study in Section 1.1.
+Data sets used in MSWR book is stored in the libray `resampledata`. Import the data set about the flight delays described in the case study in Section 1.1 of MSWR. Also load the libraries `ggplot2`,  `dplyr`.
 
-```{r  }
+```{r  include = FALSE}
 library(resampledata) # dataset for MSWR book is in this library
 library(ggplot2)
 library(dplyr)
@@ -242,23 +242,29 @@ data(FlightDelays)
 ```
 
 
-a) *Create a table and a bar chart of the departure times (`DepartTime`)*
+a) *Create an appropriate graph of the departure times (`DepartTime`)*
 
 
-```{r  }
+```{r include = FALSE}
 head(FlightDelays)
 str(FlightDelays)
 
-table(FlightDelays$DepartTime)
 
 ggplot(data = FlightDelays, aes(x = DepartTime)) +
   geom_bar(fill = "orchid4")
 
 ```
 
-b) *Create a contingency table of the variables `Day` and `Delayed30`. For each day, what is the proportion of flights delayed at least 30 min.*
+b) *Create an table of the departure times (`DepartTime`)*
 
-```{r  }
+```{r include = FALSE}
+table(FlightDelays$DepartTime)
+```
+
+
+b) *Create a contingency table of the variables `Day` and `Delayed30`. For each day, what is the **proportion** of flights delayed at least 30 min.*
+
+```{r echo = FALSE}
 
 table(FlightDelays$Day, FlightDelays$Delayed30)
 
@@ -267,13 +273,13 @@ table(FlightDelays$Day, FlightDelays$Delayed30)
 
 Note: 
 
-The `%>%` operator allows us to go from one step in `dplyr` to the next easily so we can, for example:
+The `%>%` operator allows, for example:
 
-  * filter our data frame to only focus on a few rows then
-  * group_by another variable to create groups then
-  * summarize this grouped data to calculate the mean (for example) for each level of the group.
+  * `filter` our data frame to only focus on a few rows then
+  * `group_by` another variable to create groups then
+  * `summarize` this grouped data to calculate the mean (for example) for each level of the group.
 
-```{r}
+```{r echo = FALSE}
 library(knitr)
 
 # Harder way!
@@ -282,7 +288,7 @@ day_delayed30 <- FlightDelays %>%
   group_by(Day) %>%
   summarize(pro = sum(Delayed30 == "Yes")/sum(Delayed30 == "Yes"|Delayed30 == "No"))
 
-kable(day_delayed30)
+#kable(day_delayed30)
 
 
 # Easy and Prefered way!
@@ -299,7 +305,7 @@ kable(day_delayed30)
 
 c) *Create side by side boxplots of the lenghts of the flights, grouped by whether or not the flight was delayed at least 30 min.*
 
-```{r  }
+```{r include = FALSE}
 str(FlightDelays)
 
 ggplot(data = FlightDelays, aes(x = Delayed30, y = FlightLength)) + geom_boxplot()
@@ -316,7 +322,8 @@ Excercise 2.5: You try!
 
 
 
-```{r  }
+
+```{r include = FALSE}
 
 library(resampledata)
 
@@ -325,15 +332,6 @@ data(GSS2002)
 str(GSS2002)
 
 ```
-
-
-
-
-
-
-
-
-
 
 
 
@@ -351,7 +349,7 @@ ggplot(data = GSS2002, aes(x = DeathPenalty)) + geom_bar() # barchart
 
 b) Use the `table` command and the `summary` command in `R` on the gun ownership variable. What additional infomation does the `summary` command give that the table command does not?
  
-```{r  }
+```{r include = FALSE}
 
 table(GSS2002$OwnGun)
 
@@ -361,14 +359,14 @@ summary(GSS2002$OwnGun)
 
 c) Create a contingency table displaying the realtionship between opinions about the death penalty to that about gun ownership.
 
-```{r  }
+```{r include = FALSE}
 
 table(GSS2002$DeathPenalty, GSS2002$OwnGun)
 
 ```
 d) What proportion of gun owners favor the death penalty? Does it appear to be different from the proportion among those who do not own guns?
 
-```{r  }
+```{r include = FALSE}
 library(knitr)
 
 death_gun <- GSS2002 %>%
