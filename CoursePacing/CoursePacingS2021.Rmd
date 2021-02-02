@@ -79,6 +79,10 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * In class **quiz 02** --- Thursday (last 20 min of class)
 
+*  **Lecture Recordings:**
+
+    * [Tuesday's class](https://appstate.zoom.us/rec/share/iaizUn6nwk0Yg8Gq3Ih6FyTM9l5QLiJOBjc_M3AxQTlbXUHZHzPvtaNNnknwqjBm.AalZBAFWYzH9WGIU)
+
 ```{block, TEST1, type='rmdnote'}
 * Prepare R Markdown `cheat sheet` for Test 1 (Written Assignment #1---5% of course grade)
 * Test 1 --- Feb 25
