@@ -28,7 +28,7 @@ Import data from the black spruce case study in Section 1.10 in to `R`.
 
 ```
 
-a) Compute the numeric summaries for the height changes (`Ht.change`) of the seedlings.
+a) Compute the numeric summaries (Mean, Standard deviation, Minimum, Median, IQR, Range, Maximum, etc.) for the height changes (`Ht.change`) of the seedlings.
 
 > SOLUTION: 
 
@@ -57,7 +57,7 @@ c) Create a boxplot to compare the distribution of the change in diameters of th
 
 ```
 
-d) Use `%>%` operator via `dplyr` to find the numeric summaries of the diameter changes for the two levels fertilization.
+d) Use `%>%` operator via `dplyr` to find the Mean, Standard deviation, Median, IQR in the same order of the diameter changes for the two levels fertilization.
 
 > SOLUTION: 
 
