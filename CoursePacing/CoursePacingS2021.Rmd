@@ -83,6 +83,7 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
     * [Tuesday's class](https://appstate.zoom.us/rec/share/iaizUn6nwk0Yg8Gq3Ih6FyTM9l5QLiJOBjc_M3AxQTlbXUHZHzPvtaNNnknwqjBm.AalZBAFWYzH9WGIU)
     * [Wednesday's class](https://appstate.zoom.us/rec/share/6JNPeA47hpjoXX5tL3L_SZ-6hlGsiVLWx8iqYzyUNCJxKaa2K_Mco3SdvFj7_Qok.pGzt8TEARSFIH6pg)
+    * [Thursday's class](https://appstate.zoom.us/rec/share/MqjTrBtStnVdo6NIjMG7N9xnSxS31F-TLBEtE-tgWj413xE-x70u1mHKSiThIXT8.kzvrVOD_LeuJDZ4v)
     
 
 ```{block, TEST1, type='rmdnote'}
