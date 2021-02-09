@@ -110,6 +110,10 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * In class **quiz 03** --- Thursday (last 20 min of class)
 
+*  **Lecture Recordings:**
+
+    * [Tuesday's class](https://appstate.zoom.us/rec/share/UGmyUH8dCYTEKNYxPSgpqqVcWuAj6OuoiADJbSOvkKUotSlTBfEXAr5mfSde2Q5Z.BkwwwApqV8ytMOby)
+
 <!--
 
 ## Week 5: (February 15 – 19) {-}
