@@ -100,7 +100,7 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * [Lecture: Before Chapter 3: the `for` loop in R](../Lecture Notes/Before_Ch_03_students.html)
 
-* [Lecture: Chapter 3](../Lecture Notes/Ch-3_Notes_students.html_)
+* [Lecture: Chapter 3](../Lecture Notes/Ch_3_Notes_students.html)
 
 <!--
 * Complete Chapters 1-3 of _Intermediate R_ [(DataCamp)](https://www.datacamp.com/courses/intermediate-r) --- 
