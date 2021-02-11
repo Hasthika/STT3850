@@ -103,7 +103,7 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 * [Lecture: Chapter 3](../Lecture Notes/Ch_3_Notes_students.html)
 
 <!--
-* Complete Chapters 1-3 of _Intermediate R_ [(DataCamp)](https://www.datacamp.com/courses/intermediate-r) --- 
+ --- 
 
 * Complete _Exploratory Data Analysis_ [(DataCamp)](https://www.datacamp.com/) --- 
 -->
@@ -114,19 +114,23 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
     * [Tuesday's class](https://appstate.zoom.us/rec/share/UGmyUH8dCYTEKNYxPSgpqqVcWuAj6OuoiADJbSOvkKUotSlTBfEXAr5mfSde2Q5Z.BkwwwApqV8ytMOby)
     * [Wednesday's class](https://appstate.zoom.us/rec/share/XhuhZ_yYSkt6beK83cx41R5cmfe7CNvTCOKRH40rydW4CcaqNBruUA_FPllWRg1k.wo6o402snW1HVQTQ)
+    * [Thursday's class](https://appstate.zoom.us/rec/share/RpnhftHqmM48Tjf1SP0_dJFPwQo3NSYWQuaXOnFYad-e1twdkiMmnWq3Pfm_2msN.bXfMBndYFED6L9FS)
 
-<!--
+
 
 ## Week 5: (February 15 – 19) {-}
 
-* Complete _Working with Data in the Tidyverse_ [(DataCamp)](https://www.datacamp.com/courses/working-with-data-in-the-tidyverse) --- 
+* Complete Chapters 1-3 of _Intermediate R_ [(DataCamp)](https://www.datacamp.com/courses/intermediate-r)
 
-* [Lecture: Chapter 3](../Lecture Notes/Ch-3_Notes_students.html)
+<!--
+* Complete _Working with Data in the Tidyverse_ [(DataCamp)](https://www.datacamp.com/courses/working-with-data-in-the-tidyverse) --> 
 
-* [Homework 2: Chapter 3 of MSWR](../Homework/Chapter3HWK_H.html) --- 
+* [Lecture: Chapter 3](../Lecture Notes/Ch_3_Notes_students.html)
+
+* In class **quiz 04** --- Thursday (last 20 min of class)
 
 
-
+<!--
 
 ```{block, week5optional, type='rmdoptional'}
 #### Optional {-}
@@ -136,13 +140,15 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 ## Week 6: (February 22 – 26) {-}
 
-* [Lecture: Chapter 3](../Lecture Notes/Ch-3_Notes_students.html)
+* [Lecture: Chapter 3](../Lecture Notes/Ch_3_Notes_students.html)
 
 * [Homework 2: Chapter 3 of MSWR](../Homework/Chapter3HWK_H.html) --- 
 
 * Read Chapters 5 [MD](https://moderndive.com) --- Basic Regression 
 
 * [Lecture: Chapter 5 of MD](../Lecture Notes/Ch-6_MD_Notes.html)
+
+* [Homework 2: Chapter 3 of MSWR](../Homework/Chapter3HWK_H.html) --- 
 
 * In class **Exam 01** --- Thursday
 
