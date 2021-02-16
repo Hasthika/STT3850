@@ -2965,7 +2965,7 @@ summary {
 
 <h1 class="title toc-ignore">Lecture Notes for Ch 3 of MSWR: Introduction to Hypothesis Testing: Permutation Tests</h1>
 <h4 class="author">Dr. Hasthika Rupasinghe</h4>
-<h4 class="date">Feb 10, 2021 at 08:41:16 PM</h4>
+<h4 class="date">Feb 16, 2021 at 12:11:59 PM</h4>
 
 </div>
 
@@ -3075,8 +3075,8 @@ VALUES$CM &lt;- apply(VALUES[, 4:6], 1, mean)
 VALUES$DiffMean &lt;- VALUES$DM - VALUES$CM
 
 DT::datatable(round(VALUES, 2))</code></pre>
-<div id="htmlwidget-9b621f872f7aafab054b" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9b621f872f7aafab054b">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],[30,30,30,30,30,30,30,30,30,30,25,25,25,25,25,25,20,20,20,18],[25,25,25,25,20,20,20,18,18,21,20,20,20,18,18,21,18,18,21,21],[20,18,21,22,18,21,22,21,22,22,18,21,22,21,22,22,21,22,22,22],[18,20,20,20,25,25,25,25,25,25,30,30,30,30,30,30,30,30,30,30],[21,21,18,18,21,18,18,20,20,20,21,18,18,20,20,20,25,25,25,25],[22,22,22,21,22,22,21,22,21,18,22,22,21,22,21,18,22,21,18,20],[25,24.33,25.33,25.67,22.67,23.67,24,23,23.33,24.33,21,22,22.33,21.33,21.67,22.67,19.67,20,21,20.33],[20.33,21,20,19.67,22.67,21.67,21.33,22.33,22,21,24.33,23.33,23,24,23.67,22.67,25.67,25.33,24.33,25],[4.67,3.33,5.33,6,0,2,2.67,0.67,1.33,3.33,-3.33,-1.33,-0.67,-2.67,-2,0,-6,-5.33,-3.33,-4.67]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>D1<\/th>\n      <th>D2<\/th>\n      <th>D3<\/th>\n      <th>C1<\/th>\n      <th>C2<\/th>\n      <th>C3<\/th>\n      <th>DM<\/th>\n      <th>CM<\/th>\n      <th>DiffMean<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6,7,8,9]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-6cb9c8c2fe6ca717b534" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6cb9c8c2fe6ca717b534">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],[30,30,30,30,30,30,30,30,30,30,25,25,25,25,25,25,20,20,20,18],[25,25,25,25,20,20,20,18,18,21,20,20,20,18,18,21,18,18,21,21],[20,18,21,22,18,21,22,21,22,22,18,21,22,21,22,22,21,22,22,22],[18,20,20,20,25,25,25,25,25,25,30,30,30,30,30,30,30,30,30,30],[21,21,18,18,21,18,18,20,20,20,21,18,18,20,20,20,25,25,25,25],[22,22,22,21,22,22,21,22,21,18,22,22,21,22,21,18,22,21,18,20],[25,24.33,25.33,25.67,22.67,23.67,24,23,23.33,24.33,21,22,22.33,21.33,21.67,22.67,19.67,20,21,20.33],[20.33,21,20,19.67,22.67,21.67,21.33,22.33,22,21,24.33,23.33,23,24,23.67,22.67,25.67,25.33,24.33,25],[4.67,3.33,5.33,6,0,2,2.67,0.67,1.33,3.33,-3.33,-1.33,-0.67,-2.67,-2,0,-6,-5.33,-3.33,-4.67]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>D1<\/th>\n      <th>D2<\/th>\n      <th>D3<\/th>\n      <th>C1<\/th>\n      <th>C2<\/th>\n      <th>C3<\/th>\n      <th>DM<\/th>\n      <th>CM<\/th>\n      <th>DiffMean<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6,7,8,9]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>pvalue &lt;- sum(VALUES$DiffMean &gt;= observed)/choose(6,3)
 pvalue</code></pre>
 <pre><code>[1] 0.15</code></pre>
@@ -3095,10 +3095,10 @@ pvalue</code></pre>
 <p>We follow this algorithm:</p>
 <pre><code>Two Sample Pemutation Test:
 
-  Pool the m + n values.
+  Pool the n1 + n2 (total of n) values.
     **repeat**
-        Draw a resample of size m without replacement.
-        Use the remaining n obervations for the other sample.
+        Draw a resample of size n1 without replacement.
+        Use the remaining n2 obervations for the other sample.
         Calculate the difference in means or another statistic that comapres samples.
     **unitl** we have enough samples.
     
