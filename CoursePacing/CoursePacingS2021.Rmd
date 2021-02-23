@@ -133,9 +133,10 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
     * [Tuesday's class](https://appstate.zoom.us/rec/share/m5dsPdOBFjj1v_JW8_8HD8P8y2jhTBQkjdIHst0B7YY7q-8aRUD18ZW9NQV-Dben.rLLGrNgEKigeIcZ6)
     * [Wednesday's class](https://appstate.zoom.us/rec/share/Bbkyqi062s1p1AtA1nK-WXJe9D2_3H755ApDDdC1BOyn9NBGaYF4cN6Blxw6-ms.q3G4jrUl2_kmtDIW)
+    * [Thursday's class](https://appstate.zoom.us/rec/share/YoYI5iruNmg3GwQ-Yr-1zhb8RArFjq5I6oD4jfq6TezX-UV9hZ1W81xxz5KvO1k.iBl2fKpNq1tzAvGQ)
+    
+    
 
-
-<!--
 
 ```{block, week5optional, type='rmdoptional'}
 #### Optional {-}
@@ -147,16 +148,19 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * [Lecture: Chapter 3](../Lecture Notes/Ch_3_Notes_students.html)
 
-* [Homework 2: Chapter 3 of MSWR](../Homework/Chapter3HWK_H.html) --- 
+* [Homework 2: Chapter 3 of MSWR](../Homework/Chapter3HWK_H.html_) --- 
 
 * Read Chapters 5 [MD](https://moderndive.com) --- Basic Regression 
 
-* [Lecture: Chapter 5 of MD](../Lecture Notes/Ch-6_MD_Notes.html)
-
-* [Homework 2: Chapter 3 of MSWR](../Homework/Chapter3HWK_H.html) --- 
-
 * In class **Exam 01** --- Thursday
 
+
+*  **Lecture Recordings:**
+
+    * [Tuesday's class](https://appstate.zoom.us/rec/share/ZdIF6RPoLIUizhaRBe2rVn6AFnZcCJi98iupW7n2_KclXklN2U7DrOUQfzppRz0H.sdsnPwu8Gitq-zyz)
+    
+    
+<!--
 
 ## Week 7: (March 01 – 05) {-}
 
