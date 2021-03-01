@@ -160,7 +160,7 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
     * [Tuesday's class](https://appstate.zoom.us/rec/share/ZdIF6RPoLIUizhaRBe2rVn6AFnZcCJi98iupW7n2_KclXklN2U7DrOUQfzppRz0H.sdsnPwu8Gitq-zyz)
     
     
-<!--
+
 
 ## Week 7: (March 01 – 05) {-}
 
@@ -170,16 +170,16 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * Read Chapters 6 [MD](https://moderndive.com) --- Basic Regression 
 
-* Work on _Modeling with Data in Tidyverse_ [(DataCamp)](https://www.datacamp.com/) --- 
-
-* Read through [_Misc Regression_](../Rmarkdown/MiscRegression.html)
+* Work on _Modeling with Data in Tidyverse_ [(DataCamp)](https://www.datacamp.com/) --- Optional
 
 * In class **quiz 06** --- Thursday (last 20 min of class)
 
 ```{block, week7optional, type='rmdoptional'}
 #### Optional {-}
-* Read Chapter 9 of MSWR
+* Skim Chapter 9 of MSWR
 ```
+
+<!--
 
 
 ## Week 8: (March 08 – 12) {-}

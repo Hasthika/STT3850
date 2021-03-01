@@ -28,17 +28,21 @@ library(skimr)
 
 In regression we try to *predict* one variable based on one or more other variables.
 
-  * The variable we want to predit is called the response variable,  denoted by $y$.
+  * The variable we want to predict is called the response variable,  denoted by $y$.
   * The variable(s) that we use to predict $y$ is(are) called the predictor(s) or explanatory variable(s),  denoted by $x$.
 
 
 #  What do we cover?
 
-* In this current chapter on basic regression, we’ll always have only one explanatory variable.
-In *Section 2*, this explanatory variable will be a single numerical explanatory variable $x$. This scenario is known as simple linear regression.
+* The response variable, $y$ is always ________ (in our class)
+
+* In this current chapter on basic regression, we’ll always have only _____ ________ variable.
 
 
-* In *Section 3*, this explanatory variable will be a categorical explanatory variable $x$.
+  * In *Section 3*, this explanatory variable will be a _____ ________ explanatory variable $x$. This scenario is known as simple linear regression.
+
+
+  * In *Section 4*, this explanatory variable will be a _____ ________ explanatory variable $x$.
 
 
 # One numerical explanatory variable
@@ -306,8 +310,7 @@ Interpretations of $b_0$ and $b_1$:
   
   * The intercept coefficient $b_0 = 3.8803$: 
   
-    For instructors who with beauty score of 0, we would expect to have on average a teaching score of 3.8803.
-    In this case interpretaion of $b_0$ is meaningless. (Why?)
+    > For instructors who with beauty score of 0, we would expect to have on average a teaching score of 3.8803. In this case interpretaion of $b_0$ is meaningless. (Why?)
     
 ```{r}
 Range <- range(evals_onex$bty_avg)
@@ -315,7 +318,7 @@ Range
 ```
 
 
-**Extraploation** is using the regression to predict $y$ from $x$ outside the range of $x$ values. Such predictions are often very bad.
+**Extrapolation** is using the regression to predict $y$ from $x$ outside the range of $x$ values. Such predictions are often very bad.
     
   * The intercept coefficient $b_1 = + 0.0666$: 
   
@@ -397,7 +400,7 @@ Create a residul plot for the model where $y = score$ and $x=age$ and interpret 
 
 
 
-## One categorical explanatory variable
+# One categorical explanatory variable
 
 When the explanatory variable $x$ is categorical, the concept of a “best-fitting” line is a little different than the one we saw in the previous Section where the explanatory variable $x$ was numerical.
 
