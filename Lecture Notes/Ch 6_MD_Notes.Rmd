@@ -47,6 +47,8 @@ In regression we try to *predict* one variable based on one or more other variab
 
 # One numerical explanatory variable
 
+
+
 ```{example}
 Why do some professors and instructors at universities and colleges get high teaching evaluations from students while others don’t? What factors can explain these differences? 
   
@@ -280,11 +282,21 @@ The equation of the regression line is  $\hat{y} = b_0+b_1\cdot x$ where
   
 ### How to obtain  $b_0$ and $b_1$ values.
 
-Consider the following regression line:
+Consider the following data:
 
-![](res.png)
+![](scatter.png)
+As $X$ and $Y$ seem to have a linear relationship, assume that we fit a line as shown in the next picture.
 
-The vertical distances from the points to the line are called the residuals. We obtain the line by minimizing the sum of the squares of the distances from the points to the line. If we denote the observed points by $y_i$ and the opints on the line by $\hat{y_i}$. Then the reiduals can be denoted by $y_i-\hat{y_i}$. So we obtain the line ($b_0$ and $b_1$), by minimizing the following quantity
+![](withLine.png)
+
+
+The vertical distances from the points to the line are called the residuals. We obtain the line by minimizing the sum of the squares of the distances from the points to the line. 
+
+  * We denote the observed points by $y_i$ 
+  * and the points on the line by $\hat{y_i}$. 
+  * Then the residuals can be denoted by $y_i-\hat{y_i}$. 
+  
+So we obtain the line ($b_0$ and $b_1$), by minimizing the following quantity
 $$\texttt{Residual sum of squares} = \sum(y_i-\hat{y_i})^2$$ 
   
 ### How to use R to get $b_0$ and $b_1$ values.
