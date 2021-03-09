@@ -158,6 +158,8 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 *  **Lecture Recordings:**
 
     * [Tuesday's class](https://appstate.zoom.us/rec/share/ZdIF6RPoLIUizhaRBe2rVn6AFnZcCJi98iupW7n2_KclXklN2U7DrOUQfzppRz0H.sdsnPwu8Gitq-zyz)
+    * [Wednesday's class](https://appstate.zoom.us/rec/share/k7c2VUtx0haK4f8T_Bp00IKmg60vnnzp0sFDtgvryxLur4pRLf8ioNimAUJNQQeh.F3P_SzQDf3nrZXLi)
+    * [Thursday's class]() - Exam Day, No recording
     
     
 
@@ -179,22 +181,36 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 * Skim Chapter 9 of MSWR
 ```
 
-<!--
+*  **Lecture Recordings:**
+
+    * [Tuesday's class](https://appstate.zoom.us/rec/share/ELYy8Tg8GI6BVLLPeA_7UYKdTRgDVJxYbVJ1CUqRyTaT9WOTTosAoxtnzXO7PXs.YoBNxgV5K55CjhTr)
+    * [Wednesday's class](https://appstate.zoom.us/rec/share/3MHnGilcSPVxc72J00OO3cIy9KxumeGMivfB9yiEWs1X2cYRVcQ2O23vrjXVfiWg.LVodoXhxErCVWxVT)
+    * [Thursday's class](https://appstate.zoom.us/rec/share/8gizWLMzGyqcsBZWb1p0aTc9P3AWoGv2uIpwnXL2SL6vvxeJCPxdjrp0VCY_Avc.BrO2keggv84eC3bf)
+    
+    
+
 
 
 ## Week 8: (March 08 – 12) {-}
 
-* Read Chapters 7 of [MD](https://moderndive.com) --- Multiple Regression
-
-* Complete _Modeling with Data in Tidyverse_ [(DataCamp)](https://www.datacamp.com/) --- 
-
-* Review Chapters 6 and 7 of [MD](https://moderndive.com) --- Basic Regression and Multiple Regression
+* Read Chapters 6 of [MD](https://moderndive.com) --- Multiple Regression
 
 * [Lecture: Chapter 5 of MD](../Lecture Notes/Ch-6_MD_Notes.html)
 
-* [Homework 3: Chapter 5 of MD HW](../Homework/Chapter6_Of_MD_HWK_H.html) 
+* [Homework 3: Chapter 5 of MD HW](../Homework/Chapter6_Of_MD_HWK_H.html_) 
 
-* [OJUICE dataframe for homework](../Homework/data/OJUICE.Rdata) 
+* [OJUICE dataframe for homework 3](../Homework/data/OJUICE.Rdata) 
+
+```{block, week8optional, type='rmdoptional'}
+#### Optional {-}
+* Complete _Modeling with Data in Tidyverse_ [(DataCamp)](https://www.datacamp.com/)
+```
+
+*  **Lecture Recordings:**
+
+    * [Tuesday's class](https://appstate.zoom.us/rec/share/YithbOVZUGc8n816A7LVdL03xas0ZoQkXJ21vmaOBz6xAA9fbsJgTiDGXwQKTs83.ZLGk75VszYREHFVp)
+
+<!--
 
 
 ## Week 09: (March 15 – 19) {-}
