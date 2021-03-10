@@ -465,7 +465,7 @@ It’s an unfortunate truth that life expectancy is not the same across various 
 To answer such questions, we’ll study the `gapminder` dataset in the `gapminder` package. This dataset has international development statistics such as life expectancy, GDP per capita, and population by country ( n = 142) for 5-year intervals between 1952 and 2007.
 
 
-We’ll use this data for linear regression again, but note that our explanatory variable  $x$ is now **categorical**, and not numerical like when we covered simple linear regression in Section 6.1. More precisely, we have:
+We’ll use this data for linear regression. But, again,  note that our explanatory variable  $x$ is now **categorical**, and not numerical like when we covered simple linear regression in Section 3. More precisely, we have:
 
   1. A numerical outcome variable $y$. In this case, life expectancy.
 
