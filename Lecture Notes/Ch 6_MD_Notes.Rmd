@@ -233,44 +233,40 @@ What can you say about the relationship between `age` and teaching `score`s base
 ```
 
 
-
 2) 
 
 ```{r include=FALSE}
-evals_age <- evals %>%
+evals_score_age <- evals %>%
   select(score, age)
 
-glimpse(evals_age)
+glimpse(evals_score_age)
 
-skim(evals_age)
+skim(evals_score_age)
+
 ```
 
-According to the histograms: variable score is skewed to the ________________, and the variable bty_avg is skewed to the ________________.
+According to the histograms: variable score is skewed to the ________________,???? and the variable age is mostly uniform ________________.
 
 The mean teaching score was _______ out of 5 whereas the mean age was _______.
 The median teaching score was _______ out of 5 whereas the median age was _______.
-Furthermore, the middle 50% of teaching scores were between _______ and _______ () while the middle 50% of beauty scores were between _______ and _______ out of 10.
+Furthermore, the middle 50% of teaching scores were between _______ and _______ () while the middle 50% of age values were between _______ and _______ out of 10.
 
 
 ```{r include=FALSE}
-evals_age %>% 
+evals_score_age %>% 
   get_correlation(formula = score ~ age)
 ```
-
-
-
-
-
 
 
 3) 
 
 ```{r include=FALSE}
-ggplot(evals_age, aes(x = age, y = score)) +
+ggplot(evals_score_age, aes(x = age, y = score)) +
   geom_point() +
+   geom_smooth(method = "lm", se = FALSE) +
   labs(x = "Age", y = "Teaching Score", 
-       title = "Relationship of teaching and Age") +
-  geom_smooth(method = "lm", se = FALSE)
+       title = "Relationship of teaching and Age")
+ 
 ```
 
 ## Simple linear regression
@@ -298,7 +294,49 @@ The vertical distances from the points to the line are called the residuals. We 
   
 So we obtain the line ($b_0$ and $b_1$), by minimizing the following quantity
 $$\texttt{Residual sum of squares} = \sum(y_i-\hat{y_i})^2$$ 
-  
+
+After minimizing the $\texttt{Residual sum of squares}$ using calculus we get 
+
+$$b_1 = r\cdot \frac{s_y}{s_x}$$
+$$b_0 = \bar{Y} - b_1 \cdot \bar{X}$$
+
+
+Where $r$ = correlation, $s_y$ and $s_x$ are the standard deviations of $X$ and $Y$ variables. $\bar{X}$ and $\bar{Y}$ are the means of $X$ and $Y$ variables.
+
+```{example}
+Find the equation of the regression line for the example with teaching score and beauty average.
+```
+
+
+
+Solution: First find, $s_y$ and $s_x$, the standard deviations of $X$ and $Y$ variables. $\bar{X}$ and $\bar{Y}$, the means of $X$ and $Y$ variables. $r$, the correlation using R.
+
+```{r}
+skim(evals_onex)
+
+evals_onex %>%
+  get_correlation(formula = score ~ bty_avg)
+```
+
+Use the values from the output above to find $b_0$ and $b_1$ to be used in the equation $\hat{y} = b_0 + b_1x$.
+
+No that in this example $Y = \text{score}$ and $X = \text{bty_avg}$. Therefore we rewrite the equation:
+
+$\hat{\text{score}} = b_0 + b_1 \cdot {\text{bty_avg}}$
+
+Now find $b_0$ and $b_1$.
+
+$b_1 = r\cdot \frac{s_y}{s_x} = 0.1871424 \cdot \frac{0.544}{1.53} = 0.06653952$
+
+$b_0 = \bar{Y} - b_1 \cdot \bar{X} = 4.17 - 0.06653952 \cdot 4.42 = 3.875895$
+
+
+Now that we have $b_0$ and $b_1$, subtitle the values to get the regression equation.
+
+$\hat{\text{score}} = 3.875895 + 0.06653952 \cdot {\text{bty_avg}}$
+
+We refer to this equation as the **Least Squares Line or equation**
+
 ### How to use R to get $b_0$ and $b_1$ values.
 
 The lm() function that “fits” the linear regression model is typically used as `lm(y ~ x, data = data_frame_name)` where:
@@ -333,10 +371,10 @@ Range
 **Extrapolation** is using the regression to predict $y$ from $x$ outside the range of $x$ values. Such predictions are often very bad.
     
   * The intercept coefficient $b_1 = + 0.0666$: 
-  
-    This is a numerical quantity that summarizes the relationship between the outcome and explanatory variables.     Note that the sign is positive, suggesting a positive relationship between beauty scores and teaching scores,     meaning as beauty scores go up, so also do teaching scores go up. The slope’s precise interpretation is:
 
-  > For every increase of 1 unit in `bty_avg`, there is an associated increase of, on average, 0.0666 units of `score`.
+    > For every increase of 1 unit in `bty_avg`, there is an associated increase of, on average, 0.0666 units of `score`.
+  
+    (This is a numerical quantity that summarizes the relationship between the outcome and explanatory variables. Note that the sign is positive, suggesting a positive relationship between beauty scores and teaching scores,     meaning as beauty scores go up, so also do teaching scores go up.)
 
 > Question:
 

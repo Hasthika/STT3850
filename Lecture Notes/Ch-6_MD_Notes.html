@@ -385,7 +385,7 @@ pre code {
 
 <h1 class="title toc-ignore">Lecture Notes for Ch 5 of MD: Basic Regression</h1>
 <h4 class="author">Dr. Hasthika Rupasinghe</h4>
-<h4 class="date">Mar 04, 2021 at 12:09:59 PM</h4>
+<h4 class="date">Mar 09, 2021 at 08:20:15 PM</h4>
 
 </div>
 
@@ -626,10 +626,10 @@ Going forward for simplicity’s sake however, we’ll only use the regular scat
 <ol start="2" style="list-style-type: decimal">
 <li></li>
 </ol>
-<p>According to the histograms: variable score is skewed to the ________________, and the variable bty_avg is skewed to the ________________.</p>
+<p>According to the histograms: variable score is skewed to the ________________,???? and the variable age is mostly uniform ________________.</p>
 <p>The mean teaching score was _______ out of 5 whereas the mean age was _______.
 The median teaching score was _______ out of 5 whereas the median age was _______.
-Furthermore, the middle 50% of teaching scores were between _______ and _______ () while the middle 50% of beauty scores were between _______ and _______ out of 10.</p>
+Furthermore, the middle 50% of teaching scores were between _______ and _______ () while the middle 50% of age values were between _______ and _______ out of 10.</p>
 <ol start="3" style="list-style-type: decimal">
 <li></li>
 </ol>
@@ -657,6 +657,115 @@ As <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</s
 </ul>
 <p>So we obtain the line (<span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span>), by minimizing the following quantity
 <span class="math display">\[\texttt{Residual sum of squares} = \sum(y_i-\hat{y_i})^2\]</span></p>
+<p>After minimizing the <span class="math inline">\(\texttt{Residual sum of squares}\)</span> using calculus we get</p>
+<p><span class="math display">\[b_1 = r\cdot \frac{s_y}{s_x}\]</span>
+<span class="math display">\[b_0 = \bar{Y} - b_1 \cdot \bar{X}\]</span></p>
+<p>Where <span class="math inline">\(r\)</span> = correlation, <span class="math inline">\(s_y\)</span> and <span class="math inline">\(s_x\)</span> are the standard deviations of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> variables. <span class="math inline">\(\bar{X}\)</span> and <span class="math inline">\(\bar{Y}\)</span> are the means of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> variables.</p>
+
+<div class="example">
+<span id="exm:unnamed-chunk-15" class="example"><strong>Example 3.2  </strong></span>Find the equation of the regression line for the example with teaching score and beauty average.
+</div>
+
+<p>Solution: First find, <span class="math inline">\(s_y\)</span> and <span class="math inline">\(s_x\)</span>, the standard deviations of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> variables. <span class="math inline">\(\bar{X}\)</span> and <span class="math inline">\(\bar{Y}\)</span>, the means of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> variables. <span class="math inline">\(r\)</span>, the correlation using R.</p>
+<pre class="r"><code>skim(evals_onex)</code></pre>
+<table>
+<caption><span id="tab:unnamed-chunk-16">Table 3.2: </span>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td align="left">Name</td>
+<td align="left">evals_onex</td>
+</tr>
+<tr class="even">
+<td align="left">Number of rows</td>
+<td align="left">463</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of columns</td>
+<td align="left">2</td>
+</tr>
+<tr class="even">
+<td align="left">_______________________</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Column type frequency:</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">numeric</td>
+<td align="left">2</td>
+</tr>
+<tr class="odd">
+<td align="left">________________________</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Group variables</td>
+<td align="left">None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">skim_variable</th>
+<th align="right">n_missing</th>
+<th align="right">complete_rate</th>
+<th align="right">mean</th>
+<th align="right">sd</th>
+<th align="right">p0</th>
+<th align="right">p25</th>
+<th align="right">p50</th>
+<th align="right">p75</th>
+<th align="right">p100</th>
+<th align="left">hist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">score</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">4.17</td>
+<td align="right">0.54</td>
+<td align="right">2.30</td>
+<td align="right">3.80</td>
+<td align="right">4.30</td>
+<td align="right">4.6</td>
+<td align="right">5.00</td>
+<td align="left">▁▁▅▇▇</td>
+</tr>
+<tr class="even">
+<td align="left">bty_avg</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">4.42</td>
+<td align="right">1.53</td>
+<td align="right">1.67</td>
+<td align="right">3.17</td>
+<td align="right">4.33</td>
+<td align="right">5.5</td>
+<td align="right">8.17</td>
+<td align="left">▃▇▇▃▂</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>evals_onex %&gt;%
+  get_correlation(formula = score ~ bty_avg)</code></pre>
+<pre><code># A tibble: 1 x 1
+    cor
+  &lt;dbl&gt;
+1 0.187</code></pre>
+<p>Use the values from the output above to find <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span> to be used in the equation <span class="math inline">\(\hat{y} = b_0 + b_1x\)</span>.</p>
+<p>No that in this example <span class="math inline">\(Y = \text{score}\)</span> and <span class="math inline">\(X = \text{bty_avg}\)</span>. Therefore we rewrite the equation:</p>
+<p><span class="math inline">\(\hat{\text{score}} = b_0 + b_1 \cdot {\text{bty_avg}}\)</span></p>
+<p>Now find <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span>.</p>
+<p><span class="math inline">\(b_1 = r\cdot \frac{s_y}{s_x} = 0.1871424 \cdot \frac{0.544}{1.53} = 0.06653952\)</span></p>
+<p><span class="math inline">\(b_0 = \bar{Y} - b_1 \cdot \bar{X} = 4.17 - 0.06653952 \cdot 4.42 = 3.875895\)</span></p>
+<p>Now that we have <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span>, subtitle the values to get the regression equation.</p>
+<p><span class="math inline">\(\hat{\text{score}} = 3.875895 + 0.06653952 \cdot {\text{bty_avg}}\)</span></p>
+<p>We refer to this equation as the <strong>Least Squares Line or equation</strong></p>
 </div>
 <div id="how-to-use-r-to-get-b_0-and-b_1-values." class="section level3">
 <h3><span class="header-section-number">3.2.2</span> How to use R to get <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span> values.</h3>
@@ -691,11 +800,11 @@ Range</code></pre>
 <p><strong>Extrapolation</strong> is using the regression to predict <span class="math inline">\(y\)</span> from <span class="math inline">\(x\)</span> outside the range of <span class="math inline">\(x\)</span> values. Such predictions are often very bad.</p>
 <ul>
 <li><p>The intercept coefficient <span class="math inline">\(b_1 = + 0.0666\)</span>:</p>
-<p>This is a numerical quantity that summarizes the relationship between the outcome and explanatory variables. Note that the sign is positive, suggesting a positive relationship between beauty scores and teaching scores, meaning as beauty scores go up, so also do teaching scores go up. The slope’s precise interpretation is:</p></li>
-</ul>
 <blockquote>
 <p>For every increase of 1 unit in <code>bty_avg</code>, there is an associated increase of, on average, 0.0666 units of <code>score</code>.</p>
 </blockquote>
+<p>(This is a numerical quantity that summarizes the relationship between the outcome and explanatory variables. Note that the sign is positive, suggesting a positive relationship between beauty scores and teaching scores, meaning as beauty scores go up, so also do teaching scores go up.)</p></li>
+</ul>
 <blockquote>
 <p>Question:</p>
 </blockquote>
@@ -766,7 +875,7 @@ regression_points</code></pre>
 </ul>
 
 <div class="example">
-<span id="exm:unnamed-chunk-19" class="example"><strong>Example 3.2  </strong></span>Create a residul plot for the <code>score_model</code> and interpret the residial plot.
+<span id="exm:unnamed-chunk-21" class="example"><strong>Example 3.3  </strong></span>Create a residul plot for the <code>score_model</code> and interpret the residial plot.
 </div>
 
 <pre class="r"><code>ggplot(score_model, aes(x = .fitted, y = .resid)) + geom_point()</code></pre>
@@ -774,7 +883,7 @@ regression_points</code></pre>
 <p>Plotted points are scattered randomly (no pattern) about the reference line <span class="math inline">\(residual = 0\)</span>. Also, no outliers are detected. Therefore the residual plot indicate that the relationship between <code>bty_avg</code> and <code>score</code> is linear.</p>
 
 <div class="example">
-<span id="exm:unnamed-chunk-21" class="example"><strong>Example 3.3  </strong></span>Create a residul plot for the model where <span class="math inline">\(y = score\)</span> and <span class="math inline">\(x=age\)</span> and interpret the residial plot.
+<span id="exm:unnamed-chunk-23" class="example"><strong>Example 3.4  </strong></span>Create a residul plot for the model where <span class="math inline">\(y = score\)</span> and <span class="math inline">\(x=age\)</span> and interpret the residial plot.
 </div>
 
 </div>
@@ -820,7 +929,7 @@ str(gapminder)</code></pre>
 <pre class="r"><code>glimpse(gapminder2007)</code></pre>
 <pre><code>Rows: 142
 Columns: 4
-$ country   &lt;fct&gt; Afghanistan, Albania, Algeria, Angola, Argentina, Australia,…
+$ country   &lt;fct&gt; &quot;Afghanistan&quot;, &quot;Albania&quot;, &quot;Algeria&quot;, &quot;Angola&quot;, &quot;Argentina&quot;, …
 $ continent &lt;fct&gt; Asia, Europe, Africa, Africa, Americas, Oceania, Europe, Asi…
 $ lifeExp   &lt;dbl&gt; 43.828, 76.423, 72.301, 42.731, 75.320, 81.235, 79.829, 75.6…
 $ gdpPercap &lt;dbl&gt; 974.5803, 5937.0295, 6223.3675, 4797.2313, 12779.3796, 34435…</code></pre>
@@ -1023,7 +1132,7 @@ Furthermore, this value corresponds to the group mean life expectancy for all Am
 </ul>
 
 <div class="example">
-<span id="exm:unnamed-chunk-39" class="example"><strong>Example 4.1  </strong></span>Fit a new linear regression to predcit the GDP using continent. Write the model. Interpret the coefficients. (Use the <code>gapminder2007</code> dataftame that we created)
+<span id="exm:unnamed-chunk-41" class="example"><strong>Example 4.1  </strong></span>Fit a new linear regression to predcit the GDP using continent. Write the model. Interpret the coefficients. (Use the <code>gapminder2007</code> dataftame that we created)
 </div>
 
 </div>
