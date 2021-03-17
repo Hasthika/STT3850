@@ -1,26 +1,31 @@
 ---
-title: "Chapter 6 of MD Homework: Due Thursday the 17th"
+title: "HW3: Chapter 5 of MD: Due Tuesday the 25th"
 author: "Your Name Here"
 date: '`r format(Sys.time(), "%b %d, %Y")`'
-output: bookdown::html_document2
+output:
+  pdf_document:
+    latex_engine: xelatex
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, comment = NA, fig.align = "center", warning = FALSE, message = FALSE)
 library(tidyverse)
 library(ISLR)
+library(skimr)
 ```
 
 > Note: Be sure to turn in this hw as a well organized html/pdf (printed) document.
 
-Following is the yml I used. You can replace the default yml with this.
+Following is the yaml I used. Please replace the default yaml with this so it would generate a pdf.
 
 ```
 ---
-title: "Chapter 6 of MD Homework: Due Thursday the 17th"
+title: "HW3: Chapter 5 of MD: Due Tuesday the 25th"
 author: "Your Name Here"
 date: '`r format(Sys.time(), "%b %d, %Y")`'
-output: bookdown::html_document2
+output:
+  pdf_document:
+    latex_engine: xelatex
 ---
 ```
 
@@ -29,7 +34,7 @@ output: bookdown::html_document2
 
 > Question 01
 
- The quality of the orange juice produced by a manufacturer (e.g., Minute Maid, Tropicana) is constantly monitored. There are numerous sensory and chemical components that combine to make the best tasting orange juice. Foe example, one manufacturer has developed a quantitative index of the "sweetness" of orange juice. (The higher the index, the sweeter the juice.)
+The quality of the orange juice produced by a manufacturer (e.g., Minute Maid, Tropicana) is constantly monitored. There are numerous sensory and chemical components that combine to make the best tasting orange juice. For example, one manufacturer has developed a quantitative index of the "sweetness" of orange juice. (The higher the index, the sweeter the juice.)
 
 Is there a relationship between the sweetness index and a chemical measure such as the amount of water-soluble pectin (parts per million) in the orange juice? 
 
@@ -37,58 +42,56 @@ Data collected on those two variables for 24 production runs at a juice manufact
 
 > How to import data:
 
-  1. Download the data from my website (do not try to open) and upload the data file in to your working directory (the folder where your howemork is).
-  2. Click on the uploaded data file. Read the messege and click "Yes".
+  1. Download the data from my website under this week (**do not try to open in the computer**) and upload the data file in to your working directory (the folder where your homework is).
+  2. Click on the uploaded data file. Read the message and click "Yes".
   3. Remove "#" and run the following code, if you see the "head" of the dataframe, the data is in!
   
 ```{r}
 #load("OJUICE.Rdata")
 #head(OJUICE)
+#skim(OJUICE)
 ```
 
 1. Suppose a manufacturer wants to use \textbf{simple linear regression} to predict the sweetness $(y)$ from the amount of pectin $(x)$
 
 
-  i. **Conduct Exploratory data analysis (Note: This constists of three parts)**
+    i. **Conduct Exploratory data analysis (Note: This consists of three parts)**
   
-  > Solution:
   
-   a) Looking at the raw values:
+        a) Looking at the raw values:
     
     
     
-   b) Computing and describing the summary statistics likes means, medians, and standard deviations. Specially the correlation coefficient:
+        b) Computing and describing the summary statistics likes means, medians, and standard deviations. Specially the correlation coefficient:
    
    
     
-   c) Creating and describing data visualizations:
+        c) Creating and describing data visualizations:
     
 
 
-  ii.  **Fit the model and write the equation.**
+    ii.  **Fit the model and write the equation.**
 
-  > Solution:
+
   
-  iii. **Give a practical interpretation of the value of $b_0$, if possible.**
+    iii. **Give a practical interpretation of the value of $b_0$, if possible.**
 
-  > Solution:
+
  
-  iv. **Give a practical interpretation of the value of $b_1$, if possible.**
+    iv. **Give a practical interpretation of the value of $b_1$, if possible.**
 
-  > Solution:
+
  
-  v.  **Predict the sweetness index if amount of pectin in the orange juice is 300 ppm.**
+    v.  **Predict the sweetness index if amount of pectin in the orange juice is 300 ppm.**
   
-  > Solution:
-  
-  vi. **Figure out a way to do v. in `R`. (We did not discussed this in class)**
 
-  > Solution:
+    vi. **Find out a function to do part v) in `R`. (We did not discuss a code for this in class)**
 
-  vii. **Conduct diagnostics and comment on how "good" the model is.**
+
+
+    vii. **Conduct diagnostics and comment on how "good" the model is.**
   
-  > Solution:
-  
+
 
 ***
 
@@ -96,28 +99,28 @@ Data collected on those two variables for 24 production runs at a juice manufact
 
 `Credit` dataset from the `ISLR` library consist of infomation like income, credit limit, and education level for  $n = 400$ credit card holders. Note that this dataset is not based on actual individuals, it is a simulated dataset used for educational purposes.
 
-1. **Suppose we want to use \textbf{linear regression} to predict the `Balance` $(y)$ from the `Ethnicity`  $(x)$**
+  1. **Suppose we want to use \textbf{linear regression} to predict the `Balance` $(y)$ from the `Ethnicity`  $(x)$**
 
-  i. *Conduct Exploratory data analysis (Note: This constists of three parts)*
+      i. *Conduct Exploratory data analysis (Note: This constists of three parts)*
   
-  > Solution:
-  
-   a) Looking at the raw values:
-    
-    
-    
-   b) Computing and describing the summary statistics likes means, medians, and standard deviations. Specially the correlation coefficient:
-   
-   
-    
-   c) Creating and describing data visualizations, individual and comparisons:
-   
-    
-  ii.  **Fit the model and write the equation.**
 
-  > Solution:
   
-  iii. **Give a practical interpretations of ALL coefficients and Fitted values.**
+          a) Looking at the raw values:
+    
+    
+    
+          b) Computing and describing the summary statistics likes means, medians, and standard deviations. Specially the correlation coefficient:
+   
+   
+    
+          c) Creating and describing data visualizations, individual and comparisons:
+   
+    
+      ii.  **Fit the model and write the equation.**
+
+
+  
+      iii. **Give a practical interpretations of ALL coefficients and Fitted values.**
 
 
 ***

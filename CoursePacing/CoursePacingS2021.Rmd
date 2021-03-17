@@ -197,7 +197,7 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * [Lecture: Chapter 5 of MD](../Lecture Notes/Ch-6_MD_Notes.html)
 
-* [Homework 3: Chapter 5 of MD HW](../Homework/Chapter6_Of_MD_HWK_H.html_) 
+* [Homework 3: Chapter 5 of MD HW](../Homework/Chapter6_Of_MD_HWK_H.pdf) 
 
 * [OJUICE dataframe for homework 3](../Homework/data/OJUICE.Rdata) 
 
@@ -210,6 +210,7 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
     * [Tuesday's class](https://appstate.zoom.us/rec/share/YithbOVZUGc8n816A7LVdL03xas0ZoQkXJ21vmaOBz6xAA9fbsJgTiDGXwQKTs83.ZLGk75VszYREHFVp)
     * [Wednesday's class](https://appstate.zoom.us/rec/share/5snIG6nIpPXAXid_fICFcO9kknlmzB9FIxGmHJ9PO2gocIicPaLsGRIZ4rEN3WiJ.vzflGNlV2dTYT_CE)
+    * [Thursday's class](https://appstate.zoom.us/rec/share/St88qFMOgsNV_uMuil2lGSHqGMgSGOOGVPjTJLW2hhNupAYFEW7tJzipUNrrQZE.HlQ7KLaKQmF6zsY6)
 
 <!--
 
