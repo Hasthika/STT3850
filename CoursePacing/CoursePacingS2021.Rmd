@@ -197,10 +197,6 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * [Lecture: Chapter 5 of MD](../Lecture Notes/Ch-6_MD_Notes.html)
 
-* [Homework 3: Chapter 5 of MD HW](../Homework/Chapter6_Of_MD_HWK_H.pdf) 
-
-* [OJUICE dataframe for homework 3](../Homework/data/OJUICE.Rdata) 
-
 ```{block, week8optional, type='rmdoptional'}
 #### Optional {-}
 * Complete _Modeling with Data in Tidyverse_ [(DataCamp)](https://www.datacamp.com/)
@@ -212,12 +208,24 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
     * [Wednesday's class](https://appstate.zoom.us/rec/share/5snIG6nIpPXAXid_fICFcO9kknlmzB9FIxGmHJ9PO2gocIicPaLsGRIZ4rEN3WiJ.vzflGNlV2dTYT_CE)
     * [Thursday's class](https://appstate.zoom.us/rec/share/St88qFMOgsNV_uMuil2lGSHqGMgSGOOGVPjTJLW2hhNupAYFEW7tJzipUNrrQZE.HlQ7KLaKQmF6zsY6)
 
-<!--
+
 
 
 ## Week 09: (March 15 – 19) {-}
 
 * [Lecture: Chapter 5 of MD](../Lecture Notes/Ch-6_MD_Notes.html)
+
+* [Homework 3: Chapter 5 of MD HW](../Homework/Chapter6_Of_MD_HWK_H.pdf) 
+
+* [OJUICE dataframe for homework 3](../Homework/data/OJUICE.Rdata) 
+
+    * [Tuesday's class](https://appstate.zoom.us/rec/share/qxmRzz4iTWjGfugXF-8xqGn7Rn8EM9Md84Hyh4JCo_UJaSek6KQG_YJb98ZKNBE2.UQXeRaLLgV1XGnyE)
+    * [Wednesday's class]()
+
+
+<!--
+
+## Week 10: (March 22 – 26) {-}
 
 * [gapminder tools](https://www.gapminder.org/tools/#$chart-type=bubbles)
 
@@ -227,8 +235,6 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 * Start preparing R Markdown `cheat sheet` for Test 2
 
 * In class **quiz 07** --- Thursday (last 20 min of class)
-
-## Week 10: (March 22 – 26) {-}
 
 ```{block, TEST2, type='rmdnote'}
 * Prepare R Markdown `info sheet` for Test 2...
