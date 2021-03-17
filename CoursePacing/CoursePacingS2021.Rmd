@@ -220,7 +220,7 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 * [OJUICE dataframe for homework 3](../Homework/data/OJUICE.Rdata) 
 
     * [Tuesday's class](https://appstate.zoom.us/rec/share/qxmRzz4iTWjGfugXF-8xqGn7Rn8EM9Md84Hyh4JCo_UJaSek6KQG_YJb98ZKNBE2.UQXeRaLLgV1XGnyE)
-    * [Wednesday's class]()
+    * [Wednesday's class](https://appstate.zoom.us/rec/share/oT3gt795hbfdcpmvoUna3eqfQii2eAVw1LZhJmu-ecOLWNjsJtWDMaisoNmkMhFP.pNXLFDhOGda2pUFa)
 
 
 <!--
