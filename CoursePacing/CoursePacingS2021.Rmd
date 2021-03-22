@@ -223,7 +223,6 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
     * [Wednesday's class](https://appstate.zoom.us/rec/share/oT3gt795hbfdcpmvoUna3eqfQii2eAVw1LZhJmu-ecOLWNjsJtWDMaisoNmkMhFP.pNXLFDhOGda2pUFa)
 
 
-<!--
 
 ## Week 10: (March 22 – 26) {-}
 
@@ -231,30 +230,19 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * [An interesting video](https://www.youtube.com/watch?v=jbkSRLYSojo)
 
-
 * Start preparing R Markdown `cheat sheet` for Test 2
-
-* In class **quiz 07** --- Thursday (last 20 min of class)
 
 ```{block, TEST2, type='rmdnote'}
 * Prepare R Markdown `info sheet` for Test 2...
 
 ```
 
-* [Lecture: Chapter 5 of MD](../Lecture Notes/Ch-6_MD_Notes.html)
-
-* [**Lecture Recording (Ch 5 0f MD)** -- 03/24](https://appstate.zoom.us/rec/share/1f5XLpz2-X5IQp3L2G2HB4V7PtTYeaa81SgY-KdZyU_4frqdfv5I4Sfgv45TVadc)
-
 * [Lecture: Chapter 6 of MD](../Lecture Notes/Ch-7_MD_Notes.html)
 
-* [**Lecture Recording (Ch 6 0f MD --- Part 1)** -- 03/25](https://appstate.zoom.us/rec/share/w_Z8JZD5rURLSNbvskLgYekEJJ7Ueaa81XMaq6UPmEieQcDI0d_kpt8UIMWQgeLi)
+* In class **quiz 07** --- Thursday (last 20 min of class)
 
-* [**Lecture Recording (Ch 6 0f MD --- Part 2)** -- 03/26](https://appstate.zoom.us/rec/share/39V3MrrJ7XhJb9bJzRnES_UDAtm5aaa8hnIZ-PoNyBzUYBalXRjEq_Lh51VxHxgL)
+<!--
 
-
-
-
-* In class **quiz 08** --- Thursday (last 20 min of class)
 
 ## Week 11: (March 29 – April 02) {-}
 

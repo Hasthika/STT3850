@@ -50,7 +50,7 @@ Let’s load the `Credit` data and:
 #
 ```
 
-```{r}
+```{r include=FALSE}
 library(ISLR)
 
 Credit2 <- Credit %>%
@@ -70,15 +70,15 @@ Let’s look at some summary statistics for the variables that we need for the p
 ```
 
 
-```{r}
+```{r include=FALSE}
 Credit2 %>% 
   select(Balance, Limit, Income) %>% 
   skim()
 ```
 
-Let's also look at _______________ as visual aids.
+Let's also look at better histograms as visual aids.
 
-```{r}
+```{r include=FALSE}
 library(cowplot)
 
 p1 <- ggplot(data = Credit, aes(x = Balance)) + geom_histogram(binwidth  = 150, color = "white", fill = "orchid4")
@@ -113,16 +113,16 @@ Since our outcome variable Balance and the explanatory variables `Limit` and `In
 ```
 
 
-```{r}
+```{r include=FALSE}
 Credit %>%
   select(Balance, Limit, Income) %>% 
   cor()
 ```
 
 
-  * Balance with Limit is 0.862. This indicates a strong positive linear relationship, which makes sense as only individuals with large credit limits can accrue large credit card balances.
+  * Balance with Limit is _____. This indicates a ______ ________ ______ relationship, which makes sense as only individuals with large credit limits can accrue large credit card balances.
   
-  * Balance with Income is 0.464. This is suggestive of another positive linear relationship, although not as strong as the relationship between Balance and Limit.
+  * Balance with Income is 0.464. This is suggestive of another ______ ________ ______ relationship, although not as strong as the relationship between Balance and Limit.
   
   * As an added bonus, we can read off the correlation coefficient of the two explanatory variables, Limit and Income of 0.792. In this case, we say there is a high degree of **collinearity** between these two explanatory variables.
 
@@ -133,7 +133,7 @@ Credit %>%
 
 Let’s visualize the relationship of the outcome variable with each of the two explanatory variables in two separate plots:
 
-```{r}
+```{r include = FALSE}
 sc1 <- ggplot(Credit, aes(x = Limit, y = Balance)) +
   geom_point() +
   labs(x = "Credit limit (in $)", y = "Credit card balance (in $)", 
@@ -201,7 +201,7 @@ get_regression_table(Balance_model)
 #summary(Balance_model)
 ```
 
-**Write your model here:**
+**Write your model equation here:**
 
         * 
 
@@ -233,7 +233,7 @@ As we did previously in ch 5, let's look at the fitted values and residuals.
 # get the following table
 ```
 
-```{r}
+```{r include=FALSE}
 regression_points <- get_regression_points(Balance_model)
 regression_points
 ```
@@ -248,7 +248,7 @@ ggplot(Balance_model, aes(x = .fitted, y = .resid)) + geom_point()
 
 Kevin has a credit limit of $5080 and his income is $150,000. Use the `Balance_model` to predict Kevin's balance.
 
-```{}
+```{ include=FALSE}
 newx <- data.frame(Limit = _____, Income = ____)
 
 predicted_balance <- predict(Balance_model, newx)
@@ -280,26 +280,26 @@ Consider a modeling scenario with:
   
 ### Exploratory data analysis
 
-Let’s reload the `evals` data and `select()` only the needed subset of variables. Note that these are different than the variables chosen in Chapter 6. Let’s given this the name `evals_ch7`.
+Let’s reload the `evals` data and `select()` only the needed subset of variables. Note that these are different than the variables chosen in Chapter 5. Let’s given this the name `evals_ch6`.
 
-```{r}
-evals_ch7 <- evals %>%
+```{r include=FALSE}
+evals_ch6 <- evals %>%
   select(score, age, gender)
 ```
 
   
 1. Let’s look at the raw data values both by using `View()` and the `glimpse()` functions.
 
-```{r}
-str(evals_ch7)
+```{r include=FALSE}
+str(evals_ch6)
 ```
 
 
 2. Let’s look at some summary statistics using the `skim()` function from the `skimr` package:
   
   
-```{r}
-evals_ch7 %>% 
+```{r include=FALSE}
+evals_ch6 %>% 
   skim()
 ```
   
@@ -310,8 +310,8 @@ Describe the output: Homework
   3. let’s compute the correlation between two numerical variables we have `score` and `age`. Recall that correlation coefficients only exist between numerical variables. 
   
   
-```{r}
-evals_ch7 %>% 
+```{r include=FALSE}
+evals_ch6 %>% 
   get_correlation(formula = score ~ age)
 ```
   
@@ -323,8 +323,8 @@ Now, let's try to visualize the correlation.
 Create a scatterplot of `score` over `age`. Use the binary `gender` variable to color the point with two colors. Add a regression line (or two?) in to your scatterplot.
 
 
-```{r}
-ggplot(evals_ch7, aes(x = age, y = score, color = gender)) +
+```{r include=FALSE}
+ggplot(evals_ch6, aes(x = age, y = score, color = gender)) +
   geom_point() +
   labs(x = "Age", y = "Teaching Score", color = "Gender", title = "Graph using 'method = lm'") +
   geom_smooth(method = "lm", se = FALSE) + theme_bw()
@@ -341,7 +341,7 @@ Much like we started to consider multiple explanatory variables using the `+` si
 
 
 ```{r}
-score_model_2 <- lm(score ~ age + gender, data = evals_ch7)
+score_model_2 <- lm(score ~ age + gender, data = evals_ch6)
 summary(score_model_2)
 
 get_regression_table(score_model_2)
@@ -359,17 +359,16 @@ Write the model for female:
 
 
 Let's create the scatterplot of `score` over `age` AGAIN. Use the binary `gender` variable to color the point with two colors. Add a regression lines in to your scatterplot BUT, this time use the model(s) we created.
-
-
-```{r}
-ggplot(evals_ch7, aes(x = age, y = score, color = gender)) +
+ 
+```{r include=FALSE}
+ggplot(evals_ch6, aes(x = age, y = score, color = gender)) +
   geom_jitter() +
   labs(x = "Age", y = "Teaching Score", color = "Gender", title = "Graph using the 'score_model_2'") +
   geom_abline(intercept = 4.484, slope = -0.009, color = "firebrick1", lwd=1) +
   geom_abline(intercept = 4.675, slope = -0.009, , color = "turquoise", lwd=1) 
 ```
 
-Interpretaions of the coefficients:
+Interpretations of the coefficients:
 
 
   * $b_{male} = 0.1906$ is the average difference in teaching score that men get relative to the baseline of women.
@@ -402,7 +401,7 @@ We say a model has an interaction effect if the associated effect of one variabl
 Let’s fit a regression with an interaction term. We add an interaction term using the `*` sign. Let’s fit this regression and save it in `score_model_interaction`, then we get the regression table using the `get_regression_table()` function as before.
 
 ```{r}
-score_model_interaction <- lm(score ~ age + gender + age * gender, data = evals_ch7)
+score_model_interaction <- lm(score ~ age + gender + age * gender, data = evals_ch6)
 get_regression_table(score_model_interaction)
 ```
 
