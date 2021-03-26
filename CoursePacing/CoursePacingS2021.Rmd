@@ -219,6 +219,8 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * [OJUICE dataframe for homework 3](../Homework/data/OJUICE.Rdata) 
 
+*  **Lecture Recordings:**
+
     * [Tuesday's class](https://appstate.zoom.us/rec/share/qxmRzz4iTWjGfugXF-8xqGn7Rn8EM9Md84Hyh4JCo_UJaSek6KQG_YJb98ZKNBE2.UQXeRaLLgV1XGnyE)
     * [Wednesday's class](https://appstate.zoom.us/rec/share/oT3gt795hbfdcpmvoUna3eqfQii2eAVw1LZhJmu-ecOLWNjsJtWDMaisoNmkMhFP.pNXLFDhOGda2pUFa)
 
@@ -240,6 +242,13 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 * [Lecture: Chapter 6 of MD](../Lecture Notes/Ch-7_MD_Notes.html)
 
 * In class **quiz 07** --- Thursday (last 20 min of class)
+
+
+*  **Lecture Recordings:**
+
+    * [Tuesday's class](https://appstate.zoom.us/rec/share/QrXRmSI-ly1IpbzK0N4KGvVbPFAxh3LJXYpqI-Po_v0RQzf8zseDtpCvuOk1px8.rtb3qb1TjjyfKqfS)
+    * [Wednesday's class](https://appstate.zoom.us/rec/share/OT1oBJF_WlU50C5llKV0RHRmcX81emtQS8enkRvBR0g79p8mkP9xcX6nF8wj6QIp.MjIptoHOjUt0Msgn)
+    * [Thursday's class](https://appstate.zoom.us/rec/share/v29z66H3HPcF9_IObYxIMhGbRrJBcZRnJkA1xKR-mMdkf54gf-vHecFiNjRMGb2y.mGMUe2xIUfEds_WJ)
 
 <!--
 
