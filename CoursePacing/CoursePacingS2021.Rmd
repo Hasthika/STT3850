@@ -260,9 +260,9 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 * [Homework 4: Chapter 6 of MD HW txt file](../Homework/HW4_ONLINE.txt) 
 
 
-* [Multiple Linear Regression mini-project](../Lecture Notes/MLR_Project.html_)
+* [Multiple Linear Regression mini-project](../Lecture Notes/MLR_Project.html)
 
-* [`EXECSAL2.txt` dataframe for the mini-project](../Lecture Notes/EXECSAL2.txt_) 
+* [`EXECSAL2.txt` dataframe for the mini-project](../Lecture Notes/EXECSAL2.txt) 
 
 
 <!--

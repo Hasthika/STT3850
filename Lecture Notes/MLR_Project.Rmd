@@ -17,7 +17,7 @@ library(skimr)
 
 # Data description
 
-After you graduated, you started to work for one of the best firms in the country. You were hired because you have Data Analysis skills with $R$. During your first week your manager comes to your office and gives you the follwoing data set and ask you to "analyze the hell out of this data" (his words. not mine). Mainly he wants you to bulid a liner model to predict executive salaries. But you know you can do much more! Analyze the given data and create a report like your job depends on this. 
+After you graduated, you started to work for one of the best firms in the country. You were hired because you have Data Analysis skills with $R$. During your first week your manager comes to your office and gives you the following data set and ask you to "analyze the hell out of this data" (his words. not mine). Mainly he wants you to build a linear model to predict executive salaries. But you know you can do much more! Analyze the given data and create a report like your job depends on this. 
 
 
 Data stored as a `.txt` file under week 10. Data consists of 11 variables. 
@@ -38,7 +38,7 @@ head(ExeSal)
 ```
 
 
-#Rename columns using the following names
+# Rename columns using the following names
 
 ```{r echo=FALSE}
 description <- data.frame(Variable = c("y", "x1", "x2", "x3", "x4", "x5", "x6", "x7", "x8", "x9", "x10"), Names = c( "salary", "experience", "education", "gender", "emps_sup", "assets", "board_mb", "age", "profit", "int_res", "sales"), Description = c("Salary of executive", "Experience (in years)", "Education (in years)","Gender (1 if male 0 if female)" ,"Number of employees supervised", "Corporate assets (in millions of USD)", "Board member (1 if yes, 0 if no)", "Age (in years)", "Company profits (in millions of USD)", "Has international responsibility (1 if yes, 0 if no)", "Company's total sales (in millions of USD)"))
@@ -50,12 +50,39 @@ knitr::kable(description)
 names(ExeSal) <- c("id", "salary", "experience", "education", "gender", "emps_sup", "assets", "board_mb", "age", "profit", "int_res", "sales")
 ```
 
+# Convert Data types
 
-#Conduct EDA and **describe**
+The data types in this data set does not make a lot of sense. We change the data types as shown below.
 
-#Build several multiple linear regression models
+```{r comment=NA, warning=FALSE, message=FALSE}
+library(dplyr)
+
+ExeSal2 <- ExeSal %>%
+  mutate( salary = as.numeric(salary), experience = as.numeric(experience), education = as.numeric(education), gender = as.factor(gender), emps_sup = as.numeric(emps_sup), assets = as.numeric(assets), board_mb = as.factor(board_mb), age = as.numeric(age), profit = as.numeric(profit), int_res = as.factor(int_res), sales = as.numeric(sales))
+
+str(ExeSal2)
+```
+
+
+# Conduct EDA and **describe**
+
+# Build several multiple linear regression models
 
 ```{r include=FALSE}
-ggplot(data = ExeSal, aes(x=sales, y = salary, color = factor(gender))) + geom_point() + geom_smooth(method = "lm")
+ggplot(data = ExeSal2, aes(x=sales, y = salary, color = factor(gender))) + geom_point() + geom_smooth(method = "lm")
 ```
+
+
+
+
+
+
+```{r include=FALSE}
+skim(ExeSal)
+```
+
+```{r include=FALSE}
+pairs(ExeSal[, -c(1,5, 6,8)])
+```
+
 
