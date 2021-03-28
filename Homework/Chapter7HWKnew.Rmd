@@ -1,8 +1,10 @@
 ---
-title: "Chapter 6 of MD, Homework 4: Due Wednesday April 8"
+title: "Chapter 6 of MD, Homework 4: Due Thursday April 8"
 author: "Your Name Here"
 date: '`r format(Sys.time(), "%b %d, %Y")`'
-output: bookdown::html_document2
+output:
+  pdf_document:
+    latex_engine: xelatex
 ---
 
 ```{r setup, include=FALSE}
@@ -69,9 +71,9 @@ head(newBirthWt)
 
 
 
-  f) Write the model (the whole model).
+  f) Write the model equation (the whole model).
   
-
+      Answer here... 
   
   
         i. Write the model for the `black` mothers:
@@ -92,7 +94,7 @@ head(newBirthWt)
            Answer here... 
 
 
-  g)  Create a new scatterplot of `age` vs. `bwt` with colors and lines according to your `newRace` variable using the model(s) you came up with in part f).
+  g)  Create a new scatterplot of `age` vs. `bwt` with colors and lines according to your `newRace` variable using the models you came up with in part f).
   
   
 ```{r}

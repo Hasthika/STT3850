@@ -250,28 +250,22 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
     * [Wednesday's class](https://appstate.zoom.us/rec/share/OT1oBJF_WlU50C5llKV0RHRmcX81emtQS8enkRvBR0g79p8mkP9xcX6nF8wj6QIp.MjIptoHOjUt0Msgn)
     * [Thursday's class](https://appstate.zoom.us/rec/share/v29z66H3HPcF9_IObYxIMhGbRrJBcZRnJkA1xKR-mMdkf54gf-vHecFiNjRMGb2y.mGMUe2xIUfEds_WJ)
 
-<!--
 
 
 ## Week 11: (March 29 – April 02) {-}
 
 * [Lecture: Chapter 6 of MD](../Lecture Notes/Ch-7_MD_Notes.html)
 
-* [**Lecture Recording (Ch 6 0f MD --- Part 3)** -- 03/31](https://appstate.zoom.us/rec/share/78ttIvbT0F9LT6_W0kXkZpV-QJ36X6a80SAd8vpemEpo4iO2k9x1YXzIfabp3cu5)
-
-* [**Lecture Recording (Ch 6 0f MD --- Part 4)** -- 04/01](https://appstate.zoom.us/rec/share/1cdVEZ_R2kBJTZWVxW_vBZx7T5jUX6a81SEa8vBZys0qYJtrx-lpCKzNRoP91mI)
-
-* [**Lecture Recording (Ch 6 0f MD --- Part 5)** -- 04/02](https://appstate.zoom.us/rec/share/tMBRMendzFpLfq_ysG6DHYcvPa7BX6a81iRN8_pfnk3iig0lDAkZCy6EqF43frHG)
-
-* [Homework 4: Chapter 6 of MD HW](../Homework/Chapter7HWKnew.html) 
+* [Homework 4: Chapter 6 of MD HW](../Homework/Chapter7HWKnew.pdf) 
 * [Homework 4: Chapter 6 of MD HW txt file](../Homework/HW4_ONLINE.txt) 
 
 
-* [Multiple Linear Regression mini-project --- OPTIONAL](../Lecture Notes/MLR_Project.html)
+* [Multiple Linear Regression mini-project](../Lecture Notes/MLR_Project.html_)
 
-* [`EXECSAL2.txt` dataframe for the mini-project](../Lecture Notes/EXECSAL2.txt) 
+* [`EXECSAL2.txt` dataframe for the mini-project](../Lecture Notes/EXECSAL2.txt_) 
 
 
+<!--
 
 
 ## Week 12: (April 05 – 09) {-}
