@@ -64,9 +64,9 @@ str(ExeSal2)
 ```
 
 
-# Conduct EDA and **describe**
+For this project you need to build several multiple linear regression models. Be sure to Conduct EDA and **describe** for each model. For full credit, build at least five multiple linear regression models including at least one model with an interaction (quantitative and qualitative) term. It is important that you interpret each coefficient of each model. Finaly, for each model, run model diagnostics.
 
-# Build several multiple linear regression models
+
 
 ```{r include=FALSE}
 ggplot(data = ExeSal2, aes(x=sales, y = salary, color = factor(gender))) + geom_point() + geom_smooth(method = "lm")
