@@ -1,18 +1,18 @@
 ---
 title: "Review for Exam 2"
 author: "Dr. Hasthika Rupasinghe"
-date: "04/07/2020"
+date: "04/07/2021"
 output: html_document
 ---
 
-This covers the review for Ch3. To review for Ch6 and Ch7, redo the examples in the lecture notes.
+This covers the review for Ch 3. To review for Ch 5 and Ch 6, redo the examples in the lecture notes.
 
 
 1) Use the `Recidivism` data from the `resampledata` library for this problem. Test the hypothesis that: The mean days to `Days` to reoffend for men is higher than for women?
 
   i) Assume that $\mu_{M}$ and $\mu_{W}$ be the mean `Days` to reoffend for men and women respectively. Write $H_0$ and $H_a$ for this problem.
   
-$H_0: \mu_{M} = \mu_{W}$ vs. $H_a: \mu_{M} > \mu_{W}$
+
 
 Important: Use `set.seed(10001)`
 
@@ -25,40 +25,11 @@ library(dplyr)
 
 Do this to get to know the variable names.
 
-```{r}
+```{r include=FALSE}
 data(Recidivism)
 head(Recidivism)
 ```
 
-Now start the test
-
-
-```{r}
-ANS <- Recidivism %>%
-  group_by(Gender) %>%
-  summarize(Average = mean(Days, na.rm = TRUE), count = n())
-ANS
-
-obs <- ANS[2, 2] - ANS[1, 2]
-obs
-
-observed <- obs$Average
-observed
-
-
-set.seed(10001)
-sims <- 10^4 - 1 
-
-ans <- numeric(sims)
-for(i in 1:sims){
-  index <- sample.int(n = 2101+14918, size = 14918, replace = FALSE)
-  ans[i] <- mean(Recidivism$Days[index], na.rm = TRUE) - mean(Recidivism$Days[-index], na.rm = TRUE)
-}
-
-pvalue <- (sum(ans >= observed) + 1)/(sims + 1)
-pvalue
-
-```
 
 
 
@@ -107,21 +78,17 @@ pvalue
   iii) What is the $p$-value for this test?
   
 
- 0.2479
+
  
      
   iv) Make the conclusion assuming $\alpha = 0.05$.
   
   a) Technical conclusion:
      
-p-value = 0.2479 > 0.05, Fail to reject $H_0$ 
-
-(Note: pvalue < alpha, Reject H0,  pvalue > alpha, Fail to Reject H0)
   
   b) Non-technical(English) conclusion:
 
 
-There is NOT enough evidenace to conclude that the mean days to `Days` to reoffend for men is higher than for women
 
 
 
