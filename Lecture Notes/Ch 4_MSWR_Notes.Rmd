@@ -75,7 +75,7 @@ virtual_shovel <- bowl %>%
 virtual_shovel
 ```
 
-Next we can find out how many res ones are there in our `virtual_shovel`
+Next we can find out how many red ones are there in our `virtual_shovel`
 
 ```{r}
 virtual_shovel %>% 
@@ -441,9 +441,9 @@ qnorm(.25, mean = 15, sd = 3)
 
 *Question:*
 
-  1. A radar unit is used to measure speeds of cars on a motorway. The speeds are N(90 km/hr, 10 km/hr). What is the probability that a car picked at random is travelling at more than 100 km/hr? 
+  1. A radar unit is used to measure speeds of cars on a motorway. The speeds are N(90 km/hr, 10 km/hr). What is the probability that a car picked at random is traveling at more than 100 km/hr? 
   
-```{r}
+```{r include=FALSE}
 1-pnorm(100, mean=90, sd = sqrt(10))
 ```
 
@@ -451,7 +451,7 @@ qnorm(.25, mean = 15, sd = 3)
   2. GMAT are roughly normally distributed with a mean of 527 and a standard deviation of 112. How high must an individual score on the GMAT in order to score in the highest 5%?
 
 
-```{r}
+```{r include=FALSE}
 qnorm(0.95, mean = 527, sd = 112)
 ```
 
@@ -517,14 +517,14 @@ The number of days ahead travelers purchase their airline tickets can be modeled
 
   1. Find the probability that a traveler will purchase a ticket fewer than ten days in advance. 
   
-```{r}
+```{r include=FALSE}
 pexp(10, rate = 1/15)
 ```
   
   
   2. How many days in advance do 80% of all travelers purchase their airline tickets?
 
-```{r}
+```{r include=FALSE}
 qexp(0.8, rate = 1/15)
 ```
 
@@ -590,7 +590,7 @@ Sampling distribution of $\hat{p}$ is normal with mean $p$(Actual population pro
 $$\hat{p} \sim N( p,  p(1-p)/n)$$
 
 
-Let's revisit the coin flip example: What we did is a simulation. Now we can check how close our simulation results are to the theoretical results.
+Let's revisit the coin flip example: What we did was a simulation. Now we can check how close our simulation results are to the theoretical results.
 
 
 ```{r}
@@ -661,9 +661,10 @@ Therefore $\hat{p} \sim N( p,  {p(1-p)/n} ) = N( 0.5,  {0.5(1-0.5)/10} ) = N( 0.
 
 So $mean = 0.5$ and $sd = \sqrt(0.025) = 0.1581139$
 
+How close the simulated results to the theoretical results?
+
 
 ## Sampling Distribution of the **Mean**
-
 
 
   1. Let's simulate the sampling distribution of the *mean* of a normal distribution with $N(10, 3^2)$. 
@@ -769,7 +770,7 @@ A potential buyer intends to take a sample of four engines and will not place an
   
   Now that the distribution is normal, to find the $Pr(\bar{X} < 215)$ use `pnorm`
   
-```{r}
+```{r include=FALSE}
 pnorm(215,mean = 220, sd = 7.5)
 ```
   
@@ -779,7 +780,7 @@ pnorm(215,mean = 220, sd = 7.5)
 Assume that the parent distribution is Normal.
 
 
-```{r}
+```{r include=FALSE}
 set.seed(111)
 Xbars <- numeric(1000)
 
@@ -809,7 +810,7 @@ A friend claim that she has drawn a random sample of size 30, from the exponenti
     
   b. Run a simulation by drawing 100,000 random samples, each of size 30, from $\text{Exp}(\lambda = 1/10)$ and then compute the mean.  What proportion of the sample means are as large as or larger than 12?
     
-```{r}
+```{r include=FALSE}
 # part b.
 set.seed(123)
 
@@ -848,7 +849,7 @@ Consider the population {3, 5, 6, 6, 8, 11, 13, 15, 19, 20}.
 
   a) Compute the mean and standard deviation and create a histogram of its distribution.
 
-```{r }
+```{r  include=FALSE}
 pop <- c(3, 5, 6, 6, 8, 11, 13, 15, 19, 20)
 pop
 
@@ -866,7 +867,7 @@ sd(pop)
   c) Use the simulation to find $P(\bar{X} < 11)$
   
   
-```{r }
+```{r include=FALSE}
 
 #b
 population <- c(3, 5, 6, 6, 8, 11, 13, 15, 19, 20)
@@ -939,7 +940,7 @@ mean(Xbars > 51)
 
 *Question*: 
 
-4. Let $X_1, X_2, \ldots , X_{10} \overset{i.i.d}\sim N(20, 8)$ and $Y_1, Y_2, \ldots, Y_{15} \overset{i.i.d}\sim N(16, 7)$.  Let $W = \bar{X} + \bar{Y}.$
+4. Let $X_1, X_2, \ldots , X_{10} \overset{i.i.d}\sim N(20, 8^2)$ and $Y_1, Y_2, \ldots, Y_{15} \overset{i.i.d}\sim N(16, 7^2)$.  Let $W = \bar{X} + \bar{Y}.$
 
   a. Give the exact sampling distribution of $W$
   
@@ -1060,7 +1061,7 @@ $\hat{p} \sim N(p, {p(1-p)/n}) = N(0.316, {0.316(1-0.316)/25}) = N(0.316, 0.0929
 
 Let $X_1, X_2, \ldots, X_n$ be a random sample from some distribution and suppose $Y = T(X_1, X_2, \ldots, X_n)$ is a statistic.  Suppose the sampling distribution of $Y$ has pdf $f(y) = (3/8)y^2$ for $0 \leq y \leq 2.$  Find $P(0 \leq Y \leq 1/5)$.
 
-```{r}
+```{r include=FALSE}
 f <- function(x){3/8*x^2}
 
 integrate(f, 0, 1/5)
