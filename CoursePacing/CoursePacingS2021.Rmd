@@ -296,6 +296,11 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * In class **quiz 10** --- Thursday (last 20 min of class)
 
+*  **Lecture Recordings:**
+
+    * [Thursday's class](https://appstate.zoom.us/rec/share/oCEXtXruSyeQqoRGXXzqfp_3XZCWEfgGwazT8xS1O5YHyjOAsy6Lubb9k3Fs5MZd.KG858KPDSV7OZ4fs)
+    * [Wednesday's class](https://appstate.zoom.us/rec/share/dWTVWjEIYyOLEFegSMcnjVfkpRwIp6d1KTyTLEvcXVIZRrmll2cQze-0RWm0kMOP.9Tk1LIJ18M7ZF6zv)
+    * [Thursday's class]()
 
 <!--
 * [Homework 5: Chapter 4 of MSWR](../Homework/Sampling-Distributions-HW.html)
