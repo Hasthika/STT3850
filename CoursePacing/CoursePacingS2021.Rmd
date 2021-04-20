@@ -309,7 +309,7 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * [Lecture: Sampling Distributions](../Lecture Notes/Ch-4_MSWR_Notes.html)
 
-* [Homework 5: Chapter 4 of MSWR](../Homework/Sampling-Distributions-HW.html1)
+* [Homework 5: Chapter 4 of MSWR](../Homework/Sampling-Distributions-HW.pdf)
 
 * In class **quiz 10** --- Thursday (last 20 min of class)
 
