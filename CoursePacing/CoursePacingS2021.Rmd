@@ -298,9 +298,9 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 *  **Lecture Recordings:**
 
-    * [Thursday's class](https://appstate.zoom.us/rec/share/oCEXtXruSyeQqoRGXXzqfp_3XZCWEfgGwazT8xS1O5YHyjOAsy6Lubb9k3Fs5MZd.KG858KPDSV7OZ4fs)
+    * [Tuesday's class](https://appstate.zoom.us/rec/share/oCEXtXruSyeQqoRGXXzqfp_3XZCWEfgGwazT8xS1O5YHyjOAsy6Lubb9k3Fs5MZd.KG858KPDSV7OZ4fs)
     * [Wednesday's class](https://appstate.zoom.us/rec/share/dWTVWjEIYyOLEFegSMcnjVfkpRwIp6d1KTyTLEvcXVIZRrmll2cQze-0RWm0kMOP.9Tk1LIJ18M7ZF6zv)
-    * [Thursday's class]()
+    * [Thursday's class](https://appstate.zoom.us/rec/share/aUNJzfmmYWaqvV2J_Z3oyLL00RrXkewBp_1oIcvha4I61S4g2zUkp0_xg8Rkpfuu.STnqFoR_y_m0OKlB)
 
 
 
@@ -312,6 +312,11 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 * [Homework 5: Chapter 4 of MSWR](../Homework/Sampling-Distributions-HW.pdf)
 
 * In class **quiz 10** --- Thursday (last 20 min of class)
+
+*  **Lecture Recordings:**
+
+    * [Tuesday's class](https://appstate.zoom.us/rec/share/hk-wf4wWWfpRhOoDOQxmg_BZs6w_eR6-6-A0vF2J6puadPgD8XptoKanBmyd_EUN.cVbgM0A-CKo5SClr)
+  
 
 <!--
 
