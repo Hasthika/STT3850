@@ -329,6 +329,11 @@ Clarity  | Few errors of grammar and usage; any minor errors do not interfere wi
 
 * [Homework 6: Chapter 5 Of MSWR](../Homework/Chapter5HWK_H.html1) - No submission required. Answers will be posted here.
 
+*  **Lecture Recordings:**
+
+    * [Tuesday's class](https://appstate.zoom.us/rec/share/JHcJAulliEWiuLzgka8jCvN2SJ5lVRrRW7FsBicqRGXrMu6HRmjdDi4jCJglKlsB.ysl5leFCy5r4yG75)
+    * [Wednesday's class](https://appstate.zoom.us/rec/share/arNMdsP0FkEmCybr2Jn1UqlIAxYF2deJ9xMzzWgVAgjMISUeZJrMevRavXCsVgqx.6cU3Ey0JYGLts-OQ)
+
 
 
 ### Final Exam {-}
